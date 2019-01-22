@@ -1,0 +1,29 @@
+.text-box {
+	background-color: lightgrey;
+	font-size: 16px;
+	}
+
+.nav-text-styling {
+	text-decoration: none;
+	color: inherit;
+	font-size: 42px;
+	}
+.nav-div-styling {
+	float: none;
+	margin: 0 auto;
+	}
+
+.nav-text {
+	color: white !important;
+	font-size: 14px;
+	}
+.body-div {
+	background-color: #f8f8f8;
+	}
+.body-bg-color {
+	background-color: #c2cad6
+}
+.body-p-paddings {
+	padding-bottom: 10px;
+	padding-top: 20px;
+}

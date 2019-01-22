@@ -4,50 +4,50 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="styles.css">
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-		<title>Luppo</title>
-		<style>
-			.text-box {
-				background-color: lightgrey;
-				font-size: 16px;
-
-			}
-			.nav-text-styling {
-				text-decoration: none;
-				color: inherit;
-				font-size: 42px;
-
-			}
-			.nav-div-styling {
-				float: none;
-				margin: 0 auto;
-
-			}
-		</style>	
+		<title>Luppo Software</title>	
 	</head>
-	<body>
-		<div class="row">
-			<div class="col-lg-12 nav-div-styling text-center">
-			<a href="index.html" class="nav-text-styling">Luppo Software</a>
-			</div>
-		</div>
-		<nav class="navbar navbar-default">
+	<body class="body-bg-color">
+		<nav class="navbar navbar-default" style="margin: 0px">
 			<div class="container-fluid">
-			<ul class="nav navbar-nav">
-				<li class="nav-item"><a href="evbasics.html">EV basics</a></li>
-				<li class="nav-item"><a href="chargers.html">Chargers</a></li>
-				<li class="nav-item"><a href="cars.html">Cars</a></li>
-				<li class="nav-item"><a href="about.html">About</a></li>
-			</ul>
-		</nav>
-		</div>
-		<div class="row container-fluid text-box" style="background-color: lavenderblush">
-			<div class="col-lg-6">
-				<p>Page about basics of EV:s</p>
+				<div class="navbar-header">
+					<a href="index.html" class="navbar-brand">Luppo</a>
+				</div>
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="evbasics.html">EV basics</a></li>
+					<li class=""><a href="chargers.html">Chargers</a></li>
+					<li class=""><a href="cars.html">Cars</a></li>
+					<li class=""><a href="about.html">About</a></li>
+				</ul>
 			</div>
-			
+		</nav>
+		<div class="row container-fluid body-div">
+			<div class="col-lg-6">
+				<p class="body-p-paddings">Page about basics of EV:s</p>
+				<p style="padding-left: 5px"><strong>EV terminology</strong></p>
+				<p style="padding-left: 5px">Here is the basic terms and acronyms related to electric vehicles.</p>
+			</div>
+		</div>
+		<div class="row container-fluid body-div">
+			<div class="col-lg-6">
+				<table class="table table-hover">
+				<tr>	
+					<th>Term</th>
+					<th>Explanation</th>
+				</tr>
+				<tr>
+					<td>BEV</td>
+					<td>Battery Electric Vehicle - Vehicle which is propelled completely with batteries. Does not have Internal Combustion Engine at all.</td>
+				</tr>
+				<tr>
+					<td>ICE</td>
+					<td>Internal Combustion Engine - The "original" engine which is used to propel vehicles. Heat engine which uses diesel, gasoline or other kind of fuel to create motion in vehicles.</td>
+				</tr>
+				</table>
+			</div>	
 		</div>
 	</body>
 </html>
