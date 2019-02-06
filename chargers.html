@@ -41,10 +41,12 @@
 			<div class="row"">
 				<div class="col-lg-12">
 					<form action="" method="post">
+
 						<div class="form-group">
-							<label for="drivekm">¨What is your typical daily commute?</label>
+							<label for="drivekm">What is your typical daily commute?</label>
 							<input type="drivekm" name="drivekm" class="form-control form-textbox" id="drivekm">
 						</div>
+
 						<div class="radio">
 							<p style="font-weight: bold">When do you usually stop using your car daily?</p>
 							<div class="radio-inline">
@@ -63,6 +65,27 @@
 								</label>
 							</div>
 						</div>
+
+						<div class="radio">
+							<p style="font-weight: bold">When do you usually start using your car daily?</p>
+							<div class="radio-inline">
+								<label>
+								<input type="radio" name="starttime" id="starttime1" value="05:00">05:00
+								</label>
+							</div>
+							<div class="radio-inline">
+								<label>
+								<input type="radio" name="starttime" id="starttime2" value="06:00">06:00
+								</label>
+							</div>
+							<div class="radio-inline">
+								<label>
+								<input type="radio" name="starttime" id="starttime3" value="07:00">07:00
+								</label>
+							</div>
+						</div>
+
+						<button type="submit" class="btn btn-primary" style="margin-top: 10px; margin-bottom: 20px">Check how powerful charger I need!</button>
 					</form>
 				</div>
 			</div>	
