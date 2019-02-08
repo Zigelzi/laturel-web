@@ -11,9 +11,9 @@
 		<div class="container-fluid body-div" style="padding: 15px;">
 			<div class="row">
 				<div class="col-lg-12">
-					<a href="evbasics.html" type="button" class="btn btn-primary col-lg-4 btn-wrap">I don't know anything about Electric vehicles, help me!</a>
-					<a href="chargers.html" type="button" class="btn btn-primary col-lg-4 btn-wrap" >Get me started how to set up charging site to home or office!</a>
-					<a href="cars.html" type="button" class="btn btn-primary col-lg-4 btn-wrap">What electric vehicles there is available now and soon?</a>
+					<a href="{{ url_for('evbasics') }}" type="button" class="btn btn-primary col-lg-4 btn-wrap">I don't know anything about Electric vehicles, help me!</a>
+					<a href="{{ url_for('chargers') }}" type="button" class="btn btn-primary col-lg-4 btn-wrap" >Get me started how to set up charging site to home or office!</a>
+					<a href="{{ url_for('cars') }}" type="button" class="btn btn-primary col-lg-4 btn-wrap">What electric vehicles there is available now and soon?</a>
 				</div>
 			</div>
 		</div>
