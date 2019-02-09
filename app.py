@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request
-from chargers import ChargerForm
-
+from forms import ChargerForm
+from config import Config
 
 app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'debug'
+app.config.from_object(Config)
 
 @app.route('/')
 def index():
