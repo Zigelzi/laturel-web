@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from forms import ChargerForm
 from config import Config
+import datetime
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -17,7 +18,8 @@ def index2():
 @app.route('/chargers', methods=['POST', 'GET'])
 def chargers():
     form = ChargerForm()
-    return render_template('chargers.html', form=form)
+    deptTime = form.date1.data - form.date2.data # Taking the
+    return render_template('chargers.html', form=form, deptTime=deptTime)
 
 
 @app.route('/evbasics')
