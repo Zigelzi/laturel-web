@@ -18,8 +18,8 @@ def index2():
 @app.route('/chargers', methods=['POST', 'GET'])
 def chargers():
     form = ChargerForm()
-    deptTime = form.date1.data - form.date2.data # Taking the
-    return render_template('chargers.html', form=form, deptTime=deptTime)
+
+    return render_template('chargers.html', form=form)
 
 
 @app.route('/evbasics')
