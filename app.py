@@ -25,7 +25,7 @@ def chargers():
         stopTime = datetime.strptime(stopTime, '%H:%M')
         startTime = datetime.strptime(startTime, '%H:%M')
         chargingTime = stopTime - startTime
-        chargingTime = datetime.strftime(chargingTime, '%H:%M')
+
     return render_template('chargers.html',
                            form=form,
                            driveKm=driveKm,
