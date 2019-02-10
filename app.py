@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from forms import ChargerForm
 from config import Config
-import datetime
+from datetime import datetime
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -18,8 +18,20 @@ def index2():
 @app.route('/chargers', methods=['POST', 'GET'])
 def chargers():
     form = ChargerForm()
-
-    return render_template('chargers.html', form=form)
+    driveKm = int(form.driveKmRadio.data)
+    stopTime = form.stopTime.data
+    startTime = form.startTime.data
+    if stopTime and startTime is not None:
+        stopTime = datetime.strptime(stopTime, '%H:%M')
+        startTime = datetime.strptime(startTime, '%H:%M')
+        chargingTime = stopTime - startTime
+        chargingTime = datetime.strftime(chargingTime, '%H:%M')
+    return render_template('chargers.html',
+                           form=form,
+                           driveKm=driveKm,
+                           stopTime=stopTime,
+                           startTime=startTime,
+                           chargingTime=chargingTime)
 
 
 @app.route('/evbasics')

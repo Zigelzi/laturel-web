@@ -32,9 +32,9 @@
 							</div>
 
 							<div class="form-group">
-								{{ form.radio.label(class="form-control-label") }}
+								{{ form.stopTime.label(class="form-control-label") }}
 								<br>
-								{% for subfield in form.radio %}
+								{% for subfield in form.stopTime %}
 								<tr>
 									<td> {{ subfield }}</td>
 									<td>{{ subfield.label(class="radio-inline") }}</td>
@@ -43,9 +43,9 @@
 							</div>
 
 							<div class="form-group">
-								{{ form.radio2.label(class="form-control-label") }}
+								{{ form.startTime.label(class="form-control-label") }}
 								<br>
-								{% for subfield in form.radio2 %}
+								{% for subfield in form.startTime %}
 								<tr>
 									<td> {{ subfield }}</td>
 									<td>{{ subfield.label(class="radio-inline") }}</td>
@@ -56,9 +56,12 @@
 							<div>
 								{{ form.submit(class="btn btn-primary") }}
 							</div>
-							
+
 						</fieldset>
 						
+						<p>You're driving {{driveKm}} km</p>
+						<p>You're stopping at {{ stopTime }} and starting at {{startTime}} </p>
+						<p>You have {{ chargingTime }} hours to charge your car.</p>
 					
 					</form>	
 				</div>	
