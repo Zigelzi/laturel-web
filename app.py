@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from forms import ChargerForm, eForm, gForm, dForm, driveForm
 from config import Config
 from datetime import datetime
+from helpers import calc_drivepowertax
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -47,7 +48,8 @@ def cars():
 
     econsumption = eform.econsumption.data
     eprice = eform.eprice.data
-    edrivingpower = eform.edrivingpower.data
+    eweight = eform.eweight.data
+    edrivingpower = calc_drivepowertax(eweight)  # Round to starting hundreds
     etax = eform.etax.data
     echarger = eform.echarger.data
     chargerprice = 800
@@ -58,7 +60,7 @@ def cars():
 
     dconsumption = dform.dconsumption.data
     dprice = dform.dconsumption.data
-    ddrivingpower = dform.ddrivingpower.data
+    dweight = dform.dweight.data
     dtax = dform.dtax.data
 
     drivekm = kmform.drivekm.data
