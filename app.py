@@ -72,11 +72,13 @@ def cars():
         try:
             eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower + chargerprice
         except TypeError:
+            eyearly = None
             pass
     else:
         try:
             eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower
         except TypeError:
+            eyearly = None
             pass
 
     # Gasoline car price calculation
@@ -98,7 +100,13 @@ def cars():
                            kmform=kmform,
                            eyearly=eyearly,
                            gyearly=gyearly,
-                           dyearly=dyearly)
+                           dyearly=dyearly,
+                           econsumption=econsumption,
+                           eprice=eprice,
+                           edrivingpower=edrivingpower,
+                           etax=etax,
+                           echarger=echarger,
+                           chargerprice=chargerprice)
 
 @app.route('/about')
 def about():

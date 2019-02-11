@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, SubmitField, DateTimeField, RadioField
+from wtforms import IntegerField, SubmitField, DateTimeField, RadioField, FloatField
 
 class ChargerForm(FlaskForm):
     driveKmRadio = RadioField('How much do you drive daily?',
@@ -16,7 +16,7 @@ class CarSelectorForm(FlaskForm):
 
 class eForm(FlaskForm):
     econsumption = IntegerField('Electric vehicle energy consumption:')
-    eprice = IntegerField('Electricity price (incl. transmission):')
+    eprice = FloatField('Electricity price (incl. transmission):')
     edrivingpower = IntegerField('Car weight (approx.):') # Car driving power tax.
     etax = IntegerField('Car tax:') # Vehicle tax
     echarger = RadioField('Do you have EV charger already?',
@@ -29,9 +29,10 @@ class gForm(FlaskForm):
 
 class dForm(FlaskForm):
     dconsumption = IntegerField('Gasoline car consumption:')
-    dprice = IntegerField('Gas price:')
+    dprice = FloatField('Gas price:')
     ddrivingpower = IntegerField('Car weight (approx.):') # Car driving power tax.
     dtax = IntegerField('Car tax:') # Vehicle tax
 
 class driveForm(FlaskForm):
     drivekm = IntegerField('How much you drive yearly?')
+    submit = SubmitField('Compare cars')
