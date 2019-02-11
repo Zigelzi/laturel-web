@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from forms import ChargerForm, eForm, gForm, dForm, driveForm
 from config import Config
 from datetime import datetime
-from helpers import calc_drivepowertax
+from helpers import round_hundreds
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -49,7 +49,7 @@ def cars():
     econsumption = eform.econsumption.data
     eprice = eform.eprice.data
     eweight = eform.eweight.data
-    edrivingpower = calc_drivepowertax(eweight)  # Round to starting hundreds and multiply by 0.055 (€)
+    edrivingpower = round_hundreds(eweight)  # Round to starting hundreds and multiply by 0.055 (€)
     etax = eform.etax.data
     echarger = eform.echarger.data
     chargerprice = 800
@@ -61,7 +61,7 @@ def cars():
     dconsumption = dform.dconsumption.data
     dprice = dform.dprice.data
     dweight = dform.dweight.data
-    ddrivingpower = calc_drivepowertax(dweight)  # Round to starting hundreds and multiply by 0.055 (€)
+    ddrivingpower = round_hundreds(dweight)  # Round to starting hundreds and multiply by 0.055 (€)
     dtax = dform.dtax.data
 
     drivekm = kmform.drivekm.data
@@ -71,15 +71,23 @@ def cars():
     dyearly = 0
 
     # EV price calculation
+    try:
+        edrivingpower = edrivingpower * 0.015
+        ddrivingpower = ddrivingpower * 0.055
+    except TypeError:
+        pass
+
     if echarger == 'Yes':
         try:
             eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower + chargerprice
+            eyearly = int(eyearly)
         except TypeError:
             eyearly = None
             pass
     else:
         try:
             eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower
+            eyearly = int(eyearly)
         except TypeError:
             eyearly = None
             pass
@@ -87,12 +95,14 @@ def cars():
     # Gasoline car price calculation
     try:
         gyearly = drivekm * gprice * (gconsumption / 100) + gtax
+        gyearly = int(gyearly)
     except TypeError:
         pass
 
     # Diesel car price calculation
     try:
         dyearly = drivekm * dprice * (dconsumption / 100) + ddrivingpower + dtax
+        dyearly = int(dyearly)
     except TypeError:
         pass
 

@@ -18,20 +18,20 @@ class eForm(FlaskForm):
     econsumption = FloatField('Electric vehicle energy consumption:')
     eprice = FloatField('Electricity price (incl. transmission):')
     eweight = IntegerField('Car weight (approx.):') # Car driving power tax.
-    etax = IntegerField('Car tax:') # Vehicle tax
+    etax = FloatField('Car tax:') # Vehicle tax
     echarger = RadioField('Do you have EV charger already?',
                            choices=[('Yes', 'Yes'), ('No', 'No')])
 
 class gForm(FlaskForm):
     gconsumption = FloatField('Gasoline car consumption:')
     gprice = FloatField('Gas price:')
-    gtax = IntegerField('Car tax:')
+    gtax = FloatField('Car tax:')
 
 class dForm(FlaskForm):
     dconsumption = FloatField('Diesel car consumption:')
     dprice = FloatField('Diesel price:')
     dweight = IntegerField('Car weight (approx.):') # Car driving power tax.
-    dtax = IntegerField('Car tax:') # Vehicle tax
+    dtax = FloatField('Car tax:') # Vehicle tax
 
 class driveForm(FlaskForm):
     drivekm = IntegerField('How much you drive yearly?')

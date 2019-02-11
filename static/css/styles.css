@@ -39,3 +39,11 @@
 	float:none;
 	margin:0 auto;
 }
+.form-margins{
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-bottom: 15px;
+}
+.label-margin{
+	margin-left: 30px;
+}
