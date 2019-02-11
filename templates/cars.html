@@ -16,21 +16,25 @@
 			<div class="row">
 				<form action="{{ url_for('cars') }}" method="post">
 					<div class="form-group">
-						<div class="col-lg-3">
+						<div class="row">
+						<div class="col-lg-3 text-center">
 							<p>
 							{{ eform.econsumption.label(class="form-control-label") }}
+							<br>
 							{{ eform.econsumption }}
 							</p>
 							<p>
 							{{ eform.eprice.label(class="form-control-label") }}
+							<br>
 							{{ eform.eprice }}
 							</p>
 							<p>
 							{{ eform.eweight.label(class="form-control-label") }}
+							<br>
 							{{ eform.eweight }}
 							</p>
 							<p>
-							{{ eform.etax.label(class="form-control-label") }}
+							{{ eform.etax.label(class="form-control-label") }}<br>
 							{{ eform.etax }}
 							</p>
 							<p>
@@ -44,37 +48,76 @@
 							{% endfor %}
 							</p>
 						</div>
-						<div class="col-lg-3">
-							
+						<div class="col-lg-3 text-center">
+							<p>
+							{{ gform.gconsumption.label(class="form-control-label") }}
+							<br>
+							{{ gform.gconsumption }}
+							</p>
+							<p>
+							{{ gform.gprice.label(class="form-control-label") }}
+							<br>
+							{{ gform.gprice }}
+							</p>
+							<p>
+							{{ gform.gtax.label(class="form-control-label") }}
+							<br>
+							{{ gform.gtax }}
+							</p>
 						</div>
-						<div class="col-lg-3">
-							
+						<div class="col-lg-3 text-center">
+							<p>
+							{{ dform.dconsumption.label }}
+							<br>
+							{{ dform.dconsumption }}
+							</p>
+							<p>
+							{{ dform.dprice.label }}
+							<br>
+							{{ dform.dprice }}
+							</p>
+							<p>
+							{{ dform.dweight.label }}
+							<br>
+							{{ dform.dweight }}
+							</p>
+							<p>
+							{{ dform.dtax.label }}
+							<br>
+							{{ dform.dtax }}
+							</p>
 						</div>
-
+					</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-12">
+						<div class="col-lg-4 col-lg-offset-4" style="margin-bottom: 20px">
 							<p>
 							{{ kmform.drivekm.label }}
+							<br>
 							{{ kmform.drivekm }}
 							</p>
+							<div class="text-center">
 							{{ kmform.submit(class="btn btn-primary") }}
-							
+							</div>
 						</div>
 						
 					</div>
 				</form>
 			</div>
 			<div class="row">
-				<div>
-					<p></p>
-					<h3>Your EV costs are {{ eyearly }}</h3>
-					<h3>Consumption {{ econsumption }}</h3>
-					<h3>Price {{ eprice }}</h3>
-					<h3>Driving power {{ edrivingpower }}</h3>
-					<h3>tax {{ etax }}</h3>
-					<h3>charger {{ echarger }}</h3>
-					<h3>chargerprice {{ chargerprice }}</h3>
+				<div class="col-lg-5 col-lg-offset-3">
+					<table class="table table-hover">
+						<tr>
+							<th>Electric</th>
+							<th>Gasoline</th>
+							<th>Diesel</th>
+						</tr>
+						<tr>
+							<td>{{ eyearly }}</td>
+							<td>{{ gyearly }}</td>
+							<td>{{ dyearly }}</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>

@@ -49,7 +49,7 @@ def cars():
     econsumption = eform.econsumption.data
     eprice = eform.eprice.data
     eweight = eform.eweight.data
-    edrivingpower = calc_drivepowertax(eweight)  # Round to starting hundreds
+    edrivingpower = calc_drivepowertax(eweight)  # Round to starting hundreds and multiply by 0.055 (€)
     etax = eform.etax.data
     echarger = eform.echarger.data
     chargerprice = 800
@@ -59,8 +59,9 @@ def cars():
     gtax = gform.gtax.data
 
     dconsumption = dform.dconsumption.data
-    dprice = dform.dconsumption.data
+    dprice = dform.dprice.data
     dweight = dform.dweight.data
+    ddrivingpower = calc_drivepowertax(dweight)  # Round to starting hundreds and multiply by 0.055 (€)
     dtax = dform.dtax.data
 
     drivekm = kmform.drivekm.data
@@ -102,13 +103,7 @@ def cars():
                            kmform=kmform,
                            eyearly=eyearly,
                            gyearly=gyearly,
-                           dyearly=dyearly,
-                           econsumption=econsumption,
-                           eprice=eprice,
-                           edrivingpower=edrivingpower,
-                           etax=etax,
-                           echarger=echarger,
-                           chargerprice=chargerprice)
+                           dyearly=dyearly)
 
 @app.route('/about')
 def about():
