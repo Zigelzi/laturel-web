@@ -38,7 +38,7 @@ def chargers():
 def evbasics():
     return render_template('evbasics.html')
 
-@app.route('/cars')
+@app.route('/cars', methods=['GET', 'POST'])
 def cars():
     eform = eForm()
     gform = gForm()
@@ -63,19 +63,42 @@ def cars():
 
     drivekm = kmform.drivekm.data
 
+    eyearly = 0
+    gyearly = 0
+    dyearly = 0
+
     # EV price calculation
     if echarger == 'Yes':
-        eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower + chargerprice
+        try:
+            eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower + chargerprice
+        except TypeError:
+            pass
     else:
-        eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower
+        try:
+            eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower
+        except TypeError:
+            pass
 
     # Gasoline car price calculation
-    gyearly = drivekm * gprice * (gconsumption / 100) + gtax
+    try:
+        gyearly = drivekm * gprice * (gconsumption / 100) + gtax
+    except TypeError:
+        pass
 
     # Diesel car price calculation
-    dyearly = drivekm * dprice * (dconsumption / 100) + ddrivingpower + dtax
+    try:
+        dyearly = drivekm * dprice * (dconsumption / 100) + ddrivingpower + dtax
+    except TypeError:
+        pass
 
-    return render_template('cars.html')
+    return render_template('cars.html',
+                           eform=eform,
+                           gform=gform,
+                           dform=dform,
+                           kmform=kmform,
+                           eyearly=eyearly,
+                           gyearly=gyearly,
+                           dyearly=dyearly)
 
 @app.route('/about')
 def about():

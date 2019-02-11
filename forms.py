@@ -33,5 +33,5 @@ class dForm(FlaskForm):
     ddrivingpower = IntegerField('Car weight (approx.):') # Car driving power tax.
     dtax = IntegerField('Car tax:') # Vehicle tax
 
-class driveForm():
+class driveForm(FlaskForm):
     drivekm = IntegerField('How much you drive yearly?')
