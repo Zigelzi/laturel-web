@@ -10,14 +10,14 @@
 
 			<div class="row">
 				<div class="col-lg-6">
-					<p class="body-p-paddings">Page about EV:s</p>
+					<p class="body-p-paddings">Here you can calculate the yearly costs of using different cars and propulsion types.</p>
 				</div>
 			</div>
 			<div class="row">
 				<form action="{{ url_for('cars') }}" method="post">
 					<div class="form-group">
 						<div class="row">
-						<div class="col-lg-3 text-left">
+						<div class="col-lg-4 text-left">
 							{{ eform.econsumption.label(class="form-control-label label-margin") }}
 							<br>
 							<div class="input-group form-margins">
@@ -60,7 +60,7 @@
 							{% endfor %}
 							</div>
 						</div>
-						<div class="col-lg-3 text-left">
+						<div class="col-lg-4 text-left">
 							{{ gform.gconsumption.label(class="form-control-label label-margin") }}
 							<br>
 							<div class="input-group form-margins">
@@ -86,7 +86,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 text-left">
+						<div class="col-lg-4 text-left">
 							{{ dform.dconsumption.label(class="form-control-label label-margin") }}
 							<br>
 							<div class="input-group form-margins">
@@ -125,9 +125,14 @@
 					<div class="row">
 						<div class="col-lg-4 col-lg-offset-4" style="margin-bottom: 20px">
 							<p>
-							{{ kmform.drivekm.label }}
+							{{ kmform.drivekm.label(class="form-control-label label-margin") }}
 							<br>
-							{{ kmform.drivekm(value="30000") }}
+							<div class="input-group form-margins">
+							{{ kmform.drivekm(class="form-control", value="30000") }}
+							<div class="input-group-addon">
+									km/year
+								</div>
+							</div>
 							</p>
 							<div class="text-center">
 							{{ kmform.submit(class="btn btn-primary") }}
