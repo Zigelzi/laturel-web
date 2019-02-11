@@ -79,14 +79,14 @@ def cars():
 
     if echarger == 'Yes':
         try:
-            eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower + chargerprice
+            eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower
             eyearly = int(eyearly)
         except TypeError:
             eyearly = None
             pass
     else:
         try:
-            eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower
+            eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower + chargerprice
             eyearly = int(eyearly)
         except TypeError:
             eyearly = None

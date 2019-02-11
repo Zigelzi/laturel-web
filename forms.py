@@ -4,9 +4,9 @@ from wtforms import IntegerField, SubmitField, DateTimeField, RadioField, FloatF
 class ChargerForm(FlaskForm):
     driveKmRadio = RadioField('How much do you drive daily?',
                               choices=[('50', '0 - 50 km'),
-                                       ('100', '51 - 100 km')])
-    stopTime = RadioField('When do you stop your driving?', choices=[('18:00', '18:00'), ('19:00', '19:00')])
-    startTime = RadioField('When do you start driving?', choices=[('05:00', '05:00'), ('06:00', '06:00')])
+                                       ('100', '51 - 100 km')], default='50')
+    stopTime = RadioField('When do you stop your driving?', choices=[('18:00', '18:00'), ('19:00', '19:00')], default='18:00')
+    startTime = RadioField('When do you start driving?', choices=[('05:00', '05:00'), ('06:00', '06:00')], default='05:00')
     submit = SubmitField('Check how powerful charger I need!')
 
 class CarSelectorForm(FlaskForm):
@@ -20,7 +20,7 @@ class eForm(FlaskForm):
     eweight = IntegerField('Car weight (approx.):') # Car driving power tax.
     etax = FloatField('Car tax:') # Vehicle tax
     echarger = RadioField('Do you have EV charger already?',
-                           choices=[('Yes', 'Yes'), ('No', 'No')])
+                           choices=[('Yes', 'Yes'), ('No', 'No')], default='Yes')
 
 class gForm(FlaskForm):
     gconsumption = FloatField('Gasoline car consumption:')
