@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from forms import ChargerForm
+from forms import ChargerForm, eForm, gForm, dForm, driveForm
 from config import Config
 from datetime import datetime
 
@@ -40,6 +40,31 @@ def evbasics():
 
 @app.route('/cars')
 def cars():
+    eform = eForm()
+    gform = gForm()
+    dform = dForm()
+    kmform = driveForm()
+
+    econsumption = eform.econsumption.data
+    eprice = eform.eprice.data
+    edrivingpower = eform.edrivingpower.data
+    etax = eform.etax.data
+    echarger = eform.echarger.data
+
+    gconsumption = gform.gconsumption.data
+    gprice = gform.gprice.data
+    gtax = gform.gtax.data
+
+    dconsumption = dform.dconsumption.data
+    dprice = dform.dconsumption.data
+    ddrivingpower = dform.ddrivingpower.data
+    dtax = dform.dtax.data
+
+    drivekm = kmform.drivekm.data
+
+    
+
+
     return render_template('cars.html')
 
 @app.route('/about')
