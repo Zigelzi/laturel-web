@@ -50,6 +50,7 @@ def cars():
     edrivingpower = eform.edrivingpower.data
     etax = eform.etax.data
     echarger = eform.echarger.data
+    chargerprice = 800
 
     gconsumption = gform.gconsumption.data
     gprice = gform.gprice.data
@@ -62,8 +63,17 @@ def cars():
 
     drivekm = kmform.drivekm.data
 
-    
+    # EV price calculation
+    if echarger == 'Yes':
+        eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower + chargerprice
+    else:
+        eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower
 
+    # Gasoline car price calculation
+    gyearly = drivekm * gprice * (gconsumption / 100) + gtax
+
+    # Diesel car price calculation
+    dyearly = drivekm * dprice * (dconsumption / 100) + ddrivingpower + dtax
 
     return render_template('cars.html')
 
