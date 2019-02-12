@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content%}
 
-		<div class="container-fluid body-div">
+		<div class="container body-div">
 			<div class="row">
 				<div class="col-lg-12">
 					<h1>Electric Vehicles</h1>
@@ -27,7 +27,7 @@
 						<br>
 						<div class="input-group form-margins">
 						{{ eform.ecarprice(class="form-control") }}
-							<div class="input-group-addon">
+							<div class="input-group-addon addon-width">
 								€
 							</div>
 						</div>
@@ -35,7 +35,7 @@
 						<br>
 						<div class="input-group form-margins">
 						{{ eform.edepr(class="form-control") }}
-							<div class="input-group-addon">
+							<div class="input-group-addon addon-width">
 								% / year
 							</div>
 						</div>
@@ -43,7 +43,7 @@
 						<br>
 						<div class="input-group form-margins">
 						{{ eform.esubsidy(class="form-control") }}
-							<div class="input-group-addon">
+							<div class="input-group-addon addon-width">
 								€
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 						<br>
 						<div class="input-group form-margins">
 						{{ gform.gcarprice(class="form-control") }}
-							<div class="input-group-addon">
+							<div class="input-group-addon addon-width">
 								€
 							</div>
 						</div>
@@ -73,7 +73,7 @@
 						<br>
 						<div class="input-group form-margins">
 						{{ gform.gdepr(class="form-control") }}
-							<div class="input-group-addon">
+							<div class="input-group-addon addon-width">
 								% / year
 							</div>
 						</div>
@@ -85,7 +85,7 @@
 						<br>
 						<div class="input-group form-margins">
 						{{ dform.dcarprice(class="form-control") }}
-							<div class="input-group-addon">
+							<div class="input-group-addon addon-width">
 								€
 							</div>
 						</div>
@@ -93,7 +93,7 @@
 						<br>
 						<div class="input-group form-margins">
 						{{ dform.ddepr(class="form-control") }}
-							<div class="input-group-addon">
+							<div class="input-group-addon addon-width">
 								% / year
 							</div>
 						</div>
@@ -114,7 +114,7 @@
 								<br>
 								<div class="input-group form-margins">
 								{{ eform.econsumption(class="form-control") }}
-									<div class="input-group-addon">
+									<div class="input-group-addon addon-width">
 										kWh/100 km
 									</div>
 								</div>
@@ -122,7 +122,7 @@
 								<br>
 								<div class="input-group form-margins">
 								{{ eform.eprice(class="form-control") }}
-									<div class="input-group-addon">
+									<div class="input-group-addon addon-width">
 										€/kWh
 									</div>
 								</div>
@@ -130,14 +130,14 @@
 								<br>
 								<div class="input-group form-margins">
 								{{ eform.eweight(class="form-control") }}
-									<div class="input-group-addon">
+									<div class="input-group-addon addon-width">
 										kg
 									</div>
 								</div>
 								{{ eform.etax.label(class="form-control-label label-margin") }}<br>
 								<div class="input-group form-margins">
 								{{ eform.etax(class="form-control") }}
-									<div class="input-group-addon">
+									<div class="input-group-addon addon-width">
 										€/year
 									</div>
 								</div>
@@ -150,7 +150,7 @@
 								<br>
 								<div class="input-group form-margins">
 								{{ gform.gconsumption(class="form-control") }}
-									<div class="input-group-addon">
+									<div class="input-group-addon addon-width">
 										l/100km
 									</div>
 								</div>
@@ -158,7 +158,7 @@
 								<br>
 								<div class="input-group form-margins">
 								{{ gform.gprice(class="form-control") }}
-									<div class="input-group-addon">
+									<div class="input-group-addon addon-width">
 										€/l
 									</div>
 								</div>
@@ -166,7 +166,7 @@
 								<br>
 								<div class="input-group form-margins">
 								{{ gform.gtax(class="form-control") }}
-									<div class="input-group-addon">
+									<div class="input-group-addon addon-width">
 										€/year
 									</div>
 								</div>
@@ -178,7 +178,7 @@
 								<br>
 								<div class="input-group form-margins">
 								{{ dform.dconsumption(class="form-control") }}
-									<div class="input-group-addon">
+									<div class="input-group-addon addon-width">
 										l/100km
 									</div>
 								</div>
@@ -186,7 +186,7 @@
 								<br>
 								<div class="input-group form-margins">
 								{{ dform.dprice(class="form-control") }}
-									<div class="input-group-addon">
+									<div class="input-group-addon addon-width">
 										€/l
 									</div>
 								</div>
@@ -194,7 +194,7 @@
 								<br>
 								<div class="input-group form-margins">
 								{{ dform.dweight(class="form-control") }}
-									<div class="input-group-addon">
+									<div class="input-group-addon addon-width">
 										kg
 									</div>
 								</div>
@@ -202,7 +202,7 @@
 								<br>
 								<div class="input-group form-margins">
 								{{ dform.dtax(class="form-control") }}
-									<div class="input-group-addon">
+									<div class="input-group-addon addon-width">
 										€/year
 									</div>
 								</div>
@@ -215,7 +215,7 @@
 								<br>
 								<div class="input-group form-margins">
 								{{ kmform.drivekm(class="form-control") }}
-								<div class="input-group-addon">
+								<div class="input-group-addon addon-width">
 										km/year
 									</div>
 								</div>
