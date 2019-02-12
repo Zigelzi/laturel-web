@@ -22,6 +22,31 @@
 				<div class="row">
 					<!-- EV initial costs -->
 					<div class="col-lg-4 text-left form-group">
+
+						{{ eform.ecarprice.label(class="form-control-label label-margin") }}
+						<br>
+						<div class="input-group form-margins">
+						{{ eform.ecarprice(class="form-control") }}
+							<div class="input-group-addon">
+								€
+							</div>
+						</div>
+						{{ eform.edepr.label(class="form-control-label label-margin") }}
+						<br>
+						<div class="input-group form-margins">
+						{{ eform.edepr(class="form-control") }}
+							<div class="input-group-addon">
+								% / year
+							</div>
+						</div>
+						{{ eform.esubsidy.label(class="form-control-label label-margin") }}
+						<br>
+						<div class="input-group form-margins">
+						{{ eform.esubsidy(class="form-control") }}
+							<div class="input-group-addon">
+								€
+							</div>
+						</div>
 						{{ eform.echarger.label(class="form-control-label label-margin") }}
 						<br>
 						<div class="label-margin">
@@ -36,12 +61,42 @@
 
 					<!-- Gasoline initial costs -->
 					<div class="col-lg-4 text-left">
-						
+						{{ gform.gcarprice.label(class="form-control-label label-margin") }}
+						<br>
+						<div class="input-group form-margins">
+						{{ gform.gcarprice(class="form-control") }}
+							<div class="input-group-addon">
+								€
+							</div>
+						</div>
+						{{ gform.gdepr.label(class="form-control-label label-margin") }}
+						<br>
+						<div class="input-group form-margins">
+						{{ gform.gdepr(class="form-control") }}
+							<div class="input-group-addon">
+								% / year
+							</div>
+						</div>
 					</div>
 
-					<!-- Gasoline initial costs -->
+					<!-- Diesel initial costs -->
 					<div class="col-lg-4 text-left">
-						
+						{{ dform.dcarprice.label(class="form-control-label label-margin") }}
+						<br>
+						<div class="input-group form-margins">
+						{{ dform.dcarprice(class="form-control") }}
+							<div class="input-group-addon">
+								€
+							</div>
+						</div>
+						{{ dform.ddepr.label(class="form-control-label label-margin") }}
+						<br>
+						<div class="input-group form-margins">
+						{{ dform.ddepr(class="form-control") }}
+							<div class="input-group-addon">
+								% / year
+							</div>
+						</div>
 					</div>
 
 				</div>
@@ -177,14 +232,22 @@
 					<div class="col-lg-5 col-lg-offset-3">
 						<table class="table table-hover">
 							<tr>
+								<th></th>
 								<th>Electric</th>
 								<th>Gasoline</th>
 								<th>Diesel</th>
 							</tr>
 							<tr>
+								<td>Operational costs</td>
 								<td>{{ eyearly }} € / year</td>
 								<td>{{ gyearly }} € / year</td>
 								<td>{{ dyearly }} € / year</td>
+							</tr>
+							<tr>
+								<td>Total costs during {{ owntime }} years</td>
+								<td>{{ etotal }} €</td>
+								<td>{{ gtotal }} €</td>
+								<td>{{ dtotal }} €</td>
 							</tr>
 						</table>
 					</div>

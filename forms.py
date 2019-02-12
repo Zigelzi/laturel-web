@@ -15,31 +15,32 @@ class CarSelectorForm(FlaskForm):
                                    ('Kia Niro', 'Kia Niro')])
 
 class eForm(FlaskForm):
-    ecarprice = FloatField('Car purchase price:', default='40000')
-    edepr = FloatField('Yearly deprecation rate:', default='17.5')
-    econsumption = FloatField('Electric vehicle energy consumption:', default='15.1')
-    eprice = FloatField('Electricity price (incl. transmission):', default='0.14')
-    eweight = IntegerField('Car weight (approx.):', default='2100') # Car driving power tax.
-    etax = FloatField('Car tax:', default='53') # Vehicle tax
+    ecarprice = FloatField('Car purchase price:', default=40000)
+    edepr = FloatField('Yearly deprecation rate:', default=17.5)
+    esubsidy = FloatField('Available subsidy for EV:s', default=2000)
+    econsumption = FloatField('Electric vehicle energy consumption:', default=15.1)
+    eprice = FloatField('Electricity price (incl. transmission):', default=0.14)
+    eweight = IntegerField('Car weight (approx.):', default=2100) # Car driving power tax.
+    etax = FloatField('Car tax:', default=53) # Vehicle tax
     echarger = RadioField('Do you have EV charger already?',
                            choices=[('Yes', 'Yes'), ('No', 'No')], default='Yes')
 
 class gForm(FlaskForm):
-    gcarprice = FloatField('Car purchase price:', default='32000')
-    gdepr = FloatField('Yearly deprecation rate:', default='15.5')
-    gconsumption = FloatField('Gasoline car consumption:', default='7.7')
-    gprice = FloatField('Gas price:', default='1.43')
-    gtax = FloatField('Car tax:', default='230')
+    gcarprice = FloatField('Car purchase price:', default=32000)
+    gdepr = FloatField('Yearly deprecation rate:', default=15.5)
+    gconsumption = FloatField('Gasoline car consumption:', default=7.7)
+    gprice = FloatField('Gas price:', default=1.43)
+    gtax = FloatField('Car tax:', default=230)
 
 class dForm(FlaskForm):
-    dcarprice = FloatField('Car purchase price:', default='32000')
-    gdepr = FloatField('Yearly deprecation rate:', default='15.5')
-    dconsumption = FloatField('Diesel car consumption:', default='5.5')
-    dprice = FloatField('Diesel price:', default='1.4')
-    dweight = IntegerField('Car weight (approx.):', default='1800') # Car driving power tax.
-    dtax = FloatField('Car tax:', default='143') # Vehicle tax
+    dcarprice = FloatField('Car purchase price:', default=32000)
+    ddepr = FloatField('Yearly deprecation rate:', default=15.5)
+    dconsumption = FloatField('Diesel car consumption:', default=5.5)
+    dprice = FloatField('Diesel price:', default=1.4)
+    dweight = IntegerField('Car weight (approx.):', default=1800) # Car driving power tax.
+    dtax = FloatField('Car tax:', default=143) # Vehicle tax
 
 class driveForm(FlaskForm):
-    drivekm = IntegerField('How much you drive yearly?', default='30000')
-    owntime = IntegerField('How long will you own the car?',default='5')
+    drivekm = IntegerField('How much you drive yearly?', default=30000)
+    owntime = IntegerField('How long will you own the car?',default=5)
     submit = SubmitField('Compare cars')
