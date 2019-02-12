@@ -46,6 +46,9 @@ def cars():
     dform = dForm()
     kmform = driveForm()
 
+    # EV data from EV form
+    ecarprice = eform.ecarprice.data
+    edepr = eform.edepr.data
     econsumption = eform.econsumption.data
     eprice = eform.eprice.data
     eweight = eform.eweight.data
@@ -54,10 +57,12 @@ def cars():
     echarger = eform.echarger.data
     chargerprice = 800
 
+    # Gasoline car data from gasoline form
     gconsumption = gform.gconsumption.data
     gprice = gform.gprice.data
     gtax = gform.gtax.data
 
+    # Diesel car data from diesel form
     dconsumption = dform.dconsumption.data
     dprice = dform.dprice.data
     dweight = dform.dweight.data
@@ -70,24 +75,23 @@ def cars():
     gyearly = 0
     dyearly = 0
 
-    # EV price calculation
+    # Calculating the driving power tax based on car weight.
     try:
-        edrivingpower = edrivingpower * 0.015
-        ddrivingpower = ddrivingpower * 0.055
+        edrivingpower = edrivingpower * 0.015  # EV 0.015€/starting 100 kg
+        ddrivingpower = ddrivingpower * 0.055  # Diesel 0.055€/starting 100 kg
     except TypeError:
         pass
 
-    if echarger == 'Yes':
+    # EV price calculation
+    try:
+        eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower
+        eyearly = int(eyearly)
+    except TypeError:
+        pass
+
+    if echarger == 'No':
         try:
-            eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower
-            eyearly = int(eyearly)
-        except TypeError:
-            eyearly = None
-            pass
-    else:
-        try:
-            eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower + chargerprice
-            eyearly = int(eyearly)
+            eyearly = eyearly + chargerprice
         except TypeError:
             eyearly = None
             pass
