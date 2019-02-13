@@ -68,6 +68,8 @@
 	color: #ffffff;
 	border-top-left-radius: 25px;
 	border-top-right-radius: 25px;
+	margin-left: -5px;
+	margin-right: -10px;
 }
 
 .e-box{
@@ -75,6 +77,8 @@
 	border-bottom-left-radius: 25px;
 	border-bottom-right-radius: 25px;
 	color: #ffffff;
+	margin-left: -5px;
+	margin-right: -10px;
 }
 
 .g-header{
@@ -84,6 +88,8 @@
 	color: #ffffff;
 	border-top-left-radius: 25px;
 	border-top-right-radius: 25px;
+	margin-left: -10px;
+	margin-right: -10px;
 }
 
 .g-box{
@@ -91,6 +97,8 @@
 	border-bottom-left-radius: 25px;
 	border-bottom-right-radius: 25px;
 	color: #ffffff;
+	margin-left: -10px;
+	margin-right: -10px;
 }
 
 .d-header{
@@ -100,6 +108,8 @@
 	color: #ffffff;
 	border-top-left-radius: 25px;
 	border-top-right-radius: 25px;
+	margin-left: -10px;
+	margin-right: -5px;
 }
 
 .d-box{
@@ -107,4 +117,6 @@
 	border-bottom-left-radius: 25px;
 	border-bottom-right-radius: 25px;
 	color: #ffffff;
+	margin-left: -10px;
+	margin-right: -5px;
 }
