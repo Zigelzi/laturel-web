@@ -37,10 +37,10 @@ class dForm(FlaskForm):
     ddepr = FloatField('Yearly deprecation rate:', default=15.5)
     dconsumption = FloatField('Car consumption:', default=5.5)
     dprice = FloatField('Diesel price:', default=1.4)
-    dweight = IntegerField('Car weight (approx.):', default=1800) # Car driving power tax.
+    dweight = FloatField('Car weight (approx.):', default=1800) # Car driving power tax.
     dtax = FloatField('Car tax:', default=143) # Vehicle tax
 
 class driveForm(FlaskForm):
-    drivekm = IntegerField('How much you drive yearly?', default=30000)
-    owntime = IntegerField('How long will you own the car?',default=5)
+    drivekm = FloatField('How much you drive yearly?', default=30000)
+    owntime = FloatField('How long will you own the car?',default=5)
     submit = SubmitField('Compare cars')

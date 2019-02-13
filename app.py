@@ -77,6 +77,8 @@ def cars():
     drivekm = kmform.drivekm.data
     owntime = kmform.owntime.data
 
+    error = None
+
     edeprcalc = 0
     gdeprcalc = 0
     ddeprcalc = 0

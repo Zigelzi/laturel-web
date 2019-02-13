@@ -8,6 +8,8 @@ def round_hundreds(n):
     '''
     Calculating car deprecation 
     '''
+
+
 def deprecation(purchase, rate, years):
     try:
         depr_value = 0
