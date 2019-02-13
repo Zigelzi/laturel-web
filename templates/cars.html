@@ -23,78 +23,95 @@
 					<!-- EV initial costs -->
 					<div class="col-lg-4 text-left form-group">
 
-						{{ eform.ecarprice.label(class="form-control-label label-margin") }}
-						<br>
-						<div class="input-group form-margins">
-						{{ eform.ecarprice(class="form-control") }}
-							<div class="input-group-addon addon-width">
-								€
-							</div>
+						<div class="row text-center e-header">
+							<p>Electric</p>
 						</div>
-						{{ eform.edepr.label(class="form-control-label label-margin") }}
-						<br>
-						<div class="input-group form-margins">
-						{{ eform.edepr(class="form-control") }}
-							<div class="input-group-addon addon-width">
-								% / year
+						<div class="row e-box">
+							{{ eform.ecarprice.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ eform.ecarprice(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									€
+								</div>
 							</div>
-						</div>
-						{{ eform.esubsidy.label(class="form-control-label label-margin") }}
-						<br>
-						<div class="input-group form-margins">
-						{{ eform.esubsidy(class="form-control") }}
-							<div class="input-group-addon addon-width">
-								€
+							{{ eform.edepr.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ eform.edepr(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									% / year
+								</div>
 							</div>
-						</div>
-						{{ eform.echarger.label(class="form-control-label label-margin") }}
-						<br>
-						<div class="label-margin">
-							{% for subfield in eform.echarger%}
-							<tr>
-								<td>{{ subfield }} </td>
-								<td>{{ subfield.label(style="font-weight: 400") }} </td>
-							</tr>
-							{% endfor %}
+							{{ eform.esubsidy.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ eform.esubsidy(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									€
+								</div>
+							</div>
+							{{ eform.echarger.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="label-margin">
+								{% for subfield in eform.echarger%}
+								<tr>
+									<td>{{ subfield }} </td>
+									<td>{{ subfield.label(style="font-weight: 400") }} </td>
+								</tr>
+								{% endfor %}
+							</div>
 						</div>
 					</div>
 
 					<!-- Gasoline initial costs -->
 					<div class="col-lg-4 text-left">
-						{{ gform.gcarprice.label(class="form-control-label label-margin") }}
-						<br>
-						<div class="input-group form-margins">
-						{{ gform.gcarprice(class="form-control") }}
-							<div class="input-group-addon addon-width">
-								€
-							</div>
+
+						<div class="row g-header text-center">
+							<p>Gasoline</p>
 						</div>
-						{{ gform.gdepr.label(class="form-control-label label-margin") }}
-						<br>
-						<div class="input-group form-margins">
-						{{ gform.gdepr(class="form-control") }}
-							<div class="input-group-addon addon-width">
-								% / year
+
+						<div class="row g-box">
+							{{ gform.gcarprice.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ gform.gcarprice(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									€
+								</div>
+							</div>
+							{{ gform.gdepr.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ gform.gdepr(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									% / year
+								</div>
 							</div>
 						</div>
 					</div>
 
 					<!-- Diesel initial costs -->
 					<div class="col-lg-4 text-left">
-						{{ dform.dcarprice.label(class="form-control-label label-margin") }}
-						<br>
-						<div class="input-group form-margins">
-						{{ dform.dcarprice(class="form-control") }}
-							<div class="input-group-addon addon-width">
-								€
-							</div>
+						<div class="row d-header text-center">
+						<p>Diesel</p>
 						</div>
-						{{ dform.ddepr.label(class="form-control-label label-margin") }}
-						<br>
-						<div class="input-group form-margins">
-						{{ dform.ddepr(class="form-control") }}
-							<div class="input-group-addon addon-width">
-								% / year
+						<div class="row d-box">
+							{{ dform.dcarprice.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ dform.dcarprice(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									€
+								</div>
+							</div>
+							{{ dform.ddepr.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ dform.ddepr(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									% / year
+								</div>
 							</div>
 						</div>
 					</div>
@@ -106,128 +123,139 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="form-group">
-						<div class="row">
-							<!-- EV operational costs section -->
-							<div class="col-lg-4 text-left">
-								{{ eform.econsumption.label(class="form-control-label label-margin") }}
-								<br>
-								<div class="input-group form-margins">
-								{{ eform.econsumption(class="form-control") }}
-									<div class="input-group-addon addon-width">
-										kWh/100 km
-									</div>
-								</div>
-								{{ eform.eprice.label(class="form-control-label label-margin") }}
-								<br>
-								<div class="input-group form-margins">
-								{{ eform.eprice(class="form-control") }}
-									<div class="input-group-addon addon-width">
-										€/kWh
-									</div>
-								</div>
-								{{ eform.eweight.label(class="form-control-label label-margin") }}
-								<br>
-								<div class="input-group form-margins">
-								{{ eform.eweight(class="form-control") }}
-									<div class="input-group-addon addon-width">
-										kg
-									</div>
-								</div>
-								{{ eform.etax.label(class="form-control-label label-margin") }}<br>
-								<div class="input-group form-margins">
-								{{ eform.etax(class="form-control") }}
-									<div class="input-group-addon addon-width">
-										€/year
-									</div>
-								</div>
-								
-							</div>
-
-							<!-- Gasoline operational costs section -->
-							<div class="col-lg-4 text-left">
-								{{ gform.gconsumption.label(class="form-control-label label-margin") }}
-								<br>
-								<div class="input-group form-margins">
-								{{ gform.gconsumption(class="form-control") }}
-									<div class="input-group-addon addon-width">
-										l/100km
-									</div>
-								</div>
-								{{ gform.gprice.label(class="form-control-label label-margin") }}
-								<br>
-								<div class="input-group form-margins">
-								{{ gform.gprice(class="form-control") }}
-									<div class="input-group-addon addon-width">
-										€/l
-									</div>
-								</div>
-								{{ gform.gtax.label(class="form-control-label label-margin") }}
-								<br>
-								<div class="input-group form-margins">
-								{{ gform.gtax(class="form-control") }}
-									<div class="input-group-addon addon-width">
-										€/year
-									</div>
-								</div>
-							</div>
-
-							<!-- Diesel operational costs section -->
-							<div class="col-lg-4 text-left">
-								{{ dform.dconsumption.label(class="form-control-label label-margin") }}
-								<br>
-								<div class="input-group form-margins">
-								{{ dform.dconsumption(class="form-control") }}
-									<div class="input-group-addon addon-width">
-										l/100km
-									</div>
-								</div>
-								{{ dform.dprice.label(class="form-control-label label-margin") }}
-								<br>
-								<div class="input-group form-margins">
-								{{ dform.dprice(class="form-control") }}
-									<div class="input-group-addon addon-width">
-										€/l
-									</div>
-								</div>
-								{{ dform.dweight.label(class="form-control-label label-margin") }}
-								<br>
-								<div class="input-group form-margins">
-								{{ dform.dweight(class="form-control") }}
-									<div class="input-group-addon addon-width">
-										kg
-									</div>
-								</div>
-								{{ dform.dtax.label(class="form-control-label label-margin") }}
-								<br>
-								<div class="input-group form-margins">
-								{{ dform.dtax(class="form-control") }}
-									<div class="input-group-addon addon-width">
-										€/year
-									</div>
-								</div>
-							</div>
+					<!-- EV operational costs section -->
+					<div class="col-lg-4 text-left form-group">
+						<div class="row text-center e-header">
+							<p>Electric</p>
 						</div>
-						<div class="row">
-							<div class="col-lg-4 col-lg-offset-4" style="margin-bottom: 20px">
-								<p>
-								{{ kmform.drivekm.label(class="form-control-label label-margin") }}
-								<br>
-								<div class="input-group form-margins">
-								{{ kmform.drivekm(class="form-control") }}
+						<div class="row e-box">
+							{{ eform.econsumption.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ eform.econsumption(class="form-control") }}
 								<div class="input-group-addon addon-width">
-										km/year
-									</div>
-								</div>
-								</p>
-								<div class="text-center">
-								{{ kmform.submit(class="btn btn-primary") }}
+									kWh/100 km
 								</div>
 							</div>
-							
+							{{ eform.eprice.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ eform.eprice(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									€/kWh
+								</div>
+							</div>
+							{{ eform.eweight.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ eform.eweight(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									kg
+								</div>
+							</div>
+							{{ eform.etax.label(class="form-control-label label-margin") }}<br>
+							<div class="input-group form-margins">
+							{{ eform.etax(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									€/year
+								</div>
+							</div>
 						</div>
-					</form>
+						
+					</div>
+
+					<!-- Gasoline operational costs section -->
+					<div class="col-lg-4 text-left form-group">
+						<div class="row text-center g-header">
+							<p>Gasoline</p>
+						</div>
+						<div class="row g-box">
+							{{ gform.gconsumption.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ gform.gconsumption(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									l/100km
+								</div>
+							</div>
+							{{ gform.gprice.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ gform.gprice(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									€/l
+								</div>
+							</div>
+							{{ gform.gtax.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ gform.gtax(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									€/year
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Diesel operational costs section -->
+					<div class="col-lg-4 text-left form-group">
+						<div class="row text-center d-header">
+							<p>Diesel</p>
+						</div>
+						<div class="row d-box">
+							{{ dform.dconsumption.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ dform.dconsumption(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									l/100km
+								</div>
+							</div>
+							{{ dform.dprice.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ dform.dprice(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									€/l
+								</div>
+							</div>
+							{{ dform.dweight.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ dform.dweight(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									kg
+								</div>
+							</div>
+							{{ dform.dtax.label(class="form-control-label label-margin") }}
+							<br>
+							<div class="input-group form-margins">
+							{{ dform.dtax(class="form-control") }}
+								<div class="input-group-addon addon-width">
+									€/year
+								</div>
+							</div>
+						</div>	
+					</div>
+				<div class="row">
+					<div class="col-lg-4 col-lg-offset-4 form-group" style="margin-bottom: 20px">
+						<p>
+						{{ kmform.drivekm.label(class="form-control-label label-margin") }}
+						<br>
+						<div class="input-group form-margins">
+						{{ kmform.drivekm(class="form-control") }}
+						<div class="input-group-addon addon-width">
+								km/year
+							</div>
+						</div>
+						</p>
+						<div class="text-center">
+						{{ kmform.submit(class="btn btn-primary") }}
+						</div>
+					</div>
+							
 				</div>
+			</form>
 				<div class="row">
 					<div class="col-lg-5 col-lg-offset-3">
 						<table class="table table-hover">

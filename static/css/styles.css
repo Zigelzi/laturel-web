@@ -60,3 +60,51 @@
 .addon-width{
 	width: 75px;
 }
+
+.e-header{
+	background-color: #2a5499;
+	font-weight: 600;
+	font-size: 16px;
+	color: #ffffff;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+}
+
+.e-box{
+	background-color:#4079d6;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	color: #ffffff;
+}
+
+.g-header{
+	background-color: #134712;
+	font-weight: 600;
+	font-size: 16px;
+	color: #ffffff;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+}
+
+.g-box{
+	background-color:#49783a;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	color: #ffffff;
+}
+
+.d-header{
+	background-color: #322c2b;
+	font-weight: 600;
+	font-size: 16px;
+	color: #ffffff;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+}
+
+.d-box{
+	background-color:#5b5655;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	color: #ffffff;
+}

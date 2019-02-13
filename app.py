@@ -91,8 +91,8 @@ def cars():
 
     # Calculating the driving power tax based on car weight.
     try:
-        edrivingpower = edrivingpower * 0.015  # EV 0.015€/starting 100 kg
-        ddrivingpower = ddrivingpower * 0.055  # Diesel 0.055€/starting 100 kg
+        edrivingpower = edrivingpower * 0.015 * 365 # EV 0.015€/starting 100 kg
+        ddrivingpower = ddrivingpower * 0.055 * 365# Diesel 0.055€/starting 100 kg
     except TypeError:
         pass
 
