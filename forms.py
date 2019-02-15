@@ -42,5 +42,5 @@ class dForm(FlaskForm):
 
 class driveForm(FlaskForm):
     drivekm = FloatField('How much you drive yearly?', default=30000)
-    owntime = FloatField('How long will you own the car?',default=5)
+    owntime = IntegerField('How long will you own the car?',default=5)
     submit = SubmitField('Compare cars')

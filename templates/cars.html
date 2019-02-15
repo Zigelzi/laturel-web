@@ -239,7 +239,15 @@
 					</div>
 				<div class="row">
 					<div class="col-lg-4 col-lg-offset-4 form-group" style="margin-bottom: 20px">
-						<p>
+						
+						{{ kmform.owntime.label(class="form-control-label label-margin") }}
+						<br>
+						<div class="input-group form-margins">
+						{{ kmform.owntime(class="form-control") }}
+						<div class="input-group-addon addon-width">
+								years
+							</div>
+						</div>
 						{{ kmform.drivekm.label(class="form-control-label label-margin") }}
 						<br>
 						<div class="input-group form-margins">
@@ -248,7 +256,6 @@
 								km/year
 							</div>
 						</div>
-						</p>
 						<div class="text-center">
 						{{ kmform.submit(class="btn btn-primary") }}
 						</div>
@@ -271,6 +278,7 @@
 								<td>{{ gyearly }} € / year</td>
 								<td>{{ dyearly }} € / year</td>
 							</tr>
+							<!--    
 							{% for e,g,d in ziplist %}
 							<tr>
 								<td> Year {{ loop.index }} deprecation </td>
@@ -278,12 +286,25 @@
 								<td> {{ g }} € </td>
 								<td> {{ d }} € </td>
 							</tr>
-							{% endfor %}
+							{% endfor %}-->
+							<tr>
+								<td>Total operational costs during  {{ owntime }} years</td>
+								<td>{{ eoper }} €</td>
+								<td>{{ goper }} €</td>
+								<td>{{ doper }} €</td>
+							</tr>
+
 							<tr>
 								<td>Total costs during {{ owntime }} years</td>
 								<td>{{ etotal }} €</td>
 								<td>{{ gtotal }} €</td>
 								<td>{{ dtotal }} €</td>
+							</tr>
+							<tr>
+								<td>Car resell price after {{ owntime }} years</td>
+								<td>{{ eafter }} €</td>
+								<td>{{ gafter }} €</td>
+								<td>{{ dafter }} €</td>
 							</tr>
 						</table>
 					</div>

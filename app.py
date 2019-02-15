@@ -107,6 +107,8 @@ def cars():
 
     # Take the index of the lists and calculate total costs
     etotal = int(ecost_list[owntime-1] + edepr_total[owntime-1] - esubsidy)
+    eoper = ecost_list[owntime-1]
+    eafter = int(ecarprice - edepr_total[owntime-1])
 
 
     if echarger == 'No':
@@ -117,15 +119,18 @@ def cars():
             pass
 
     # Gasoline car price calculation
-    gyearly = drivekm * gprice * (gconsumption / 100) + gtax
+    gyearly = int(drivekm * gprice * (gconsumption / 100) + gtax)
     gdepr_total, gdepr_yearly, gcost_list = depr_oper(gcarprice, gdepr, owntime, gyearly)
     gtotal = int(gcost_list[owntime-1] + gdepr_total[owntime-1])
+    goper = gcost_list[owntime-1]
+    gafter = int(gcarprice - gdepr_total[owntime - 1])
 
     # Diesel car price calculation
-    ddeprcalc = deprecation(dcarprice, ddepr, owntime)
-    dyearly = drivekm * dprice * (dconsumption / 100) + ddrivingpower + dtax
+    dyearly = int(drivekm * dprice * (dconsumption / 100) + ddrivingpower + dtax)
     ddepr_total, ddepr_yearly, dcost_list = depr_oper(dcarprice, ddepr, owntime, dyearly)
     dtotal = int(dcost_list[owntime-1] + ddepr_total[owntime-1])
+    doper = dcost_list[owntime-1]
+    dafter = int(dcarprice - ddepr_total[owntime - 1])
 
     ziplist= zip(edepr_yearly,gdepr_yearly,ddepr_yearly)
 
@@ -139,14 +144,20 @@ def cars():
                            etotal=etotal,
                            edepr_yearly=edepr_yearly,
                            ecost_list=ecost_list,
+                           eoper=eoper,
+                           eafter=eafter,
                            gyearly=gyearly,
                            gtotal=gtotal,
                            gdepr_yearly=gdepr_yearly,
                            gcost_list=gcost_list,
+                           goper=goper,
+                           gafter=gafter,
                            dyearly=dyearly,
                            dtotal=dtotal,
                            ddepr_yearly=ddepr_yearly,
                            dcost_list=dcost_list,
+                           doper=doper,
+                           dafter=dafter,
                            owntime=owntime,
                            ziplist=ziplist
                            )
