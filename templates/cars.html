@@ -13,7 +13,7 @@
 					<p class="body-p-paddings">Here you can calculate the yearly costs of using different cars and propulsion types.</p>
 				</div>
 			</div>
-			<form action="{{ url_for('cars') }}" method="post">
+			<form action="{{ url_for('cars', _anchor='result-table') }}" method="post">
 				<div class="row">
 					<div class="col-lg-12 header-split text-center">
 						<h3 class="header-margin">Initial costs</h3>
@@ -256,8 +256,8 @@
 							
 				</div>
 			</form>
-				<div class="row">
-					<div class="col-lg-5 col-lg-offset-3">
+				<div class="row" id="result-table">
+					<div class="col-lg-8 col-lg-offset-2">
 						<table class="table table-hover">
 							<tr>
 								<th></th>
