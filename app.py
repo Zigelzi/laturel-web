@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from forms import ChargerForm, eForm, gForm, dForm, driveForm
 from config import Config
 from datetime import datetime
-from helpers import round_hundreds, deprecation
+from helpers import round_hundreds, deprecation, depr_oper
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -94,15 +94,14 @@ def cars():
     # Calculating the driving power tax based on car weight.
     try:
         edrivingpower = edrivingpower * 0.015 * 365 # EV 0.015€/starting 100 kg
-        ddrivingpower = ddrivingpower * 0.055 * 365# Diesel 0.055€/starting 100 kg
+        ddrivingpower = ddrivingpower * 0.055 * 365 # Diesel 0.055€/starting 100 kg
     except TypeError:
         pass
 
     # EV price calculation
-    edeprcalc = deprecation(ecarprice, edepr, owntime)
-    eyearly = drivekm * eprice * (econsumption / 100) + etax + edrivingpower
-    eyearly = int(eyearly)  # int for rounding to full numbers
-    etotal = int(eyearly * owntime + edeprcalc - esubsidy)  # int for rounding to full numbers
+    eyearly = int(drivekm * eprice * (econsumption / 100) + etax + edrivingpower)  # int for rounding to full numbers
+    edepr_total, edepr_yearly, ecost_list = depr_oper(ecarprice, edepr, owntime, eyearly)
+    etotal = int(ecost_list[owntime-1] + edepr_total[owntime-1] - esubsidy)  # int for rounding to full numbers
 
 
     if echarger == 'No':
