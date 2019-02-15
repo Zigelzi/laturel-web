@@ -117,16 +117,18 @@ def cars():
             pass
 
     # Gasoline car price calculation
-    gdeprcalc = deprecation(gcarprice, gdepr, owntime)
     gyearly = drivekm * gprice * (gconsumption / 100) + gtax
-    gyearly = int(gyearly)  # int for rounding to full numbers
-    gtotal = int(gyearly * owntime + gdeprcalc)  # int for rounding to full numbers
+    gdepr_total, gdepr_yearly, gcost_list = depr_oper(gcarprice, gdepr, owntime, gyearly)
+    gtotal = int(gcost_list[owntime-1] + gdepr_total[owntime-1])
 
     # Diesel car price calculation
     ddeprcalc = deprecation(dcarprice, ddepr, owntime)
     dyearly = drivekm * dprice * (dconsumption / 100) + ddrivingpower + dtax
-    dyearly = int(dyearly)  # int for rounding to full numbers
-    dtotal = int(dyearly * owntime + ddeprcalc)  # int for rounding to full numbers
+    ddepr_total, ddepr_yearly, dcost_list = depr_oper(dcarprice, ddepr, owntime, dyearly)
+    dtotal = int(dcost_list[owntime-1] + ddepr_total[owntime-1])
+
+    ziplist= zip(edepr_yearly,gdepr_yearly,ddepr_yearly)
+
 
     return render_template('cars.html',
                            eform=eform,
@@ -135,13 +137,19 @@ def cars():
                            kmform=kmform,
                            eyearly=eyearly,
                            etotal=etotal,
+                           edepr_yearly=edepr_yearly,
+                           ecost_list=ecost_list,
                            gyearly=gyearly,
                            gtotal=gtotal,
+                           gdepr_yearly=gdepr_yearly,
+                           gcost_list=gcost_list,
                            dyearly=dyearly,
                            dtotal=dtotal,
+                           ddepr_yearly=ddepr_yearly,
+                           dcost_list=dcost_list,
                            owntime=owntime,
-                           edepr_yearly=edepr_yearly,
-                           ecost_list=ecost_list)
+                           ziplist=ziplist
+                           )
 
 @app.route('/about')
 def about():

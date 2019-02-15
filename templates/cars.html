@@ -271,12 +271,12 @@
 								<td>{{ gyearly }} € / year</td>
 								<td>{{ dyearly }} € / year</td>
 							</tr>
-							{% for item in edepr_yearly %}
+							{% for e,g,d in ziplist %}
 							<tr>
 								<td> Year {{ loop.index }} deprecation </td>
-								<td> {{ item }} </td>
-								<td>Filler</td>
-								<td>Filler</td>
+								<td> {{ e }} € </td>
+								<td> {{ g }} € </td>
+								<td> {{ d }} € </td>
 							</tr>
 							{% endfor %}
 							<tr>
