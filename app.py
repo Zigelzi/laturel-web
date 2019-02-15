@@ -100,8 +100,13 @@ def cars():
 
     # EV price calculation
     eyearly = int(drivekm * eprice * (econsumption / 100) + etax + edrivingpower)  # int for rounding to full numbers
+
+    #  Use function to take deprecation values, yearly deprecation and yearly
+    #  operating costs and assign them to variables.
     edepr_total, edepr_yearly, ecost_list = depr_oper(ecarprice, edepr, owntime, eyearly)
-    etotal = int(ecost_list[owntime-1] + edepr_total[owntime-1] - esubsidy)  # int for rounding to full numbers
+
+    # Take the index of the lists and calculate total costs
+    etotal = int(ecost_list[owntime-1] + edepr_total[owntime-1] - esubsidy)
 
 
     if echarger == 'No':
@@ -134,7 +139,9 @@ def cars():
                            gtotal=gtotal,
                            dyearly=dyearly,
                            dtotal=dtotal,
-                           owntime=owntime)
+                           owntime=owntime,
+                           edepr_yearly=edepr_yearly,
+                           ecost_list=ecost_list)
 
 @app.route('/about')
 def about():

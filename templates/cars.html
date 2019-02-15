@@ -271,6 +271,14 @@
 								<td>{{ gyearly }} € / year</td>
 								<td>{{ dyearly }} € / year</td>
 							</tr>
+							{% for item in edepr_yearly %}
+							<tr>
+								<td> Year {{ loop.index }} deprecation </td>
+								<td> {{ item }} </td>
+								<td>Filler</td>
+								<td>Filler</td>
+							</tr>
+							{% endfor %}
 							<tr>
 								<td>Total costs during {{ owntime }} years</td>
 								<td>{{ etotal }} €</td>
