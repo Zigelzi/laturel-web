@@ -25,12 +25,12 @@
 
 						
 						<div class="row form-box">
-							<div class="text-center box-header">
+							<div class="box-header">
 							<h4>Electric</h4>
 							</div>
-							{{ eform.ecarprice.label(class="form-control-label") }}
+							{{ eform.ecarprice.label(class="form-control-label label-margin") }}
 							<br>
-							<div class="input-group form-margins">
+							<div class="input-group input-margins">
 							{{ eform.ecarprice(class="form-control") }}
 								<div class="input-group-addon addon-width">
 									€
@@ -38,7 +38,7 @@
 							</div>
 							{{ eform.edepr.label(class="form-control-label label-margin") }}
 							<br>
-							<div class="input-group form-margins">
+							<div class="input-group input-margins">
 							{{ eform.edepr(class="form-control") }}
 								<div class="input-group-addon addon-width">
 									% / year
@@ -46,7 +46,7 @@
 							</div>
 							{{ eform.esubsidy.label(class="form-control-label label-margin") }}
 							<br>
-							<div class="input-group form-margins">
+							<div class="input-group input-margins">
 							{{ eform.esubsidy(class="form-control") }}
 								<div class="input-group-addon addon-width">
 									€
@@ -54,7 +54,7 @@
 							</div>
 							{{ eform.echarger.label(class="form-control-label label-margin") }}
 							<br>
-							<div class="label-margin">
+							<div class="input-margins">
 								{% for subfield in eform.echarger%}
 								<tr>
 									<td>{{ subfield }} </td>
