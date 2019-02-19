@@ -18,7 +18,7 @@
 	font-size: 14px;
 	}
 .body-div {
-	background-color: #f8f8f8;
+	background-color: #eeeeee;
 	}
 .body-bg-color {
 	background-color: #c2cad6
@@ -72,13 +72,17 @@
 	margin-right: -10px;
 }
 
-.e-box{
-	background-color:#4079d6;
+.form-box{
+	background-color: #fefefe ;
+	border-top: 6px solid #2a5499;
+	border-top-left-radius: 5px ; 
+	border-top-right-radius: 5px ; 
+	box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
 	border-bottom-left-radius: 25px;
 	border-bottom-right-radius: 25px;
-	color: #ffffff;
-	margin-left: -5px;
-	margin-right: -10px;
+	color: hsl(0, 0%, 13%);
+	display: inline-block;
+	width: 95%;
 }
 
 .g-header{
@@ -119,4 +123,8 @@
 	color: #ffffff;
 	margin-left: -10px;
 	margin-right: -5px;
+}
+
+.box-header{
+	font-weight: 600;
 }
