@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from forms import ChargerForm, eForm, gForm, dForm, driveForm
+from forms import ChargerForm, Form, gForm, dForm, driveForm
 from config import Config
 from datetime import datetime
 from helpers import round_hundreds, deprecation, depr_oper
@@ -41,41 +41,39 @@ def evbasics():
 
 @app.route('/cars', methods=['GET', 'POST'])
 def cars():
-    eform = eForm()
-    gform = gForm()
-    dform = dForm()
-    kmform = driveForm()
+    form = Form()
 
     # EV data from EV form
-    ecarprice = eform.ecarprice.data
-    edepr = eform.edepr.data
-    esubsidy = eform.esubsidy.data
-    econsumption = eform.econsumption.data
-    eprice = eform.eprice.data
-    eweight = eform.eweight.data
+    eform_ecarprice = form.ecarprice
+    ecarprice = eform_ecarprice.data
+    edepr = form.edepr.data
+    esubsidy = form.esubsidy.data
+    econsumption = form.econsumption.data
+    eprice = form.eprice.data
+    eweight = form.eweight.data
     edrivingpower = round_hundreds(eweight)  # Round to starting hundreds and multiply by 0.055 (€)
-    etax = eform.etax.data
-    echarger = eform.echarger.data
+    etax = form.etax.data
+    echarger = form.echarger.data
     chargerprice = 800
 
     # Gasoline car data from gasoline form
-    gcarprice = gform.gcarprice.data
-    gdepr = gform.gdepr.data
-    gconsumption = gform.gconsumption.data
-    gprice = gform.gprice.data
-    gtax = gform.gtax.data
+    gcarprice = form.gcarprice.data
+    gdepr = form.gdepr.data
+    gconsumption = form.gconsumption.data
+    gprice = form.gprice.data
+    gtax = form.gtax.data
 
     # Diesel car data from diesel form
-    dcarprice = dform.dcarprice.data
-    ddepr = dform.ddepr.data
-    dconsumption = dform.dconsumption.data
-    dprice = dform.dprice.data
-    dweight = dform.dweight.data
+    dcarprice = form.dcarprice.data
+    ddepr = form.ddepr.data
+    dconsumption = form.dconsumption.data
+    dprice = form.dprice.data
+    dweight = form.dweight.data
     ddrivingpower = round_hundreds(dweight)  # Round to starting hundreds and multiply by 0.055 (€)
-    dtax = dform.dtax.data
+    dtax = form.dtax.data
 
-    drivekm = kmform.drivekm.data
-    owntime = kmform.owntime.data
+    drivekm = form.drivekm.data
+    owntime = form.owntime.data
 
     error = None
 
@@ -134,13 +132,10 @@ def cars():
 
     ziplist= zip(edepr_yearly,gdepr_yearly,ddepr_yearly)
 
-    
+
 
     return render_template('cars.html',
-                           eform=eform,
-                           gform=gform,
-                           dform=dform,
-                           kmform=kmform,
+                           form=form,
                            eyearly=eyearly,
                            etotal=etotal,
                            edepr_yearly=edepr_yearly,
