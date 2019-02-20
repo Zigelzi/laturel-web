@@ -134,6 +134,7 @@ def cars():
 
     ziplist= zip(edepr_yearly,gdepr_yearly,ddepr_yearly)
 
+    
 
     return render_template('cars.html',
                            eform=eform,
