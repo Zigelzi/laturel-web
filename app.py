@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request
-from forms import ChargerForm, Form, gForm, dForm, driveForm
+from flask import Flask, render_template, request, flash
+from forms import ChargerForm, Form
 from config import Config
 from datetime import datetime
 from helpers import round_hundreds, deprecation, depr_oper
@@ -43,6 +43,32 @@ def evbasics():
 def cars():
     form = Form()
 
+    edeprcalc = 0
+    gdeprcalc = 0
+    ddeprcalc = 0
+
+    eyearly = 0
+    gyearly = 0
+    dyearly = 0
+
+    etotal = 0
+    gtotal = 0
+    dtotal = 0
+
+    edepr_yearly = 0
+    ecost_list = 0
+    eoper = 0
+    eafter = 0
+    gdepr_yearly = 0
+    gcost_list = 0
+    goper = 0
+    gafter = 0
+    ddepr_yearly = 0
+    dcost_list = 0
+    doper = 0
+    dafter = 0
+    ziplist = []
+
     # EV data from EV form
     eform_ecarprice = form.ecarprice
     ecarprice = eform_ecarprice.data
@@ -77,62 +103,46 @@ def cars():
 
     error = None
 
-    edeprcalc = 0
-    gdeprcalc = 0
-    ddeprcalc = 0
-
-    eyearly = 0
-    gyearly = 0
-    dyearly = 0
-
-    etotal = 0
-    gtotal = 0
-    dtotal = 0
-
-    # Calculating the driving power tax based on car weight.
     try:
+        # Calculating the driving power tax based on car weight.
         edrivingpower = edrivingpower * 0.015 * 365 # EV 0.015€/starting 100 kg
         ddrivingpower = ddrivingpower * 0.055 * 365 # Diesel 0.055€/starting 100 kg
-    except TypeError:
-        pass
 
-    # EV price calculation
-    eyearly = int(drivekm * eprice * (econsumption / 100) + etax + edrivingpower)  # int for rounding to full numbers
+        # EV price calculation
+        eyearly = int(
+            drivekm * eprice * (econsumption / 100) + etax + edrivingpower)  # int for rounding to full numbers
 
-    #  Use function to take deprecation values, yearly deprecation and yearly
-    #  operating costs and assign them to variables.
-    edepr_total, edepr_yearly, ecost_list = depr_oper(ecarprice, edepr, owntime, eyearly)
+        #  Use function to take deprecation values, yearly deprecation and yearly
+        #  operating costs and assign them to variables.
+        edepr_total, edepr_yearly, ecost_list = depr_oper(ecarprice, edepr, owntime, eyearly)
 
-    # Take the index of the lists and calculate total costs
-    etotal = int(ecost_list[owntime-1] + edepr_total[owntime-1] - esubsidy)
-    eoper = ecost_list[owntime-1]
-    eafter = int(ecarprice - edepr_total[owntime-1])
+        # Take the index of the lists and calculate total costs
+        etotal = int(ecost_list[owntime - 1] + edepr_total[owntime - 1] - esubsidy)
+        eoper = ecost_list[owntime - 1]
+        eafter = int(ecarprice - edepr_total[owntime - 1])
 
+        # Gasoline car price calculation
+        gyearly = int(drivekm * gprice * (gconsumption / 100) + gtax)
+        gdepr_total, gdepr_yearly, gcost_list = depr_oper(gcarprice, gdepr, owntime, gyearly)
+        gtotal = int(gcost_list[owntime - 1] + gdepr_total[owntime - 1])
+        goper = gcost_list[owntime - 1]
+        gafter = int(gcarprice - gdepr_total[owntime - 1])
 
-    if echarger == 'No':
-        try:
+        # Diesel car price calculation
+        dyearly = int(drivekm * dprice * (dconsumption / 100) + ddrivingpower + dtax)
+        ddepr_total, ddepr_yearly, dcost_list = depr_oper(dcarprice, ddepr, owntime, dyearly)
+        dtotal = int(dcost_list[owntime - 1] + ddepr_total[owntime - 1])
+        doper = dcost_list[owntime - 1]
+        dafter = int(dcarprice - ddepr_total[owntime - 1])
+
+        ziplist = zip(edepr_yearly, gdepr_yearly, ddepr_yearly)
+
+        if echarger == 'No':
             etotal = etotal + chargerprice
-        except TypeError:
-            etotal = None
-            pass
 
-    # Gasoline car price calculation
-    gyearly = int(drivekm * gprice * (gconsumption / 100) + gtax)
-    gdepr_total, gdepr_yearly, gcost_list = depr_oper(gcarprice, gdepr, owntime, gyearly)
-    gtotal = int(gcost_list[owntime-1] + gdepr_total[owntime-1])
-    goper = gcost_list[owntime-1]
-    gafter = int(gcarprice - gdepr_total[owntime - 1])
-
-    # Diesel car price calculation
-    dyearly = int(drivekm * dprice * (dconsumption / 100) + ddrivingpower + dtax)
-    ddepr_total, ddepr_yearly, dcost_list = depr_oper(dcarprice, ddepr, owntime, dyearly)
-    dtotal = int(dcost_list[owntime-1] + ddepr_total[owntime-1])
-    doper = dcost_list[owntime-1]
-    dafter = int(dcarprice - ddepr_total[owntime - 1])
-
-    ziplist= zip(edepr_yearly,gdepr_yearly,ddepr_yearly)
-
-
+    except TypeError:
+        error = 'TypeError'
+        pass
 
     return render_template('cars.html',
                            form=form,
@@ -155,8 +165,10 @@ def cars():
                            doper=doper,
                            dafter=dafter,
                            owntime=owntime,
-                           ziplist=ziplist
+                           ziplist=ziplist,
+                           error=error
                            )
+
 
 @app.route('/about')
 def about():
