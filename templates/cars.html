@@ -13,7 +13,7 @@
 			<p class="body-p-paddings">Here you can calculate the yearly costs of using different cars and propulsion types.</p>
 		</div>
 	</div>
-	<form action="{{ url_for('cars', _anchor='result-table') }}" method="post">
+	<form action="{{ url_for('cars', _anchor='results') }}" method="post">
 
 		<!-- General information form -->
 		<div class="row">
@@ -347,7 +347,7 @@
 	<!-- End of result table -->
 
 	<!-- Result cards -->
-	<div class="row">
+	<div class="row" id="results">
 
 		<!-- EV result card -->
 		<div class="col-lg-4 text-center">
