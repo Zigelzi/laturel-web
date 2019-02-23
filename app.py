@@ -56,14 +56,17 @@ def cars():
     dtotal = 0
 
     edepr_yearly = 0
+    edepr_owntime = 0
     ecost_list = 0
     eoper = 0
     eafter = 0
     gdepr_yearly = 0
+    gdepr_owntime = 0
     gcost_list = 0
     goper = 0
     gafter = 0
     ddepr_yearly = 0
+    ddepr_owntime = 0
     dcost_list = 0
     doper = 0
     dafter = 0
@@ -167,7 +170,7 @@ def cars():
                            gafter=gafter,
                            dyearly=dyearly,
                            dtotal=dtotal,
-                           dderp_owntime=ddepr_owntime,
+                           ddepr_owntime=ddepr_owntime,
                            ddepr_yearly=ddepr_yearly,
                            dcost_list=dcost_list,
                            doper=doper,
