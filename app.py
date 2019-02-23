@@ -111,19 +111,23 @@ def cars():
         # EV price calculation
         eyearly = int(
             drivekm * eprice * (econsumption / 100) + etax + edrivingpower)  # int for rounding to full numbers
+        if esubsidy != 0:
+            ecarprice = ecarprice - esubsidy
 
         #  Use function to take deprecation values, yearly deprecation and yearly
         #  operating costs and assign them to variables.
         edepr_total, edepr_yearly, ecost_list = depr_oper(ecarprice, edepr, owntime, eyearly)
 
-        # Take the index of the lists and calculate total costs
-        etotal = int(ecost_list[owntime - 1] + edepr_total[owntime - 1] - esubsidy)
+        # Take the index of the lists and calculate total
+        edepr_owntime = int(edepr_total[owntime - 1])
+        etotal = int(ecost_list[owntime - 1] + edepr_total[owntime - 1])
         eoper = ecost_list[owntime - 1]
         eafter = int(ecarprice - edepr_total[owntime - 1])
 
         # Gasoline car price calculation
         gyearly = int(drivekm * gprice * (gconsumption / 100) + gtax)
         gdepr_total, gdepr_yearly, gcost_list = depr_oper(gcarprice, gdepr, owntime, gyearly)
+        gdepr_owntime = int(gdepr_total[owntime - 1])
         gtotal = int(gcost_list[owntime - 1] + gdepr_total[owntime - 1])
         goper = gcost_list[owntime - 1]
         gafter = int(gcarprice - gdepr_total[owntime - 1])
@@ -131,6 +135,7 @@ def cars():
         # Diesel car price calculation
         dyearly = int(drivekm * dprice * (dconsumption / 100) + ddrivingpower + dtax)
         ddepr_total, ddepr_yearly, dcost_list = depr_oper(dcarprice, ddepr, owntime, dyearly)
+        ddepr_owntime = int(ddepr_total[owntime - 1])
         dtotal = int(dcost_list[owntime - 1] + ddepr_total[owntime - 1])
         doper = dcost_list[owntime - 1]
         dafter = int(dcarprice - ddepr_total[owntime - 1])
@@ -148,18 +153,21 @@ def cars():
                            form=form,
                            eyearly=eyearly,
                            etotal=etotal,
+                           edepr_owntime=edepr_owntime,
                            edepr_yearly=edepr_yearly,
                            ecost_list=ecost_list,
                            eoper=eoper,
                            eafter=eafter,
                            gyearly=gyearly,
                            gtotal=gtotal,
+                           gdepr_owntime=gdepr_owntime,
                            gdepr_yearly=gdepr_yearly,
                            gcost_list=gcost_list,
                            goper=goper,
                            gafter=gafter,
                            dyearly=dyearly,
                            dtotal=dtotal,
+                           dderp_owntime=ddepr_owntime,
                            ddepr_yearly=ddepr_yearly,
                            dcost_list=dcost_list,
                            doper=doper,
