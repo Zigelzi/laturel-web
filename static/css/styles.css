@@ -156,3 +156,26 @@ ul {
 	text-align: left;
 	display: inline-block;
 }
+
+.tooltips:hover .tooltiptexts {
+    display: block;
+}
+
+
+.tooltiptexts {
+    display: none;
+    background: #fefefe;
+    margin-left: 295px;
+    margin-top: -22px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1000;
+    width:200px;
+    height:100px;
+    border-radius: 5px;
+    border:1px solid black;
+}
+
+.tooltips {
+    margin:0px;
+}
