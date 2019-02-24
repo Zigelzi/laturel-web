@@ -281,70 +281,14 @@
 		<div class="text-center input-margins">
 			{{ form.submit(class="btn btn-primary big-btn") }}
 		</div>
-		
-
 	</form>
-
 	<div class="row">
 		{% if error != None %}
 			<div class="alert alert-danger text-center">
-				<strong>{{ error }}</strong> occurred! Check form input values.
+				<b>{{ error }}</b> occurred! Check form input values.
 			</div>
 		{% endif %}
 	</div>	
-
-	<!-- Result table and cards-->
-	{% if error == None %}
-	<!-- 
-	<div class="row" id="result-table">
-		<div class="col-lg-8 col-lg-offset-2">						
-			<table class="table table-hover form-box" style="display:inline-table">
-				<tr>
-					<th></th>
-					<th>Electric</th>
-					<th>Gasoline</th>
-					<th>Diesel</th>
-				</tr>
-				<tr>
-					<td>Operational costs</td>
-					<td>{{ eyearly }} € / year</td>
-					<td>{{ gyearly }} € / year</td>
-					<td>{{ dyearly }} € / year</td>
-				</tr>
-				   
-				{% for e,g,d in ziplist %}
-				<tr>
-					<td> Year {{ loop.index }} deprecation </td>
-					<td> {{ e }} € </td>
-					<td> {{ g }} € </td>
-					<td> {{ d }} € </td>
-				</tr>
-				{% endfor %}
-				
-				<tr>
-					<td>Total operational costs during  {{ owntime }} years</td>
-					<td>{{ eoper }} €</td>
-					<td>{{ goper }} €</td>
-					<td>{{ doper }} €</td>
-				</tr>
-
-				<tr>
-					<td>Total costs during {{ owntime }} years</td>
-					<td>{{ etotal }} €</td>
-					<td>{{ gtotal }} €</td>
-					<td>{{ dtotal }} €</td>
-				</tr>
-				<tr>
-					<td>Car resell price after {{ owntime }} years</td>
-					<td>{{ eafter }} €</td>
-					<td>{{ gafter }} €</td>
-					<td>{{ dafter }} €</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	-->
-	<!-- End of result table -->
 
 	<!-- Result cards -->
 	<div class="row" id="results">

@@ -149,7 +149,7 @@ def cars():
             etotal = etotal + chargerprice
 
     except TypeError:
-        error = 'TypeError'
+        error = 'Error'
         pass
 
     return render_template('cars.html',
@@ -157,26 +157,19 @@ def cars():
                            eyearly=eyearly,
                            etotal=etotal,
                            edepr_owntime=edepr_owntime,
-                           edepr_yearly=edepr_yearly,
-                           ecost_list=ecost_list,
                            eoper=eoper,
                            eafter=eafter,
                            gyearly=gyearly,
                            gtotal=gtotal,
                            gdepr_owntime=gdepr_owntime,
-                           gdepr_yearly=gdepr_yearly,
-                           gcost_list=gcost_list,
                            goper=goper,
                            gafter=gafter,
                            dyearly=dyearly,
                            dtotal=dtotal,
                            ddepr_owntime=ddepr_owntime,
-                           ddepr_yearly=ddepr_yearly,
-                           dcost_list=dcost_list,
                            doper=doper,
                            dafter=dafter,
                            owntime=owntime,
-                           ziplist=ziplist,
                            error=error
                            )
 
