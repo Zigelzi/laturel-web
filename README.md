@@ -1,4 +1,4 @@
-# Luppo Webpages
+# Laturel Webpages
 
 This is my first live webapp project with purpose 
 
