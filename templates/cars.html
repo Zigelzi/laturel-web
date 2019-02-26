@@ -1,23 +1,24 @@
 {% extends "layout.html" %}
 {% block content%}
-
-<div class="container body-div">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1>Electric Vehicles</h1>
+			<h2>Car ownership costs</h2>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-lg-6">
-			<p class="body-p-paddings">Here you can calculate the yearly costs of using different cars and propulsion types.</p>
+			<p>Here you can calculate the yearly costs of using different cars and propulsion types.</p>
 		</div>
 	</div>
 	<form action="{{ url_for('cars', _anchor='results') }}" method="post">
 
 		<!-- General information form -->
 		<div class="row">
-			<div class="col-lg-4 form-group text-center" style="margin-bottom: 20px; margin-top: 20px;">
+			<div class="col-lg-12">
+				<h3 class="header-margin">Ownership information</h3>	
+			</div>
+			<div class="col-lg-4 form-group text-center">
 				<div class="form-box general-top">
 					{{ form.owntime.label(class="form-control-label label-margin") }}
 					<br>
@@ -42,7 +43,7 @@
 		<!--  End of general information-->
 		
 		<div class="row">
-			<div class="col-lg-12 header-split text-center">
+			<div class="col-lg-12">
 				<h3 class="header-margin">Initial costs</h3>
 			</div>
 		</div>
@@ -150,7 +151,7 @@
 		<!-- End of initial costs row -->
 
 		<div class="row">
-			<div class="co-lg-12 header-split text-center">
+			<div class="col-lg-12">
 				<h3 class="header-margin">Operating costs</h3>
 			</div>
 		</div>
@@ -408,9 +409,8 @@
 					</ul>
 				</div>
 			</div>
+		</div>
+		<!-- End of result cards -->
+		{% endif %}
 	</div>
-	<!-- End of result cards -->
-	{% endif %}
-	</div>
-</div>
 {% endblock %}
