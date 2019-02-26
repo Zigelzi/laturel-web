@@ -1,3 +1,22 @@
+h2, h3 {
+	margin-top:20px;
+	margin-bottom: 15px;
+	margin-left: 15px;
+}
+
+p {
+	margin-left: 15px;
+}
+
+ul {
+	list-style: none;
+	padding: 0px; 
+}
+
+#results{
+	padding-bottom: 30px;
+}
+
 .text-box {
 	background-color: lightgrey;
 	font-size: 16px;
@@ -27,10 +46,6 @@
 	background-color: #c2cad6
 }
 
-.body-p-paddings {
-	padding-top: 20px;
-}
-
 .btn-wrap {
 	white-space: normal;
 	max-width: 300px;
@@ -51,7 +66,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 10px;
-	width: 15em;
+	max-width: 15em;
 }
 
 .header-split{
@@ -61,8 +76,7 @@
 }
 
 .header-margin{
-	margin-top:10px;
-	margin-bottom: 10px;
+	
 }
 
 .addon-width{
@@ -79,7 +93,7 @@
 	color: hsl(0, 0%, 13%);
 	display: inline-block;
 	width: 95%;
-	margin-bottom: 30px;
+	margin-bottom: 5px;
 }
 
 .e-top{
@@ -125,11 +139,6 @@
     margin-right:-4px;
 }
 
-ul {
-	list-style: none;
-	padding: 0px; 
-}
-
 .big-btn{
 	width: 10em;
 	height: 3em;
@@ -163,4 +172,12 @@ ul {
 
 .tooltips {
     margin:0px;
+}
+
+.row-light{
+	background-color: #d4d4dc;
+}
+
+.row-dark{
+	background-color: #1d1e22;
 }
