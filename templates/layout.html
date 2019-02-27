@@ -14,7 +14,7 @@
 		<title>Laturel</title>	
 	</head>
 	<body class="body-bg-color">
-		<nav class="navbar navbar-default" style="margin: 0px">
+		<nav id="nav" class="navbar navbar-default" style="margin: 0px">
 			<div class="container">
 				<!--
 				<div class="navbar-header">
@@ -29,10 +29,17 @@
 			</div>
 		</nav>
 
-		<div class="container-fluid">
+		<div class="container-fluid" id="top">
 		{% block content %}
 		{% endblock %}
+			<div id="bot" class="top-button">
+				<a href="#nav"><img src="{{ url_for('static', filename='img/laturel_arrow_top.png') }}"></a>
+			</div>
 		</div>
-
+		
+		<footer>
+			<p class="text-center">Made by <a href="https://www.linkedin.com/in/miikasavela/">Miika Savela</a> &copy 2019 | Creator has no responsibility or liability for any errors or omissions in the content of the site</p>
+		</footer>
 	</body>
+	
 </html>
