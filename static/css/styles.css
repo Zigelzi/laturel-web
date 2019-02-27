@@ -1,3 +1,7 @@
+body{
+	background-color: #eeeeee
+}
+
 h2, h3 {
 	margin-top:20px;
 	margin-bottom: 15px;
@@ -13,37 +17,26 @@ ul {
 	padding: 0px; 
 }
 
+/* Identifiers */
+
 #results{
 	padding-bottom: 30px;
 }
 
-.text-box {
-	background-color: lightgrey;
+/* End of identifiers */
+
+/* Classes */
+
+.nav-img{
+	padding: 0px !important;
+	margin-right: 10px;
+}
+
+.nav-text{
+	color: #fff;
 	font-size: 16px;
-	}
 
-.nav-text-styling {
-	text-decoration: none;
-	color: inherit;
-	font-size: 42px;
-	}
 
-.nav-div-styling {
-	float: none;
-	margin: 0 auto;
-	}
-
-.nav-text {
-	color: white !important;
-	font-size: 14px;
-	}
-
-.body-div {
-	background-color: #eeeeee;
-	}
-
-.body-bg-color {
-	background-color: #c2cad6
 }
 
 .btn-wrap {
@@ -181,3 +174,5 @@ ul {
 .row-dark{
 	background-color: #1d1e22;
 }
+
+/* End of classes */
