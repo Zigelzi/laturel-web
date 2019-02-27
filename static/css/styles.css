@@ -1,3 +1,12 @@
+body {
+	background-color: #eeeeee
+}
+
+footer > p{
+	font-size: 10px;
+	margin:0px;
+}
+
 h2, h3 {
 	margin-top:20px;
 	margin-bottom: 15px;
@@ -13,37 +22,28 @@ ul {
 	padding: 0px; 
 }
 
+/* Identifiers */
+
 #results{
 	padding-bottom: 30px;
 }
 
-.text-box {
-	background-color: lightgrey;
+/* End of identifiers */
+
+/* Classes */
+
+.nav-img{
+	padding-bottom: 0px !important;
+	padding-top: 0px !important;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.nav-text{
+	color: #fff;
 	font-size: 16px;
-	}
 
-.nav-text-styling {
-	text-decoration: none;
-	color: inherit;
-	font-size: 42px;
-	}
 
-.nav-div-styling {
-	float: none;
-	margin: 0 auto;
-	}
-
-.nav-text {
-	color: white !important;
-	font-size: 14px;
-	}
-
-.body-div {
-	background-color: #eeeeee;
-	}
-
-.body-bg-color {
-	background-color: #c2cad6
 }
 
 .btn-wrap {
@@ -181,3 +181,10 @@ ul {
 .row-dark{
 	background-color: #1d1e22;
 }
+
+.top-button{
+	float: right;
+	padding: 10px;
+}
+
+/* End of classes */

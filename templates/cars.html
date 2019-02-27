@@ -11,6 +11,15 @@
 			<p>Here you can calculate the yearly costs of using different cars and propulsion types.</p>
 		</div>
 	</div>
+
+	<div class="row">
+		{% if error != None %}
+			<div class="alert alert-danger text-center">
+				<b>{{ error }}</b> occurred! Check form input values.
+			</div>
+		{% endif %}
+	</div>	
+
 	<form action="{{ url_for('cars', _anchor='results') }}" method="post">
 
 		<!-- General information form -->
@@ -283,13 +292,7 @@
 			{{ form.submit(class="btn btn-primary big-btn") }}
 		</div>
 	</form>
-	<div class="row">
-		{% if error != None %}
-			<div class="alert alert-danger text-center">
-				<b>{{ error }}</b> occurred! Check form input values.
-			</div>
-		{% endif %}
-	</div>	
+
 
 	{% if error == None %}
 	<!-- Result cards -->
@@ -412,7 +415,8 @@
 				</div>
 			</div>
 		</div>
-		<!-- End of result cards -->
-		{% endif %}
 	</div>
+	<!-- End of result cards -->
+	{% endif %}
+	
 {% endblock %}

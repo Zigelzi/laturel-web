@@ -5,31 +5,41 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-		<link rel="icon" type="image/png" href="{{ url_for('static', filename='laturel_favicon.png') }}">
-		<meta property="og:image" content="{{ url_for('static', filename='laturel_logo.png') }}">
+		<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/laturel_favicon.png') }}">
+		<meta property="og:image" content="{{ url_for('static', filename='img/laturel_logo_l.png') }}">
 		<meta property="og:image:type" content="image/png">
 		<meta property="og:image:width" content="349">
 		<meta property="og:image:height" content="308">
-		 <meta property="og:description" content="Calculate car ownership costs and compare different propulsion types (EV/ICE/Diesel)" />
+		 <meta property="og:description" content="Calculate car ownership costs and compare different propulsion types (EV/ICE)" />
 		<title>Laturel</title>	
 	</head>
 	<body class="body-bg-color">
-		<nav class="navbar navbar-default" style="margin: 0px">
+		<nav id="nav" class="navbar navbar-default" style="margin: 0px">
 			<div class="container">
+				<!--
 				<div class="navbar-header">
-					<a href="index" class="navbar-brand">Laturel</a>
+					<a href="index" class="navbar-brand"></a>
 				</div>
-				<ul class="nav nav-tabs">
-					<li class=""><a href="{{ url_for('evbasics') }}">EV basics</a></li>
-					<li class=""><a href="{{ url_for('cars') }}">Cars</a></li>
+				-->
+				<ul class="nav navbar-nav">
+					<li><a class="nav-img" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/laturel_logo_m.png') }}"></a></li>
+					<li><a class="nav-text" href="{{ url_for('evbasics') }}">EV basics</a></li>
+					<li><a class="nav-text" href="{{ url_for('cars') }}">Cars</a></li>
 				</ul>
 			</div>
 		</nav>
 
-		<div class="container-fluid body-div">
+		<div class="container-fluid" id="top">
 		{% block content %}
 		{% endblock %}
+			<div id="bot" class="top-button">
+				<a href="#nav"><img src="{{ url_for('static', filename='img/laturel_arrow_top.png') }}"></a>
+			</div>
 		</div>
-
+		
+		<footer>
+			<p class="text-center">Made by <a href="https://www.linkedin.com/in/miikasavela/">Miika Savela</a> &copy 2019 | Creator has no responsibility or liability for any errors or omissions in the content of the site</p>
+		</footer>
 	</body>
+	
 </html>
