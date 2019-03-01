@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, flash
 from forms import ChargerForm, Form
 from config import Config
 from datetime import datetime
-from helpers import round_hundreds, deprecation, depr_oper
+from helpers import round_hundreds, depr_oper
 
 app = Flask(__name__)
 app.config.from_object(Config)
