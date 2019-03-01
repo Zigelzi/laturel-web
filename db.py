@@ -1,4 +1,5 @@
-from sqlalchemy import create_engine
-from config import Config
+from flask_sqlalchemy import SQLAlchemy
+from app import app
 
-engine = create_engine(Config.DATABASE_URI)
+db = SQLAlchemy(app)
+
