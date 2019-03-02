@@ -7,14 +7,17 @@ from helpers import round_hundreds, depr_oper
 app = Flask(__name__)
 app.config.from_object(Config)
 
+
 @app.route('/')
 def index():
     active = True
     return render_template('index.html')
 
+
 @app.route('/index')
 def index2():
     return render_template('index.html')
+
 
 @app.route('/chargers', methods=['POST', 'GET'])
 def chargers():
@@ -70,7 +73,6 @@ def cars():
     dcost_list = 0
     doper = 0
     dafter = 0
-    ziplist = []
 
     # EV data from EV form
     eform_ecarprice = form.ecarprice
@@ -177,6 +179,7 @@ def cars():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
 
 if __name__ == '__main__':
     app.run(debug=False)
