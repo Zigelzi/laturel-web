@@ -1,5 +1,8 @@
-from db import db
 from tabulate import tabulate
+from flask_sqlalchemy import SQLAlchemy
+from app import app
+
+db = SQLAlchemy(app)
 
 class Cars(db.Model):
 
