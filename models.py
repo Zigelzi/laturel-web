@@ -2,7 +2,10 @@ from db import db
 from tabulate import tabulate
 
 class Cars(db.Model):
+
+    #  Initializing database columns.
     id = db.Column(db.Integer, primary_key=True)
+    type = db.Column(db.String(10), nullable=False)
     maker = db.Column(db.String(20), nullable=False)
     model = db.Column(db.String(20), nullable=False)
     price = db.Column(db.Integer, nullable=False)
@@ -11,9 +14,16 @@ class Cars(db.Model):
     consumption = db.Column(db.Float, nullable=False)
     weight = db.Column(db.Integer, nullable=False)
 
+    #  Printout formatting
     def __repr__(self):
-        return f"<Cars(maker='{self.maker}', model='{self.model}', price='{self.price}', battery='{self.battery}'," \
-            f"range='{self.driverange}', consumption='{self.consumption}', weight='{self.weight}')>"
+        return f"<Cars(type='{self.type}'," \
+            f" maker='{self.maker}'," \
+            f" model='{self.model}'," \
+            f" price='{self.price}'," \
+            f" battery='{self.battery}'," \
+            f"range='{self.driverange}'," \
+            f" consumption='{self.consumption}'," \
+            f" weight='{self.weight}')>"
 
 
 #  Adding cars to database with one command.
@@ -24,7 +34,13 @@ def add_cars():
     print('-----------------------------')
     while True:
         car_dict = {}
+        allowed_types = ['ev', 'gasoline', 'diesel']
 
+        #  Query user for values for the row to be commited.
+        car_dict['type'] = input('Engine type (EV/Gasoline/Diesel): ').lower()
+        if car_dict['type'] not in allowed_types:
+            print('Enter correct engine type (EV/Gasoline/Diesel): ')
+            continue
         car_dict['maker'] = input('Maker: ').lower()
         car_dict['model'] = input('Model: ').lower()
         car_dict['price'] = input('Price: (€) ').lower()
@@ -44,16 +60,17 @@ def add_cars():
         if answer_add == 'n':
             break
 
+    #  Print out the inputted cars and confirm the commit
     print('Cars to be added to database:\n')
     result_table = tabulate(car_list, headers='keys', tablefmt='orgtbl')
     print(result_table)
-    print()
 
-    answer_commit = input('Commit these changes to database? (y/n')
-
+    answer_commit = input('Commit these changes to database? (y/n)')
     if answer_commit == 'y':
+        #  Loop through the list of inputted cars and take values from individual dictionaries to input
         for cars in car_list:
-            car = Cars(maker=cars['maker'],
+            car = Cars(type=cars['type'],
+                       maker=cars['maker'],
                        model=cars['model'],
                        price=cars['price'],
                        battery=cars['battery'],
