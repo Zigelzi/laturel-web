@@ -17,7 +17,7 @@ class Cars(db.Model):
 
 
 #  Adding cars to database with one command.
-def add_car():
+def add_cars():
     car_list = []
 
     print('Adding new cars to database')
