@@ -21,7 +21,7 @@ class Cars(db.Model):
             f" model='{self.model}'," \
             f" price='{self.price}'," \
             f" battery='{self.battery}'," \
-            f"range='{self.driverange}'," \
+            f" driverange='{self.driverange}'," \
             f" consumption='{self.consumption}'," \
             f" weight='{self.weight}')>"
 
