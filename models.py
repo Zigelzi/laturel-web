@@ -29,9 +29,10 @@ class Cars(db.Model):
 #  Adding cars to database with one command.
 def add_cars():
     car_list = []
+    dash_line = (40 * '-') + '\n'
 
     print('Adding new cars to database')
-    print('-----------------------------')
+    print(dash_line)
     while True:
         car_dict = {}
         allowed_types = ['ev', 'gasoline', 'diesel']
@@ -55,7 +56,8 @@ def add_cars():
         car_dict['consumption'] = input('Consumption (kWh/100km): ').lower()
         car_dict['weight'] = input('Weight (kg): ').lower()
         car_list.append(car_dict)
-        print(f'Values added for {car_dict["maker"]} {car_dict["model"]}.')
+        print(f'Values added for {car_dict["maker"].upper()} {car_dict["model"].upper()}.')
+        print(dash_line)
         answer_add = input(' Add another? (y/n)').lower()
         if answer_add == 'n':
             break
@@ -79,7 +81,7 @@ def add_cars():
                        weight=cars['weight'])
             db.session.add(car)
         db.session.commit()
-        print('\nChanges committed to database!')
+        print('\nChanges committed succesfully to database!')
     else:
         print('No changes committed to database.')
         return
