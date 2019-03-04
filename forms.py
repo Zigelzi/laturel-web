@@ -9,10 +9,12 @@ class ChargerForm(FlaskForm):
     startTime = RadioField('When do you start driving?', choices=[('05:00', '05:00'), ('06:00', '06:00')], default='05:00')
     submit = SubmitField('Check how powerful charger I need!')
 
+'''
+TODO: Fix imports by restructuring this as package.
 class CarSelectorForm(FlaskForm):
-    carmodel = RadioField('Select car model to use as template:',
-                          choices=[('Hyundai Kona', 'Hyundai Kona'),
-                                   ('Kia Niro', 'Kia Niro')])
+    carmodel = QuerySelectField('Select Electric Vehicle', query_factory=get_cars)
+'''
+
 
 class Form(FlaskForm):
     ecarprice = FloatField('Car purchase price', default=40000)

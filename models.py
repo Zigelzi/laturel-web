@@ -4,6 +4,7 @@ from app import app
 
 db = SQLAlchemy(app)
 
+
 class Cars(db.Model):
 
     #  Initializing database columns.
@@ -88,3 +89,8 @@ def add_cars():
     else:
         print('No changes committed to database.')
         return
+
+
+def get_cars():
+    #  Query cars and return them
+    return Cars.query
