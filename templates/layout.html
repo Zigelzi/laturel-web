@@ -22,9 +22,9 @@
 				</div>
 				-->
 				<ul class="nav navbar-nav">
-					<li><a class="nav-img" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/laturel_logo_m.png') }}"></a></li>
-					<li><a class="nav-text" href="{{ url_for('evbasics') }}">EV basics</a></li>
-					<li><a class="nav-text" href="{{ url_for('cars') }}">Cars</a></li>
+					<li class="{% if active=='index'%}active-nav{% endif %}"><a class="nav-img" href="{{ url_for('index') }}"><img id="logo" src="{{ url_for('static', filename='img/laturel_logo_m.png') }}"></a></li>
+					<li class="{% if active=='evbasics'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('evbasics') }}">EV basics</a></li>
+					<li class="{% if active=='cars'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('cars') }}">Cars</a></li>
 				</ul>
 			</div>
 		</nav>

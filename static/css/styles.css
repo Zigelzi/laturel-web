@@ -42,6 +42,10 @@ ul {
 	padding-bottom: 30px;
 }
 
+#logo{
+	height: 50px;
+}
+
 /* End of identifiers */
 
 /* Classes */
@@ -58,8 +62,8 @@ ul {
 	font-size: 16px;
 }
 
-.index-headings{
-
+.active-nav{
+	background-color: #da8307;
 }
 
 .btn-wrap {

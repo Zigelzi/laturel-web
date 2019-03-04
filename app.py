@@ -9,12 +9,7 @@ app.config.from_object(Config)
 
 @app.route('/')
 def index():
-    active = True
-    return render_template('index.html')
-
-@app.route('/index')
-def index2():
-    return render_template('index.html')
+    return render_template('index.html', active='index')
 
 @app.route('/chargers', methods=['POST', 'GET'])
 def chargers():
@@ -32,12 +27,13 @@ def chargers():
                            driveKm=driveKm,
                            stopTime=stopTime,
                            startTime=startTime,
-                           chargingTime=chargingTime)
+                           chargingTime=chargingTime,
+                           active='charges')
 
 
 @app.route('/evbasics')
 def evbasics():
-    return render_template('evbasics.html')
+    return render_template('evbasics.html', active='evbasics')
 
 @app.route('/cars', methods=['GET', 'POST'])
 def cars():
@@ -170,13 +166,14 @@ def cars():
                            doper=doper,
                            dafter=dafter,
                            owntime=owntime,
-                           error=error
+                           error=error,
+                           active='cars'
                            )
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', active='about')
 
 if __name__ == '__main__':
     app.run(debug=False)
