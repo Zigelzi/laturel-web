@@ -14,7 +14,7 @@ class CarSelectorForm(FlaskForm):
                           choices=[('Hyundai Kona', 'Hyundai Kona'),
                                    ('Kia Niro', 'Kia Niro')])
 
-class Form(FlaskForm):
+class CostForm(FlaskForm):
     ecarprice = FloatField('Car purchase price', default=40000)
     edepr = FloatField('Yearly depreciation rate', default=17.5)
     esubsidy = FloatField('Available subsidy for EV:s', default=2000)
