@@ -7,7 +7,7 @@ footer > p{
 	margin:0px;
 }
 
-h2, h3 {
+h1, h2, h3, h4, h5, h6 {
 	margin-top:20px;
 	margin-bottom: 15px;
 	margin-left: 15px;
@@ -23,6 +23,20 @@ ul {
 }
 
 /* Identifiers */
+
+#name{
+	margin-bottom: 0px;
+}
+
+#tagline{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#welcome{
+	margin-top: 10px;
+	margin-bottom: 35px;
+}
 
 #results{
 	padding-bottom: 30px;
@@ -42,7 +56,9 @@ ul {
 .nav-text{
 	color: #fff;
 	font-size: 16px;
+}
 
+.index-headings{
 
 }
 
