@@ -9,6 +9,7 @@ from laturel.helpers import depr_oper, round_hundreds
 def index():
     return render_template('index.html')
 
+
 @app.route('/chargers', methods=['POST', 'GET'])
 def chargers():
     form = ChargerForm()
@@ -31,6 +32,7 @@ def chargers():
 @app.route('/evbasics')
 def evbasics():
     return render_template('evbasics.html')
+
 
 @app.route('/cars', methods=['GET', 'POST'])
 def cars():

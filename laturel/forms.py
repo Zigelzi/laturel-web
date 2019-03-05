@@ -1,5 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, SubmitField, DateTimeField, RadioField, FloatField
+from wtforms_sqlalchemy.fields import QuerySelectField
+from laturel.models import get_cars
+
 
 class ChargerForm(FlaskForm):
     driveKmRadio = RadioField('How much do you drive daily?',
@@ -9,11 +12,12 @@ class ChargerForm(FlaskForm):
     startTime = RadioField('When do you start driving?', choices=[('05:00', '05:00'), ('06:00', '06:00')], default='05:00')
     submit = SubmitField('Check how powerful charger I need!')
 
-'''
-TODO: Fix imports by restructuring this as package.
+
+
+#  TODO: Fix imports by restructuring this as package.
 class CarSelectorForm(FlaskForm):
     carmodel = QuerySelectField('Select Electric Vehicle', query_factory=get_cars)
-'''
+
 
 
 class Form(FlaskForm):
