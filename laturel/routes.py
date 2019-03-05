@@ -1,7 +1,7 @@
 from flask import render_template
 from datetime import datetime
 from laturel import app
-from laturel.forms import Form, ChargerForm
+from laturel.forms import Form, ChargerForm, CarSelectorForm
 from laturel.helpers import depr_oper, round_hundreds
 
 
@@ -37,6 +37,7 @@ def evbasics():
 @app.route('/cars', methods=['GET', 'POST'])
 def cars():
     form = Form()
+    car_form = CarSelectorForm()
 
     edeprcalc = 0
     gdeprcalc = 0
@@ -148,6 +149,7 @@ def cars():
 
     return render_template('cars.html',
                            form=form,
+                           car_form=car_form,
                            eyearly=eyearly,
                            etotal=etotal,
                            edepr_owntime=edepr_owntime,
@@ -170,4 +172,5 @@ def cars():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    car_form = CarSelectorForm()
+    return render_template('about.html', car_form=car_form)

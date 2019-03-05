@@ -88,6 +88,10 @@ def add_cars():
         return
 
 
+#  Query all cars in database and create list list for Select field
 def get_cars():
-    #  Query cars and return them
-    return Cars.query
+    cars = Cars.query.all()
+    cars_list = []
+    for car in cars:
+        cars_list.append((car.model, f'{car.maker.capitalize()} {car.model.capitalize()}'))
+    return cars_list

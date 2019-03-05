@@ -1,6 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, SubmitField, DateTimeField, RadioField, FloatField
-from wtforms_sqlalchemy.fields import QuerySelectField
+from wtforms import IntegerField, SubmitField, SelectField, RadioField, FloatField
 from laturel.models import get_cars
 
 
@@ -16,7 +15,7 @@ class ChargerForm(FlaskForm):
 
 #  TODO: Fix imports by restructuring this as package.
 class CarSelectorForm(FlaskForm):
-    carmodel = QuerySelectField('Select Electric Vehicle', query_factory=get_cars)
+    car_model = SelectField('Select Electric Vehicle', choices=get_cars())
 
 
 
