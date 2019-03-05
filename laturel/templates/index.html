@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	Index
+{% endblock %}
+
+{% block content%}
+			<div class="row">
+				<div class="col-lg-12">
+					<h4>World is going towards more sustainable future and electric vehicles are part of it. <br>We're doing our part by trying to help you by gathering all the basic information related to electric vehicles, their chargers and terminology in one place.</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<a href="{{ url_for('evbasics') }}" type="button" class="btn btn-primary col-lg-4 btn-wrap">I don't know anything about Electric vehicles, help me!</a>
+					<a href="{{ url_for('cars') }}" type="button" class="btn btn-primary col-lg-4 btn-wrap">Calculate how much does it cost to own a car!</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<p><strong>EV Basics</strong> has the basic information about electric vehicles (EV:s) and basic terminology related to EV:s</p>
+					<p><strong>Cars</strong> has information about available and upcoming EV:s. It also has calculator which of the current EV:s would fit your driving profile.</p>
+				</div>
+			</div>
+		
+{% endblock %}

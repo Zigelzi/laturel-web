@@ -1,0 +1,427 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	Cars
+{% endblock %}
+
+{% block content%}
+	<div class="row">
+		<div class="col-lg-12">
+			<h2>Car ownership costs</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6">
+			<p>Here you can calculate the yearly costs of using different cars and propulsion types.</p>
+		</div>
+	</div>
+
+	<div class="row">
+		{% if error != None %}
+			<div class="alert alert-danger text-center">
+				<b>{{ error }}</b> occurred! Check form input values.
+			</div>
+		{% endif %}
+	</div>
+
+	<form action="{{ url_for('cars', _anchor='results') }}" method="post">
+
+		<!-- General information form -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="header-margin">Ownership information</h3>	
+			</div>
+			<div class="col-lg-4 form-group text-center">
+				<div class="form-box general-top">
+					{{ form.owntime.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.owntime(class="form-control") }}
+					<div class="input-group-addon addon-width">
+							years
+						</div>
+					</div>
+					{{ form.drivekm.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.drivekm(class="form-control") }}
+					<div class="input-group-addon addon-width">
+							km/year
+						</div>
+					</div>
+					
+				</div>
+			</div>			
+		</div>
+		<!--  End of general information-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="header-margin">Initial costs</h3>
+			</div>
+		</div>
+
+		<!-- Initial costs row -->
+		<div class="row">
+
+			<!-- EV initial costs -->
+			<div class="col-lg-4 text-center form-group">
+				<div class="form-box e-top">
+					<div class="box-header">
+						<h4>Electric</h4>
+					</div>
+					{{ form.ecarprice.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.ecarprice(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							€
+						</div>
+					</div>
+					{{ form.edepr.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.edepr(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							% / year
+						</div>
+					</div>
+					{{ form.esubsidy.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.esubsidy(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							€
+						</div>
+					</div>
+					{{ form.echarger.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-margins">
+						{% for subfield in form.echarger%}
+						<tr>
+							<td>{{ subfield }} </td>
+							<td>{{ subfield.label(style="font-weight: 400") }} </td>
+						</tr>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<!-- End of EV initial costs -->
+
+			<!-- Gasoline initial costs -->
+			<div class="col-lg-4 text-center form-group">
+				<div class=" form-box g-top">
+					<div class="box-header">
+						<h4>Gasoline</h4>
+					</div>
+					{{ form.gcarprice.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.gcarprice(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							€
+						</div>
+					</div>
+					{{ form.gdepr.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.gdepr(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							% / year
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End of gasoline initial costs -->
+
+			<!-- Diesel initial costs -->
+			<div class="col-lg-4 text-center form-group">
+				<div class="form-box d-top">
+					<div class="box-header">
+						<h4>Diesel</h4>
+					</div>
+					{{ form.dcarprice.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.dcarprice(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							€
+						</div>
+					</div>
+					{{ form.ddepr.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.ddepr(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							% / year
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End of diesel initial costs -->
+
+		</div>
+		<!-- End of initial costs row -->
+
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="header-margin">Operating costs</h3>
+			</div>
+		</div>
+
+		<!-- Row of operational costs -->
+		<div class="row">
+
+			<!-- EV operational costs section -->
+			<div class="col-lg-4 text-center form-group">
+				<div class="form-box e-top">
+					<div class="box-header">
+						<h4>Electric</h4>
+					</div>
+					{{ form.econsumption.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.econsumption(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							kWh/100 km
+						</div>
+					</div>
+					{{ form.eprice.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.eprice(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							€/kWh
+						</div>
+					</div>
+					{{ form.eweight.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.eweight(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							kg
+						</div>
+					</div>
+					{{ form.etax.label(class="form-control-label label-margin") }}<br>
+					<div class="input-group input-margins">
+					{{ form.etax(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							€/year
+						</div>
+					</div>
+				</div>				
+			</div>
+			<!-- End of  EV operational costs section -->
+
+			<!-- Gasoline operational costs section -->
+			<div class="col-lg-4 text-center form-group">
+				<div class="form-box g-top">
+					<div class="box-header">
+						<h4>Gasoline</h4>
+					</div>
+					{{ form.gconsumption.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.gconsumption(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							l/100km
+						</div>
+					</div>
+					{{ form.gprice.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.gprice(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							€/l
+						</div>
+					</div>
+					{{ form.gtax.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.gtax(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							€/year
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End of gasoline operational costs section -->
+
+			<!-- Diesel operational costs section -->
+			<div class="col-lg-4 text-center form-group">
+				<div class="form-box d-top">
+					<div class="box-header">
+						<h4>Diesel</h4>
+					</div>
+					{{ form.dconsumption.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.dconsumption(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							l/100km
+						</div>
+					</div>
+					{{ form.dprice.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.dprice(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							€/l
+						</div>
+					</div>
+					{{ form.dweight.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.dweight(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							kg
+						</div>
+					</div>
+					{{ form.dtax.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.dtax(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							€/year
+						</div>
+					</div>
+				</div>	
+			</div>
+			<!-- End of diesel operational costs section -->
+
+		</div>
+		<!-- End of row of operational costs -->
+
+		<div class="text-center input-margins">
+			{{ form.submit(class="btn btn-primary big-btn") }}
+		</div>
+	</form>
+
+
+	{% if error == None %}
+	<!-- Result cards -->
+	<div class="row row-light" id="results">
+		<div class="col-lg-12">
+				<h3 class="header-margin">Results</h3>
+			</div>
+		<!-- EV result card -->
+		<div class="col-lg-4 text-center form-group">
+			<div class="form-box">
+				<div class="ecard">
+					<h4>Electric</h4>
+				</div>
+				<div class="text-muted">
+					Costs and value after {{ owntime }} years
+				</div>
+				<br>
+				<div>
+					<span class="text-muted muted">Operational costs</span>
+					<br>
+					<b>{{ eyearly }} €</b>
+					<br>
+					<span class="text-muted muted">per year</span>
+				</div>
+				<br>
+				<div class="text-center-left">
+					<ul>
+						<li>
+							<b>{{ eoper}} €</b> total operational costs
+						</li>
+						<li>
+							<b>{{ edepr_owntime }} €</b> value deprecated
+						</li>
+						<br>
+						<li>
+							<b>{{ etotal}} €</b> total costs
+						</li>
+						<li>
+							<b>{{ eafter }} €</b> car resell value
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- End of EV result card -->
+
+		<!-- Gasoline result card -->
+		<div class="col-lg-4 text-center form-group">
+			<div class="form-box">
+				<div class="gcard">
+					<h4>Gasoline</h4>
+				</div>
+				<div class="text-muted">
+					Costs and value after {{ owntime }} years
+				</div>
+				<br>
+				<div>
+					<span class="text-muted muted">Operational costs</span>
+					<br>
+					<b>{{ gyearly }} €</b>
+					<br>
+					<span class="text-muted muted">per year</span>
+				</div>
+				<br>
+				<div class="text-center-left">
+					<ul>
+						<li>
+							<b>{{ goper}} €</b> total operational costs
+						</li>
+						<li>
+							<b>{{ gdepr_owntime }} €</b> value deprecated
+						</li>
+						<br>
+						<li>
+							<b>{{ gtotal}} €</b> total costs
+						</li>
+						<li>
+							<b>{{ gafter }} €</b> car resell value
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- End of gasoline result card -->
+
+		<!-- Diesel result card -->
+		<div class="col-lg-4 text-center form-group">
+			<div class="form-box">
+				<div class="dcard">
+					<h4>Diesel</h4>
+				</div>
+				<div class="text-muted">
+					Costs and value after {{ owntime }} years
+				</div>
+				<br>
+				<div>
+					<span class="text-muted muted">Operational costs</span>
+					<br>
+					<b>{{ dyearly }} €</b>
+					<br>
+					<span class="text-muted muted">per year</span>
+				</div>
+				<br>
+				<div class="text-center-left">
+					<ul>
+						<li>
+							<b>{{ doper}} €</b> total operational costs
+						</li>
+						<li>
+							<b>{{ ddepr_owntime }} €</b> value deprecated
+						</li>
+						<br>
+						<li>
+							<b>{{ dtotal}} €</b> total costs
+						</li>
+						<li>
+							<b>{{ dafter }} €</b> car resell value
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End of result cards -->
+	{% endif %}
+	
+{% endblock %}
