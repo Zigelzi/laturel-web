@@ -75,8 +75,11 @@ ul {
 	margin-bottom: 20px;
 }
 
-.header-margin{
-	
+.select-box{
+	max-width: 200px;
+	height: 55px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .addon-width{
