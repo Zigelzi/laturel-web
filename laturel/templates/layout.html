@@ -11,7 +11,9 @@
 		<meta property="og:image:width" content="349">
 		<meta property="og:image:height" content="308">
 		 <meta property="og:description" content="Calculate car ownership costs and compare different propulsion types (EV/ICE)" />
-		<title>Laturel - {% block title %} {% endblock %} </title>	
+		<title>Laturel - {% block title %} {% endblock %} </title>
+
+			
 	</head>
 	<body class="body-bg-color">
 		<nav id="nav" class="navbar navbar-default" style="margin: 0px">
@@ -36,10 +38,14 @@
 				<a href="#nav"><img src="{{ url_for('static', filename='img/laturel_arrow_top.png') }}"></a>
 			</div>
 		</div>
-		
-		<footer>
-			<p class="text-center">Made by <a href="https://www.linkedin.com/in/miikasavela/">Miika Savela</a> &copy 2019 | Creator has no responsibility or liability for any errors or omissions in the content of the site</p>
-		</footer>
-	</body>
+	</body>	
+
+	<footer>
+		<p class="text-center">Made by <a href="https://www.linkedin.com/in/miikasavela/">Miika Savela</a> &copy 2019 | Creator has no responsibility or liability for any errors or omissions in the content of the site</p>
+	</footer>
 	
+	
+	{% block script %}
+
+	{% endblock %}
 </html>

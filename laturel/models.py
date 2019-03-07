@@ -91,7 +91,23 @@ def add_cars():
 #  Query all cars in database and create list list for Select field
 def get_cars():
     cars = Cars.query.all()
-    cars_list = []
+    cars_select = []
     for car in cars:
-        cars_list.append((car.model, f'{car.maker.capitalize()} {car.model.capitalize()}'))
-    return cars_list
+        cars_select.append((car.model, f'{car.maker.capitalize()} {car.model.capitalize()}'))
+    return cars_select
+
+
+def get_car_dict():
+    cars = Cars.query.all()
+    car_list = []
+    for car in cars:
+        try:
+            car_dict = car.__dict__
+            car_dict.pop('_sa_instance_state')
+            car_list.append(car_dict)
+        except TypeError:
+            pass
+    for i in car_list:
+        for key in i:
+            i[key] = str(i[key])
+    return car_list

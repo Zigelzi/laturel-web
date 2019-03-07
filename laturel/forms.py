@@ -12,10 +12,9 @@ class ChargerForm(FlaskForm):
     submit = SubmitField('Check how powerful charger I need!')
 
 
-
-#  TODO: Fix imports by restructuring this as package.
 class CarSelectorForm(FlaskForm):
-    car_model = SelectField('Select Electric Vehicle', choices=get_cars())
+    choices = get_cars()
+    car_model = SelectField('Select Electric Vehicle', choices=choices)
 
 
 
