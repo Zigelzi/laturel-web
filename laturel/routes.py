@@ -3,7 +3,7 @@ from datetime import datetime
 from laturel import app
 from laturel.forms import Form, ChargerForm, CarSelectorForm
 from laturel.helpers import depr_oper, round_hundreds
-from laturel.models import get_car_dict
+from laturel.models import model_dict
 
 
 @app.route('/')
@@ -39,8 +39,6 @@ def evbasics():
 def cars():
     form = Form()
     car_form = CarSelectorForm()
-    car_dict = get_car_dict()
-    car_dict = car_dict[0]
 
     edeprcalc = 0
     gdeprcalc = 0
@@ -153,7 +151,6 @@ def cars():
     return render_template('cars.html',
                            form=form,
                            car_form=car_form,
-                           car_dict=car_dict,
                            eyearly=eyearly,
                            etotal=etotal,
                            edepr_owntime=edepr_owntime,
@@ -180,13 +177,16 @@ def about():
     return render_template('about.html', car_form=car_form)
 
 
-@app.route('/db/data', methods=['POST'])
+@app.route('/db/data', methods=['GET', 'POST'])
 def data():
-    req = request.get_json()
-    print(req)
 
-    res = make_response(jsonify({'weight': '2565', 'driverange': '375', 'price': '87023',
-                                 'maker': 'audi', 'id': '1', 'consumption': '22.6',
-                                 'battery': '83.6', 'model': 'e-tron', 'type': 'ev'}), 200)
+    #  Take the JSON request and convert it to dict
+    req = request.get_json()
+    print(req['model'])
+
+    model = model_dict(req['model'])
+
+    #  Create JSON response
+    res = make_response(jsonify(model), 200)
 
     return res

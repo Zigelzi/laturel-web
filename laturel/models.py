@@ -97,6 +97,7 @@ def get_cars():
     return cars_select
 
 
+#  Function to query all models from database and make list of dictionaries from them
 def get_car_dict():
     cars = Cars.query.all()
     car_list = []
@@ -111,3 +112,11 @@ def get_car_dict():
         for key in i:
             i[key] = str(i[key])
     return car_list
+
+
+#  Query model from Select Box in /cars and return it's data
+def model_dict(model):
+    car = Cars.query.filter_by(model=model).first()
+    car_dict = car.__dict__
+    car_dict.pop('_sa_instance_state')
+    return car_dict
