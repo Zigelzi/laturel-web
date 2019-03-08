@@ -12,7 +12,7 @@
 		<meta property="og:image:height" content="308">
 		 <meta property="og:description" content="Calculate car ownership costs and compare different propulsion types (EV/ICE)" />
 		<title>Laturel - {% block title %} {% endblock %} </title>
-
+		<script type="text/javascript" src="{% block script %}{% endblock %}" defer></script>
 			
 	</head>
 	<body class="body-bg-color">
@@ -43,9 +43,5 @@
 	<footer>
 		<p class="text-center">Made by <a href="https://www.linkedin.com/in/miikasavela/">Miika Savela</a> &copy 2019 | Creator has no responsibility or liability for any errors or omissions in the content of the site</p>
 	</footer>
-	
-	
-	{% block script %}
 
-	{% endblock %}
 </html>
