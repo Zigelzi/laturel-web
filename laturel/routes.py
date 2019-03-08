@@ -1,7 +1,7 @@
 from flask import render_template, jsonify, make_response, request
 from datetime import datetime
 from laturel import app
-from laturel.forms import Form, ChargerForm, CarSelectorForm
+from laturel.forms import CostForm, ChargerForm, CarSelectorForm
 from laturel.helpers import depr_oper, round_hundreds
 from laturel.models import model_dict
 
@@ -37,7 +37,7 @@ def evbasics():
 
 @app.route('/cars', methods=['GET', 'POST'])
 def cars():
-    form = Form()
+    form = CostForm()
     car_form = CarSelectorForm()
 
     edeprcalc = 0
