@@ -8,7 +8,7 @@ from laturel.models import model_dict
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', active='index')
 
 
 @app.route('/chargers', methods=['POST', 'GET'])
@@ -27,12 +27,13 @@ def chargers():
                            driveKm=driveKm,
                            stopTime=stopTime,
                            startTime=startTime,
-                           chargingTime=chargingTime)
+                           chargingTime=chargingTime,
+                           active='chargers')
 
 
 @app.route('/evbasics')
 def evbasics():
-    return render_template('evbasics.html')
+    return render_template('evbasics.html', active='evbasics')
 
 
 @app.route('/cars', methods=['GET', 'POST'])
@@ -167,14 +168,14 @@ def cars():
                            doper=doper,
                            dafter=dafter,
                            owntime=owntime,
-                           error=error
+                           error=error,
+                           active='cars'
                            )
 
 
 @app.route('/about')
 def about():
-    car_form = CarSelectorForm()
-    return render_template('about.html', car_form=car_form)
+    return render_template('about.html', car_form=car_form, active='about')
 
 
 @app.route('/db/data', methods=['GET', 'POST'])

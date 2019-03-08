@@ -18,11 +18,6 @@
 	<body class="body-bg-color">
 		<nav id="nav" class="navbar navbar-default" style="margin: 0px">
 			<div class="container">
-				<!--
-				<div class="navbar-header">
-					<a href="index" class="navbar-brand"></a>
-				</div>
-				-->
 				<ul class="nav navbar-nav">
 					<li class="{% if active=='index'%}active-nav{% endif %}"><a class="nav-img" href="{{ url_for('index') }}"><img id="logo" src="{{ url_for('static', filename='img/laturel_logo_m.png') }}"></a></li>
 					<li class="{% if active=='evbasics'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('evbasics') }}">EV basics</a></li>
