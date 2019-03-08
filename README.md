@@ -7,7 +7,8 @@ Website which purpose is to offer transparent and neutral information about diff
 ## Built with
 * Flask - Python webapp framework for backend
 * Bootstrap 3.7 - Frontend CSS framework with custom stylesheet
-* Nginx and Gunicorn - Deployed on Ubuntu webserver
+* PostgreSQL 11 - Database for storing the long-term data
+* Nginx and Gunicorn - Deployed on Ubuntu 18.10 webserver
 
 ## WIP
 This webapp is cosntantly under development and I'm adding features as it goes. Improvement suggestions and feedback is greatly appreciated!

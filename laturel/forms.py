@@ -1,5 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, SubmitField, DateTimeField, RadioField, FloatField
+from wtforms import IntegerField, SubmitField, SelectField, RadioField, FloatField
+from laturel.models import get_cars
+
 
 class ChargerForm(FlaskForm):
     driveKmRadio = RadioField('How much do you drive daily?',
@@ -9,10 +11,14 @@ class ChargerForm(FlaskForm):
     startTime = RadioField('When do you start driving?', choices=[('05:00', '05:00'), ('06:00', '06:00')], default='05:00')
     submit = SubmitField('Check how powerful charger I need!')
 
+
 class CarSelectorForm(FlaskForm):
-    carmodel = RadioField('Select car model to use as template:',
-                          choices=[('Hyundai Kona', 'Hyundai Kona'),
-                                   ('Kia Niro', 'Kia Niro')])
+    ecars, gcars, dcars = get_cars()
+    ecar_model = SelectField('Select electric vehicle', choices=ecars)
+    gcar_model = SelectField('Select gasoline vehicle', choices=gcars)
+    dcar_model = SelectField('Select diesel vehicle', choices=dcars)
+
+
 
 class CostForm(FlaskForm):
     ecarprice = FloatField('Car purchase price', default=40000)

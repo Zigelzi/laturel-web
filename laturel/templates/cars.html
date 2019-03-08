@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 
-{% block title %}
-	Cars
-{% endblock %}
+{% block title %}Cars{% endblock %}
+{% block script %} {{ url_for('static', filename='js/cars.js') }} {% endblock %}
 
 {% block content%}
 	<div class="row">
@@ -25,7 +24,48 @@
 				<b>{{ error }}</b> occurred! Check form input values.
 			</div>
 		{% endif %}
-	</div>	
+	</div>
+
+	<form action="{{ url_for('cars') }}" method="post">
+		<div class="row">
+			<div class="col-lg-4 form-group text-center">
+				<div class="form-box e-top">
+					<div>
+						{{ car_form.ecar_model.label(class="form-control-label label-margin") }}
+						<br>
+						
+						<div class="select-box">
+							{{ car_form.ecar_model(class="form-control") }}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 form-group text-center">
+				<div class="form-box g-top">
+					<div>
+						{{ car_form.gcar_model.label(class="form-control-label label-margin") }}
+						<br>
+						
+						<div class="select-box">
+							{{ car_form.gcar_model(class="form-control") }}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 form-group text-center">
+				<div class="form-box d-top">
+					<div>
+						{{ car_form.dcar_model.label(class="form-control-label label-margin") }}
+						<br>
+						
+						<div class="select-box">
+							{{ car_form.dcar_model(class="form-control") }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
 
 	<form action="{{ url_for('cars', _anchor='results') }}" method="post">
 
@@ -425,5 +465,5 @@
 	</div>
 	<!-- End of result cards -->
 	{% endif %}
-	
+
 {% endblock %}
