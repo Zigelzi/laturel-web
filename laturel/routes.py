@@ -179,14 +179,9 @@ def about():
 
 @app.route('/db/data', methods=['GET', 'POST'])
 def data():
-
     #  Take the JSON request and convert it to dict
     req = request.get_json()
-    print(req['model'])
-
     model = model_dict(req['model'])
-
     #  Create JSON response
     res = make_response(jsonify(model), 200)
-
     return res

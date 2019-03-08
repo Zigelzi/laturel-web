@@ -29,13 +29,35 @@
 			<div class="col-lg-4 form-group text-center">
 				<div class="form-box">
 					<div>
-						{{ car_form.car_model.label(class="form-control-label label-margin") }}
+						{{ car_form.ecar_model.label(class="form-control-label label-margin") }}
 						<br>
 						
 						<div class="select-box">
-							{{ car_form.car_model(class="form-control") }}
+							{{ car_form.ecar_model(class="form-control") }}
 						</div>
-						<div id="car_json">
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 form-group text-center">
+				<div class="form-box">
+					<div>
+						{{ car_form.gcar_model.label(class="form-control-label label-margin") }}
+						<br>
+						
+						<div class="select-box">
+							{{ car_form.gcar_model(class="form-control") }}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 form-group text-center">
+				<div class="form-box">
+					<div>
+						{{ car_form.dcar_model.label(class="form-control-label label-margin") }}
+						<br>
+						
+						<div class="select-box">
+							{{ car_form.dcar_model(class="form-control") }}
 						</div>
 					</div>
 				</div>

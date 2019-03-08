@@ -90,11 +90,19 @@ def add_cars():
 
 #  Query all cars in database and create list list for Select field
 def get_cars():
-    cars = Cars.query.all()
-    cars_select = []
-    for car in cars:
-        cars_select.append((car.model, f'{car.maker.capitalize()} {car.model.capitalize()}'))
-    return cars_select
+    ecars = Cars.query.filter_by(type='ev').all()
+    gcars = Cars.query.filter_by(type='gasoline').all()
+    dcars = Cars.query.filter_by(type='diesel').all()
+    ecars_select = []
+    gcars_select = []
+    dcars_select = []
+    for car in ecars:
+        ecars_select.append((car.model, f'{car.maker.capitalize()} {car.model.capitalize()}'))
+    for car in gcars:
+        gcars_select.append((car.model, f'{car.maker.capitalize()} {car.model.capitalize()}'))
+    for car in dcars:
+        dcars_select.append((car.model, f'{car.maker.capitalize()} {car.model.capitalize()}'))
+    return ecars_select, gcars_select, dcars_select
 
 
 #  Function to query all models from database and make list of dictionaries from them

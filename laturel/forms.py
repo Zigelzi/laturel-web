@@ -13,8 +13,10 @@ class ChargerForm(FlaskForm):
 
 
 class CarSelectorForm(FlaskForm):
-    choices = get_cars()
-    car_model = SelectField('Select Electric Vehicle', choices=choices)
+    ecars, gcars, dcars = get_cars()
+    ecar_model = SelectField('Select electric vehicle', choices=ecars)
+    gcar_model = SelectField('Select gasoline vehicle', choices=gcars)
+    dcar_model = SelectField('Select diesel vehicle', choices=dcars)
 
 
 
