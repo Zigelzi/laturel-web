@@ -123,8 +123,8 @@ def get_car_dict():
 
 
 #  Query model from Select Box in /cars and return it's data
-def model_dict(model):
-    car = Cars.query.filter_by(model=model).first()
+def model_dict(type, model):
+    car = Cars.query.filter_by(type=type, model=model).first()
     car_dict = car.__dict__
     car_dict.pop('_sa_instance_state')
     return car_dict
