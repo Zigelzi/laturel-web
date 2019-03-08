@@ -181,19 +181,23 @@ def about():
 def data():
     #  Take the JSON request and convert it to dict
     req = request.get_json()
+
+    #  Set the id values to compare and switch to correct type for DB input in model_dict
     ev = 'ecar_model'
     gasoline = 'gcar_model'
     diesel = 'dcar_model'
 
+    #  Replace the id value for type value to be able to do DB query correctly
     if req['type'] == ev:
         req['type'] = 'ev'
     if req['type'] == gasoline:
         req['type'] = 'gasoline'
     if req['type'] == diesel:
         req['type'] = 'diesel'
-    print(req)
+
+    #  Query DB for car values and make dict of values
     model = model_dict(req['type'], req['model'])
-    print(model)
-    #  Create JSON response
+
+    #  Create JSON response from dict and respond it to application
     res = make_response(jsonify(model), 200)
     return res
