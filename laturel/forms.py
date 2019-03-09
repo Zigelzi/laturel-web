@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, SubmitField, SelectField, RadioField, FloatField
+from wtforms import IntegerField, SubmitField, SelectField, RadioField, FloatField, validators
 from laturel.models import get_cars
 
 
@@ -17,7 +17,6 @@ class CarSelectorForm(FlaskForm):
     ecar_model = SelectField('Select electric vehicle', choices=ecars)
     gcar_model = SelectField('Select gasoline vehicle', choices=gcars)
     dcar_model = SelectField('Select diesel vehicle', choices=dcars)
-
 
 
 class CostForm(FlaskForm):

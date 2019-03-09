@@ -103,6 +103,8 @@ def cars():
 
     error = None
 
+    print(car_form.ecar_model.data)
+
     try:
         # Calculating the driving power tax based on car weight.
         edrivingpower = edrivingpower * 0.015 * 365 # EV 0.015€/starting 100 kg
@@ -175,7 +177,7 @@ def cars():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', car_form=car_form, active='about')
+    return render_template('about.html', active='about')
 
 
 @app.route('/db/data', methods=['GET', 'POST'])
