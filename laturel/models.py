@@ -1,7 +1,6 @@
 from tabulate import tabulate
 from laturel import db
 
-
 class Cars(db.Model):
 
     #  Initializing database columns.
@@ -9,6 +8,7 @@ class Cars(db.Model):
     type = db.Column(db.String(10), nullable=False)
     maker = db.Column(db.String(20), nullable=False)
     model = db.Column(db.String(20), nullable=False)
+    body_type = db.Column(db.String(20), nullable=False)
     price = db.Column(db.Integer, nullable=False)
     battery = db.Column(db.Float)
     driverange = db.Column(db.Integer)
@@ -20,6 +20,7 @@ class Cars(db.Model):
         return f"<Cars(type='{self.type}'," \
             f" maker='{self.maker}'," \
             f" model='{self.model}'," \
+            f" body_type='{self.body_type}'," \
             f" price='{self.price}'," \
             f" battery='{self.battery}'," \
             f" driverange='{self.driverange}'," \
@@ -32,19 +33,38 @@ def add_cars():
     car_list = []
     dash_line = (40 * '-') + '\n'
 
+    #  Function to validate that correct body type and engine type is entered
+    def check_type(checked_type):
+        allowed_types = ['ev', 'gasoline', 'diesel']
+        allowed_body_types = ['sedan', 'suv', 'wagon', 'hatchback']
+        car_type = ''
+        if checked_type == 'type':
+            while True:
+                car_type = input('Engine type (EV/Gasoline/Diesel): ').lower()
+                if car_type not in allowed_types:
+                    print('Enter correct engine type (EV/Gasoline/Diesel): ')
+                    continue
+                break
+        if checked_type == 'body_type':
+            while True:
+                car_type = input('Body type (sedan/suv/wagon/hatchback): ').lower()
+                if car_type not in allowed_body_types:
+                    print('Enter correct body type (sedan/suv/wagon): ')
+                    continue
+                break
+        return car_type
+
+
+
     print('Adding new cars to database')
     print(dash_line)
     while True:
         car_dict = {}
-        allowed_types = ['ev', 'gasoline', 'diesel']
-
         #  Query user for values for the row to be commited.
-        car_dict['type'] = input('Engine type (EV/Gasoline/Diesel): ').lower()
-        if car_dict['type'] not in allowed_types:
-            print('Enter correct engine type (EV/Gasoline/Diesel): ')
-            continue
+        car_dict['type'] = check_type('type')
         car_dict['maker'] = input('Maker: ').lower()
         car_dict['model'] = input('Model: ').lower()
+        car_dict['body_type'] = check_type('body_type')
         car_dict['price'] = input('Price: (€) ').lower()
         #  Battery is optional value, set to None if left blank.
         car_dict['battery'] = input('Battery size (kWh, optional): ').lower()
@@ -54,7 +74,7 @@ def add_cars():
         car_dict['driverange'] = input('Drive range (km, optional): ').lower()
         if car_dict['driverange'] == '':
             car_dict['driverange'] = None
-        car_dict['consumption'] = input('Consumption (kWh/100km): ').lower()
+        car_dict['consumption'] = input('Consumption (kWh or l/100km): ').lower()
         car_dict['weight'] = input('Weight (kg): ').lower()
         car_list.append(car_dict)
         print(f'Values added for {car_dict["maker"].upper()} {car_dict["model"].upper()}.')
@@ -75,6 +95,7 @@ def add_cars():
             car = Cars(type=cars['type'],
                        maker=cars['maker'],
                        model=cars['model'],
+                       body_type=cars['body_type'],
                        price=cars['price'],
                        battery=cars['battery'],
                        driverange=cars['driverange'],
@@ -82,6 +103,7 @@ def add_cars():
                        weight=cars['weight'])
             db.session.add(car)
         db.session.commit()
+        db.session.close_all()
         print('\nChanges committed succesfully to database!')
     else:
         print('No changes committed to database.')
