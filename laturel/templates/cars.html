@@ -72,7 +72,7 @@
 		<!-- General information form -->
 		<div class="row">
 			<div class="col-lg-12">
-				<h3 class="header-margin">Ownership information</h3>	
+				<h3>Ownership information</h3>	
 			</div>
 			<div class="col-lg-4 form-group text-center">
 				<div class="form-box general-top">
@@ -92,15 +92,24 @@
 							km/year
 						</div>
 					</div>
-					
 				</div>
-			</div>			
+			</div>
+
+
 		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="btn-margin">
+				{{ form.submit(class="btn btn-primary big-btn") }}
+				</div>
+			</div>
+		</div>
+
 		<!--  End of general information-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h3 class="header-margin">Initial costs</h3>
+				<h3>Initial costs</h3>
 			</div>
 		</div>
 
@@ -208,7 +217,7 @@
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h3 class="header-margin">Operating costs</h3>
+				<h3>Operating costs</h3>
 			</div>
 		</div>
 
@@ -335,9 +344,6 @@
 		</div>
 		<!-- End of row of operational costs -->
 
-		<div class="text-center input-margins">
-			{{ form.submit(class="btn btn-primary big-btn") }}
-		</div>
 	</form>
 
 
@@ -345,7 +351,7 @@
 	<!-- Result cards -->
 	<div class="row row-light" id="results">
 		<div class="col-lg-12">
-				<h3 class="header-margin">Results</h3>
+				<h3>Results</h3>
 			</div>
 		<!-- EV result card -->
 		<div class="col-lg-4 text-center form-group">

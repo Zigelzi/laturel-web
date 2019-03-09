@@ -74,6 +74,9 @@ ul {
 	margin-right: 5px;
 	margin-bottom: 10px;
 }
+.btn-margin{
+	margin-left: 15px;
+}
 
 .form-textbox {
 	max-width: 300px
