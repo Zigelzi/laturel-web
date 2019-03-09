@@ -109,14 +109,14 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h3>Initial costs</h3>
+				<h3>Car information</h3>
 			</div>
 		</div>
 
-		<!-- Initial costs row -->
+		<!-- Car information row -->
 		<div class="row">
 
-			<!-- EV initial costs -->
+			<!-- EV Car information -->
 			<div class="col-lg-4 text-center form-group">
 				<div class="form-box e-top">
 					<div class="box-header">
@@ -168,9 +168,9 @@
 
 				</div>
 			</div>
-			<!-- End of EV initial costs -->
+			<!-- End of EV Car information -->
 
-			<!-- Gasoline initial costs -->
+			<!-- Gasoline Car information -->
 			<div class="col-lg-4 text-center form-group">
 				<div class=" form-box g-top">
 					<div class="box-header">
@@ -212,9 +212,9 @@
 					
 				</div>
 			</div>
-			<!-- End of gasoline initial costs -->
+			<!-- End of gasoline Car information -->
 
-			<!-- Diesel initial costs -->
+			<!-- Diesel Car information -->
 			<div class="col-lg-4 text-center form-group">
 				<div class="form-box d-top">
 					<div class="box-header">
@@ -263,10 +263,10 @@
 					</div>
 				</div>
 			</div>
-			<!-- End of diesel initial costs -->
+			<!-- End of diesel Car information -->
 
 		</div>
-		<!-- End of initial costs row -->
+		<!-- End of Car information row -->
 
 		<div class="row">
 			<div class="col-lg-12">
@@ -283,21 +283,20 @@
 					<div class="box-header">
 						<h4>Electric</h4>
 					</div>
-					
-					{{ form.eprice.label(class="form-control-label label-margin") }}
-					<br>
-					<div class="input-group input-margins">
-					{{ form.eprice(class="form-control") }}
-						<div class="input-group-addon addon-width">
-							€/kWh
-						</div>
-					</div>
 					{{ form.edepr.label(class="form-control-label label-margin") }}
 					<br>
 					<div class="input-group input-margins">
 					{{ form.edepr(class="form-control") }}
 						<div class="input-group-addon addon-width">
 							% / year
+						</div>
+					</div>
+					{{ form.eprice.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.eprice(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							€/kWh
 						</div>
 					</div>
 					{{ form.esubsidy.label(class="form-control-label label-margin") }}
@@ -328,21 +327,20 @@
 					<div class="box-header">
 						<h4>Gasoline</h4>
 					</div>
-					
-					{{ form.gprice.label(class="form-control-label label-margin") }}
-					<br>
-					<div class="input-group input-margins">
-					{{ form.gprice(class="form-control") }}
-						<div class="input-group-addon addon-width">
-							€/l
-						</div>
-					</div>
 					{{ form.gdepr.label(class="form-control-label label-margin") }}
 					<br>
 					<div class="input-group input-margins">
 					{{ form.gdepr(class="form-control") }}
 						<div class="input-group-addon addon-width">
 							% / year
+						</div>
+					</div>
+					{{ form.gprice.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.gprice(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							€/l
 						</div>
 					</div>
 				</div>
@@ -355,6 +353,14 @@
 					<div class="box-header">
 						<h4>Diesel</h4>
 					</div>
+					{{ form.ddepr.label(class="form-control-label label-margin") }}
+					<br>
+					<div class="input-group input-margins">
+					{{ form.ddepr(class="form-control") }}
+						<div class="input-group-addon addon-width">
+							% / year
+						</div>
+					</div>
 					{{ form.dprice.label(class="form-control-label label-margin") }}
 					<br>
 					<div class="input-group input-margins">
@@ -363,14 +369,7 @@
 							€/l
 						</div>
 					</div>
-					{{ form.ddepr.label(class="form-control-label label-margin") }}
-					<br>
-					<div class="input-group input-margins">
-					{{ form.ddepr(class="form-control") }}
-						<div class="input-group-addon addon-width">
-							% / year
-						</div>
-					</div>	
+	
 				</div>	
 			</div>
 			<!-- End of diesel operational costs section -->

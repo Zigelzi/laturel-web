@@ -103,8 +103,6 @@ def cars():
 
     error = None
 
-    print(car_form.ecar_model.data)
-
     try:
         # Calculating the driving power tax based on car weight.
         edrivingpower = edrivingpower * 0.015 * 365 # EV 0.015€/starting 100 kg

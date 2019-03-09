@@ -1,6 +1,8 @@
 from tabulate import tabulate
 from laturel import db
 
+#  TODO: Add CO2 column to database to calculate car tax automatically
+
 class Cars(db.Model):
 
     #  Initializing database columns.
