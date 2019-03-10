@@ -5,14 +5,19 @@ const ecar_price = document.getElementById('ecar_price');
 const ecar_consumption = document.getElementById('ecar_consumption');
 const ecar_weight = document.getElementById('ecar_weight');
 const ecar_depr = document.getElementById('ecar_depr');
-var evars = {}
+
+var evars = {
+	name: 'evars'
+}
 
 // Gasoline vehicle values
 const gcars = document.getElementById('gcar_model');
 const gcar_price = document.getElementById('gcar_price');
 const gcar_consumption = document.getElementById('gcar_consumption');
 const gcar_depr = document.getElementById('gcar_depr');
-var gvars = {}
+var gvars = {
+	name: 'gvars'
+}
 
 // Diesel vehicle values
 const dcars = document.getElementById('dcar_model');
@@ -20,16 +25,11 @@ const dcar_price = document.getElementById('dcar_price');
 const dcar_consumption = document.getElementById('dcar_consumption')
 const dcar_weight = document.getElementById('dcar_weight')
 const dcar_depr = document.getElementById('dcar_depr');
-var dvars = {}
-
+var dvars = {
+	name: 'dvars'
+}
 // General values
 const inputBoxes = document.querySelectorAll('input');
-
-// Update car values from car select menu
-ecars.addEventListener('change', () => {change_data(ecars);} );
-gcars.addEventListener('change', () => {change_data(gcars);} );
-dcars.addEventListener('change', () => {change_data(dcars);} );
-document.addEventListener('DOMContentLoaded', get_car_values);	
 
 //  Updating the  values from car select to respective fields
 function change_data(carType) {
@@ -95,12 +95,24 @@ function get_car_values(){
 			dvars[inputBoxes[i].id] = inputBoxes[i].value
 		  }
 	  }
+	  evars['chargerprice'] = 800
+	  evars['ecar_drivingpower'] = calc_drivingpower(evars.ecar_weight, evars)
+	  dvars['dcar_drivingpower'] = calc_drivingpower(dvars.dcar_weight, dvars)
+	  
 }
 
 // Helper | Round to last hundred to calculate the driving power tax
-function round_hundreds(n){
+function calc_drivingpower(n, obj){
+	var drivingpowerTax = 0
+	n = Number(n)
 	n = (Math.floor(n/100)*100)
-	return n
+	if (obj.name === 'evars'){
+		drivingpowerTax = n * 0.015 * 365 // Finnish driving power tax formula for EV:s
+	}
+	if (obj.name === 'dvars'){
+		drivingpowerTax = n * 0.055 * 365
+	}
+	return drivingpowerTax
 }
 
 // Helper | Calculate deprecation and operational expenses
@@ -125,4 +137,15 @@ function depr_oper(purchase, rate, years, cost){
 	console.log(deprValue)
 	console.log(deprYearly)
 	console.log(yearlyCost)
+	return {
+		deprValue: deprValue,
+		deprYearly: deprYearly,
+		yearlyCost:yearlyCost
+	}
 }
+
+// Update car values from car select menu
+ecars.addEventListener('change', () => {change_data(ecars);} );
+gcars.addEventListener('change', () => {change_data(gcars);} );
+dcars.addEventListener('change', () => {change_data(dcars);} );
+document.addEventListener('DOMContentLoaded', get_car_values);	
