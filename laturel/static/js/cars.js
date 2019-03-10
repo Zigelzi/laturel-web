@@ -5,6 +5,12 @@ const ecar_price = document.getElementById('ecar_price');
 const ecar_consumption = document.getElementById('ecar_consumption');
 const ecar_weight = document.getElementById('ecar_weight');
 const ecar_depr = document.getElementById('ecar_depr');
+const eOperYearly = document.getElementById('eOperYearly');
+const eOperTotal = document.getElementById('eOperTotal');
+const eDeprTotal = document.getElementById('eDeprTotal');
+const eCostsTotal = document.getElementById('eCostsTotal');
+const eCarResell = document.getElementById('eCarResell');
+
 var eVars = {
 	name: 'eVars'
 }
@@ -14,6 +20,7 @@ const gcars = document.getElementById('gcar_model');
 const gcar_price = document.getElementById('gcar_price');
 const gcar_consumption = document.getElementById('gcar_consumption');
 const gcar_depr = document.getElementById('gcar_depr');
+
 var gVars = {
 	name: 'gVars'
 }
@@ -24,6 +31,7 @@ const dcar_price = document.getElementById('dcar_price');
 const dcar_consumption = document.getElementById('dcar_consumption');
 const dcar_weight = document.getElementById('dcar_weight');
 const dcar_depr = document.getElementById('dcar_depr');
+
 var dVars = {
 	name: 'dVars'
 }
@@ -31,6 +39,8 @@ var dVars = {
 const inputBoxes = document.querySelectorAll('input');
 const ownTime = document.getElementById('owntime');
 const driveKm = document.getElementById('drivekm');
+const jsSubmit = document.getElementById('jsSubmit');
+
 var generalVars = {
 	name: 'generalVars',
 	owntime: Number(ownTime.value),
@@ -46,7 +56,7 @@ function change_data(carType) {
 		model: carType.value
 	}
 	
-	console.log(model) // DEBUG
+	//console.log(model)  DEBUG
 	var loc = `${window.origin}/db/data`
 
 	// Post selected values to backend to query DB
@@ -67,8 +77,8 @@ function change_data(carType) {
 		}
 
 		response.json().then(function(data){
-			console.log(data)  // DEBUG
-			console.log(carType.id)  // DEBUG
+			//console.log(data)   DEBUG
+			//console.log(carType.id)   DEBUG
 
 			// Check which car type the response belongs to and update respecitve values accordingly
 			if (carType.id === 'ecar_model'){
@@ -121,6 +131,7 @@ function get_car_values(){
 	var gDeprOper;
 	var dDeprOper;
 
+	eVars['carName'] = ecars.value;
 	eVars['chargerprice'] = 800;
 	eVars['drivingpower'] = calc_drivingpower(eVars.weight, eVars);
 	eVars['yearly'] = Math.floor(generalVars.driveKm * eVars.eprice * (eVars.consumption / 100) + eVars.tax + eVars.drivingpower);
@@ -130,14 +141,29 @@ function get_car_values(){
 	eDeprOper = depr_oper(eVars.price, eVars.depr, generalVars.owntime, eVars.yearly);
 	eVars = Object.assign(eVars, eDeprOper); // Add the deprecation and operational costs values to main object
 
+	gVars['carName'] = gcars.value;
 	gVars['yearly'] = Math.floor(generalVars.driveKm * gVars.gprice * (gVars.consumption / 100) + gVars.tax);
 	gDeprOper = depr_oper(gVars.price, gVars.depr, generalVars.owntime, gVars.yearly);
 	gVars = Object.assign(gVars, gDeprOper); // Add the deprecation and operational costs values to main object
 
+	dVars['carName'] = dcars.value
 	dVars['drivingpower'] = calc_drivingpower(dVars.weight, dVars);
 	dVars['yearly'] = Math.floor(generalVars.driveKm * dVars.dprice * (dVars.consumption / 100) + dVars.tax + dVars.drivingpower);
 	dDeprOper = depr_oper(dVars.price, dVars.depr, generalVars.owntime, dVars.yearly);
-	dVars = Object.assign(dVars, dDeprOper);	  
+	dVars = Object.assign(dVars, dDeprOper);
+}
+
+function update_values(e){
+	var lastYear = generalVars.owntime - 1
+
+	get_car_values()
+	eOperYearly.textContent = `Operational costs per year: ${eVars.yearly} €`
+	eOperTotal.textContent = `Operational costs in total: ${eVars.yearlyCost[lastYear]} €`
+	eDeprTotal.textContent = `Depreciated value total: ${eVars.deprValue[lastYear]} €`
+	eCostsTotal.textContent = `Total costs: ${eVars.yearlyCost[lastYear] + eVars.deprValue[lastYear]} €` 
+	eCarResell.textContent = `Resell value: ${eVars.price - eVars.deprValue[lastYear]} €`
+
+
 }
 
 // Helper | Round to last hundred to calculate the driving power tax
@@ -151,7 +177,7 @@ function calc_drivingpower(n, obj){
 	if (obj.name === 'dVars'){
 		drivingpowerTax = n * 0.055 * 365// Finnish driving power tax formula for Diesels
 	}
-	return drivingpowerTax;
+	return Math.floor(drivingpowerTax);
 }
 
 // Helper | Calculate deprecation and operational expenses
@@ -183,7 +209,10 @@ function depr_oper(purchase, rate, years, cost){
 
 
 // Update car values from car select menu
+
+document.addEventListener('DOMContentLoaded', get_car_values);
 ecars.addEventListener('change', () => {change_data(ecars);} );
 gcars.addEventListener('change', () => {change_data(gcars);} );
 dcars.addEventListener('change', () => {change_data(dcars);} );
-document.addEventListener('DOMContentLoaded', get_car_values);	
+jsSubmit.addEventListener('click', update_values);
+//eOper.textContent = `${eVars.yearly} €`
