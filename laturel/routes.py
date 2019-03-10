@@ -70,33 +70,32 @@ def cars():
     dafter = 0
 
     # EV data from EV form
-    eform_ecarprice = form.ecarprice
-    ecarprice = eform_ecarprice.data
-    edepr = form.edepr.data
-    esubsidy = form.esubsidy.data
-    econsumption = form.econsumption.data
-    eprice = form.eprice.data
-    eweight = form.eweight.data
+    ecarprice = form.ecar_price.data
+    edepr = form.ecar_depr.data
+    esubsidy = form.ecar_subsidy.data
+    econsumption = form.ecar_consumption.data
+    eprice = form.ecar_eprice.data
+    eweight = form.ecar_weight.data
     edrivingpower = round_hundreds(eweight)  # Round to starting hundreds and multiply by 0.055 (€)
-    etax = form.etax.data
-    echarger = form.echarger.data
+    etax = form.ecar_tax.data
+    echarger = form.ecar_charger.data
     chargerprice = 800
 
     # Gasoline car data from gasoline form
-    gcarprice = form.gcarprice.data
-    gdepr = form.gdepr.data
-    gconsumption = form.gconsumption.data
-    gprice = form.gprice.data
-    gtax = form.gtax.data
+    gcarprice = form.gcar_price.data
+    gdepr = form.gcar_depr.data
+    gconsumption = form.gcar_consumption.data
+    gprice = form.gcar_gprice.data
+    gtax = form.gcar_tax.data
 
     # Diesel car data from diesel form
-    dcarprice = form.dcarprice.data
-    ddepr = form.ddepr.data
-    dconsumption = form.dconsumption.data
-    dprice = form.dprice.data
-    dweight = form.dweight.data
+    dcarprice = form.dcar_price.data
+    ddepr = form.dcar_depr.data
+    dconsumption = form.dcar_consumption.data
+    dprice = form.dcar_dprice.data
+    dweight = form.dcar_weight.data
     ddrivingpower = round_hundreds(dweight)  # Round to starting hundreds and multiply by 0.055 (€)
-    dtax = form.dtax.data
+    dtax = form.dcar_tax.data
 
     drivekm = form.drivekm.data
     owntime = form.owntime.data
@@ -139,8 +138,6 @@ def cars():
         dtotal = int(dcost_list[owntime - 1] + ddepr_total[owntime - 1])
         doper = dcost_list[owntime - 1]
         dafter = int(dcarprice - ddepr_total[owntime - 1])
-
-        ziplist = zip(edepr_yearly, gdepr_yearly, ddepr_yearly)
 
         if echarger == 'No':
             etotal = etotal + chargerprice
