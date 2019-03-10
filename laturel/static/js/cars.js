@@ -5,7 +5,6 @@ const ecar_price = document.getElementById('ecar_price');
 const ecar_consumption = document.getElementById('ecar_consumption');
 const ecar_weight = document.getElementById('ecar_weight');
 const ecar_depr = document.getElementById('ecar_depr');
-
 var eVars = {
 	name: 'eVars'
 }
@@ -22,8 +21,8 @@ var gVars = {
 // Diesel vehicle values
 const dcars = document.getElementById('dcar_model');
 const dcar_price = document.getElementById('dcar_price');
-const dcar_consumption = document.getElementById('dcar_consumption')
-const dcar_weight = document.getElementById('dcar_weight')
+const dcar_consumption = document.getElementById('dcar_consumption');
+const dcar_weight = document.getElementById('dcar_weight');
 const dcar_depr = document.getElementById('dcar_depr');
 var dVars = {
 	name: 'dVars'
@@ -118,40 +117,49 @@ function get_car_values(){
 			}
 		}
 	}
-	eVars['chargerprice'] = 800
-	eVars['drivingpower'] = calc_drivingpower(eVars.weight, eVars)
-	eVars['yearly'] = Math.floor(generalVars.driveKm * eVars.eprice * (eVars.consumption / 100) + eVars.tax + eVars.drivingpower)
+	var eDeprOper;
+	var gDeprOper;
+	var dDeprOper;
+
+	eVars['chargerprice'] = 800;
+	eVars['drivingpower'] = calc_drivingpower(eVars.weight, eVars);
+	eVars['yearly'] = Math.floor(generalVars.driveKm * eVars.eprice * (eVars.consumption / 100) + eVars.tax + eVars.drivingpower);
 	if (eVars.subsidy > 0 ){
 		eVars.price = eVars.price - eVars.subsidy
 	}
-	 
-	
-	gVars['yearly'] = Math.floor(generalVars.driveKm * gVars.gprice * (gVars.consumption / 100) + gVars.tax)
+	eDeprOper = depr_oper(eVars.price, eVars.depr, generalVars.owntime, eVars.yearly);
+	eVars = Object.assign(eVars, eDeprOper); // Add the deprecation and operational costs values to main object
 
-	dVars['drivingpower'] = calc_drivingpower(dVars.weight, dVars)
-	dVars['yearly'] = Math.floor(generalVars.driveKm * dVars.dprice * (dVars.consumption / 100) + dVars.tax + dVars.drivingpower)	  
+	gVars['yearly'] = Math.floor(generalVars.driveKm * gVars.gprice * (gVars.consumption / 100) + gVars.tax);
+	gDeprOper = depr_oper(gVars.price, gVars.depr, generalVars.owntime, gVars.yearly);
+	gVars = Object.assign(gVars, gDeprOper); // Add the deprecation and operational costs values to main object
+
+	dVars['drivingpower'] = calc_drivingpower(dVars.weight, dVars);
+	dVars['yearly'] = Math.floor(generalVars.driveKm * dVars.dprice * (dVars.consumption / 100) + dVars.tax + dVars.drivingpower);
+	dDeprOper = depr_oper(dVars.price, dVars.depr, generalVars.owntime, dVars.yearly);
+	dVars = Object.assign(dVars, dDeprOper);	  
 }
 
 // Helper | Round to last hundred to calculate the driving power tax
 function calc_drivingpower(n, obj){
-	var drivingpowerTax = 0
-	n = Number(n)
-	n = Math.floor(n/100)
+	var drivingpowerTax = 0;
+	n = Number(n);
+	n = Math.floor(n/100);
 	if (obj.name === 'eVars'){
 		drivingpowerTax = n * 0.015 * 365 // Finnish driving power tax formula for EV:s
 	}
 	if (obj.name === 'dVars'){
 		drivingpowerTax = n * 0.055 * 365// Finnish driving power tax formula for Diesels
 	}
-	return drivingpowerTax
+	return drivingpowerTax;
 }
 
 // Helper | Calculate deprecation and operational expenses
 function depr_oper(purchase, rate, years, cost){
-	carValue = []
-	deprValue = []
-	deprYearly = []
-	yearlyCost = []
+	carValue = [];
+	deprValue = [];
+	deprYearly = [];
+	yearlyCost = [];
 	for (var i = 1; i < years+1; i++){
 		carValue.push(purchase * (1 - rate/100) ** i);
 		deprValue.push(Math.floor(purchase - carValue[i -1]))
@@ -165,9 +173,6 @@ function depr_oper(purchase, rate, years, cost){
 	for (var i = 1; i < years + 1; i++){
 		yearlyCost.push(Math.floor(cost * i))
 	}
-	console.log(deprValue)
-	console.log(deprYearly)
-	console.log(yearlyCost)
 	return {
 		deprValue: deprValue,
 		deprYearly: deprYearly,
