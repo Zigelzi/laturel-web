@@ -39,6 +39,7 @@ var dVars = {
 const inputBoxes = document.querySelectorAll('input');
 const ownTime = document.getElementById('owntime');
 const driveKm = document.getElementById('drivekm');
+const ownTimeValue = document.querySelectorAll('.owntime')
 const jsSubmit = document.getElementById('jsSubmit');
 
 var generalVars = {
@@ -151,12 +152,18 @@ function get_car_values(){
 	dVars['yearly'] = Math.floor(generalVars.driveKm * dVars.dprice * (dVars.consumption / 100) + dVars.tax + dVars.drivingpower);
 	dDeprOper = depr_oper(dVars.price, dVars.depr, generalVars.owntime, dVars.yearly);
 	dVars = Object.assign(dVars, dDeprOper);
+	ownTimeValue.forEach(function(ownTimeValue){
+		ownTimeValue.textContent = generalVars.owntime;
+	})
 }
 
 function update_values(e){
 	var lastYear = generalVars.owntime - 1
 
 	get_car_values()
+	ownTimeValue.forEach(function(ownTimeValue){
+		ownTimeValue.textContent = generalVars.owntime;
+	})
 	eOperYearly.textContent = `Operational costs per year: ${eVars.yearly} €`
 	eOperTotal.textContent = `Operational costs in total: ${eVars.yearlyCost[lastYear]} €`
 	eDeprTotal.textContent = `Depreciated value total: ${eVars.deprValue[lastYear]} €`
