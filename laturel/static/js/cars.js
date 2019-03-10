@@ -6,8 +6,8 @@ const ecar_consumption = document.getElementById('ecar_consumption');
 const ecar_weight = document.getElementById('ecar_weight');
 const ecar_depr = document.getElementById('ecar_depr');
 
-var evars = {
-	name: 'evars'
+var eVars = {
+	name: 'eVars'
 }
 
 // Gasoline vehicle values
@@ -15,8 +15,8 @@ const gcars = document.getElementById('gcar_model');
 const gcar_price = document.getElementById('gcar_price');
 const gcar_consumption = document.getElementById('gcar_consumption');
 const gcar_depr = document.getElementById('gcar_depr');
-var gvars = {
-	name: 'gvars'
+var gVars = {
+	name: 'gVars'
 }
 
 // Diesel vehicle values
@@ -25,11 +25,19 @@ const dcar_price = document.getElementById('dcar_price');
 const dcar_consumption = document.getElementById('dcar_consumption')
 const dcar_weight = document.getElementById('dcar_weight')
 const dcar_depr = document.getElementById('dcar_depr');
-var dvars = {
-	name: 'dvars'
+var dVars = {
+	name: 'dVars'
 }
 // General values
 const inputBoxes = document.querySelectorAll('input');
+const ownTime = document.getElementById('owntime');
+const driveKm = document.getElementById('drivekm');
+var generalVars = {
+	name: 'generalVars',
+	owntime: Number(ownTime.value),
+	driveKm: Number(driveKm.value)
+}
+
 
 //  Updating the  values from car select to respective fields
 function change_data(carType) {
@@ -86,31 +94,54 @@ function change_data(carType) {
 function get_car_values(){
 	for (var i = 0; i < inputBoxes.length;i++){
 		if (inputBoxes[i].id.startsWith('ecar')){
-		  evars[inputBoxes[i].id] = inputBoxes[i].value
+			if (isNaN(+inputBoxes[i].value)){
+				eVars[inputBoxes[i].id.replace('ecar_','')] = inputBoxes[i].value
+			}
+			else{
+				eVars[inputBoxes[i].id.replace('ecar_','')] = Number(inputBoxes[i].value)
+			}
 		}
 		if (inputBoxes[i].id.startsWith('gcar')){
-			gvars[inputBoxes[i].id] = inputBoxes[i].value
-		  }
-		  if (inputBoxes[i].id.startsWith('dcar')){
-			dvars[inputBoxes[i].id] = inputBoxes[i].value
-		  }
-	  }
-	  evars['chargerprice'] = 800
-	  evars['ecar_drivingpower'] = calc_drivingpower(evars.ecar_weight, evars)
-	  dvars['dcar_drivingpower'] = calc_drivingpower(dvars.dcar_weight, dvars)
-	  
+			if (isNaN(+inputBoxes[i].value)){
+				gVars[inputBoxes[i].id.replace('gcar_','')] = inputBoxes[i].value
+			}
+			else{
+				gVars[inputBoxes[i].id.replace('gcar_','')] = Number(inputBoxes[i].value)
+			}
+		}
+		if (inputBoxes[i].id.startsWith('dcar')){
+			if (isNaN(+inputBoxes[i].value)){
+				dVars[inputBoxes[i].id.replace('dcar_','')] = inputBoxes[i].value
+			}
+			else{
+				dVars[inputBoxes[i].id.replace('dcar_','')] = Number(inputBoxes[i].value)
+			}
+		}
+	}
+	eVars['chargerprice'] = 800
+	eVars['drivingpower'] = calc_drivingpower(eVars.weight, eVars)
+	eVars['yearly'] = Math.floor(generalVars.driveKm * eVars.eprice * (eVars.consumption / 100) + eVars.tax + eVars.drivingpower)
+	if (eVars.subsidy > 0 ){
+		eVars.price = eVars.price - eVars.subsidy
+	}
+	 
+	
+	gVars['yearly'] = Math.floor(generalVars.driveKm * gVars.gprice * (gVars.consumption / 100) + gVars.tax)
+
+	dVars['drivingpower'] = calc_drivingpower(dVars.weight, dVars)
+	dVars['yearly'] = Math.floor(generalVars.driveKm * dVars.dprice * (dVars.consumption / 100) + dVars.tax + dVars.drivingpower)	  
 }
 
 // Helper | Round to last hundred to calculate the driving power tax
 function calc_drivingpower(n, obj){
 	var drivingpowerTax = 0
 	n = Number(n)
-	n = (Math.floor(n/100)*100)
-	if (obj.name === 'evars'){
+	n = Math.floor(n/100)
+	if (obj.name === 'eVars'){
 		drivingpowerTax = n * 0.015 * 365 // Finnish driving power tax formula for EV:s
 	}
-	if (obj.name === 'dvars'){
-		drivingpowerTax = n * 0.055 * 365
+	if (obj.name === 'dVars'){
+		drivingpowerTax = n * 0.055 * 365// Finnish driving power tax formula for Diesels
 	}
 	return drivingpowerTax
 }
@@ -143,6 +174,8 @@ function depr_oper(purchase, rate, years, cost){
 		yearlyCost:yearlyCost
 	}
 }
+
+
 
 // Update car values from car select menu
 ecars.addEventListener('change', () => {change_data(ecars);} );
