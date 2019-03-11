@@ -18,14 +18,6 @@
 		</div>
 	</div>
 
-	<div class="row">
-		{% if error != None %}
-			<div class="alert alert-danger text-center">
-				<b>{{ error }}</b> occurred! Check form input values.
-			</div>
-		{% endif %}
-	</div>
-
 	<form action="{{ url_for('cars') }}" method="post">
 		<div class="row">
 			<div class="col-lg-4 form-group text-center">
@@ -75,7 +67,7 @@
 		</div>
 	</div>
 
-	<form action="" method="POST">
+	<form action="" method="">
 
 		<!-- General information form -->
 		<div class="row">
@@ -380,14 +372,13 @@
 		<!-- End of row of operational costs -->
 
 	</form>
-
-
-	{% if error == None %}
 	<!-- Result cards -->
+
 	<div class="row row-light" id="results">
 		<div class="col-lg-12">
-				<h3>Results</h3>
-			</div>
+			<h3>Results</h3>
+		</div>
+
 		<!-- EV result card -->
 		<div class="col-lg-4 text-center form-group">
 			<div class="form-box">
@@ -505,6 +496,5 @@
 		</div>
 	</div>
 	<!-- End of result cards -->
-	{% endif %}
 
 {% endblock %}
