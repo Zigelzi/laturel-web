@@ -49,9 +49,8 @@ const driveKm = document.getElementById('drivekm');
 const ownTimeValue = document.querySelectorAll('.owntime')
 const jsSubmit = document.getElementById('jsSubmit');
 const submitBtn = document.getElementById('submit')
-const carInformation = document.getElementById('car-information')
-const carInformationBg = document.getElementById('car-information-bg')
-const operationalInformation = document.getElementById('operational-information')
+const carInformation = document.getElementById('car-info')
+const operationalInformation = document.getElementById('operational-info')
 const carHide = document.getElementById('car-hide')
 
 const operationalHide = document.getElementById('operational-hide')
@@ -149,6 +148,11 @@ function get_car_values(){
 	var gDeprOper;
 	var dDeprOper;
 
+	// Refresh the general values
+
+	generalVars.owntime = Number(ownTime.value),
+	generalVars.driveKm = Number(driveKm.value)
+
 	//Take EV values and calculate the costs
 	eVars['carName'] = ecarModel.value;
 	eVars['chargerprice'] = 800;
@@ -180,9 +184,10 @@ function get_car_values(){
 
 // Update and enter the values to result cards
 function update_values(e){
+	get_car_values()
+	
 	var lastYear = generalVars.owntime - 1
 
-	get_car_values()
 	ownTimeValue.forEach(function(ownTimeValue){
 		ownTimeValue.textContent = generalVars.owntime;
 	})
@@ -208,20 +213,12 @@ function update_values(e){
 }
 
 function hide_panel(inputElement){
-	if (inputElement.style.display === 'none') {
-		inputElement.style.display = 'block';
-	}
-	else {
-		inputElement.style.display = 'none';
-	}
-}
 
-function show_bg(inputElement){
-	if (inputElement.style.display === 'block') {
-		inputElement.style.display = 'none';
+	if (window.getComputedStyle(inputElement).display  === 'none') {
+		inputElement.style.display = 'block';
 	}
 	else {
-		inputElement.style.display = 'block';
+		inputElement.style.display = 'none';
 	}
 }
 

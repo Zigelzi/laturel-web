@@ -46,6 +46,14 @@ ul {
 	height: 50px;
 }
 
+#car-info{
+	display: none
+}
+
+#operational-info{
+	display: none
+}
+
 /* End of identifiers */
 
 /* Classes */
@@ -79,7 +87,19 @@ ul {
 }
 
 .form-textbox {
-	max-width: 300px
+	max-width: 300px;
+	cursor: pointer;
+}
+
+.form-borders{
+	border-top: 3px solid #da8307;
+	padding-top: 15px;
+	margin-left: 58px;
+	margin-right: 58px;
+}
+
+.header-width{
+	max-width: 240px;
 }
 
 .label-margin{
@@ -144,7 +164,6 @@ ul {
 }
 
 .ecard{
-
 	border-bottom: 4px solid #2a5499;
 }
 
