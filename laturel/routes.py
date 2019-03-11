@@ -2,7 +2,6 @@ from flask import render_template, jsonify, make_response, request
 from datetime import datetime
 from laturel import app
 from laturel.forms import CostForm, ChargerForm, CarSelectorForm
-from laturel.helpers import depr_oper, round_hundreds
 from laturel.models import model_dict
 
 

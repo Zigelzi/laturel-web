@@ -29,29 +29,29 @@ class CarSelectorForm(FlaskForm):
 
 
 class CostForm(FlaskForm):
-    ecar_price = ValidatedFloatField('Car purchase price', default=40000)
-    ecar_depr = ValidatedFloatField('Yearly depreciation rate', default=17.5)
-    ecar_subsidy = ValidatedFloatField('Available subsidy for EV:s', default=2000)
-    ecar_consumption = ValidatedFloatField('Car consumption', default=15.1)
-    ecar_eprice = ValidatedFloatField('Electricity price', default=0.14)
+    ecar_price = FloatField('Car purchase price', default=40000)
+    ecar_depr = FloatField('Yearly depreciation rate', default=17.5)
+    ecar_subsidy = FloatField('Available subsidy for EV:s', default=2000)
+    ecar_consumption = FloatField('Car consumption', default=15.1)
+    ecar_eprice = FloatField('Electricity price', default=0.14)
     ecar_weight = IntegerField('Car weight (approx.)', default=2100) # Car driving power tax.
-    ecar_tax = ValidatedFloatField('Car tax:', default=53) # Vehicle tax
+    ecar_tax = FloatField('Car tax:', default=53) # Vehicle tax
     ecar_charger = RadioField('Do you have EV charger already?',
                            choices=[('Yes', 'Yes'), ('No', 'No')], default='Yes')
 
-    gcar_price = ValidatedFloatField('Car purchase price', default=32000)
-    gcar_depr = ValidatedFloatField('Yearly depreciation rate', default=15.5)
-    gcar_consumption = ValidatedFloatField('Car consumption', default=6)
-    gcar_gprice = ValidatedFloatField('Gas price', default=1.43)
-    gcar_tax = ValidatedFloatField('Car tax', default=230)
+    gcar_price = FloatField('Car purchase price', default=32000)
+    gcar_depr = FloatField('Yearly depreciation rate', default=15.5)
+    gcar_consumption = FloatField('Car consumption', default=6)
+    gcar_gprice = FloatField('Gas price', default=1.43)
+    gcar_tax = FloatField('Car tax', default=230)
 
-    dcar_price = ValidatedFloatField('Car purchase price', default=32000)
-    dcar_depr = ValidatedFloatField('Yearly depreciation rate', default=15.5)
-    dcar_consumption = ValidatedFloatField('Car consumption', default=5.5)
-    dcar_dprice = ValidatedFloatField('Diesel price', default=1.4)
-    dcar_weight = ValidatedFloatField('Car weight (approx.)', default=1800)  # Car driving power tax.
-    dcar_tax = ValidatedFloatField('Car tax', default=143)  # Vehicle tax
+    dcar_price = FloatField('Car purchase price', default=32000)
+    dcar_depr = FloatField('Yearly depreciation rate', default=15.5)
+    dcar_consumption = FloatField('Car consumption', default=5.5)
+    dcar_dprice = FloatField('Diesel price', default=1.4)
+    dcar_weight = FloatField('Car weight (approx.)', default=1800)  # Car driving power tax.
+    dcar_tax = FloatField('Car tax', default=143)  # Vehicle tax
 
-    drivekm = ValidatedFloatField('How much you drive yearly?', default=30000)
+    drivekm = FloatField('How much you drive yearly?', default=30000)
     owntime = IntegerField('How long will you own the car?', default=5)
     submit = SubmitField('Compare cars')

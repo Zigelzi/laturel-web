@@ -1,46 +1,43 @@
 
 // Electric vehicle values
-const ecars = document.getElementById('ecar_model');
-const ecar_price = document.getElementById('ecar_price');
-const ecar_consumption = document.getElementById('ecar_consumption');
-const ecar_weight = document.getElementById('ecar_weight');
-const ecar_depr = document.getElementById('ecar_depr');
-const eOperYearly = document.getElementById('ecar-oper-yearly');
-const eOperTotal = document.getElementById('ecar-oper-total');
-const eDeprTotal = document.getElementById('ecar-depr-total');
-const eCostsTotal = document.getElementById('ecar-costs-total');
-const eCarResell = document.getElementById('ecar-resell-value');
+const ecarModel = document.getElementById('ecar_model');
+const ecarPrice = document.getElementById('ecar_price');
+const ecarConsumption = document.getElementById('ecar_consumption');
+const ecarWeight = document.getElementById('ecar_weight');
+const ecarOperYearly = document.getElementById('ecar-oper-yearly');
+const ecarOperTotal = document.getElementById('ecar-oper-total');
+const ecarDeprTotal = document.getElementById('ecar-depr-total');
+const ecarCostsTotal = document.getElementById('ecar-costs-total');
+const ecarResell = document.getElementById('ecar-resell-value');
 
 var eVars = {
 	name: 'eVars'
 }
 
 // Gasoline vehicle values
-const gcars = document.getElementById('gcar_model');
-const gcar_price = document.getElementById('gcar_price');
-const gcar_consumption = document.getElementById('gcar_consumption');
-const gcar_depr = document.getElementById('gcar_depr');
-const gOperYearly = document.getElementById('gcar-oper-yearly');
-const gOperTotal = document.getElementById('gcar-oper-total');
-const gDeprTotal = document.getElementById('gcar-depr-total');
-const gCostsTotal = document.getElementById('gcar-costs-total');
-const gCarResell = document.getElementById('gcar-resell-value');
+const gcarModel = document.getElementById('gcar_model');
+const gcarPrice = document.getElementById('gcar_price');
+const gcarConsumption = document.getElementById('gcar_consumption');
+const gcarOperYearly = document.getElementById('gcar-oper-yearly');
+const gcarOperTotal = document.getElementById('gcar-oper-total');
+const gcarDeprTotal = document.getElementById('gcar-depr-total');
+const gcarCostsTotal = document.getElementById('gcar-costs-total');
+const gcarResell = document.getElementById('gcar-resell-value');
 
 var gVars = {
 	name: 'gVars'
 }
 
 // Diesel vehicle values
-const dcars = document.getElementById('dcar_model');
-const dcar_price = document.getElementById('dcar_price');
-const dcar_consumption = document.getElementById('dcar_consumption');
-const dcar_weight = document.getElementById('dcar_weight');
-const dcar_depr = document.getElementById('dcar_depr');
-const dOperYearly = document.getElementById('dcar-oper-yearly');
-const dOperTotal = document.getElementById('dcar-oper-total');
-const dDeprTotal = document.getElementById('dcar-depr-total');
-const dCostsTotal = document.getElementById('dcar-costs-total');
-const dCarResell = document.getElementById('dcar-resell-value');
+const dcarModel = document.getElementById('dcar_model');
+const dcarPrice = document.getElementById('dcar_price');
+const dcarConsumption = document.getElementById('dcar_consumption');
+const dcarWeight = document.getElementById('dcar_weight');
+const dcarOperYearly = document.getElementById('dcar-oper-yearly');
+const dcarOperTotal = document.getElementById('dcar-oper-total');
+const dcarDeprTotal = document.getElementById('dcar-depr-total');
+const dcarCostsTotal = document.getElementById('dcar-costs-total');
+const dcarResell = document.getElementById('dcar-resell-value');
 
 var dVars = {
 	name: 'dVars'
@@ -94,18 +91,18 @@ function change_data(carType) {
 
 			// Check which car type the response belongs to and update respecitve values accordingly
 			if (carType.id === 'ecar_model'){
-				ecar_price.value = data.price;
-				ecar_weight.value = data.weight;
-				ecar_consumption.value = data.consumption
+				ecarPrice.value = data.price;
+				ecarWeight.value = data.weight;
+				ecarConsumption.value = data.consumption
 			}
 			if (carType.id === 'gcar_model'){
-				gcar_price.value = data.price;
-				gcar_consumption.value = data.consumption
+				gcarPrice.value = data.price;
+				gcarConsumption.value = data.consumption
 			}
 			if (carType.id === 'dcar_model'){
-				dcar_price.value = data.price;
-				dcar_weight.value = data.weight;
-				dcar_consumption.value = data.consumption
+				dcarPrice.value = data.price;
+				dcarWeight.value = data.weight;
+				dcarConsumption.value = data.consumption
 			}
 		})
 	})
@@ -114,6 +111,9 @@ function change_data(carType) {
 // Get all vehicle values and append them to their respective objects
 function get_car_values(){
 	for (var i = 0; i < inputBoxes.length;i++){
+
+		// Loop through all the input boxes and respective fields to their values.
+		// If value contains number then convert it from str -> int
 		if (inputBoxes[i].id.startsWith('ecar')){
 			if (isNaN(+inputBoxes[i].value)){
 				eVars[inputBoxes[i].id.replace('ecar_','')] = inputBoxes[i].value
@@ -143,7 +143,8 @@ function get_car_values(){
 	var gDeprOper;
 	var dDeprOper;
 
-	eVars['carName'] = ecars.value;
+	//Take EV values and calculate the costs
+	eVars['carName'] = ecarModel.value;
 	eVars['chargerprice'] = 800;
 	eVars['drivingpower'] = calc_drivingpower(eVars.weight, eVars);
 	eVars['yearly'] = Math.floor(generalVars.driveKm * eVars.eprice * (eVars.consumption / 100) + eVars.tax + eVars.drivingpower);
@@ -153,21 +154,25 @@ function get_car_values(){
 	eDeprOper = depr_oper(eVars.price, eVars.depr, generalVars.owntime, eVars.yearly);
 	eVars = Object.assign(eVars, eDeprOper); // Add the deprecation and operational costs values to main object
 
-	gVars['carName'] = gcars.value;
+	// Take gasoline values and calculate the costs
+	gVars['carName'] = gcarModel.value;
 	gVars['yearly'] = Math.floor(generalVars.driveKm * gVars.gprice * (gVars.consumption / 100) + gVars.tax);
 	gDeprOper = depr_oper(gVars.price, gVars.depr, generalVars.owntime, gVars.yearly);
 	gVars = Object.assign(gVars, gDeprOper); // Add the deprecation and operational costs values to main object
 
-	dVars['carName'] = dcars.value
+	// Take diesel values and calculate costs
+	dVars['carName'] = dcarModel.value
 	dVars['drivingpower'] = calc_drivingpower(dVars.weight, dVars);
 	dVars['yearly'] = Math.floor(generalVars.driveKm * dVars.dprice * (dVars.consumption / 100) + dVars.tax + dVars.drivingpower);
 	dDeprOper = depr_oper(dVars.price, dVars.depr, generalVars.owntime, dVars.yearly);
-	dVars = Object.assign(dVars, dDeprOper);
+	dVars = Object.assign(dVars, dDeprOper); // Add the deprecation and operational costs values to main object
+
 	ownTimeValue.forEach(function(ownTimeValue){
 		ownTimeValue.textContent = generalVars.owntime;
 	})
 }
 
+// Update and enter the values to result cards
 function update_values(e){
 	var lastYear = generalVars.owntime - 1
 
@@ -175,24 +180,28 @@ function update_values(e){
 	ownTimeValue.forEach(function(ownTimeValue){
 		ownTimeValue.textContent = generalVars.owntime;
 	})
-	eOperYearly.textContent = eVars.yearly;
-	eOperTotal.textContent = eVars.yearlyCost[lastYear];
-	eDeprTotal.textContent = eVars.deprValue[lastYear];
-	eCostsTotal.textContent = (eVars.yearlyCost[lastYear] + eVars.deprValue[lastYear]);
-	eCarResell.textContent = (eVars.price - eVars.deprValue[lastYear]);
+	ecarOperYearly.textContent = eVars.yearly;
+	ecarOperTotal.textContent = eVars.yearlyCost[lastYear];
+	ecarDeprTotal.textContent = eVars.deprValue[lastYear];
+	ecarCostsTotal.textContent = (eVars.yearlyCost[lastYear] + eVars.deprValue[lastYear]);
+	ecarResell.textContent = (eVars.price - eVars.deprValue[lastYear]);
 
-	gOperYearly.textContent = gVars.yearly;
-	gOperTotal.textContent = gVars.yearlyCost[lastYear];
-	gDeprTotal.textContent = gVars.deprValue[lastYear];
-	gCostsTotal.textContent = (gVars.yearlyCost[lastYear] + gVars.deprValue[lastYear]);
-	gCarResell.textContent = (gVars.price - gVars.deprValue[lastYear]);
+	gcarOperYearly.textContent = gVars.yearly;
+	gcarOperTotal.textContent = gVars.yearlyCost[lastYear];
+	gcarDeprTotal.textContent = gVars.deprValue[lastYear];
+	gcarCostsTotal.textContent = (gVars.yearlyCost[lastYear] + gVars.deprValue[lastYear]);
+	gcarResell.textContent = (gVars.price - gVars.deprValue[lastYear]);
 
-	dOperYearly.textContent = dVars.yearly;
-	dOperTotal.textContent = dVars.yearlyCost[lastYear];
-	dDeprTotal.textContent = dVars.deprValue[lastYear];
-	dCostsTotal.textContent = (dVars.yearlyCost[lastYear] + dVars.deprValue[lastYear]);
-	dCarResell.textContent = (dVars.price - dVars.deprValue[lastYear]);
+	dcarOperYearly.textContent = dVars.yearly;
+	dcarOperTotal.textContent = dVars.yearlyCost[lastYear];
+	dcarDeprTotal.textContent = dVars.deprValue[lastYear];
+	dcarCostsTotal.textContent = (dVars.yearlyCost[lastYear] + dVars.deprValue[lastYear]);
+	dcarResell.textContent = (dVars.price - dVars.deprValue[lastYear]);
 
+
+}
+
+function hide_panel(){
 
 }
 
@@ -238,9 +247,10 @@ function depr_oper(purchase, rate, years, cost){
 
 
 
-// Eventhandlers for updating the information
+// Eventlisteners for updating the information
 document.addEventListener('DOMContentLoaded', update_values);
-ecars.addEventListener('change', () => {change_data(ecars);} );
-gcars.addEventListener('change', () => {change_data(gcars);} );
-dcars.addEventListener('change', () => {change_data(dcars);} );
+ecarModel.addEventListener('change', () => {change_data(ecarModel);} );
+gcarModel.addEventListener('change', () => {change_data(gcarModel);} );
+dcarModel.addEventListener('change', () => {change_data(dcarModel);} );
 submitBtn.addEventListener('click', update_values);
+
