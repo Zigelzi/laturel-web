@@ -49,6 +49,12 @@ const driveKm = document.getElementById('drivekm');
 const ownTimeValue = document.querySelectorAll('.owntime')
 const jsSubmit = document.getElementById('jsSubmit');
 const submitBtn = document.getElementById('submit')
+const carInformation = document.getElementById('car-information')
+const carInformationBg = document.getElementById('car-information-bg')
+const operationalInformation = document.getElementById('operational-information')
+const carHide = document.getElementById('car-hide')
+
+const operationalHide = document.getElementById('operational-hide')
 
 var generalVars = {
 	name: 'generalVars',
@@ -201,8 +207,22 @@ function update_values(e){
 
 }
 
-function hide_panel(){
+function hide_panel(inputElement){
+	if (inputElement.style.display === 'none') {
+		inputElement.style.display = 'block';
+	}
+	else {
+		inputElement.style.display = 'none';
+	}
+}
 
+function show_bg(inputElement){
+	if (inputElement.style.display === 'block') {
+		inputElement.style.display = 'none';
+	}
+	else {
+		inputElement.style.display = 'block';
+	}
 }
 
 // Helper | Round to last hundred to calculate the driving power tax
@@ -253,4 +273,5 @@ ecarModel.addEventListener('change', () => {change_data(ecarModel);} );
 gcarModel.addEventListener('change', () => {change_data(gcarModel);} );
 dcarModel.addEventListener('change', () => {change_data(dcarModel);} );
 submitBtn.addEventListener('click', update_values);
-
+carHide.addEventListener('click', () => {hide_panel(carInformation);} );
+operationalHide.addEventListener('click', () => {hide_panel(operationalInformation);} );
