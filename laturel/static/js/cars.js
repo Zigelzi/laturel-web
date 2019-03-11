@@ -5,11 +5,11 @@ const ecar_price = document.getElementById('ecar_price');
 const ecar_consumption = document.getElementById('ecar_consumption');
 const ecar_weight = document.getElementById('ecar_weight');
 const ecar_depr = document.getElementById('ecar_depr');
-const eOperYearly = document.getElementById('eOperYearly');
-const eOperTotal = document.getElementById('eOperTotal');
-const eDeprTotal = document.getElementById('eDeprTotal');
-const eCostsTotal = document.getElementById('eCostsTotal');
-const eCarResell = document.getElementById('eCarResell');
+const eOperYearly = document.getElementById('ecar-oper-yearly');
+const eOperTotal = document.getElementById('ecar-oper-total');
+const eDeprTotal = document.getElementById('ecar-depr-total');
+const eCostsTotal = document.getElementById('ecar-costs-total');
+const eCarResell = document.getElementById('ecar-resell-value');
 
 var eVars = {
 	name: 'eVars'
@@ -20,6 +20,11 @@ const gcars = document.getElementById('gcar_model');
 const gcar_price = document.getElementById('gcar_price');
 const gcar_consumption = document.getElementById('gcar_consumption');
 const gcar_depr = document.getElementById('gcar_depr');
+const gOperYearly = document.getElementById('gcar-oper-yearly');
+const gOperTotal = document.getElementById('gcar-oper-total');
+const gDeprTotal = document.getElementById('gcar-depr-total');
+const gCostsTotal = document.getElementById('gcar-costs-total');
+const gCarResell = document.getElementById('gcar-resell-value');
 
 var gVars = {
 	name: 'gVars'
@@ -31,6 +36,11 @@ const dcar_price = document.getElementById('dcar_price');
 const dcar_consumption = document.getElementById('dcar_consumption');
 const dcar_weight = document.getElementById('dcar_weight');
 const dcar_depr = document.getElementById('dcar_depr');
+const dOperYearly = document.getElementById('dcar-oper-yearly');
+const dOperTotal = document.getElementById('dcar-oper-total');
+const dDeprTotal = document.getElementById('dcar-depr-total');
+const dCostsTotal = document.getElementById('dcar-costs-total');
+const dCarResell = document.getElementById('dcar-resell-value');
 
 var dVars = {
 	name: 'dVars'
@@ -41,6 +51,7 @@ const ownTime = document.getElementById('owntime');
 const driveKm = document.getElementById('drivekm');
 const ownTimeValue = document.querySelectorAll('.owntime')
 const jsSubmit = document.getElementById('jsSubmit');
+const submitBtn = document.getElementById('submit')
 
 var generalVars = {
 	name: 'generalVars',
@@ -164,11 +175,23 @@ function update_values(e){
 	ownTimeValue.forEach(function(ownTimeValue){
 		ownTimeValue.textContent = generalVars.owntime;
 	})
-	eOperYearly.textContent = `Operational costs per year: ${eVars.yearly} €`
-	eOperTotal.textContent = `Operational costs in total: ${eVars.yearlyCost[lastYear]} €`
-	eDeprTotal.textContent = `Depreciated value total: ${eVars.deprValue[lastYear]} €`
-	eCostsTotal.textContent = `Total costs: ${eVars.yearlyCost[lastYear] + eVars.deprValue[lastYear]} €` 
-	eCarResell.textContent = `Resell value: ${eVars.price - eVars.deprValue[lastYear]} €`
+	eOperYearly.textContent = eVars.yearly;
+	eOperTotal.textContent = eVars.yearlyCost[lastYear];
+	eDeprTotal.textContent = eVars.deprValue[lastYear];
+	eCostsTotal.textContent = (eVars.yearlyCost[lastYear] + eVars.deprValue[lastYear]);
+	eCarResell.textContent = (eVars.price - eVars.deprValue[lastYear]);
+
+	gOperYearly.textContent = gVars.yearly;
+	gOperTotal.textContent = gVars.yearlyCost[lastYear];
+	gDeprTotal.textContent = gVars.deprValue[lastYear];
+	gCostsTotal.textContent = (gVars.yearlyCost[lastYear] + gVars.deprValue[lastYear]);
+	gCarResell.textContent = (gVars.price - gVars.deprValue[lastYear]);
+
+	dOperYearly.textContent = dVars.yearly;
+	dOperTotal.textContent = dVars.yearlyCost[lastYear];
+	dDeprTotal.textContent = dVars.deprValue[lastYear];
+	dCostsTotal.textContent = (dVars.yearlyCost[lastYear] + dVars.deprValue[lastYear]);
+	dCarResell.textContent = (dVars.price - dVars.deprValue[lastYear]);
 
 
 }
@@ -215,11 +238,9 @@ function depr_oper(purchase, rate, years, cost){
 
 
 
-// Update car values from car select menu
-
-document.addEventListener('DOMContentLoaded', get_car_values);
+// Eventhandlers for updating the information
+document.addEventListener('DOMContentLoaded', update_values);
 ecars.addEventListener('change', () => {change_data(ecars);} );
 gcars.addEventListener('change', () => {change_data(gcars);} );
 dcars.addEventListener('change', () => {change_data(dcars);} );
-jsSubmit.addEventListener('click', update_values);
-//eOper.textContent = `${eVars.yearly} €`
+submitBtn.addEventListener('click', update_values);

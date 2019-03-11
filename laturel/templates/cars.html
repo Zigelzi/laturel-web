@@ -66,22 +66,16 @@
 			</div>
 		</div>
 	</form>
-	<div class="col-lg-4 form-group text-center">
-			<div class="form-box general-top">
-				<div id="js1">
-						JS test
-				</div>
-				<button id="jsSubmit">JS testing</button>
-				<div id="eOperYearly"><b></b></div>
-				<div id="eOperTotal"></div>
-				<div id="eDeprTotal"></div>
-				<div id="eCostsTotal"></div>
-				<div id="eCarResell"></div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="btn-margin">
+			{{ form.submit(class="btn btn-primary big-btn") }}
 			</div>
-
 		</div>
+	</div>
 
-	<form action="{{ url_for('cars', _anchor='results') }}" method="post">
+	<form action="" method="POST">
 
 		<!-- General information form -->
 		<div class="row">
@@ -109,14 +103,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="btn-margin">
-				{{ form.submit(class="btn btn-primary big-btn") }}
-				</div>
-			</div>
-		</div>
-
 		<!--  End of general information-->
 		
 		<div class="row">
@@ -415,7 +401,7 @@
 				<div>
 					<span class="text-muted muted">Operational costs</span>
 					<br>
-					<b>{{ eyearly }} €</b>
+					<b><span id="ecar-oper-yearly"></span> €</b>
 					<br>
 					<span class="text-muted muted">per year</span>
 				</div>
@@ -423,17 +409,17 @@
 				<div class="text-center-left">
 					<ul>
 						<li>
-							<b>{{ eoper }}</b> operational costs
+							<b><span id="ecar-oper-total"></span></b> operational costs
 						</li>
 						<li>
-							<b>{{ edepr_owntime }} €</b> depreciated value
+							<b><span id="ecar-depr-total"></span>€</b> depreciated value
 						</li>
 						<br>
 						<li>
-							<b>{{ etotal}} €</b> total costs
+							<b><span id="ecar-costs-total"></span> €</b> total costs
 						</li>
 						<li>
-							<b>{{ eafter }} €</b> car resell value
+							<b><span id="ecar-resell-value"></span> €</b> car resell value
 						</li>
 					</ul>
 				</div>
@@ -448,13 +434,13 @@
 					<h4>Gasoline</h4>
 				</div>
 				<div class="text-muted">
-					Costs and value after {{ owntime }} years
+					Costs and value after <span class="owntime"></span> years
 				</div>
 				<br>
 				<div>
 					<span class="text-muted muted">Operational costs</span>
 					<br>
-					<b>{{ gyearly }} €</b>
+					<b><span id="gcar-oper-yearly"></span> €</b>
 					<br>
 					<span class="text-muted muted">per year</span>
 				</div>
@@ -462,17 +448,17 @@
 				<div class="text-center-left">
 					<ul>
 						<li>
-							<b>{{ goper}} €</b> total operational costs
+							<b><span id="gcar-oper-total"></span> €</b> total operational costs
 						</li>
 						<li>
-							<b>{{ gdepr_owntime }} €</b> depreciated value
+							<b><span id="gcar-depr-total"></span> €</b> depreciated value
 						</li>
 						<br>
 						<li>
-							<b>{{ gtotal}} €</b> total costs
+							<b><span id="gcar-costs-total"></span> €</b> total costs
 						</li>
 						<li>
-							<b>{{ gafter }} €</b> car resell value
+							<b><span id="gcar-resell-value"></span> €</b> car resell value
 						</li>
 					</ul>
 				</div>
@@ -487,13 +473,13 @@
 					<h4>Diesel</h4>
 				</div>
 				<div class="text-muted">
-					Costs and value after {{ owntime }} years
+					Costs and value after <span class="owntime"></span> years
 				</div>
 				<br>
 				<div>
 					<span class="text-muted muted">Operational costs</span>
 					<br>
-					<b>{{ dyearly }} €</b>
+					<b><span id="dcar-oper-yearly"></span> €</b>
 					<br>
 					<span class="text-muted muted">per year</span>
 				</div>
@@ -501,17 +487,17 @@
 				<div class="text-center-left">
 					<ul>
 						<li>
-							<b>{{ doper}} €</b> total operational costs
+							<b><span id="dcar-oper-total"></span> €</b> total operational costs
 						</li>
 						<li>
-							<b>{{ ddepr_owntime }} €</b> depreciated value
+							<b><span id="dcar-depr-total"></span> €</b> depreciated value
 						</li>
 						<br>
 						<li>
-							<b>{{ dtotal}} €</b> total costs
+							<b><span id="dcar-costs-total"></span> €</b> total costs
 						</li>
 						<li>
-							<b>{{ dafter }} €</b> car resell value
+							<b><span id="dcar-resell-value"></span> €</b> car resell value
 						</li>
 					</ul>
 				</div>
