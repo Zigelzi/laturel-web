@@ -2,6 +2,7 @@ from tabulate import tabulate
 from laturel import db
 
 #  TODO: Add CO2 column to database to calculate car tax automatically
+#  TODO: Add new values to db
 
 class Cars(db.Model):
 
@@ -16,6 +17,8 @@ class Cars(db.Model):
     driverange = db.Column(db.Integer)
     consumption = db.Column(db.Float, nullable=False)
     weight = db.Column(db.Integer, nullable=False)
+    fullmodel = db.Column(db.String(60), nullable=False)
+    co2 = db.Column(db.Float, nullable=False)
 
     #  Printout formatting
     def __repr__(self):
@@ -27,7 +30,9 @@ class Cars(db.Model):
             f" battery='{self.battery}'," \
             f" driverange='{self.driverange}'," \
             f" consumption='{self.consumption}'," \
-            f" weight='{self.weight}')>"
+            f" weight='{self.weight}'," \
+            f"fullmodel={self.fullmodel}," \
+            f"co2={self.co2})>"
 
 
 #  Adding cars to database with one command.
