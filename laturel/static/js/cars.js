@@ -4,6 +4,8 @@ const ecarModel = document.getElementById('ecar_model');
 const ecarPrice = document.getElementById('ecar_price');
 const ecarConsumption = document.getElementById('ecar_consumption');
 const ecarWeight = document.getElementById('ecar_weight');
+const ecarCO2 = document.getElementById('ecar_co2')
+const ecarBattery = document.getElementById('ecar-battery')
 const ecarOperYearly = document.getElementById('ecar-oper-yearly');
 const ecarOperTotal = document.getElementById('ecar-oper-total');
 const ecarDeprTotal = document.getElementById('ecar-depr-total');
@@ -18,6 +20,7 @@ var eVars = {
 const gcarModel = document.getElementById('gcar_model');
 const gcarPrice = document.getElementById('gcar_price');
 const gcarConsumption = document.getElementById('gcar_consumption');
+const gcarCO2 = document.getElementById('gcar_co2')
 const gcarOperYearly = document.getElementById('gcar-oper-yearly');
 const gcarOperTotal = document.getElementById('gcar-oper-total');
 const gcarDeprTotal = document.getElementById('gcar-depr-total');
@@ -33,6 +36,7 @@ const dcarModel = document.getElementById('dcar_model');
 const dcarPrice = document.getElementById('dcar_price');
 const dcarConsumption = document.getElementById('dcar_consumption');
 const dcarWeight = document.getElementById('dcar_weight');
+const dcarCO2 = document.getElementById('dcar_co2');
 const dcarOperYearly = document.getElementById('dcar-oper-yearly');
 const dcarOperTotal = document.getElementById('dcar-oper-total');
 const dcarDeprTotal = document.getElementById('dcar-depr-total');
@@ -91,7 +95,7 @@ function change_data(carType) {
 		}
 
 		response.json().then(function(data){
-			//console.log(data)   DEBUG
+			console.log(data)   //DEBUG
 			//console.log(carType.id)   DEBUG
 
 			// Check which car type the response belongs to and update respecitve values accordingly
@@ -99,15 +103,19 @@ function change_data(carType) {
 				ecarPrice.value = data.price;
 				ecarWeight.value = data.weight;
 				ecarConsumption.value = data.consumption
+				ecarBattery.value = data.battery
+				
 			}
 			if (carType.id === 'gcar_model'){
 				gcarPrice.value = data.price;
-				gcarConsumption.value = data.consumption
+				gcarConsumption.value = data.consumption;
+				gcarCO2.value = data.co2;
 			}
 			if (carType.id === 'dcar_model'){
 				dcarPrice.value = data.price;
 				dcarWeight.value = data.weight;
-				dcarConsumption.value = data.consumption
+				dcarConsumption.value = data.consumption;
+				dcarCO2.value = data.co2;
 			}
 		})
 	})
@@ -162,6 +170,7 @@ function get_car_values(){
 		eVars.price = eVars.price - eVars.subsidy
 	}
 	eDeprOper = depr_oper(eVars.price, eVars.depr, generalVars.owntime, eVars.yearly);
+	eVars['tax'] = 
 	eVars = Object.assign(eVars, eDeprOper); // Add the deprecation and operational costs values to main object
 
 	// Take gasoline values and calculate the costs

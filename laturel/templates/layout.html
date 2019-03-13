@@ -12,7 +12,8 @@
 		<meta property="og:image:height" content="308">
 		 <meta property="og:description" content="Calculate car ownership costs and compare different propulsion types (EV/ICE)" />
 		<title>Laturel - {% block title %} {% endblock %} </title>
-		<script type="text/javascript" src="{% block script %}{% endblock %}" defer></script>
+		{% block json1 %}{% endblock %}
+		{% block carscript %}{% endblock %}
 			
 	</head>
 	<body class="body-bg-color">
