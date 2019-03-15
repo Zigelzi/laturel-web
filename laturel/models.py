@@ -1,9 +1,6 @@
 from tabulate import tabulate
 from laturel import db
 
-#  TODO: Add CO2 column to database to calculate car tax automatically
-#  TODO: Add new values to db
-
 class Cars(db.Model):
 
     #  Initializing database columns.
@@ -33,6 +30,17 @@ class Cars(db.Model):
             f" weight='{self.weight}'," \
             f"fullmodel={self.fullmodel}," \
             f"co2={self.co2})>"
+
+
+class Co2Tax(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    co2 = db.Column(db.Integer, nullable=False)
+    tax = db.Column(db.Float, nullable=False)
+
+    #  Printout formatting
+    def __repr__(self):
+        return f"<Co2Tax( co2='{self.co2}'," \
+            f"tax='{self.tax}' )>"
 
 
 #  Adding cars to database with one command.
@@ -157,3 +165,10 @@ def model_dict(type, model):
     car_dict = car.__dict__
     car_dict.pop('_sa_instance_state')
     return car_dict
+
+def co2_dict(co2):
+    tax_value = Co2Tax.query.filter_by(co2=co2).first()
+    tax_value_dict = car.__dict__
+    tax_value_dict.pop('_sa_instance_state')
+    return tax_value_dict
+

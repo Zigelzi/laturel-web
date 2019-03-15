@@ -2,7 +2,7 @@ from flask import render_template, jsonify, make_response, request
 from datetime import datetime
 from laturel import app
 from laturel.forms import CostForm, ChargerForm, CarSelectorForm
-from laturel.models import model_dict
+from laturel.models import model_dict, co2_dict
 
 
 @app.route('/')
@@ -71,8 +71,9 @@ def data():
         req['type'] = 'diesel'
 
     #  Query DB for car values and make dict of values
+    #  TODO: Finish the JSON response to include model and tax information
     model = model_dict(req['type'], req['model'])
-
+    tax = co2_dict(req['co2'])
     #  Create JSON response from dict and respond it to application
-    res = make_response(jsonify(model), 200)
+    res = make_response(jsonify(model, tax), 200)
     return res
