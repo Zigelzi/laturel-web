@@ -95,9 +95,9 @@ function change_data(carType) {
 		}
 
 		response.json().then(function(data){
-			console.log(data)   //DEBUG
-			console.log(data.car_info.price)
-			//console.log(carType.id)   DEBUG
+			// DEBUG console.log(data)
+			// DEBUG console.log(data.car_info.price) 
+			// DEBUG console.log(carType.id) 
 
 			// Check which car type the response belongs to and update respecitve values accordingly
 			if (carType.id === 'ecar_model'){

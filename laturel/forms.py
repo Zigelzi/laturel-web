@@ -35,25 +35,22 @@ class CostForm(FlaskForm):
     ecar_consumption = FloatField('Car consumption', default=15.1)
     ecar_eprice = FloatField('Electricity price', default=0.14)
     ecar_weight = IntegerField('Car weight (approx.)', default=2100) # Car driving power tax.
-    ecar_tax = FloatField('Car tax:', default=53) # Vehicle tax
     ecar_charger = RadioField('Do you have EV charger already?',
                            choices=[('Yes', 'Yes'), ('No', 'No')], default='Yes')
-    ecar_co2 = IntegerField('Car tax per year', default=106)
+    ecar_co2 = IntegerField('Car tax per year', default=106)  # Vehicle tax in €/year
 
     gcar_price = FloatField('Car purchase price', default=32000)
     gcar_depr = FloatField('Yearly depreciation rate', default=15.5)
     gcar_consumption = FloatField('Car consumption', default=6)
     gcar_gprice = FloatField('Gas price', default=1.43)
-    gcar_tax = FloatField('Car tax', default=230)
-    gcar_co2 = IntegerField('Car tax per year', default=210)
+    gcar_co2 = IntegerField('Car tax per year', default=210)  # Vehicle tax in €/year
 
     dcar_price = FloatField('Car purchase price', default=32000)
     dcar_depr = FloatField('Yearly depreciation rate', default=15.5)
     dcar_consumption = FloatField('Car consumption', default=5.5)
     dcar_dprice = FloatField('Diesel price', default=1.4)
     dcar_weight = FloatField('Car weight (approx.)', default=1800)  # Car driving power tax.
-    dcar_tax = FloatField('Car tax', default=143)  # Vehicle tax
-    dcar_co2 = IntegerField('Car tax per year', default=196)
+    dcar_co2 = IntegerField('Car tax per year', default=196)  # Vehicle tax in €/year
 
     drivekm = FloatField('How much you drive yearly?', default=30000)
     owntime = IntegerField('How long will you own the car?', default=5)
