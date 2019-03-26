@@ -66,7 +66,7 @@ var generalVars = {
 }
 
 
-//  Updating the  values from car select to respective fields
+//  Takes car type as input and fetches the data from DB and then updates the information to the input fields.
 function change_data(carType) {
 
 	var model = {
@@ -74,7 +74,7 @@ function change_data(carType) {
 		model: carType.value
 	}
 	
-	//console.log(model)  DEBUG
+	// console.log(model) DEBUG
 	var loc = `${window.origin}/db/data`
 
 	// Post selected values to backend to query DB
@@ -96,26 +96,29 @@ function change_data(carType) {
 
 		response.json().then(function(data){
 			console.log(data)   //DEBUG
+			console.log(data.car_info.price)
 			//console.log(carType.id)   DEBUG
 
 			// Check which car type the response belongs to and update respecitve values accordingly
 			if (carType.id === 'ecar_model'){
-				ecarPrice.value = data.price;
-				ecarWeight.value = data.weight;
-				ecarConsumption.value = data.consumption
-				ecarBattery.value = data.battery
+				ecarPrice.value = data.car_info.price;
+				ecarWeight.value = data.car_info.weight;
+				ecarConsumption.value = data.car_info.consumption;
+				ecarBattery.value = data.car_info.battery;
+				ecarCO2.value  = Math.floor((data.co2.tax * 365) / 100); // Calculating €/year from cnt/day
+				console.log(data.co2.tax)
 				
 			}
 			if (carType.id === 'gcar_model'){
-				gcarPrice.value = data.price;
-				gcarConsumption.value = data.consumption;
-				gcarCO2.value = data.co2;
+				gcarPrice.value = data.car_info.price;
+				gcarConsumption.value = data.car_info.consumption;
+				gcarCO2.value  = Math.floor((data.co2.tax * 365) / 100); // Calculating €/year from cnt/day
 			}
 			if (carType.id === 'dcar_model'){
-				dcarPrice.value = data.price;
-				dcarWeight.value = data.weight;
-				dcarConsumption.value = data.consumption;
-				dcarCO2.value = data.co2;
+				dcarPrice.value = data.car_info.price;
+				dcarWeight.value = data.car_info.weight;
+				dcarConsumption.value = data.car_info.consumption;
+				dcarCO2.value  = Math.floor((data.co2.tax * 365) / 100); // Calculating €/year from cnt/day
 			}
 		})
 	})
@@ -165,24 +168,23 @@ function get_car_values(){
 	eVars['carName'] = ecarModel.value;
 	eVars['chargerprice'] = 800;
 	eVars['drivingpower'] = calc_drivingpower(eVars.weight, eVars);
-	eVars['yearly'] = Math.floor(generalVars.driveKm * eVars.eprice * (eVars.consumption / 100) + eVars.tax + eVars.drivingpower);
+	eVars['yearly'] = Math.floor(generalVars.driveKm * eVars.eprice * (eVars.consumption / 100) + eVars.co2 + eVars.drivingpower);
 	if (eVars.subsidy > 0 ){
 		eVars.price = eVars.price - eVars.subsidy
 	}
 	eDeprOper = depr_oper(eVars.price, eVars.depr, generalVars.owntime, eVars.yearly);
-	eVars['tax'] = 
 	eVars = Object.assign(eVars, eDeprOper); // Add the deprecation and operational costs values to main object
 
 	// Take gasoline values and calculate the costs
 	gVars['carName'] = gcarModel.value;
-	gVars['yearly'] = Math.floor(generalVars.driveKm * gVars.gprice * (gVars.consumption / 100) + gVars.tax);
+	gVars['yearly'] = Math.floor(generalVars.driveKm * gVars.gprice * (gVars.consumption / 100) + gVars.co2);
 	gDeprOper = depr_oper(gVars.price, gVars.depr, generalVars.owntime, gVars.yearly);
 	gVars = Object.assign(gVars, gDeprOper); // Add the deprecation and operational costs values to main object
 
 	// Take diesel values and calculate costs
 	dVars['carName'] = dcarModel.value
 	dVars['drivingpower'] = calc_drivingpower(dVars.weight, dVars);
-	dVars['yearly'] = Math.floor(generalVars.driveKm * dVars.dprice * (dVars.consumption / 100) + dVars.tax + dVars.drivingpower);
+	dVars['yearly'] = Math.floor(generalVars.driveKm * dVars.dprice * (dVars.consumption / 100) + dVars.co2 + dVars.drivingpower);
 	dDeprOper = depr_oper(dVars.price, dVars.depr, generalVars.owntime, dVars.yearly);
 	dVars = Object.assign(dVars, dDeprOper); // Add the deprecation and operational costs values to main object
 
@@ -192,7 +194,7 @@ function get_car_values(){
 }
 
 // Update and enter the values to result cards
-function update_values(e){
+function update_values(){
 	get_car_values()
 	
 	var lastYear = generalVars.owntime - 1

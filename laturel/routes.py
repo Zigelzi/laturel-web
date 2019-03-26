@@ -73,7 +73,9 @@ def data():
     #  Query DB for car values and make dict of values
     #  TODO: Finish the JSON response to include model and tax information
     model = model_dict(req['type'], req['model'])
-    tax = co2_dict(req['co2'])
+    co2 = co2_dict(model['co2'])
+    print(f"CO2 emissions of model is {model['co2']}")
+    print(co2)
     #  Create JSON response from dict and respond it to application
-    res = make_response(jsonify(model, tax), 200)
+    res = make_response(jsonify(car_info=model, co2=co2), 200)
     return res

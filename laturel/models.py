@@ -164,11 +164,13 @@ def model_dict(type, model):
     car = Cars.query.filter_by(type=type, model=model).first()
     car_dict = car.__dict__
     car_dict.pop('_sa_instance_state')
+    car_dict.pop('id')
     return car_dict
 
 def co2_dict(co2):
-    tax_value = Co2Tax.query.filter_by(co2=co2).first()
-    tax_value_dict = car.__dict__
+    tax_value = Co2Tax.query.filter_by(co2=co2).first() # value in cnt/day
+    tax_value_dict = tax_value.__dict__
     tax_value_dict.pop('_sa_instance_state')
+    tax_value_dict.pop('id')
     return tax_value_dict
 
