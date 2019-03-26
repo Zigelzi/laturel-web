@@ -73,7 +73,7 @@ def data():
     #  Query DB for car values and make dict of values
     model = model_dict(req['type'], req['model'])
     co2 = co2_dict(model['co2'])
-    
+
     #  Create JSON response from dict and respond it to application
     res = make_response(jsonify(car_info=model, co2=co2), 200)
     return res
