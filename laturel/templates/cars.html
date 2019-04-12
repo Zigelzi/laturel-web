@@ -114,11 +114,9 @@
 						<div class="box-header">
 							<h4>Electric</h4>
 						</div>
-						<!--
-						<div id="ecar-full-model" class="text-muted">
-							test
+						<div id="" class="ecar-full-model text-muted full-models">
+							<!-- EV full model information updated by JS -->
 						</div>
-						-->
 						{{ form.ecar_price.label(class="form-control-label label-margin") }}
 						<br>
 						<div class="input-group input-margins">
@@ -177,6 +175,9 @@
 						<div class="box-header">
 							<h4>Gasoline</h4>
 						</div>
+						<div id="" class="gcar-full-model text-muted full-models">
+							<!-- Gasoline full model information updated by JS -->
+						</div>
 						{{ form.gcar_price.label(class="form-control-label label-margin") }}
 						<br>
 						<div class="input-group input-margins">
@@ -220,6 +221,11 @@
 						<div class="box-header">
 							<h4>Diesel</h4>
 						</div>
+
+						<div id="" class="dcar-full-model text-muted full-models">
+							<!-- Diesel full model information updated by JS -->
+						</div>
+
 						{{ form.dcar_price.label(class="form-control-label label-margin") }}
 						<br>
 						<div class="input-group input-margins">
@@ -390,7 +396,11 @@
 			<div class="form-box">
 				<div class="ecard">
 					<h4>Electric</h4>
+					<div id="" class="ecar-full-model text-muted full-models">
+						<!-- EV full model information updated by JS -->
+					</div>
 				</div>
+				
 				<div class="text-muted">
 					Costs and value after <span class="owntime"></span> years
 				</div>
@@ -406,10 +416,10 @@
 				<div class="text-center-left">
 					<ul>
 						<li>
-							<b><span id="ecar-oper-total"></span></b> operational costs
+							<b><span id="ecar-oper-total"></span> €</b> operational costs
 						</li>
 						<li>
-							<b><span id="ecar-depr-total"></span>€</b> depreciated value
+							<b><span id="ecar-depr-total"></span> €</b> depreciated value
 						</li>
 						<br>
 						<li>
@@ -429,6 +439,9 @@
 			<div class="form-box">
 				<div class="gcard">
 					<h4>Gasoline</h4>
+					<div id="" class="gcar-full-model text-muted full-models">
+						<!-- Gasoline full model information updated by JS -->
+					</div>
 				</div>
 				<div class="text-muted">
 					Costs and value after <span class="owntime"></span> years
@@ -468,6 +481,9 @@
 			<div class="form-box">
 				<div class="dcard">
 					<h4>Diesel</h4>
+					<div id="" class="dcar-full-model text-muted full-models">
+						<!-- Diesel full model information updated by JS -->
+					</div>
 				</div>
 				<div class="text-muted">
 					Costs and value after <span class="owntime"></span> years

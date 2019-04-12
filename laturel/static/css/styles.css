@@ -26,6 +26,7 @@ ul {
 
 #name{
 	margin-bottom: 0px;
+	margin-left: 0px;
 }
 
 #tagline{
@@ -231,6 +232,10 @@ ul {
 .top-button{
 	float: right;
 	padding: 10px;
+}
+
+.full-models{
+	text-transform: capitalize
 }
 
 /* End of classes */

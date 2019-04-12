@@ -1,6 +1,7 @@
 
 // Electric vehicle values
 const ecarModel = document.getElementById('ecar_model');
+const ecarFullModel = document.querySelectorAll('.ecar-full-model')
 const ecarPrice = document.getElementById('ecar_price');
 const ecarConsumption = document.getElementById('ecar_consumption');
 const ecarWeight = document.getElementById('ecar_weight');
@@ -18,6 +19,7 @@ var eVars = {
 
 // Gasoline vehicle values
 const gcarModel = document.getElementById('gcar_model');
+const gcarFullModel = document.querySelectorAll('.gcar-full-model')
 const gcarPrice = document.getElementById('gcar_price');
 const gcarConsumption = document.getElementById('gcar_consumption');
 const gcarCO2 = document.getElementById('gcar_co2')
@@ -33,6 +35,7 @@ var gVars = {
 
 // Diesel vehicle values
 const dcarModel = document.getElementById('dcar_model');
+const dcarFullModel = document.querySelectorAll('.dcar-full-model')
 const dcarPrice = document.getElementById('dcar_price');
 const dcarConsumption = document.getElementById('dcar_consumption');
 const dcarWeight = document.getElementById('dcar_weight');
@@ -95,12 +98,15 @@ function change_data(carType) {
 		}
 
 		response.json().then(function(data){
-			// DEBUG console.log(data)
+			console.log(data)
 			// DEBUG console.log(data.car_info.price) 
 			// DEBUG console.log(carType.id) 
 
 			// Check which car type the response belongs to and update respecitve values accordingly
 			if (carType.id === 'ecar_model'){
+				ecarFullModel.forEach(function(item){
+					item.textContent = data.car_info.fullmodel
+				})
 				ecarPrice.value = data.car_info.price;
 				ecarWeight.value = data.car_info.weight;
 				ecarConsumption.value = data.car_info.consumption;
@@ -110,11 +116,17 @@ function change_data(carType) {
 				
 			}
 			if (carType.id === 'gcar_model'){
+				gcarFullModel.forEach(function(item){
+					item.textContent = data.car_info.fullmodel
+				})
 				gcarPrice.value = data.car_info.price;
 				gcarConsumption.value = data.car_info.consumption;
 				gcarCO2.value  = Math.floor((data.co2.tax * 365) / 100); // Calculating €/year from cnt/day
 			}
 			if (carType.id === 'dcar_model'){
+				dcarFullModel.forEach(function(item){
+					item.textContent = data.car_info.fullmodel
+				})
 				dcarPrice.value = data.car_info.price;
 				dcarWeight.value = data.car_info.weight;
 				dcarConsumption.value = data.car_info.consumption;
@@ -273,10 +285,11 @@ function depr_oper(purchase, rate, years, cost){
 	}
 }
 
-
-
 // Eventlisteners for updating the information
 document.addEventListener('DOMContentLoaded', update_values);
+document.addEventListener('DOMContentLoaded', () => {change_data(ecarModel);} );
+document.addEventListener('DOMContentLoaded', () => {change_data(gcarModel);} );
+document.addEventListener('DOMContentLoaded', () => {change_data(dcarModel);} );
 ecarModel.addEventListener('change', () => {change_data(ecarModel);} );
 gcarModel.addEventListener('change', () => {change_data(gcarModel);} );
 dcarModel.addEventListener('change', () => {change_data(dcarModel);} );
