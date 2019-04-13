@@ -1,4 +1,6 @@
 
+// TODO: Update the car full name value to result cards after clicking the submit button
+
 // Electric vehicle values
 const ecarModel = document.getElementById('ecar_model');
 const ecarFullModel = document.getElementById('ecar-full-model')
@@ -209,7 +211,7 @@ function update_values(){
 	get_car_values()
 	
 	var lastYear = generalVars.owntime - 1
-	
+
 	ownTimeValue.forEach(function(ownTimeValue){
 		ownTimeValue.textContent = generalVars.owntime;
 	})
