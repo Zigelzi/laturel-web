@@ -1,5 +1,20 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
-	background-color: #eeeeee
+	background-color: #eeeeee;
+	margin: 0 0 16px; /* bottom = footer height */
+
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 16px;
+    width: 100%;
 }
 
 footer > p{
@@ -21,6 +36,8 @@ ul {
 	list-style: none;
 	padding: 0px; 
 }
+
+
 
 /* Identifiers */
 
@@ -69,6 +86,7 @@ ul {
 .nav-text{
 	color: #fff;
 	font-size: 16px;
+	font-weight: 600;
 }
 
 .active-nav{
