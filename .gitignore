@@ -1,9 +1,7 @@
 /Flask
 /.idea
 __pycache__/
-.tmp.drivedownload/
 venv/
 pics/
 
 *.pyc
-config.py
