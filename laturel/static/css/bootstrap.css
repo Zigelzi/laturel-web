@@ -4172,11 +4172,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border: 1px solid transparent;
 }
 @media (min-width: 768px) {
-  .navbar {
-    border-radius: 4px;
-  }
-}
-@media (min-width: 768px) {
   .navbar-header {
     float: left;
   }
@@ -4496,9 +4491,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #f49104;
-  margin: 0;
-  box-shadow: 0px 1px rgba(5, 5, 5, 0.2);
-
 }
 .navbar-default .navbar-brand {
   color: #777;

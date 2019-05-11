@@ -41,6 +41,16 @@ ul {
 
 /* Identifiers */
 
+#main-header {
+	
+	background: 
+			  linear-gradient(rgba(244,145,4, 1), rgba(244,145,4, 0.6) 5%, rgba(238,238,238,0.6) 60%,  rgba(238,238,238,1)),
+			  url("../img/header_car.jpg") no-repeat center center fixed;
+	background-size: cover;
+	height: 100vh;
+	color: #f0f0f0;;
+}
+
 #name{
 	margin-bottom: 0px;
 	margin-left: 0px;
@@ -65,7 +75,7 @@ ul {
 }
 
 #car-info{
-	display: none
+	display:none;
 }
 
 #car-hide::after { 
