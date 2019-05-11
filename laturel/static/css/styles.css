@@ -60,13 +60,50 @@ ul {
 	padding-bottom: 30px;
 }
 
-#logo{
+#logo {
 	height: 50px;
 }
 
 #car-info{
 	display: none
 }
+
+#car-hide::after { 
+	content: "";
+	position: absolute;
+	bottom: 5px; 
+	border-top:15px solid #da8307;
+	border-left:15px solid transparent;
+	border-right:15px solid transparent;
+
+}
+
+/* Adjusting the arrow for smaller screens */
+
+@media (min-width: 1200px) {
+	#car-hide::after { 
+		bottom: 20px; 
+	}
+}
+
+#operational-hide::after { 
+	content: "";
+	position: absolute;
+	bottom: 5px; 
+	border-top:15px solid #da8307;
+	border-left:15px solid transparent;
+	border-right:15px solid transparent;
+
+}
+
+/* Adjusting the arrow for smaller screens */
+
+@media (min-width: 1200px) {
+	#operational-hide::after { 
+		bottom: 20px; 
+	}
+}
+
 
 #operational-info{
 	display: none
