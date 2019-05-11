@@ -109,7 +109,7 @@ function change_data(carType) {
 
 			// Check which car type the response belongs to and update respecitve values accordingly
 			if (carType.id === 'ecar_model'){
-				ecarFullModel.textContent = data.car_info.fullmodel
+				ecarFullModel.textContent = data.car_info.fullmodel;
 				ecarPrice.value = data.car_info.price;
 				ecarWeight.value = data.car_info.weight;
 				ecarConsumption.value = data.car_info.consumption;
@@ -221,19 +221,23 @@ function update_values(){
 	ecarDeprTotal.textContent = eVars.deprValue[lastYear];
 	ecarCostsTotal.textContent = (eVars.yearlyCost[lastYear] + eVars.deprValue[lastYear]);
 	ecarResell.textContent = (eVars.price - eVars.deprValue[lastYear]);
+	ecardFullModel.textContent = ecarFullModel.textContent;
 
 	gcarOperYearly.textContent = gVars.yearly;
 	gcarOperTotal.textContent = gVars.yearlyCost[lastYear];
 	gcarDeprTotal.textContent = gVars.deprValue[lastYear];
 	gcarCostsTotal.textContent = (gVars.yearlyCost[lastYear] + gVars.deprValue[lastYear]);
 	gcarResell.textContent = (gVars.price - gVars.deprValue[lastYear]);
+	gcardFullModel.textContent = gcarFullModel.textContent;
 
 	dcarOperYearly.textContent = dVars.yearly;
 	dcarOperTotal.textContent = dVars.yearlyCost[lastYear];
 	dcarDeprTotal.textContent = dVars.deprValue[lastYear];
 	dcarCostsTotal.textContent = (dVars.yearlyCost[lastYear] + dVars.deprValue[lastYear]);
 	dcarResell.textContent = (dVars.price - dVars.deprValue[lastYear]);
-
+	dcardFullModel.textContent = dcarFullModel.textContent;
+	
+	
 
 }
 
