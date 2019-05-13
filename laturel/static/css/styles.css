@@ -162,12 +162,13 @@ ul {
 			  url("../img/header_car.jpg") no-repeat center center fixed;
 	background-size: cover;
 	height: 100vh;
-	color: #6d676e;
-	text-align: center;
+	color: #49464a;
+	
 	
 }
 
 .main-header h1 {
+	text-align: center;
 	font-size: 5.96em;
 	margin-top: 2em;
 }
