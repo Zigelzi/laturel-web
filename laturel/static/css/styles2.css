@@ -11,10 +11,34 @@ Platinum: #dee7e7
 
 ------------------- */
 
+* {
+    padding: 0;
+    margin: 0;
+}
+
 /* ===================
 Base style
 =================== */
 
+body {
+    height: 100%;
+    font-family: 'Karla', sans-serif;
+    background-color: #f4faff;
+    margin-bottom: 16px; /* For the footer height */
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 16px;
+    width: 100%;
+}
+
+/* TEMP */
+img {
+    height: 100px;
+}
 
 /* ===================
 Typography
@@ -30,7 +54,99 @@ ID selectors
 Class selectors
 =================== */
 
+.navbar {
+    background-color: #f49104;
+    padding-top: 0.5em; /* 8px */
+    padding-bottom: 0.5em;
+    text-align: center;
+    box-shadow: 0px 1px 2px rgba(20, 20, 20, 0.2);
+}
+
+.navbar ul {
+    vertical-align: top;
+    position: relative;
+}
+
+.navbar li {
+    text-align: center;
+    list-style: none;
+    padding: 15.8px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #dee7e7;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative; /* Relative so the a:after absolute hover element can be positioned */
+}
+
+.navbar ul li a,
+.navbar ul li a:after,
+.navbar ul li a:before,
+.navbar img,
+.navbar img:after,
+.navbar img:before {
+    transition: all .5s;
+}
+
+/* Element for the :hover effect */
+.navbar ul li a:after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    color: transparent;
+    background: #aaa;
+    height: 1px;
+}
+
+.navbar ul li a:hover:after {
+    width: 100%;
+}
+
+.navbar a:hover,
+.navbar img:hover {
+    color: #5a5e5e;
+    }
+
+.nav-img {
+    display: block;
+    height: 50px;
+}
+
+.nav-img img {
+    height: 50px;
+}
 
 /* ===================
 Media queries
 =================== */
+
+/* ---------------
+Medium screens
+ ---------------*/
+@media (min-width: 768px) {
+
+    .navbar {
+        padding-left: 150px;
+        text-align: left;
+    }
+
+    .navbar ul,
+    .navbar li,
+    .navbar .nav-img {
+        display: inline-block;
+    }
+
+    .navbar li {
+        padding: 15.8px 15px;
+    }
+    
+    .nav-img {
+        margin-right: 25px;
+    }
+}
