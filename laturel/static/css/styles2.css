@@ -31,10 +31,11 @@ body {
 footer {
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 16px;
     height: 16px;
     width: 100%;
     text-align: center;
+    font-size: 0.64em;
 }
 
 /* TEMP */
@@ -46,6 +47,7 @@ h1, h2, h3,
 h4, h5, h6 {
     margin: 0;
     padding: 0;
+    color: #3d3f3f;
 }
 
 /* ===================
@@ -132,17 +134,35 @@ Class selectors
 
 .main-container {
     width: 90%;
+    height: 520px;
     margin: 0 auto;
+    position: relative;
+
 }
 
 .top-button {
     position: absolute;
     right: 5px;
-    bottom: 5px;
+    bottom: 30px;
 }
 
 .top-button img {
     height: 50px;
+}
+
+.content {
+    display: block;
+    margin-top: 1em;
+}
+
+.content-text {
+    text-align: center;
+    position: absolute;
+    top: 40%;
+}
+
+.tagline {
+    color: #9fa5a5;
 }
 
 /* ===================
@@ -153,6 +173,12 @@ Media queries
 Medium screens
  ---------------*/
 @media (min-width: 768px) {
+
+    footer {
+        bottom: 4px;
+        height: 17px;
+        font-size: 1em;
+    }
 
     .navbar {
         padding-left: 150px;
@@ -171,5 +197,11 @@ Medium screens
     
     .nav-img {
         margin-right: 25px;
+    }
+
+    .top-button {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
     }
 }
