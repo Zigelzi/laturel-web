@@ -156,37 +156,29 @@ ul {
 	font-weight: 700;
 }
 
-.main-header {	
-	background: 
-			  linear-gradient(rgba(244,145,4, 1), rgba(244 ,250 ,255 ,0.6) 5%, rgba(244 ,250 ,255 ,0.6) 60%,  rgba(244 ,250 ,255 ,1)),
-			  url("../img/header_car.jpg") no-repeat center center fixed;
-	background-size: cover;
-	height: 100vh;
+.main-header {
+	margin-top: 20px;
+	background-color: #dee7e7;
 	color: #49464a;
-	
+	height: 80%;
 	
 }
 
 .main-header h1 {
-	text-align: center;
-	font-size: 5.96em;
-	margin-top: 2em;
+	font-size: 3.815em;
 }
 
 .main-header h1 + h1 {
 	margin-top: initial;
 }
 
-@media (max-width: 102.8rem) {
-	.main-header h1 {
-		font-size: 4.768em;
-	}
+.main-header img {
+	height: 100%;
+	max-width: 100%;
 }
 
-@media (max-width: 86rem) {
-	.main-header h1 {
-		font-size: 3.815em;
-	}
+.main-content {
+	height: 80%;
 }
 
 @media (max-width: 70rem) {
