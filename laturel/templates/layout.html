@@ -22,16 +22,15 @@
 			
 	</head>
 	<body>
-		<nav id="nav" class="navbar">
-				<a class="nav-img" href="{{ url_for('index') }}"><img id="logo" src="{{ url_for('static', filename='img/laturel_logo_m.png') }}"></a>
-			<ul class="">
-				<li class="{% if active=='cars'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('cars') }}">Cars</a></li>
-			</ul>
-		</nav>
-
 		<div class="main-container" id="top">
-		{% block content %}
-		{% endblock %}
+			<nav id="nav" class="navbar">
+					<a class="nav-img" href="{{ url_for('index') }}"><img id="logo" src="{{ url_for('static', filename='img/laturel_logo_m.png') }}"></a>
+				<ul class="">
+					<li class="{% if active=='cars'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('cars') }}">Cars</a></li>
+				</ul>
+			</nav>
+			{% block content %}
+			{% endblock %}
 		</div>
 		<div id="bot" class="top-button">
 				<a href="#nav"><img src="{{ url_for('static', filename='img/laturel_arrow_top.png') }}"></a>
