@@ -96,7 +96,7 @@ Class selectors
 .navbar ul li a:after {
     content: "";
     position: absolute;
-    bottom: -5px;
+    bottom: -10px;
     left: 0;
     right: 0;
     margin: auto;
@@ -144,6 +144,30 @@ Class selectors
     margin-top: 1em;
 }
 
+
+/* Flex content boxes */
+.f-content {
+    display: flex;
+    margin: 2em 0;
+    flex-direction: column;
+    min-height: 150px;
+}
+
+.f-content h1,
+.f-content h2,
+.f-content h3,
+.f-content h4 {
+    margin-bottom: .3em;
+}
+
+.f-content p {
+    margin: .5em 0;
+}
+
+.f-content .btn {
+    margin-top: auto;
+}
+
 .content-main {
     text-align: center;
     margin: 0 auto;
@@ -158,11 +182,6 @@ Class selectors
     margin-top: 30%;
 }
 
-.content-img {
-    background-image: url(../img/header_car.jpg)
-
-}
-
 .content-img img {
     width: 100vw;
     margin-left: -6%;
@@ -171,6 +190,28 @@ Class selectors
 
 .tagline {
     color: #9fa5a5;
+}
+
+.btn {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    border-radius: 1em;
+    padding: 1em 1em;
+    background-color: #dee7e7;
+    width: 80%;
+    align-self: center;
+    box-shadow: 0 0 3px 1px rgba(50,50,50,0.3);
+    transition: box-shadow .5s,
+                background-color .5s,
+                transform .5s ease-out;
+    
+}
+
+.btn:hover {
+    box-shadow: 0 0 3px 1px rgba(50,50,50,0.7);
+    background-color: #b8e7e7;
+    transform: scale(1.1);
 }
 
 /* ===================
