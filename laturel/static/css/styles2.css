@@ -46,6 +46,9 @@ h4, h5, h6 {
 Typography
 =================== */
 
+p {
+    line-height: 1.5;
+}
 
 /* ===================
 ID selectors
@@ -150,7 +153,8 @@ Class selectors
     display: flex;
     margin: 2em 0;
     flex-direction: column;
-    min-height: 150px;
+    min-height: 200px;
+    position: relative;
 }
 
 .f-content h1,
@@ -168,6 +172,7 @@ Class selectors
     margin-top: auto;
 }
 
+
 .content-main {
     text-align: center;
     margin: 0 auto;
@@ -177,9 +182,10 @@ Class selectors
 }
 
 .content-text {
-    margin-bottom: 50px;
-    height: 50vh;
-    margin-top: 30%;
+    display: flex;
+    flex-direction: column;
+    height: calc(90vh - 116px); /* 116px is the height of the navigation */
+    justify-content: center;
 }
 
 .content-img img {
@@ -195,9 +201,11 @@ Class selectors
 .btn {
     display: block;
     color: #000;
+    font-size: 1.3em;
     text-decoration: none;
+    text-transform: uppercase;
     border-radius: 1em;
-    padding: 1em 1em;
+    padding: 0.7em 0;
     background-color: #dee7e7;
     width: 80%;
     align-self: center;
@@ -213,6 +221,14 @@ Class selectors
     background-color: #b8e7e7;
     transform: scale(1.1);
 }
+
+.icon-ev {
+    height: 50px;
+    position: absolute;
+    top: -15px;
+    left: 10%;
+}
+
 
 /* ===================
 Media queries
