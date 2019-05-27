@@ -143,8 +143,13 @@ Class selectors
 }
 
 .content {
-    display: block;
-    margin-top: 1em;
+    margin: 0 auto;
+    padding: 1px 0; /* Preventing the container from collapsing */
+    width: 90%;
+}
+
+.text-center {
+    text-align: center;
 }
 
 
@@ -172,16 +177,7 @@ Class selectors
     margin-top: auto;
 }
 
-
-.content-main {
-    text-align: center;
-    margin: 0 auto;
-    padding: 1px 0; /* Preventing the container from collapsing */
-    width: 90%;
-
-}
-
-.content-text {
+.main-header {
     display: flex;
     flex-direction: column;
     height: calc(90vh - 116px); /* 116px is the height of the navigation */
@@ -228,6 +224,7 @@ Class selectors
     top: -15px;
     left: 10%;
 }
+
 
 
 /* ===================

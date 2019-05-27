@@ -5,23 +5,16 @@
 
 
 {% block content%}
-	<div class="row">
-		<div class="col-lg-12">
+	<div class="content-main">
 			<h2>Cars</h2>
 			<h4>Total cost of ownership calculator for cars</h4>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-lg-12">
 			<p>Here you can calculate the yearly costs of using different cars and propulsion types. The operative calculations include <a href="https://www.traficom.fi/en/transport/road/structure-and-quantity-vehicle-tax">Finnish car taxation.</a></p>
 			<p>Car weight is used to calculate the drive power tax when applicable. More details can be found from <a href="https://www.traficom.fi/en/transport/road/structure-and-quantity-vehicle-tax">Traficom</a> site.</p>
-		</div>
 	</div>
 
 	<form action="{{ url_for('cars') }}" method="post">
-		<div class="row">
-			<div class="col-lg-4 form-group text-center">
+		<div class="">
+			<div class="">
 				<div class="form-box e-top">
 					<div>
 						{{ car_form.ecar_model.label(class="form-control-label label-margin") }}
@@ -33,7 +26,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-4 form-group text-center">
+			<div class="">
 				<div class="form-box g-top">
 					<div>
 						{{ car_form.gcar_model.label(class="form-control-label label-margin") }}
@@ -45,7 +38,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-4 form-group text-center">
+			<div class="">
 				<div class="form-box d-top">
 					<div>
 						{{ car_form.dcar_model.label(class="form-control-label label-margin") }}
