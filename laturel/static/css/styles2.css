@@ -199,18 +199,50 @@ Class selectors
     flex-wrap: wrap;
 }
 
+.col {
+    flex: 1;
+}
+
 .form-box {
     background-color: #fefefe;
     border-radius: 5px 8px;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
     margin-bottom: 15px;
     text-align: center;
-    padding: 20px;
-    width: 90%;
+    padding: 0 20px 20px 30px;;
 }
 
-.e-top {
-    border-top: 8px solid #2a5499;
+.form-box label {
+    font-weight: 700;
+    margin: 5px;
+    display: block;
+}
+
+.form-box input,
+.form-box select {
+    border-radius: 5px;
+    padding: 6px 12px;
+    max-width: 9.375em; /* 150px */
+}
+
+.inline-label {
+    display: inline-block;
+}
+
+.e-top{
+	border-top: 8px solid #2a5499;
+}
+
+.g-top{
+	border-top: 8px solid #134712;
+}
+
+.d-top{
+	border-top: 8px solid #322c2b;
+}
+
+.general-top{
+	border-top: 8px solid #f4c542;
 }
 
 .main-header {
@@ -246,9 +278,9 @@ Class selectors
     text-decoration: none;
     text-transform: uppercase;
     border-radius: 1em;
-    padding: 0.7em 0;
+    padding: 0.7em 2em;
+    max-width: 250px;
     background-color: #dee7e7;
-    width: 80%;
     align-self: center;
     box-shadow: 0 0 3px 1px rgba(50,50,50,0.3);
     transition: box-shadow .5s,
@@ -261,6 +293,14 @@ Class selectors
     box-shadow: 0 0 3px 1px rgba(50,50,50,0.7);
     background-color: #b8e7e7;
     transform: scale(1.1);
+}
+
+.btn-margin {
+    margin: 20px 0;
+}
+
+.btn-center {
+    margin: 0 auto;
 }
 
 .icon-ev {
