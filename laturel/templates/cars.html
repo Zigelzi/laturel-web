@@ -5,48 +5,42 @@
 
 
 {% block content%}
-	<div class="content-main">
-			<h2>Cars</h2>
-			<h4>Total cost of ownership calculator for cars</h4>
-			<p>Here you can calculate the yearly costs of using different cars and propulsion types. The operative calculations include <a href="https://www.traficom.fi/en/transport/road/structure-and-quantity-vehicle-tax">Finnish car taxation.</a></p>
-			<p>Car weight is used to calculate the drive power tax when applicable. More details can be found from <a href="https://www.traficom.fi/en/transport/road/structure-and-quantity-vehicle-tax">Traficom</a> site.</p>
+	<div class="content-text">
+			<h2>Total cost of ownership</h2>
+			<p>Comparing different cars and their costs can be a bit of hassle nowdays. This calculator does the hard work for you.</p>
+			<p>You can compare models in Laturel database or input your own values to match another car or your preferences.</p>
+			<p class="subtext">Car weight is used to calculate the drive power tax when applicable. More details can be found from <a href="https://www.traficom.fi/en/transport/road/structure-and-quantity-vehicle-tax">Traficom</a> site. Operational costs use the <a href="https://www.traficom.fi/en/transport/road/structure-and-quantity-vehicle-tax">Finnish car taxation</a> as base.</p>
 	</div>
-
+	<div class="content">
 	<form action="{{ url_for('cars') }}" method="post">
-		<div class="">
-			<div class="">
-				<div class="form-box e-top">
-					<div>
-						{{ car_form.ecar_model.label(class="form-control-label label-margin") }}
-						<br>
-						
-						<div class="select-box">
-							{{ car_form.ecar_model(class="form-control") }}
-						</div>
+		<div class="flex-form-container">
+			<div class="form-box e-top">
+				<div>
+					{{ car_form.ecar_model.label(class="form-control-label label-margin") }}
+					<br>
+					
+					<div class="select-box">
+						{{ car_form.ecar_model(class="form-control") }}
 					</div>
 				</div>
 			</div>
-			<div class="">
-				<div class="form-box g-top">
-					<div>
-						{{ car_form.gcar_model.label(class="form-control-label label-margin") }}
-						<br>
-						
-						<div class="select-box">
-							{{ car_form.gcar_model(class="form-control") }}
-						</div>
+			<div class="form-box g-top">
+				<div>
+					{{ car_form.gcar_model.label(class="form-control-label label-margin") }}
+					<br>
+					
+					<div class="select-box">
+						{{ car_form.gcar_model(class="form-control") }}
 					</div>
 				</div>
 			</div>
-			<div class="">
-				<div class="form-box d-top">
-					<div>
-						{{ car_form.dcar_model.label(class="form-control-label label-margin") }}
-						<br>
-						
-						<div class="select-box">
-							{{ car_form.dcar_model(class="form-control") }}
-						</div>
+			<div class="form-box d-top">
+				<div>
+					{{ car_form.dcar_model.label(class="form-control-label label-margin") }}
+					<br>
+					
+					<div class="select-box">
+						{{ car_form.dcar_model(class="form-control") }}
 					</div>
 				</div>
 			</div>
@@ -509,6 +503,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- End of result cards -->
 

@@ -144,8 +144,25 @@ Class selectors
 
 .content {
     margin: 0 auto;
-    padding: 1px 0; /* Preventing the container from collapsing */
     width: 90%;
+}
+
+.content-text {
+    width: 90%;
+    margin: 1rem auto;
+}
+
+.content-text h1,
+.content-text h2,
+.content-text h3,
+.content-text h4 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.content-text p {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 
 .text-center {
@@ -177,6 +194,25 @@ Class selectors
     margin-top: auto;
 }
 
+.flex-form-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-box {
+    background-color: #fefefe;
+    border-radius: 5px 8px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 20px;
+    width: 90%;
+}
+
+.e-top {
+    border-top: 8px solid #2a5499;
+}
+
 .main-header {
     display: flex;
     flex-direction: column;
@@ -191,6 +227,15 @@ Class selectors
 }
 
 .tagline {
+    color: #9fa5a5;
+}
+
+.subtext {
+    font-size: 0.8em;
+    color: #9fa5a5;
+}
+
+.subtext a {
     color: #9fa5a5;
 }
 
