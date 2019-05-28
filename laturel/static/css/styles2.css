@@ -197,10 +197,11 @@ Class selectors
 .form-box {
     background-color: #fefefe;
     border-radius: 5px 8px;
-    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 6px 0 rgba(197, 194, 194, 0.2);
     margin-bottom: 15px;
     text-align: center;
-    padding: 0 20px 20px 30px;;
+    padding-top: 10px;
+    padding-bottom: 30px;
 }
 
 .form-box label {
@@ -212,6 +213,10 @@ Class selectors
 .select-box {
     border-radius: 5px;
     padding: 6px 12px;
+}
+
+.result-box ul {
+    list-style: none;
 }
 
 .input-group {
@@ -238,21 +243,6 @@ Class selectors
     padding: 6px 12px;
 }
 
-.e-top{
-	border-top: 8px solid #2a5499;
-}
-
-.g-top{
-	border-top: 8px solid #134712;
-}
-
-.d-top{
-	border-top: 8px solid #322c2b;
-}
-
-.general-top{
-	border-top: 8px solid #f4c542;
-}
 
 .main-header {
     display: flex;
@@ -277,6 +267,10 @@ Class selectors
 }
 
 .subtext a {
+    color: #9fa5a5;
+}
+
+.text-muted {
     color: #9fa5a5;
 }
 
@@ -319,7 +313,39 @@ Class selectors
     left: 10%;
 }
 
+/* Cars page forms and result styling */
 
+.e-top {
+	border-top: 8px solid #2a5499;
+}
+
+.g-top {
+	border-top: 8px solid #134712;
+}
+
+.d-top {
+	border-top: 8px solid #322c2b;
+}
+
+.general-top {
+	border-top: 8px solid #f4c542;
+}
+
+.ecard {
+	border-bottom: 4px solid #2a5499;
+}
+
+.gcard {
+	border-bottom: 4px solid #134712;
+}
+
+.dcard {
+	border-bottom: 4px solid #322c2b;
+}
+
+.operational-result {
+    margin: 15px 0;
+}
 
 /* ===================
 Media queries
