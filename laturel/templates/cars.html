@@ -49,13 +49,11 @@
 			<div class="col-lg-4 form-group text-center">
 				<div class="form-box general-top">
 					{{ form.owntime.label(class="form-control-label label-margin") }}
-					<br>
 					<div class="input-group input-margins">
 					{{ form.owntime(class="form-control") }}
 					<span>years</span>
 					</div>
 					{{ form.drivekm.label(class="form-control-label label-margin") }}
-					<br>
 					<div class="input-group input-margins">
 						{{ form.drivekm(class="form-control") }}
 						<span>km/year</span>
@@ -85,22 +83,19 @@
 							<!-- EV full model information updated by JS -->
 						</div>
 						{{ form.ecar_price.label(class="form-control-label label-margin") }}
-						<br>
 						<div class="input-group input-margins">
 						{{ form.ecar_price(class="form-control") }}
-							<span>€</span>
+							<span class="input-addon">€</span>
 						</div>
 						{{ form.ecar_consumption.label(class="form-control-label label-margin") }}
-						<br>
 						<div class="input-group input-margins">
 						{{ form.ecar_consumption(class="form-control") }}
-							<span>kWh/100 km</span>
+							<span class="input-addon">kWh/100 km</span>
 						</div>
 						{{ form.ecar_weight.label(class="form-control-label label-margin") }}
-						<br>
 						<div class="input-group input-margins">
 						{{ form.ecar_weight(class="form-control") }}
-							<span>kg</span>
+							<span class="input-addon">kg</span>
 						</div>
 						<!--
 						<div>
@@ -114,10 +109,9 @@
 						</div>
 						-->
 						{{ form.ecar_co2.label(class="form-control-label label-margin") }}
-						<br>
 						<div class="input-group input-margins">
 						{{ form.ecar_co2(class="form-control") }}
-							<span>g/km</span>
+							<span class="input-addon">g/km</span>
 						</div>
 						<!--
 						<div id="ecar-battery" class="input-margins">
@@ -138,16 +132,14 @@
 							<!-- Gasoline full model information updated by JS -->
 						</div>
 						{{ form.gcar_price.label(class="form-control-label label-margin") }}
-						<br>
 						<div class="input-group input-margins">
 						{{ form.gcar_price(class="form-control") }}
-							<span>€</span>
+							<span class="input-addon">€</span>
 						</div>
 						{{ form.gcar_consumption.label(class="form-control-label label-margin") }}
-						<br>
 						<div class="input-group input-margins">
 						{{ form.gcar_consumption(class="form-control") }}
-							<span>l/100km</span>
+							<span class="input-addon">l/100km</span>
 						</div>
 						<!--
 						<div>
@@ -158,10 +150,9 @@
 						</div>
 						-->
 						{{ form.gcar_co2.label(class="form-control-label label-margin")}}
-						<br>
 						<div class="input-group input-margins">
 						{{ form.gcar_co2(class="form-control") }}
-							<span>g/km</span>
+							<span class="input-addon">g/km</span>
 						</div>
 						
 					</div>
@@ -180,22 +171,19 @@
 						</div>
 
 						{{ form.dcar_price.label(class="form-control-label label-margin") }}
-						<br>
 						<div class="input-group input-margins">
 						{{ form.dcar_price(class="form-control") }}
-							<span>€</span>
+							<span class="input-addon">€</span>
 						</div>
 						{{ form.dcar_consumption.label(class="form-control-label label-margin") }}
-						<br>
 						<div class="input-group input-margins">
 						{{ form.dcar_consumption(class="form-control") }}
-							<span>l/100km</span>
+							<span class="input-addon">l/100km</span>
 						</div>
 						{{ form.dcar_weight.label(class="form-control-label label-margin") }}
-						<br>
 						<div class="input-group input-margins">
 						{{ form.dcar_weight(class="form-control") }}
-							<span>kg</span>
+							<span class="input-addon">kg</span>
 						</div>
 						<!--
 						<div>
@@ -206,10 +194,9 @@
 						</div>
 						-->
 						{{ form.dcar_co2.label(class="form-control-label label-margin")}}
-						<br>
 						<div class="input-group input-margins">
 						{{ form.dcar_co2(class="form-control") }}
-							<span>g/km</span>
+							<span class="input-addon">g/km</span>
 						</div>
 						
 					</div>
@@ -235,25 +222,21 @@
 						<h4>Electric</h4>
 					</div>
 					{{ form.ecar_depr.label(class="form-control-label label-margin") }}
-					<br>
 					<div class="input-group input-margins">
 					{{ form.ecar_depr(class="form-control") }}
-						<span>% / year</span>
+						<span class="input-addon">% / year</span>
 					</div>
 					{{ form.ecar_eprice.label(class="form-control-label label-margin") }}
-					<br>
 					<div class="input-group input-margins">
 					{{ form.ecar_eprice(class="form-control") }}
-						<span>€/kWh</span>
+						<span class="input-addon">€/kWh</span>
 					</div>
 					{{ form.ecar_subsidy.label(class="form-control-label label-margin") }}
-					<br>
 					<div class="input-group input-margins">
 					{{ form.ecar_subsidy(class="form-control") }}
-						<span>€</span>
+						<span class="input-addon">€</span>
 					</div>
 					{{ form.ecar_charger.label(class="form-control-label label-margin") }}
-					<br>
 					<div class="input-margins">
 						{% for subfield in form.ecar_charger%}
 						<tr>
@@ -273,16 +256,14 @@
 						<h4>Gasoline</h4>
 					</div>
 					{{ form.gcar_depr.label(class="form-control-label label-margin") }}
-					<br>
 					<div class="input-group input-margins">
 					{{ form.gcar_depr(class="form-control") }}
-						<span>% / year</span>
+						<span class="input-addon">% / year</span>
 					</div>
 					{{ form.gcar_gprice.label(class="form-control-label label-margin") }}
-					<br>
 					<div class="input-group input-margins">
 					{{ form.gcar_gprice(class="form-control") }}
-						<span>€/l</span>
+						<span class="input-addon">€/l</span>
 					</div>
 				</div>
 			</div>
@@ -295,16 +276,14 @@
 						<h4>Diesel</h4>
 					</div>
 					{{ form.dcar_depr.label(class="form-control-label label-margin") }}
-					<br>
 					<div class="input-group input-margins">
 					{{ form.dcar_depr(class="form-control") }}
-						<span>% / year</span>
+						<span class="input-addon">% / year</span>
 					</div>
 					{{ form.dcar_dprice.label(class="form-control-label label-margin") }}
-					<br>
 					<div class="input-group input-margins">
 					{{ form.dcar_dprice(class="form-control") }}
-						<span>€/l</span>
+						<span class="input-addon">€/l</span>
 					</div>
 	
 				</div>	
@@ -335,29 +314,24 @@
 				<div class="text-muted">
 					Costs and value after <span class="owntime"></span> years
 				</div>
-				<br>
 				<div>
 					<span class="text-muted muted">Operational costs</span>
-					<br>
-					<b><span id="ecar-oper-yearly"></span> €</b>
-					<br>
+					<span id="ecar-oper-yearly"></span> €
 					<span class="text-muted muted">per year</span>
 				</div>
-				<br>
 				<div class="text-center-left">
 					<ul>
 						<li>
-							<b><span id="ecar-oper-total"></span> €</b> operational costs
+							<span id="ecar-oper-total"></span> € operational costs
 						</li>
 						<li>
-							<b><span id="ecar-depr-total"></span> €</b> depreciated value
-						</li>
-						<br>
-						<li>
-							<b><span id="ecar-costs-total"></span> €</b> total costs
+							<span id="ecar-depr-total"></span> € depreciated value
 						</li>
 						<li>
-							<b><span id="ecar-resell-value"></span> €</b> car resell value
+							<span id="ecar-costs-total"></span> € total costs
+						</li>
+						<li>
+							<span id="ecar-resell-value"></span> € car resell value
 						</li>
 					</ul>
 				</div>
@@ -377,29 +351,24 @@
 				<div class="text-muted">
 					Costs and value after <span class="owntime"></span> years
 				</div>
-				<br>
 				<div>
 					<span class="text-muted muted">Operational costs</span>
-					<br>
-					<b><span id="gcar-oper-yearly"></span> €</b>
-					<br>
+					<span id="gcar-oper-yearly"></span> €
 					<span class="text-muted muted">per year</span>
 				</div>
-				<br>
 				<div class="text-center-left">
 					<ul>
 						<li>
-							<b><span id="gcar-oper-total"></span> €</b> total operational costs
+							<span id="gcar-oper-total"></span> € total operational costs
 						</li>
 						<li>
-							<b><span id="gcar-depr-total"></span> €</b> depreciated value
-						</li>
-						<br>
-						<li>
-							<b><span id="gcar-costs-total"></span> €</b> total costs
+							<span id="gcar-depr-total"></span> € depreciated value
 						</li>
 						<li>
-							<b><span id="gcar-resell-value"></span> €</b> car resell value
+							<span id="gcar-costs-total"></span> € total costs
+						</li>
+						<li>
+							<span id="gcar-resell-value"></span> € car resell value
 						</li>
 					</ul>
 				</div>
@@ -419,29 +388,24 @@
 				<div class="text-muted">
 					Costs and value after <span class="owntime"></span> years
 				</div>
-				<br>
 				<div>
 					<span class="text-muted muted">Operational costs</span>
-					<br>
-					<b><span id="dcar-oper-yearly"></span> €</b>
-					<br>
+					<span id="dcar-oper-yearly"></span> €
 					<span class="text-muted muted">per year</span>
 				</div>
-				<br>
 				<div class="text-center-left">
 					<ul>
 						<li>
-							<b><span id="dcar-oper-total"></span> €</b> total operational costs
+							<span id="dcar-oper-total"></span> € total operational costs
 						</li>
 						<li>
-							<b><span id="dcar-depr-total"></span> €</b> depreciated value
-						</li>
-						<br>
-						<li>
-							<b><span id="dcar-costs-total"></span> €</b> total costs
+							<span id="dcar-depr-total"></span> € depreciated value
 						</li>
 						<li>
-							<b><span id="dcar-resell-value"></span> €</b> car resell value
+							<span id="dcar-costs-total"></span> € total costs
+						</li>
+						<li>
+							<span id="dcar-resell-value"></span> € car resell value
 						</li>
 					</ul>
 				</div>

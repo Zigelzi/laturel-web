@@ -230,23 +230,20 @@ Class selectors
     display: table;
 }
 
-.input-group input,
-.input-group span {
+.input-addon {
     display: table-cell;
-}
-
-.form-group input {
-    width: 100%;
-    border: 1px #dee7e7 solid;
-}
-
-.form-group span {
     white-space: nowrap;
     padding: 0 1em;
     border: 1px #dee7e7 solid;
     background: #dee7e7;
     border-left: none;
     border-radius: 0 5px 5px 0;
+}
+
+.form-control {
+    width: 100%;
+    border: 1px #dee7e7 solid;
+    display: table-cell;
 }
 
 .e-top{
