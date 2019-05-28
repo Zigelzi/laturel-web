@@ -28,10 +28,10 @@ body {
 }
 
 footer {
-    height: 1.5rem;
     width: 100%;
     text-align: center;
     font-size: 0.64em;
+    position: relative;
 }
 
 /* ===================
@@ -78,6 +78,10 @@ Class selectors
     font-weight: 700;
     text-transform: uppercase;
     position: relative; /* Relative so the a:after absolute hover element can be positioned */
+}
+
+.active-nav a {
+    color: #5a5e5e;
 }
 
 .navbar ul li a,
@@ -135,8 +139,6 @@ Class selectors
     justify-content: center;
 }
 
-
-
 .content {
     margin: 0 auto;
     width: 90%;
@@ -160,7 +162,17 @@ Class selectors
     padding-bottom: 0.5em;
 }
 
-
+.bg-diagonal::after {
+    content: " ";
+    height: 120%;
+    width: 115%;
+    position: absolute;
+    background: #dee7e7;
+    z-index: -1;
+    transform: skewY(-5deg);
+    left: -8%;
+    top: -10%;
+}
 
 
 /* Flex content boxes */
@@ -363,7 +375,9 @@ Class selectors
 }
 
 .top-button {
-    text-align: right;
+    position: absolute;
+    bottom:0;
+    right: 0;
     padding-right: 20px;
     height: 50px;
 }
@@ -406,12 +420,6 @@ Medium screens
         margin-right: 25px;
     }
 
-    .top-button {
-        position: absolute;
-        right: 5px;
-        bottom: 5px;
-    }
-
     .flex-form-container {
         display: flex;
         flex-wrap: wrap;
@@ -429,5 +437,9 @@ Medium screens
 
     .col:last-child {
         margin-right: 0;
+    }
+
+    .bg-diagonal::after {
+        content: initial;
     }
 }
