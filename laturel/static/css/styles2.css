@@ -194,15 +194,6 @@ Class selectors
     margin-top: auto;
 }
 
-.flex-form-container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.col {
-    flex: 1;
-}
-
 .form-box {
     background-color: #fefefe;
     border-radius: 5px 8px;
@@ -218,9 +209,8 @@ Class selectors
     display: block;
 }
 
-.form-box input,
-.form-box select {
-    border-radius: 5px 0 0 5px;
+.select-box {
+    border-radius: 5px;
     padding: 6px 12px;
 }
 
@@ -241,9 +231,11 @@ Class selectors
 }
 
 .form-control {
+    display: table-cell;
     width: 100%;
     border: 1px #dee7e7 solid;
-    display: table-cell;
+    border-radius: 5px 0 0 5px;
+    padding: 6px 12px;
 }
 
 .e-top{
@@ -367,5 +359,20 @@ Medium screens
         position: absolute;
         right: 5px;
         bottom: 5px;
+    }
+
+    .flex-form-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .col {
+        width: 320px;
+        margin-right: 20px;     
+    }
+
+    .col:last-child {
+        margin-right: 0;
     }
 }

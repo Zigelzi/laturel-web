@@ -46,17 +46,17 @@
 			<div class="col-lg-12">
 				<h3>Ownership information</h3>	
 			</div>
-			<div class="col-lg-4 form-group text-center">
-				<div class="form-box general-top">
+			<div class="flex-form-container">
+				<div class="form-box general-top col">
 					{{ form.owntime.label(class="form-control-label label-margin") }}
 					<div class="input-group input-margins">
 					{{ form.owntime(class="form-control") }}
-					<span>years</span>
+					<span class="input-addon">years</span>
 					</div>
 					{{ form.drivekm.label(class="form-control-label label-margin") }}
 					<div class="input-group input-margins">
 						{{ form.drivekm(class="form-control") }}
-						<span>km/year</span>
+						<span class="input-addon">km/year</span>
 					</div>
 				</div>
 			</div>
