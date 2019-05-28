@@ -200,14 +200,14 @@ Class selectors
 }
 
 .form-box label {
-    font-weight: 700;
-    margin: 5px;
+    font-weight: 300;
+    margin: 15px 0 5px 11%;
     display: block;
+    text-align: left;
 }
 
 .select-box {
     border-radius: 5px;
-    padding: 6px 12px;
 }
 
 .result-box ul {
@@ -302,6 +302,12 @@ Class selectors
 
 .text-bold {
     font-weight: 700;
+}
+
+.text-form-header {
+    text-align: center;
+    margin: 1.5625rem 0 1rem;
+    font-weight: 300;
 }
 
 /* ------ Buttons and icons ------ */

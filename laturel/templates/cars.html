@@ -6,29 +6,30 @@
 
 {% block content%}
 	<div class="content-text">
-			<h2>Total cost of ownership</h2>
+			<h3>Total cost of ownership</h3>
 			<p>Comparing different cars and their costs can be a bit of hassle nowdays. This calculator does the hard work for you.</p>
 			<p>You can compare models in Laturel database or input your own values to match another car or your preferences.</p>
 			<p class="subtext">Car weight is used to calculate the drive power tax when applicable. More details can be found from <a href="https://www.traficom.fi/en/transport/road/structure-and-quantity-vehicle-tax">Traficom</a> site. Operational costs use the <a href="https://www.traficom.fi/en/transport/road/structure-and-quantity-vehicle-tax">Finnish car taxation</a> as base.</p>
 	</div>
 	<div class="content">
 	<form action="{{ url_for('cars') }}" method="post">
+		<h2 class="text-form-header">Car selection</h2>
 		<div class="flex-form-container">
 			<div class="form-box e-top col">
 					{{ car_form.ecar_model.label(class="form-control-label label-margin") }}					
-					<div class="select-box">
+					<div class="input-group">
 						{{ car_form.ecar_model(class="form-control") }}
 					</div>
 			</div>
 			<div class="form-box g-top col">
 				{{ car_form.gcar_model.label(class="form-control-label label-margin") }}					
-				<div class="select-box">
+				<div class="input-group">
 					{{ car_form.gcar_model(class="form-control") }}
 				</div>
 			</div>
 			<div class="form-box d-top col">
 				{{ car_form.dcar_model.label(class="form-control-label label-margin") }}		
-				<div class="select-box">
+				<div class="input-group">
 					{{ car_form.dcar_model(class="form-control") }}
 				</div>
 			</div>
@@ -42,172 +43,170 @@
 	<form action="" method="">
 	
 		<!-- General information form -->
-		<div class="row">
-			<div class="col-lg-12">
-				<h3>Ownership information</h3>	
-			</div>
-			<div class="flex-form-container">
-				<div class="form-box general-top col">
-					{{ form.owntime.label(class="form-control-label label-margin") }}
-					<div class="input-group input-margins">
-					{{ form.owntime(class="form-control") }}
-					<span class="input-addon">years</span>
-					</div>
-					{{ form.drivekm.label(class="form-control-label label-margin") }}
-					<div class="input-group input-margins">
-						{{ form.drivekm(class="form-control") }}
-						<span class="input-addon">km/year</span>
-					</div>
+		<div>
+			<h2 class="text-form-header">Ownership information</h2>	
+		</div>
+		<div class="flex-form-container">
+			<div class="form-box general-top col">
+				{{ form.owntime.label(class="form-control-label label-margin") }}
+				<div class="input-group input-margins">
+				{{ form.owntime(class="form-control") }}
+				<span class="input-addon">years</span>
+				</div>
+				{{ form.drivekm.label(class="form-control-label label-margin") }}
+				<div class="input-group input-margins">
+					{{ form.drivekm(class="form-control") }}
+					<span class="input-addon">km/year</span>
 				</div>
 			</div>
 		</div>
+
 		<!--  End of general information-->
 		
-		<div class="row">
-			<div class="col-lg-12">
-				<h3 id="car-hide" class="form-textbox">Car information</h3>	
-			</div>
+		
+		<div class="col-lg-12">
+			<h2 id="car-hide" class="text-form-header">Car information</h2>	
 		</div>
 
-			<div class="form-borders"></div>
-			<!-- Car information row -->
-			<div id="car-info" class="flex-form-container">
-				
-				<!-- EV Car information -->
-				<div class="col">
-					<div class="form-box e-top">
-						<div class="box-header">
-							<h4>Electric</h4>
-						</div>
-						<div id="ecar-full-model" class=" text-muted full-models">
-							<!-- EV full model information updated by JS -->
-						</div>
-						{{ form.ecar_price.label(class="form-control-label label-margin") }}
-						<div class="input-group input-margins">
-						{{ form.ecar_price(class="form-control") }}
-							<span class="input-addon">€</span>
-						</div>
-						{{ form.ecar_consumption.label(class="form-control-label label-margin") }}
-						<div class="input-group input-margins">
-						{{ form.ecar_consumption(class="form-control") }}
-							<span class="input-addon">kWh/100 km</span>
-						</div>
-						{{ form.ecar_weight.label(class="form-control-label label-margin") }}
-						<div class="input-group input-margins">
-						{{ form.ecar_weight(class="form-control") }}
-							<span class="input-addon">kg</span>
-						</div>
-						<!--
-						<div>
-							Service interval
-						</div>
-						<div>
-							Service price
-						</div>
-						<div>
-							Range
-						</div>
-						-->
-						{{ form.ecar_co2.label(class="form-control-label label-margin") }}
-						<div class="input-group input-margins">
-						{{ form.ecar_co2(class="form-control") }}
-							<span class="input-addon">g/km</span>
-						</div>
-						<!--
-						<div id="ecar-battery" class="input-margins">
-							Battery size
-						</div>
-						-->
+		<div class="form-borders"></div>
+		<!-- Car information row -->
+		<div id="car-info" class="flex-form-container">
+			
+			<!-- EV Car information -->
+			<div class="col">
+				<div class="form-box e-top">
+					<div class="box-header">
+						<h3>Electric</h3>
 					</div>
-				</div>
-				<!-- End of EV Car information -->
-
-				<!-- Gasoline Car information -->
-				<div class="col">
-					<div class=" form-box g-top">
-						<div class="box-header">
-							<h4>Gasoline</h4>
-						</div>
-						<div id="gcar-full-model" class=" text-muted full-models">
-							<!-- Gasoline full model information updated by JS -->
-						</div>
-						{{ form.gcar_price.label(class="form-control-label label-margin") }}
-						<div class="input-group input-margins">
-						{{ form.gcar_price(class="form-control") }}
-							<span class="input-addon">€</span>
-						</div>
-						{{ form.gcar_consumption.label(class="form-control-label label-margin") }}
-						<div class="input-group input-margins">
-						{{ form.gcar_consumption(class="form-control") }}
-							<span class="input-addon">l/100km</span>
-						</div>
-						<!--
-						<div>
-							Service interval
-						</div>
-						<div>
-							Service price
-						</div>
-						-->
-						{{ form.gcar_co2.label(class="form-control-label label-margin")}}
-						<div class="input-group input-margins">
-						{{ form.gcar_co2(class="form-control") }}
-							<span class="input-addon">g/km</span>
-						</div>
-						
+					<div id="ecar-full-model" class=" text-muted full-models">
+						<!-- EV full model information updated by JS -->
 					</div>
-				</div>
-				<!-- End of gasoline Car information -->
-
-				<!-- Diesel Car information -->
-				<div class="col">
-					<div class="form-box d-top">
-						<div class="box-header">
-							<h4>Diesel</h4>
-						</div>
-
-						<div id="dcar-full-model" class=" text-muted full-models">
-							<!-- Diesel full model information updated by JS -->
-						</div>
-
-						{{ form.dcar_price.label(class="form-control-label label-margin") }}
-						<div class="input-group input-margins">
-						{{ form.dcar_price(class="form-control") }}
-							<span class="input-addon">€</span>
-						</div>
-						{{ form.dcar_consumption.label(class="form-control-label label-margin") }}
-						<div class="input-group input-margins">
-						{{ form.dcar_consumption(class="form-control") }}
-							<span class="input-addon">l/100km</span>
-						</div>
-						{{ form.dcar_weight.label(class="form-control-label label-margin") }}
-						<div class="input-group input-margins">
-						{{ form.dcar_weight(class="form-control") }}
-							<span class="input-addon">kg</span>
-						</div>
-						<!--
-						<div>
-							Service interval
-						</div>
-						<div>
-							Service price
-						</div>
-						-->
-						{{ form.dcar_co2.label(class="form-control-label label-margin")}}
-						<div class="input-group input-margins">
-						{{ form.dcar_co2(class="form-control") }}
-							<span class="input-addon">g/km</span>
-						</div>
-						
+					{{ form.ecar_price.label(class="form-control-label label-margin") }}
+					<div class="input-group input-margins">
+					{{ form.ecar_price(class="form-control") }}
+						<span class="input-addon">€</span>
 					</div>
+					{{ form.ecar_consumption.label(class="form-control-label label-margin") }}
+					<div class="input-group input-margins">
+					{{ form.ecar_consumption(class="form-control") }}
+						<span class="input-addon">kWh/100 km</span>
+					</div>
+					{{ form.ecar_weight.label(class="form-control-label label-margin") }}
+					<div class="input-group input-margins">
+					{{ form.ecar_weight(class="form-control") }}
+						<span class="input-addon">kg</span>
+					</div>
+					<!--
+					<div>
+						Service interval
+					</div>
+					<div>
+						Service price
+					</div>
+					<div>
+						Range
+					</div>
+					-->
+					{{ form.ecar_co2.label(class="form-control-label label-margin") }}
+					<div class="input-group input-margins">
+					{{ form.ecar_co2(class="form-control") }}
+						<span class="input-addon">g/km</span>
+					</div>
+					<!--
+					<div id="ecar-battery" class="input-margins">
+						Battery size
+					</div>
+					-->
 				</div>
-				<!-- End of diesel Car information -->
 			</div>
+			<!-- End of EV Car information -->
+
+			<!-- Gasoline Car information -->
+			<div class="col">
+				<div class=" form-box g-top">
+					<div class="box-header">
+						<h3>Gasoline</h3>
+					</div>
+					<div id="gcar-full-model" class=" text-muted full-models">
+						<!-- Gasoline full model information updated by JS -->
+					</div>
+					{{ form.gcar_price.label(class="form-control-label label-margin") }}
+					<div class="input-group input-margins">
+					{{ form.gcar_price(class="form-control") }}
+						<span class="input-addon">€</span>
+					</div>
+					{{ form.gcar_consumption.label(class="form-control-label label-margin") }}
+					<div class="input-group input-margins">
+					{{ form.gcar_consumption(class="form-control") }}
+						<span class="input-addon">l/100km</span>
+					</div>
+					<!--
+					<div>
+						Service interval
+					</div>
+					<div>
+						Service price
+					</div>
+					-->
+					{{ form.gcar_co2.label(class="form-control-label label-margin")}}
+					<div class="input-group input-margins">
+					{{ form.gcar_co2(class="form-control") }}
+						<span class="input-addon">g/km</span>
+					</div>
+					
+				</div>
+			</div>
+			<!-- End of gasoline Car information -->
+
+			<!-- Diesel Car information -->
+			<div class="col">
+				<div class="form-box d-top">
+					<div class="box-header">
+						<h3>Diesel</h3>
+					</div>
+
+					<div id="dcar-full-model" class=" text-muted full-models">
+						<!-- Diesel full model information updated by JS -->
+					</div>
+
+					{{ form.dcar_price.label(class="form-control-label label-margin") }}
+					<div class="input-group input-margins">
+					{{ form.dcar_price(class="form-control") }}
+						<span class="input-addon">€</span>
+					</div>
+					{{ form.dcar_consumption.label(class="form-control-label label-margin") }}
+					<div class="input-group input-margins">
+					{{ form.dcar_consumption(class="form-control") }}
+						<span class="input-addon">l/100km</span>
+					</div>
+					{{ form.dcar_weight.label(class="form-control-label label-margin") }}
+					<div class="input-group input-margins">
+					{{ form.dcar_weight(class="form-control") }}
+						<span class="input-addon">kg</span>
+					</div>
+					<!--
+					<div>
+						Service interval
+					</div>
+					<div>
+						Service price
+					</div>
+					-->
+					{{ form.dcar_co2.label(class="form-control-label label-margin")}}
+					<div class="input-group input-margins">
+					{{ form.dcar_co2(class="form-control") }}
+						<span class="input-addon">g/km</span>
+					</div>
+					
+				</div>
+			</div>
+			<!-- End of diesel Car information -->
+		</div>
 		<!-- End of Car information row -->
 		<div class="form-borders"></div>
 
 		<div class="text-center">
-			<h3 id="operational-hide" class="form-textbox">Operating costs</h3>
+			<h2 id="operational-hide" class="text-form-header">Operating costs</h2>
 		</div>
 		<div class="form-borders"></div>
 		<!-- Row of operational costs -->
@@ -216,7 +215,7 @@
 			<div class="col">
 				<div class="form-box e-top">
 					<div class="box-header">
-						<h4>Electric</h4>
+						<h3>Electric</h3>
 					</div>
 					{{ form.ecar_depr.label(class="form-control-label label-margin") }}
 					<div class="input-group input-margins">
@@ -250,7 +249,7 @@
 			<div class="col">
 				<div class="form-box g-top">
 					<div class="box-header">
-						<h4>Gasoline</h4>
+						<h3>Gasoline</h3>
 					</div>
 					{{ form.gcar_depr.label(class="form-control-label label-margin") }}
 					<div class="input-group input-margins">
@@ -270,7 +269,7 @@
 			<div class="col">
 				<div class="form-box d-top">
 					<div class="box-header">
-						<h4>Diesel</h4>
+						<h3>Diesel</h3>
 					</div>
 					{{ form.dcar_depr.label(class="form-control-label label-margin") }}
 					<div class="input-group input-margins">
@@ -295,14 +294,14 @@
 
 	
 		<div class="col-lg-12">
-			<h3>Results</h3>
+			<h2 class="text-form-header">Results</h2>
 		</div>
 		<div class="flex-form-container" id="results">
 		<!-- EV result card -->
 		<div class="col">
 			<div class="form-box result-box">
 				<div class="ecard">
-					<h2>Electric</h2>
+					<h3>Electric</h3>
 					<div id="ecard-full-model" class=" text-muted full-models">
 						<!-- EV full model information updated by JS -->
 					</div>
@@ -340,7 +339,7 @@
 		<div class="col">
 			<div class="form-box result-box">
 				<div class="gcard">
-					<h2>Gasoline</h2>
+					<h3>Gasoline</h3>
 					<div id="gcard-full-model" class=" text-muted full-models">
 						<!-- Gasoline full model information updated by JS -->
 					</div>
@@ -377,7 +376,7 @@
 		<div class="col">
 			<div class="form-box result-box">
 				<div class="dcard">
-					<h2>Diesel</h2>
+					<h3>Diesel</h3>
 					<div id="dcard-full-model" class=" text-muted full-models">
 						<!-- Diesel full model information updated by JS -->
 					</div>
