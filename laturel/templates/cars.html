@@ -233,11 +233,11 @@
 						<span class="input-addon">€</span>
 					</div>
 					{{ form.ecar_charger.label(class="form-control-label label-margin") }}
-					<div class="input-margins">
+					<div class="form-radio input-group">
 						{% for subfield in form.ecar_charger%}
 						<tr>
+							<td>{{ subfield.label }} </td>
 							<td>{{ subfield }} </td>
-							<td>{{ subfield.label(style="font-weight: 400") }} </td>
 						</tr>
 						{% endfor %}
 					</div>

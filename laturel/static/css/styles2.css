@@ -208,6 +208,7 @@ Class selectors
 
 .select-box {
     border-radius: 5px;
+    width: 80%;
 }
 
 .result-box ul {
@@ -236,6 +237,15 @@ Class selectors
     border: 1px #dee7e7 solid;
     border-radius: 5px 0 0 5px;
     padding: 6px 12px;
+}
+
+.form-radio {
+    text-align: left;
+}
+
+.form-radio label {
+    display: inline-block; 
+    margin:0;
 }
 
 /* Cars page forms and result styling */
