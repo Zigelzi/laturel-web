@@ -34,14 +34,6 @@ footer {
     font-size: 0.64em;
 }
 
-/* TEMP */
-h1, h2, h3,
-h4, h5, h6 {
-    margin: 0;
-    padding: 0;
-    color: #3d3f3f;
-}
-
 /* ===================
 Typography
 =================== */
@@ -59,6 +51,8 @@ ID selectors
 Class selectors
 =================== */
 
+
+/* ------ Navigation ------ */
 .navbar {
     background-color: #f49104;
     padding-top: 0.5em; /* 8px */
@@ -127,20 +121,21 @@ Class selectors
     height: 50px;
 }
 
+/* ------ Containers and flexboxes ------ */
+
 .main-container {
     min-height: calc(100vh - 1.5rem - 50px); /* Full view height minus footer (1.5rem) and back to top button (50px) */
     position: relative;
 }
 
-.top-button {
-    text-align: right;
-    padding-right: 20px;
-    height: 50px;
+.main-header {
+    display: flex;
+    flex-direction: column;
+    height: calc(90vh - 116px); /* 116px is the height of the navigation */
+    justify-content: center;
 }
 
-.top-button img {
-    height: 50px;
-}
+
 
 .content {
     margin: 0 auto;
@@ -165,9 +160,7 @@ Class selectors
     padding-bottom: 0.5em;
 }
 
-.text-center {
-    text-align: center;
-}
+
 
 
 /* Flex content boxes */
@@ -193,6 +186,8 @@ Class selectors
 .f-content .btn {
     margin-top: auto;
 }
+
+/* ------ Form layouts ------ */
 
 .form-box {
     background-color: #fefefe;
@@ -243,19 +238,41 @@ Class selectors
     padding: 6px 12px;
 }
 
+/* Cars page forms and result styling */
 
-.main-header {
-    display: flex;
-    flex-direction: column;
-    height: calc(90vh - 116px); /* 116px is the height of the navigation */
-    justify-content: center;
+.e-top {
+	border-top: 8px solid #2a5499;
 }
 
-.content-img img {
-    width: 100vw;
-    margin-left: -6%;
-    
+.g-top {
+	border-top: 8px solid #134712;
 }
+
+.d-top {
+	border-top: 8px solid #322c2b;
+}
+
+.general-top {
+	border-top: 8px solid #f4c542;
+}
+
+.ecard {
+	border-bottom: 4px solid #2a5499;
+}
+
+.gcard {
+	border-bottom: 4px solid #134712;
+}
+
+.dcard {
+	border-bottom: 4px solid #322c2b;
+}
+
+.operational-result {
+    margin: 15px 0;
+}
+
+/* ------ Text styling and positioning ------ */
 
 .tagline {
     color: #9fa5a5;
@@ -273,6 +290,21 @@ Class selectors
 .text-muted {
     color: #9fa5a5;
 }
+
+.text-center {
+    text-align: center;
+}
+
+.text-center-left {
+    display: inline-block;
+    text-align: left;
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+/* ------ Buttons and icons ------ */
 
 .btn {
     display: block;
@@ -313,38 +345,14 @@ Class selectors
     left: 10%;
 }
 
-/* Cars page forms and result styling */
-
-.e-top {
-	border-top: 8px solid #2a5499;
+.top-button {
+    text-align: right;
+    padding-right: 20px;
+    height: 50px;
 }
 
-.g-top {
-	border-top: 8px solid #134712;
-}
-
-.d-top {
-	border-top: 8px solid #322c2b;
-}
-
-.general-top {
-	border-top: 8px solid #f4c542;
-}
-
-.ecard {
-	border-bottom: 4px solid #2a5499;
-}
-
-.gcard {
-	border-bottom: 4px solid #134712;
-}
-
-.dcard {
-	border-bottom: 4px solid #322c2b;
-}
-
-.operational-result {
-    margin: 15px 0;
+.top-button img {
+    height: 50px;
 }
 
 /* ===================
