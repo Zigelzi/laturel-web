@@ -14,6 +14,6 @@ Website which purpose is to offer transparent and neutral information about diff
 This webapp is cosntantly under development and I'm adding features as it goes. Improvement suggestions and feedback is greatly appreciated!
 
 ### Planned features
-[x] Car selector to car cost calculator - Making it easy to pre-select certain models to comparison.
-[ ] Charger calculator (WIP) - Calculating which kind of charger you would need to home and/or to office.
-[ ] EV suggestion - Based on uploaded driving profile (Google Location history?) suggest fitting EV.
+- [x] Car selector to car cost calculator - Making it easy to pre-select certain models to comparison.
+- [ ] Charger calculator (WIP) - Calculating which kind of charger you would need to home and/or to office.
+- [ ] EV suggestion - Based on uploaded driving profile (Google Location history?) suggest fitting EV.
