@@ -3,18 +3,16 @@
 {% block title %}Index{% endblock %}
 
 {% block content%}
-
-<div class="content">
-	<div class="main-header text-center">
+<div class="header text-center">
+	<div class="header-content">
 		<h1>Electric mobility <br>made <span class="accent-blue">easy</span></h1>
-		<h4 class="tagline">Laturel assists you when you're planning of buying electric vehicles or chargers</h3>
+		<h4 class="tagline">Laturel assists you when you're planning of buying electric vehicle</h3>
 	</div>
-	<div class="f-content text-center bg-grey">
-		<h2 class="content-header"><img class="icon-ev" src="{{ url_for('static', filename='img/ionicons_svg_logo-model-s.svg') }}" alt="">Car costs</h2>
-		<p>If you're thinking of buying new car, check the costs of costs of EV/Gasoline/Diesel cars here</p>
-		<a href="{{ url_for('cars') }}" class="btn">Calculate</a>
-	</div>	
 </div>
-
-		
+<div class="f-content text-center bg-grey">
+	<h2 class="content-header"><img class="icon-ev" src="{{ url_for('static', filename='img/ev_models.svg') }}" alt="">Car costs</h2>
+	<p>If you're thinking of buying new car, check the costs of costs of EV/Gasoline/Diesel cars here</p>
+	<a href="{{ url_for('cars') }}" class="btn">Calculate</a>
+</div>	
+	
 {% endblock %}

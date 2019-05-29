@@ -39,8 +39,11 @@ body {
 footer {
     width: 100%;
     text-align: center;
-    font-size: 0.64em;
     position: relative;
+}
+
+footer p {
+    font-size: 0.8em;
 }
 
 /* ===================
@@ -141,11 +144,16 @@ Class selectors
     position: relative;
 }
 
-.main-header {
-    display: flex;
+.header {
+    display: flex; /* Flex for vertical positioning the content */
     flex-direction: column;
     height: calc(90vh - 116px); /* 116px is the height of the navigation */
     justify-content: center;
+}
+
+.header-content {
+    width: 90%;
+    margin: 0 auto;
 }
 
 .main-header h1 {
@@ -175,17 +183,16 @@ Class selectors
     padding-bottom: 0.5em;
 }
 
-.bg-grey{ 
+.bg-grey { 
     background: #dee7e7;
-    margin-left: -10%;
-    margin-right: -10%;
 }
 
 
 /* Flex content boxes */
 .f-content {
     display: flex;
-    margin: 2em;
+    margin: 2em 0;
+    padding: 25px 5%;
     flex-direction: column;
     min-height: 250px;
     position: relative;
@@ -340,7 +347,7 @@ Class selectors
 
 .text-form-header {
     text-align: center;
-    margin: 1.5625rem 0 1rem;
+    margin: 3rem 0 1rem -25px; /* Left margin for compensating the svg margin */
     font-weight: 300;
 }
 
@@ -415,12 +422,6 @@ Media queries
 Medium screens
  ---------------*/
 @media (min-width: 768px) {
-
-    footer {
-        bottom: 4px;
-        height: 17px;
-        font-size: 1em;
-    }
 
     .navbar {
         padding-left: 150px;
