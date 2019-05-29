@@ -175,25 +175,19 @@ Class selectors
     padding-bottom: 0.5em;
 }
 
-.bg-grey::after {
-    content: " ";
-    height: 120%;
-    width: 115%;
-    position: absolute;
+.bg-grey{ 
     background: #dee7e7;
-    z-index: -1;
-    top: -10%;
-    left: -10%;
- 
+    margin-left: -10%;
+    margin-right: -10%;
 }
 
 
 /* Flex content boxes */
 .f-content {
     display: flex;
-    margin: 2em 0;
+    margin: 2em;
     flex-direction: column;
-    min-height: 200px;
+    min-height: 250px;
     position: relative;
 }
 
@@ -210,6 +204,10 @@ Class selectors
 
 .f-content .btn {
     margin-top: auto;
+}
+
+.content-header {
+    margin-left: -25px;
 }
 
 /* ------ Form layouts ------ */
@@ -387,9 +385,8 @@ Class selectors
 
 .icon-ev {
     height: 50px;
-    position: absolute;
-    top: -15px;
-    left: 10%;
+    margin-right: 25px;
+    margin-bottom: -15px;
 }
 
 .top-button {
