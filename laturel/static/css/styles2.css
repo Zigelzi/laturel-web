@@ -3,11 +3,19 @@ Color layout
 =================== */
 
 /* -------------------
+Main: Orange - #f49104
+Accent: Blue - #0E5A9E
+
 Quicksilver: #a4a5ae
 Dim gray: #6d676e
-Orange: #f49104
+
 Alice blue (white): #f4faff
 Platinum: #dee7e7
+
+Test colors:
+
+Dark grey: #4a453f
+Light grey: #f9f3eb
 
 ------------------- */
 
@@ -24,6 +32,7 @@ Base style
 body {
     height: 100%;
     font-family: 'Karla', sans-serif;
+    color: #4a453f;
     background-color: #f4faff;
 }
 
@@ -54,7 +63,7 @@ Class selectors
 
 /* ------ Navigation ------ */
 .navbar {
-    background-color: #f49104;
+    background-color: #ffa931;;
     padding-top: 0.5em; /* 8px */
     padding-bottom: 0.5em;
     text-align: center;
@@ -103,7 +112,7 @@ Class selectors
     margin: auto;
     width: 0%;
     color: transparent;
-    background: #aaa;
+    background: #0E5A9E;
     height: 3px;
 }
 
@@ -139,6 +148,10 @@ Class selectors
     justify-content: center;
 }
 
+.main-header h1 {
+    margin-bottom: 1rem;
+}
+
 .content {
     margin: 0 auto;
     width: 90%;
@@ -162,16 +175,16 @@ Class selectors
     padding-bottom: 0.5em;
 }
 
-.bg-diagonal::after {
+.bg-grey::after {
     content: " ";
     height: 120%;
     width: 115%;
     position: absolute;
     background: #dee7e7;
     z-index: -1;
-    transform: skewY(-5deg);
-    left: -8%;
     top: -10%;
+    left: -10%;
+ 
 }
 
 
@@ -264,31 +277,31 @@ Class selectors
 /* Cars page forms and result styling */
 
 .e-top {
-	border-top: 8px solid #2a5499;
+	border-top: 3px solid #2a5499;
 }
 
 .g-top {
-	border-top: 8px solid #134712;
+	border-top: 3px solid #3e9b3c;
 }
 
 .d-top {
-	border-top: 8px solid #322c2b;
+	border-top: 3px solid #322c2b;
 }
 
 .general-top {
-	border-top: 8px solid #f4c542;
+	border-top: 3px solid #f4c542;
 }
 
 .ecard {
-	border-bottom: 4px solid #2a5499;
+	border-bottom: 2px solid #2a5499;
 }
 
 .gcard {
-	border-bottom: 4px solid #134712;
+	border-bottom: 2px solid #3e9b3c;
 }
 
 .dcard {
-	border-bottom: 4px solid #322c2b;
+	border-bottom: 2px solid #322c2b;
 }
 
 .operational-result {
@@ -333,18 +346,23 @@ Class selectors
     font-weight: 300;
 }
 
+.accent-blue {
+    color: #0E5A9E;
+}
+
 /* ------ Buttons and icons ------ */
 
 .btn {
     display: block;
-    color: #000;
+    color: #f9f3eb;
+    border: none;
     font-size: 1.3em;
     text-decoration: none;
     text-transform: uppercase;
     border-radius: 1em;
     padding: 0.7em 2em;
     max-width: 250px;
-    background-color: #dee7e7;
+    background-color: #0E5A9E;
     align-self: center;
     box-shadow: 0 0 3px 1px rgba(50,50,50,0.3);
     transition: box-shadow .5s,
@@ -355,7 +373,7 @@ Class selectors
 
 .btn:hover {
     box-shadow: 0 0 3px 1px rgba(50,50,50,0.7);
-    background-color: #b8e7e7;
+    background-color: #0a7ce7;
     transform: scale(1.1);
 }
 
@@ -380,6 +398,12 @@ Class selectors
     right: 0;
     padding-right: 20px;
     height: 50px;
+    opacity: 0.4;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.top-button:hover {
+    opacity: 0.9;
 }
 
 .top-button img {
