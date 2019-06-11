@@ -77,3 +77,8 @@ def data():
     #  Create JSON response from dict and respond it to application
     res = make_response(jsonify(car_info=model, co2=co2), 200)
     return res
+
+
+@app.route('/web')
+def web_index():
+    return render_template('web/web_layout.html')

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i|Oswald:400,700" rel="stylesheet">  
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/web/style.css') }}">
+		<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/laturel_favicon.png') }}">
+		<meta property="og:image" content="{{ url_for('static', filename='img/laturel_logo_l.png') }}">
+		<meta property="og:image:type" content="image/png">
+		<meta property="og:image:width" content="349">
+		<meta property="og:image:height" content="308">
+		 <meta property="og:description" content="Laturel Web suunnittelee ja toteuttaa sinulle nykyaikaiset verkkosivut helposti ja laadukkaasti" />
+		<title>Laturel - {% block title %} {% endblock %} </title>	
+	</head>
+	<body>
+		<div class="main-container" id="top">
+			<nav id="nav" class="navbar">
+					<a class="nav-img" href="{{ url_for('web_index') }}"><img id="logo" src="{{ url_for('static', filename='img/laturel_logo_small.svg') }}"></a>
+				<ul class="">
+                    <li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="#">Services</a></li>
+					<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#">About</a></li>
+				</ul>
+			</nav>
+			{% block content %}
+			{% endblock %}
+		</div>
+		<footer>
+            <!-- Footer nav WIP -->
+            <nav class="">
+                <ul class="">
+                    <li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="#">Services</a></li>
+                    <li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#">About</a></li>
+                </ul>
+            </nav>
+		</footer>
+	</body>	
+
+	
+
+</html>
