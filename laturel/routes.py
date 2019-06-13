@@ -81,4 +81,4 @@ def data():
 
 @app.route('/web')
 def web_index():
-    return render_template('web/web_layout.html')
+    return render_template('web/web_index.html')

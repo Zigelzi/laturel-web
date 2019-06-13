@@ -8,6 +8,8 @@ Accent: Red - #77120D
 
 Text / Background
 
+Light gray: #dee8df
+Dark gray: #3b443c
 Isabelline: #f6e8ea
 Baby powder: #fffffa
 Dark liver: #515052
@@ -21,6 +23,28 @@ Dark liver: #515052
 }
 
 /* ===================
+Animations
+=================== */
+
+@keyframes fill-logo-inner {
+    100% {
+        fill: #095b14
+    }
+}
+
+@keyframes fill-logo-outer {
+    100% {
+        fill: #1e752a
+    }
+}
+
+@keyframes dash-offset {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ===================
 Base style
 =================== */
 
@@ -28,7 +52,7 @@ body {
     height: 100%;
     font-family: 'Karla', sans-serif;
     color: #515052;
-    background-color: #f6e8ea;
+    background-color: #fafafa;
 }
 
 footer {
@@ -179,7 +203,7 @@ Class selectors
 }
 
 .bg-grey { 
-    background: #dee7e7;
+    background: #dee8df;
 }
 
 
@@ -346,8 +370,8 @@ Class selectors
     font-weight: 300;
 }
 
-.accent-blue {
-    color: #0E5A9E;
+.accent-red {
+    color: rgb(175, 38, 30);
 }
 
 /* ------ Buttons and icons ------ */
@@ -408,6 +432,45 @@ Class selectors
 
 .top-button img {
     height: 50px;
+}
+
+.svg-logo {
+    height: 200px;
+    overflow: hidden;
+}
+
+.svg-logo-outer {
+    fill: transparent;
+    animation: fill-logo-outer .8s 2s;
+    animation-fill-mode: forwards;
+}
+
+.svg-logo-inner {
+    fill: transparent;
+    stroke: #1e752a;
+    stroke-width: 2;
+    stroke-dasharray: 1300;
+    stroke-dashoffset: 1300;
+    animation: dash-offset 2s linear forwards, fill-logo-inner .8s 2s;
+    animation-fill-mode: forwards;
+}
+
+.svg-logo:hover {
+
+    animation-play-state: paused, running;
+}
+
+.svg-rocket {
+    height: 50px;
+    overflow: hidden;
+}
+
+.svg-rocket-body {
+    
+}
+
+.svg-rocket-flames {
+    fill: #f0a11a;
 }
 
 /* ===================
