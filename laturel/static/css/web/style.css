@@ -44,6 +44,45 @@ Animations
     }
 }
 
+@keyframes rocket-launch {
+    5% {
+        transform: translateY(-5px);
+    }
+
+    10% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+}
+
+@keyframes rocket-wiggle {
+    20% {
+        transform: rotate(2deg);
+    }
+    40% {
+        transform: rotate(-2deg);
+    }
+    60% {
+        transform: rotate(2deg);
+    }
+    80% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes rocket-flames {
+    100% {
+        fill: #f0a11a;
+    }
+}
+
 /* ===================
 Base style
 =================== */
@@ -398,7 +437,7 @@ Class selectors
 .btn:hover {
     box-shadow: 0 0 3px 1px rgba(50,50,50,0.7);
     background-color: #0a7ce7;
-    transform: scale(1.1);
+    transform: scale(1.01);
     cursor: pointer;
 }
 
@@ -463,14 +502,27 @@ Class selectors
 .svg-rocket {
     height: 50px;
     overflow: hidden;
+    animation: rocket-launch 1s 1s, rocket-wiggle 0.5s;
+    animation-play-state: paused;
+}
+
+#web-services:hover .svg-rocket {
+    animation-play-state: running;
 }
 
 .svg-rocket-body {
-    
+    fill: #3b443c;
 }
 
 .svg-rocket-flames {
-    fill: #f0a11a;
+    fill: transparent;
+    animation: rocket-flames 1s;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+}
+
+#web-services:hover .svg-rocket-flames {
+    animation-play-state: running;
 }
 
 /* ===================
