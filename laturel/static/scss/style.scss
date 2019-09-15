@@ -1,0 +1,21 @@
+// ===================
+// Partial imports
+// ===================
+
+// Base styles, resets and layout
+@import 'base/variables',
+        'base/base',
+        'base/normalize',
+        'base/layout',
+        'base/mediaqueries';
+
+// Components, navigation and animations
+@import 'components/nav',
+        'components/components',
+        'components/animations';
+
+// Laturel Mobility spesific stylings
+@import 'mobility/mobility';
+
+// Laturel Web spesific stylings
+@import 'web/web';

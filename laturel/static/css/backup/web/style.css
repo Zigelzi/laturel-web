@@ -272,7 +272,7 @@ Class selectors
 }
 
 .content-header {
-    margin-left: -25px;
+    display: inline-block;
 }
 
 /* ------ Form layouts ------ */
@@ -501,6 +501,7 @@ Class selectors
 }
 
 .svg-rocket {
+    display: inline-block;
     height: 50px;
     overflow: hidden;
     animation: rocket-launch 1s 1s, rocket-wiggle 0.5s;
@@ -530,50 +531,3 @@ Class selectors
 Media queries
 =================== */
 
-/* ---------------
-Medium screens
- ---------------*/
-@media (min-width: 768px) {
-
-    .navbar {
-        padding-left: 150px;
-        text-align: left;
-    }
-
-    .navbar ul,
-    .navbar li,
-    .navbar .nav-img {
-        display: inline-block;
-    }
-
-    .navbar li {
-        padding: 15.8px 15px;
-    }
-    
-    .nav-img {
-        margin-right: 25px;
-    }
-
-    .flex-form-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .col {
-        width: 32%;
-        margin-right: 20px;
-    }
-
-    .input-group {
-        max-width: 335px;
-    }
-
-    .col:last-child {
-        margin-right: 0;
-    }
-
-    .bg-diagonal::after {
-        content: initial;
-    }
-}

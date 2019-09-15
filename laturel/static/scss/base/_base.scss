@@ -1,0 +1,29 @@
+// ===================
+// Basic layout and typography
+// ===================
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    font-family: 'Karla', sans-serif;
+    color: #515052;
+    background-color: #fafafa;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    p {
+        font-size: 0.8em;
+    }
+}
+
+p {
+    line-height: 1.5;
+}

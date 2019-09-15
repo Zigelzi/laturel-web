@@ -1,0 +1,179 @@
+// ===================
+// Layout and positioning the overall site
+// ===================
+
+.main-container {
+    min-height: calc(100vh - 1.5rem - 50px); /* Full view height minus footer (1.5rem) and back to top button (50px) */
+    position: relative;
+}
+
+.header {
+    display: flex; /* Flex for vertical positioning the content */
+    flex-direction: column;
+    height: calc(90vh - 116px); /* 116px is the height of the navigation */
+    justify-content: center;
+}
+
+.header-content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.main-header h1 {
+    margin-bottom: 1rem;
+}
+
+.content {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.content-text {
+    width: 90%;
+    margin: 1rem auto;
+
+    h1, h2, h3, h4 {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+
+    p {
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+}
+
+.bg-grey { 
+    background: #dee8df;
+}
+
+
+/* Flex content boxes */
+.f-content {
+    display: flex;
+    margin: 2em 0;
+    padding: 25px 5%;
+    flex-direction: column;
+    min-height: 250px;
+    position: relative;
+
+    h1, h2, h3, h4 {
+        margin-bottom: .3em;
+    }
+
+    p {
+        margin: .5em 0;
+    }
+
+    .btn {
+        margin-top: auto;
+    }
+}
+
+.content-header {
+    display: inline-block;
+}
+
+/* ------ Form layouts ------ */
+
+.form-box {
+    background-color: #fefefe;
+    border-radius: 5px 8px;
+    box-shadow: 0 2px 6px 0 rgba(197, 194, 194, 0.2);
+    margin-bottom: 15px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+
+    label {
+        font-weight: 300;
+        margin: 15px 0 5px 11%;
+        display: block;
+        text-align: left;
+    }
+}
+
+.result-box ul {
+    list-style: none;
+}
+
+.input-group {
+    width: 80%;
+    margin: 0 auto;
+    display: table;
+}
+
+.input-addon {
+    display: table-cell;
+    white-space: nowrap;
+    padding: 0 1em;
+    border: 1px #dee7e7 solid;
+    background: #dee7e7;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+}
+
+.form-control {
+    display: table-cell;
+    width: 100%;
+    border: 1px #dee7e7 solid;
+    border-radius: 5px 0 0 5px;
+    padding: 6px 12px;
+
+    &:focus {
+        box-shadow: inset 0 0 3px #f49104;
+        border: 1px rgba(244,145,4, 0.3) solid;
+        border-right: 0;
+    }
+}
+
+.form-radio {
+    text-align: left;
+
+    label {
+        display: inline-block; 
+        margin:0;
+    }
+}
+
+/* ------ Text styling and positioning ------ */
+
+.tagline {
+    color: #9fa5a5;
+}
+
+.subtext {
+    font-size: 0.8em;
+    color: #9fa5a5;
+
+    a {
+        color: #9fa5a5;
+    }
+}
+
+.text-muted {
+    color: #9fa5a5;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-center-left {
+    display: inline-block;
+    text-align: left;
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.text-form-header {
+    text-align: center;
+    margin: 3rem 0 1rem -25px; /* Left margin for compensating the svg margin */
+    font-weight: 300;
+}
+
+.accent-red {
+    color: rgb(175, 38, 30);
+}

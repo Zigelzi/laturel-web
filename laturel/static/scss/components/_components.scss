@@ -1,0 +1,116 @@
+// ===================
+// Common components
+// ===================
+
+// ------ Buttons and icons ------ 
+
+.btn {
+    display: block;
+    color: #f9f3eb;
+    border: none;
+    font-size: 1.3em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 1em;
+    padding: 0.7em 2em;
+    max-width: 250px;
+    background-color: #0E5A9E;
+    align-self: center;
+    box-shadow: 0 0 3px 1px rgba(50,50,50,0.3);
+    transition: box-shadow .5s,
+                background-color .5s,
+                transform .5s ease-out;
+    
+    &:hover {
+        box-shadow: 0 0 3px 1px rgba(50,50,50,0.7);
+        background-color: #0a7ce7;
+        transform: scale(1.01);
+        cursor: pointer;
+    }
+}
+
+.btn-margin {
+    margin: 20px 0;
+}
+
+.btn-center {
+    margin: 0 auto;
+}
+
+.icon-ev {
+    height: 50px;
+    margin-right: 25px;
+    margin-bottom: -15px;
+}
+
+.top-button {
+    position: absolute;
+    bottom:0;
+    right: 0;
+    padding-right: 20px;
+    height: 50px;
+    opacity: 0.4;
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    img {
+        height: 50px;
+    }
+}
+
+.svg-logo {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    &:hover {
+        animation-play-state: paused, running;
+    }
+}
+
+.svg-logo-outer {
+    fill: transparent;
+    animation: fill-logo-outer .8s 2s;
+    animation-fill-mode: forwards;
+}
+
+.svg-logo-inner {
+    fill: transparent;
+    stroke: #1e752a;
+    stroke-width: 2;
+    stroke-dasharray: 1300;
+    stroke-dashoffset: 1300;
+    animation: dash-offset 2s linear forwards, fill-logo-inner .8s 2s;
+    animation-fill-mode: forwards;
+}
+
+.svg-rocket {
+    display: inline-block;
+    height: 50px;
+    overflow: hidden;
+    animation: rocket-launch 1s 1s, rocket-wiggle 0.5s;
+    animation-play-state: paused;
+}
+
+#web-services {
+    &:hover .svg-rocket {
+    animation-play-state: running;
+    }
+
+    &:hover .svg-rocket-flames {
+        animation-play-state: running;
+    }
+}
+
+.svg-rocket-body {
+    fill: #3b443c;
+}
+
+.svg-rocket-flames {
+    fill: transparent;
+    animation: rocket-flames 1s;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+}
