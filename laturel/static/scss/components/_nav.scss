@@ -22,7 +22,7 @@
 
     a {
         text-decoration: none;
-        color: #dee7e7;
+        color: $dark-white;
         font-weight: 700;
         text-transform: uppercase;
         position: relative; /* Relative so the a:after absolute hover element can be positioned */

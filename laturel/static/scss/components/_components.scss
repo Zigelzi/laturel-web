@@ -6,7 +6,7 @@
 
 .btn {
     display: block;
-    color: #f9f3eb;
+    color: $light-orange;
     border: none;
     font-size: 1.3em;
     text-decoration: none;
@@ -14,7 +14,7 @@
     border-radius: 1em;
     padding: 0.7em 2em;
     max-width: 250px;
-    background-color: #0E5A9E;
+    background-color: $accent-blue;
     align-self: center;
     box-shadow: 0 0 3px 1px rgba(50,50,50,0.3);
     transition: box-shadow .5s,
@@ -23,7 +23,7 @@
     
     &:hover {
         box-shadow: 0 0 3px 1px rgba(50,50,50,0.7);
-        background-color: #0a7ce7;
+        background-color: $light-blue;
         transform: scale(1.01);
         cursor: pointer;
     }

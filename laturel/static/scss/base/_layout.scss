@@ -107,8 +107,8 @@
     display: table-cell;
     white-space: nowrap;
     padding: 0 1em;
-    border: 1px #dee7e7 solid;
-    background: #dee7e7;
+    border: 1px $dark-white solid;
+    background: $dark-white;
     border-left: none;
     border-radius: 0 5px 5px 0;
 }
@@ -116,12 +116,12 @@
 .form-control {
     display: table-cell;
     width: 100%;
-    border: 1px #dee7e7 solid;
+    border: 1px $dark-white solid;
     border-radius: 5px 0 0 5px;
     padding: 6px 12px;
 
     &:focus {
-        box-shadow: inset 0 0 3px #f49104;
+        box-shadow: inset 0 0 3px $main-orange;
         border: 1px rgba(244,145,4, 0.3) solid;
         border-right: 0;
     }
