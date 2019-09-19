@@ -70,6 +70,16 @@
     }
 }
 
+.flex-centered {
+    display: flex;
+    justify-content: center;
+}
+
+.h-icon-aligned {
+    // Class for centering the heading with inline SVG icon (50px wide)
+    margin-left: -50px;
+}
+
 .content-header {
     display: inline-block;
 }

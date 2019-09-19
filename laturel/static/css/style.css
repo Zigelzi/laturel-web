@@ -421,6 +421,15 @@ template {
   margin-top: auto;
 }
 
+.flex-centered {
+  display: flex;
+  justify-content: center;
+}
+
+.h-icon-aligned {
+  margin-left: -50px;
+}
+
 .content-header {
   display: inline-block;
 }
@@ -568,7 +577,6 @@ template {
   }
 }
 .navbar {
-  background-color: #0a5c15;
   padding-top: 0.5em;
   /* 8px */
   padding-bottom: 0.5em;
@@ -610,7 +618,6 @@ template {
   margin: auto;
   width: 0%;
   color: transparent;
-  background: #77120D;
   height: 3px;
 }
 .navbar ul li a:hover:after {
@@ -619,6 +626,20 @@ template {
 .navbar a:hover,
 .navbar img:hover {
   color: #fffffa;
+}
+
+.nav-web {
+  background-color: #0a5c15;
+}
+.nav-web ul li a:after {
+  background: #77120D;
+}
+
+.nav-mobility {
+  background-color: #f49104;
+}
+.nav-mobility ul li a:after {
+  background: #0E5A9E;
 }
 
 .active-nav a {

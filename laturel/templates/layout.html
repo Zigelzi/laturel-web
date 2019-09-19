@@ -22,7 +22,7 @@
 	</head>
 	<body>
 		<div class="main-container" id="top">
-			<nav id="nav" class="navbar">
+			<nav id="nav" class="navbar nav-mobility">
 					<a class="nav-img" href="{{ url_for('index') }}"><img id="logo" src="{{ url_for('static', filename='img/laturel_logo_small.svg') }}"></a>
 				<ul class="">
 					<li class="{% if active=='cars'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('cars') }}">Cars</a></li>

@@ -15,25 +15,19 @@
 	</head>
 	<body>
 		<div class="main-container" id="top">
-			<nav id="nav" class="navbar">
+			<nav id="nav" class="navbar nav-web">
 					<!-- <a class="nav-img" href="{{ url_for('web_index') }}"><img id="logo" src="{{ url_for('static', filename='img/laturel_logo_small.svg') }}"></a> -->
 				<ul class="">
-                    <li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="#">Services</a></li>
-					<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#">About</a></li>
-					<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#">Contact</a></li>
+                    <li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="#">Palvelut</a></li>
+					<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#">Laturel</a></li>
+					<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#">Yhteystiedot</a></li>
 				</ul>
 			</nav>
 			{% block content %}
 			{% endblock %}
 		</div>
 		<footer>
-            <!-- Footer nav WIP -->
-            <nav class="">
-                <ul class="">
-                    <li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="#">Services</a></li>
-                    <li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#">About</a></li>
-                </ul>
-            </nav>
+            
 		</footer>
 	</body>	
 

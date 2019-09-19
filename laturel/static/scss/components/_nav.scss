@@ -3,7 +3,7 @@
 // ===================
 
 .navbar {
-    background-color: #0a5c15;;
+    
     padding-top: 0.5em; /* 8px */
     padding-bottom: 0.5em;
     text-align: center;
@@ -47,7 +47,6 @@
         margin: auto;
         width: 0%;
         color: transparent;
-        background: #77120D;
         height: 3px;
     }
 
@@ -58,6 +57,22 @@
     a:hover,
     img:hover {
     color: #fffffa;
+    }
+}
+
+.nav-web {
+    background-color: $nav-green;
+
+    ul li a:after {
+        background: $accent-red;
+    }
+}
+
+.nav-mobility {
+    background-color: $main-orange;
+
+    ul li a:after {
+        background: $accent-blue;
     }
 }
 
