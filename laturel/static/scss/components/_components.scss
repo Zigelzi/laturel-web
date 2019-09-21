@@ -37,6 +37,12 @@
     margin: 0 auto;
 }
 
+.form-submit {
+    margin-top: 25px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .icon-ev {
     height: 50px;
     margin-right: 25px;
@@ -114,3 +120,49 @@
     animation-play-state: paused;
     animation-fill-mode: forwards;
 }
+
+#contact-form {
+    animation: envelope 2s;
+    animation-play-state: paused;
+}
+
+.envelope-container {
+    position: absolute;
+    left: 50%; // Center the SVG envelope on top of the form elements
+    transform: translateX(-50%); // Center the SVG envelope on top of the form elements
+
+    svg {
+        height: 190px;
+    }
+}
+
+.svg-envelope {
+    fill: transparent;
+    stroke: black;
+    stroke-width: 2;
+    stroke-dasharray: 1600;
+    stroke-dashoffset: 1600;
+    
+}
+
+.send-envelope {
+    animation: dash-offset 1s linear forwards, send-envelope 1s 2s;
+    animation-fill-mode: forwards;
+}
+
+.hide-form {
+    animation: hide-element 1s linear forwards;
+    animation-fill-mode: forwards;
+}
+
+#form-inputs {
+    transition: max-height 1s ease-out;
+    max-height: 400px;
+    height: auto;   
+
+    &.collapsed {
+        max-height: 0;
+    }
+}
+
+

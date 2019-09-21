@@ -58,3 +58,22 @@
         fill: #f0a11a;
     }
 }
+
+@keyframes fill-envelope {
+    100% {
+        fill: black;
+    }
+}
+
+@keyframes send-envelope {
+    100% {
+        transform: translateX(1200px)
+    }
+}
+
+@keyframes hide-element {
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}

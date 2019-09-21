@@ -1,5 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, SubmitField, SelectField, RadioField, FloatField
+from wtforms import IntegerField, SubmitField, SelectField, RadioField, FloatField, StringField, TextAreaField
+from wtforms.validators import DataRequired, Email
+
 from laturel.models import get_cars
 
 class ValidatedFloatField(FloatField):
@@ -10,15 +12,6 @@ class ValidatedFloatField(FloatField):
             except ValueError:
                 self.data = None
                 raise ValueError(self.gettext('No a valid float value'))
-
-
-class ChargerForm(FlaskForm):
-    driveKmRadio = RadioField('How much do you drive daily?',
-                              choices=[('50', '0 - 50 km'),
-                                       ('100', '51 - 100 km')], default='50')
-    stopTime = RadioField('When do you stop your driving?', choices=[('18:00', '18:00'), ('19:00', '19:00')], default='18:00')
-    startTime = RadioField('When do you start driving?', choices=[('05:00', '05:00'), ('06:00', '06:00')], default='05:00')
-    submit = SubmitField('Check how powerful charger I need!')
 
 
 class CarSelectorForm(FlaskForm):
@@ -55,3 +48,17 @@ class CostForm(FlaskForm):
     drivekm = FloatField('How much you drive yearly?', default=30000)
     owntime = IntegerField('How long will you own the car?', default=5)
     submit = SubmitField('Compare cars')
+
+
+class ContactForm(FlaskForm):
+    # Contact form for Laturel Web section
+    name = StringField('Nimi', validators=[DataRequired(message='Pakollinen kenttä')])
+    email = StringField('Sähköposti', validators=[Email(message='Syötä sähköpostiosoite')])
+    phone = StringField('Puhelinnumero')
+    description = TextAreaField('Lisätiedot')
+    preferred_contact = RadioField('Haluan yhteydenoton mieluiten',
+                                    validators=[DataRequired(message='Valitse yksi vaihtoehdoista')],
+                                    choices=[('email', 'Sähköpostilla'),
+                                             ('phone', 'Puhelimitse')],
+                                    default='email')
+    submit = SubmitField('Lähetä')

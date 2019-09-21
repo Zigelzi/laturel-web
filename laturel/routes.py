@@ -1,7 +1,8 @@
 from flask import render_template, jsonify, make_response, request
 from datetime import datetime
+
 from laturel import app
-from laturel.forms import CostForm, ChargerForm, CarSelectorForm
+from laturel.forms import CostForm, CarSelectorForm, ContactForm
 from laturel.models import model_dict, co2_dict
 
 
@@ -81,4 +82,5 @@ def data():
 
 @app.route('/web')
 def web_index():
-    return render_template('web/web_index.html')
+    form = ContactForm()
+    return render_template('web/web_index.html', form=form)

@@ -51,6 +51,48 @@
         <p>Suunnittelemme ja toteutamme yritykselle tai yhdistykselle laadukkaat verkkosivut. Verkkosivut tehdään aina asiakkaan tarpeiden mukaisesti.</p>
         <a href="#" class="btn btn-center">Lue lisää</a>
     </div>
+</div>
+<div class="f-content text-center">
+    <h2>Ota yhteyttä</h2>
+    <form id="contact-form" action="" method="POST">
+        <div class="overflow-hidden envelope-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+                <path id="envelope" class="svg-envelope" d="M 5.3908531,3.4300693 250,179.31399 494.60916,3.4300693 m -489.2183069,0 489.2183069,0 0,293.1398707 -489.2183069,0 z"/>
+            </svg>
+        </div>
+        <div id="form-inputs">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.name.label }}
+                {{ form.name }}
+            </div>
+            <div>
+                {{ form.email.label }}
+                {{ form.email }}
+            </div>
+            <div>
+                {{ form.phone.label }}
+                {{ form.phone }}
+            </div>
+            <div>
+                {{ form.description.label }}
+                {{ form.description }}
+            </div>
+            <div>
+                {{ form.preferred_contact.label }}
+                {% for subfield in form.preferred_contact %}
+                <div>
+                    {{ subfield.label }}
+                    {{ subfield }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div>
+            {{ form.submit(class="btn form-submit") }}
+        </div>
+    </form>
+
 </div>	
 
 {% endblock %}
