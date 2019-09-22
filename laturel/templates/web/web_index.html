@@ -34,7 +34,7 @@
 </div>
 <div class="f-content text-center bg-grey">
     <div class="flex-centered">
-        <div class="h-icon-aligned">
+        <div id="web-services" class="h-icon-aligned">
             <svg class="svg-rocket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path 
                 class="svg-rocket-flames"
@@ -43,7 +43,7 @@
                 class="svg-rocket-body"
                 d="M397.7 293.1l-48-49.1c0-158-93.2-228-93.2-228s-94.1 70-94.1 228l-48 49.1c-1.8 1.8-2.6 4.5-2.2 7.1L130.6 412c.9 5.7 7.1 8.5 11.8 5.4l67.1-45.4s20.7 20 47.1 20c26.4 0 46.1-20 46.1-20l67.1 45.4c4.6 3.1 10.8.3 11.8-5.4l18.5-111.9c.2-2.6-.6-5.2-2.4-7zM256.5 192c-17 0-30.7-14.3-30.7-32s13.8-32 30.7-32c17 0 30.7 14.3 30.7 32s-13.7 32-30.7 32z"/>
             </svg>
-            <h2 id="web-services" class="content-header">Palvelut</h2>
+            <h2 class="content-header">Palvelut</h2>
         </div>
     </div>
     <div>
@@ -60,36 +60,52 @@
                 <path id="envelope" class="svg-envelope" d="M 5.3908531,3.4300693 250,179.31399 494.60916,3.4300693 m -489.2183069,0 489.2183069,0 0,293.1398707 -489.2183069,0 z"/>
             </svg>
         </div>
-        <div id="form-inputs">
-            {{ form.hidden_tag() }}
-            <div>
-                {{ form.name.label }}
-                {{ form.name }}
-            </div>
-            <div>
-                {{ form.email.label }}
-                {{ form.email }}
-            </div>
-            <div>
-                {{ form.phone.label }}
-                {{ form.phone }}
-            </div>
-            <div>
-                {{ form.description.label }}
-                {{ form.description }}
-            </div>
-            <div>
-                {{ form.preferred_contact.label }}
-                {% for subfield in form.preferred_contact %}
+        <div class="">
+            <div id="form-inputs">
+                {{ form.hidden_tag() }}
                 <div>
-                    {{ subfield.label }}
-                    {{ subfield }}
+                    <label for="name" class="web-input">
+                        {{ form.name(placeholder="\xa0") }}
+                        <span class="input-label">Nimi</span>
+                        <span class="input-border"></span>
+                    </label>
                 </div>
-                {% endfor %}
+                <div>
+                    <label for="email" class="web-input">
+                        {{ form.email(placeholder="\xa0") }}
+                        <span class="input-label">Sähköposti</span>
+                        <span class="input-border"></span>
+                    </label>
+                </div>
+                <div>
+                    <label for="phone" class="web-input">
+                        {{ form.phone(placeholder="\xa0") }}
+                        <span class="input-label">Puhelinnumero</span>
+                        <span class="input-border"></span>
+                    </label>
+                </div>
+                <div>
+                    <label for="description" class="web-input">
+                        {{ form.description(placeholder="\xa0") }}
+                        <span class="input-label">Lisätiedot</span>
+                        <span class="input-border"></span>
+                    </label>
+                    
+                </div>
+                <div>
+                    {{ form.preferred_contact.label }}
+                    {% for subfield in form.preferred_contact %}
+                    <div>
+                        {{ subfield.label }}
+                        {{ subfield }}
+                    </div>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.submit(class="btn form-submit") }}
+                </div>
             </div>
-        </div>
-        <div>
-            {{ form.submit(class="btn form-submit") }}
+            
         </div>
     </form>
 

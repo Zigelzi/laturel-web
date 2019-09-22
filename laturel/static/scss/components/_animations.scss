@@ -74,6 +74,6 @@
 @keyframes hide-element {
     100% {
         opacity: 0;
-        transform: scale(0);
+        transform: scaleY(0);
     }
 }

@@ -15,13 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', e => {
         e.preventDefault()
         
-        envelope.addEventListener('animationend', (e) => {
+        contactForm.addEventListener('animationend', (e) => {
+            console.log(e.animationName);
             // Collapse the form height when the send-envelope animation ends
             if (e.animationName === 'send-envelope') {
-                formInputs.classList.add('collapsed');
+                // formInputs.classList.add('collapsed');
+                formInputs.style.maxHeight = 0;
             }
         });
-
         // Start drawing the envelope and fade the form inputs away
         envelope.classList.add('send-envelope');
         formInputs.classList.add('hide-form');

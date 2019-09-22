@@ -402,6 +402,10 @@ template {
   background: #dee8df;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 /* Flex content boxes */
 .f-content {
   display: flex;
@@ -426,70 +430,16 @@ template {
   justify-content: center;
 }
 
+.flex-column {
+  flex-direction: column;
+}
+
 .h-icon-aligned {
   margin-left: -50px;
 }
 
 .content-header {
   display: inline-block;
-}
-
-/* ------ Form layouts ------ */
-.form-box {
-  background-color: #fefefe;
-  border-radius: 5px 8px;
-  box-shadow: 0 2px 6px 0 rgba(197, 194, 194, 0.2);
-  margin-bottom: 15px;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 30px;
-}
-.form-box label {
-  font-weight: 300;
-  margin: 15px 0 5px 11%;
-  display: block;
-  text-align: left;
-}
-
-.result-box ul {
-  list-style: none;
-}
-
-.input-group {
-  width: 80%;
-  margin: 0 auto;
-  display: table;
-}
-
-.input-addon {
-  display: table-cell;
-  white-space: nowrap;
-  padding: 0 1em;
-  border: 1px #dee7e7 solid;
-  background: #dee7e7;
-  border-left: none;
-  border-radius: 0 5px 5px 0;
-}
-
-.form-control {
-  display: table-cell;
-  width: 100%;
-  border: 1px #dee7e7 solid;
-  border-radius: 5px 0 0 5px;
-  padding: 6px 12px;
-}
-.form-control:focus {
-  box-shadow: inset 0 0 3px #f49104;
-  border: 1px rgba(244, 145, 4, 0.3) solid;
-  border-right: 0;
-}
-
-.form-radio {
-  text-align: left;
-}
-.form-radio label {
-  display: inline-block;
-  margin: 0;
 }
 
 /* ------ Text styling and positioning ------ */
@@ -513,7 +463,7 @@ template {
   text-align: center;
 }
 
-.text-center-left {
+.text-left {
   display: inline-block;
   text-align: left;
 }
@@ -531,10 +481,6 @@ template {
 
 .accent-red {
   color: #af261e;
-}
-
-.overflow-hidden {
-  overflow: hidden;
 }
 
 @media (min-width: 768px) {
@@ -694,7 +640,7 @@ template {
   margin-right: auto;
 }
 
-.icon-ev {
+.icon-medium {
   height: 50px;
   margin-right: 25px;
   margin-bottom: -15px;
@@ -795,17 +741,143 @@ template {
 }
 
 .hide-form {
-  animation: hide-element 1s linear forwards;
+  transform-origin: 0 100px;
+  animation: hide-element 0.5s linear forwards;
   animation-fill-mode: forwards;
 }
 
 #form-inputs {
   transition: max-height 1s ease-out;
-  max-height: 400px;
+  max-height: 450px;
   height: auto;
 }
 #form-inputs.collapsed {
   max-height: 0;
+}
+
+/* ------ Form components ------ */
+.form-box {
+  background-color: #fefefe;
+  border-radius: 5px 8px;
+  box-shadow: 0 2px 6px 0 rgba(197, 194, 194, 0.2);
+  margin-bottom: 15px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+.form-box label {
+  font-weight: 300;
+  margin: 15px 0 5px 11%;
+  display: block;
+  text-align: left;
+}
+
+.result-box ul {
+  list-style: none;
+}
+
+.input-group {
+  width: 80%;
+  margin: 0 auto;
+  display: table;
+}
+
+.input-addon {
+  display: table-cell;
+  white-space: nowrap;
+  padding: 0 1em;
+  border: 1px #dee7e7 solid;
+  background: #dee7e7;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+}
+
+.form-control {
+  display: table-cell;
+  width: 100%;
+  border: 1px #dee7e7 solid;
+  border-radius: 5px 0 0 5px;
+  padding: 6px 12px;
+}
+.form-control:focus {
+  box-shadow: inset 0 0 3px #f49104;
+  border: 1px rgba(244, 145, 4, 0.3) solid;
+  border-right: 0;
+}
+
+.form-radio {
+  text-align: left;
+}
+.form-radio label {
+  display: inline-block;
+  margin: 0;
+}
+
+.web-input {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  margin-top: 25px;
+}
+.web-input .input-label {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  transform-origin: 0 0;
+  transition: all 0.2s ease;
+}
+.web-input .input-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #0077FF;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: all 0.15s ease;
+}
+.web-input input {
+  height: 48px;
+}
+.web-input textarea {
+  height: 120px;
+}
+.web-input input,
+.web-input textarea {
+  width: 100%;
+  border: 0;
+  padding: 8px 0;
+  border-bottom: 2px solid #c8ccd4;
+  background: none;
+  border-radius: 0;
+  background: none;
+  color: #223254;
+  transition: all 0.12s ease;
+}
+.web-input input:hover,
+.web-input textarea:hover {
+  background: rgba(34, 50, 84, 0.03);
+}
+.web-input input:not(:placeholder-shown) + span,
+.web-input textarea:not(:placeholder-shown) + span {
+  color: #5A667F;
+  transform: translateY(-30px) scale(0.75);
+}
+.web-input input:focus,
+.web-input textarea:focus {
+  background: none;
+  outline: none;
+}
+.web-input input:focus + span,
+.web-input textarea:focus + span {
+  color: #0077FF;
+  transform: translateY(-30px) scale(0.75);
+}
+.web-input input:focus + span + .input-border,
+.web-input textarea:focus + span + .input-border {
+  transform: scaleX(1);
 }
 
 @keyframes fill-logo-inner {
@@ -870,7 +942,7 @@ template {
 @keyframes hide-element {
   100% {
     opacity: 0;
-    transform: scale(0);
+    transform: scaleY(0);
   }
 }
 .e-top {
