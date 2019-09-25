@@ -43,8 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.forEach((value, key) => {
             jsonObject[key] = value;
         })
-        console.log(jsonObject)
-
         sendData(url, jsonObject, jsonObject.csrf_token, false);
     }
 

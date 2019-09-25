@@ -1,7 +1,8 @@
 from flask import render_template, jsonify, make_response, request
+from flask_mail import Message
 from datetime import datetime
 
-from laturel import app
+from laturel import app, mail
 from laturel.forms import CostForm, CarSelectorForm, ContactForm
 from laturel.models import model_dict, co2_dict
 
@@ -9,32 +10,6 @@ from laturel.models import model_dict, co2_dict
 @app.route('/')
 def index():
     return render_template('index.html', active='index')
-
-
-@app.route('/chargers', methods=['POST', 'GET'])
-def chargers():
-    form = ChargerForm()
-    driveKm = int(form.driveKmRadio.data)
-    stopTime = form.stopTime.data
-    startTime = form.startTime.data
-    if stopTime and startTime is not None:
-        stopTime = datetime.strptime(stopTime, '%H:%M')
-        startTime = datetime.strptime(startTime, '%H:%M')
-        chargingTime = stopTime - startTime
-
-    return render_template('chargers.html',
-                           form=form,
-                           driveKm=driveKm,
-                           stopTime=stopTime,
-                           startTime=startTime,
-                           chargingTime=chargingTime,
-                           active='chargers')
-
-
-@app.route('/evbasics')
-def evbasics():
-    return render_template('evbasics.html', active='evbasics')
-
 
 @app.route('/cars', methods=['GET', 'POST'])
 def cars():
@@ -46,12 +21,6 @@ def cars():
                            car_form=car_form,
                            active='cars'
                            )
-
-
-@app.route('/about')
-def about():
-    return render_template('about.html', active='about')
-
 
 @app.route('/db/data', methods=['GET', 'POST'])
 def data():
@@ -85,13 +54,19 @@ def web_index():
     form = ContactForm()
     if request.method == 'POST':
         # Parse the form element submitted by user and send the email.
-        print('Post request received!')
-        print(f'Validate on submit: {form.validate_on_submit()}')
-        print('Form errors:')
-        for error in form.errors:
-            print(error)
-        print('Form:')
-        for d in form:
-            print(d.data)
-        print(request.get_json())
+        msg = Message(subject='[Web] Uusi yhteydenottopyyntö',
+                      recipients=['miika.a.savela@gmail.com'])
+        msg.body = 'This is a test body for plain text message'
+        msg.html = f"""<h1>Uusi yhteydenottopyyntö</h1>
+                      <p><strong>Nimi</strong></p>
+                      <p>{form.name.data}</p>
+                      <p><strong>Sähköposti</strong></p>
+                      <p>{form.email.data}</p>
+                      <p><strong>Puhelinnumero</strong></p>
+                      <p>{form.phone.data}</p>
+                      <p><strong>Toivottu yhteydenottotapa</strong></p>
+                      <p>{form.preferred_contact.data}</p>
+                      <p><strong>Lisätietoja</strong></p>
+                      <p>{form.description.data}</p>"""
+        mail.send(msg)
     return render_template('web/web_index.html', form=form)
