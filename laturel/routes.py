@@ -80,7 +80,18 @@ def data():
     return res
 
 
-@app.route('/web')
+@app.route('/web', methods=['GET', 'POST'])
 def web_index():
     form = ContactForm()
+    if request.method == 'POST':
+        # Parse the form element submitted by user and send the email.
+        print('Post request received!')
+        print(f'Validate on submit: {form.validate_on_submit()}')
+        print('Form errors:')
+        for error in form.errors:
+            print(error)
+        print('Form:')
+        for d in form:
+            print(d.data)
+        print(request.get_json())
     return render_template('web/web_index.html', form=form)
