@@ -53,11 +53,20 @@ def data():
 def web_index():
     form = ContactForm()
     if request.method == 'POST':
+        recepient = 'miika.a.savela@gmail.com' # Recepient where the contact form is sent to.
+        reply_recepient = form.email.data # Where the confirmation email is sent
+
         # Parse the form element submitted by user and send the email.
-        msg = Message(subject='[Web] Uusi yhteydenottopyyntö',
-                      recipients=['miika.a.savela@gmail.com'])
-        msg.body = 'This is a test body for plain text message'
-        msg.html = f"""<h1>Uusi yhteydenottopyyntö</h1>
+        contact_msg = Message(subject='[Web] Uusi yhteydenottopyyntö',
+                      recipients=[recepient])
+        contact_msg.body = f"""Uusi yhteydenottopyyntö
+                              Nimi: {form.name.data}
+                              Sähköposti: {form.email.data}
+                              Puhelinnumero: {form.phone.data}
+                              Toivottu yhteydenottotapa: {form.preferred_contact.data}
+                              Lisätietoja: {form.description.data}
+                           """
+        contact_msg.html = f"""<h1>Uusi yhteydenottopyyntö</h1>
                       <p><strong>Nimi</strong></p>
                       <p>{form.name.data}</p>
                       <p><strong>Sähköposti</strong></p>
@@ -68,5 +77,42 @@ def web_index():
                       <p>{form.preferred_contact.data}</p>
                       <p><strong>Lisätietoja</strong></p>
                       <p>{form.description.data}</p>"""
-        mail.send(msg)
+
+        reply_msg = Message(subject='[Laturel] Yhteydenottopyyntö',
+                            recipients=[reply_recepient])
+        reply_msg.body = f"""Kiitos yhteydenotostasi!
+                             
+                             Olemme vastaanottaneet yhteydenottopyyntösi ja vastaamme sinulle viikon sisällä.
+
+                             Syötit seuraavat tiedot:
+                             Nimi
+                             {form.name.data}
+                             Sähköposti
+                             {form.email.data}
+                             Puhelinnumero
+                             {form.phone.data}
+                             Toivottu yhteydenottotapa
+                             {form.preferred_contact.data}
+                             Lisätietoja 
+                             {form.description.data}
+
+                             Ystävällisin terveisin
+                             Laturel tiimi
+                          """
+        reply_msg.html = f"""<h1>Kiitos yhteydenotostasi!</h1>
+                             <p>Olemme vastaanottaneet yhteydenottopyyntösi ja vastaamme sinulle viikon sisällä.</p>
+                             <p>Syötit seuraavat tiedot:</p>
+                             <p><strong>Nimi</strong></p>
+                             <p>{ form.name.data }</p>
+                             <p><strong>Sähköposti</strong></p>
+                             <p>{ form.email.data }</p>
+                             <p><strong>Puhelinnumero</strong></p>
+                             <p>{ form.phone.data }</p>
+                             <p><strong>Toivottu yhteydenottotapa</strong></p>
+                             <p>{ form.preferred_contact.data }</p>
+                             <p><strong>Lisätietoja</strong></p>
+                             <p>{ form.description.data }</p>
+                          """
+        mail.send(contact_msg)
+        mail.send(reply_msg)
     return render_template('web/web_index.html', form=form)
