@@ -579,7 +579,7 @@ template {
 }
 
 .nav-web {
-  background-color: #0a5c15;
+  background-color: transparent;
 }
 .nav-web ul li a:after {
   background: #77120D;
@@ -602,6 +602,14 @@ template {
 }
 .nav-img img {
   height: 50px;
+}
+
+#landing-page {
+  background: url(../img/rocket_launch.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 95vh;
 }
 
 .btn {

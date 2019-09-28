@@ -2,6 +2,16 @@
 // Common components
 // ===================
 
+// ------ Landing page component ------
+
+#landing-page {
+    background: url(../img/rocket_launch.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 95vh;
+}
+
 // ------ Buttons and icons ------ 
 
 .btn {
