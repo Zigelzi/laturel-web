@@ -690,10 +690,10 @@ template {
 .svg-icon {
   display: inline-block;
   height: 50px;
-  overflow: hidden;
 }
 
 .svg-rocket {
+  overflow: hidden;
   animation: rocket-launch 1s 1s, rocket-wiggle 0.5s;
   animation-play-state: paused;
 }
