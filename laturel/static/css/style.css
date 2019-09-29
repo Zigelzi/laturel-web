@@ -409,7 +409,6 @@ template {
 /* Flex content boxes */
 .f-content {
   display: flex;
-  margin: 2em 0;
   padding: 25px 5%;
   flex-direction: column;
   min-height: 250px;
@@ -484,11 +483,6 @@ template {
 }
 
 @media (min-width: 768px) {
-  .navbar {
-    padding-left: 150px;
-    text-align: left;
-  }
-
   .navbar ul,
 .navbar li,
 .navbar .nav-img {
@@ -526,12 +520,73 @@ template {
     content: initial;
   }
 }
+#nav-menu {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  transition: 0.2s ease-in-out;
+  padding-top: 30%;
+  background-color: rgba(75, 75, 75, 0.9);
+}
+#nav-menu.active {
+  left: 0;
+}
+
+#nav-hamburger-container {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 999;
+}
+#nav-hamburger-container.active #nav-hamburger {
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+}
+#nav-hamburger-container.active #nav-hamburger::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+#nav-hamburger-container.active #nav-hamburger::after {
+  top: 0;
+  transform: rotate(135deg);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#nav-hamburger {
+  background-color: white;
+  height: 4px;
+  width: 50px;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transition: 0.5s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+#nav-hamburger::before, #nav-hamburger::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 4px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+}
+#nav-hamburger::before {
+  top: -14px;
+}
+#nav-hamburger::after {
+  top: 14px;
+}
+
 .navbar {
   padding-top: 0.5em;
   /* 8px */
   padding-bottom: 0.5em;
-  text-align: center;
-  box-shadow: 0px 1px 2px rgba(20, 20, 20, 0.2);
   /* Element for the :hover effect */
 }
 .navbar ul {
@@ -580,6 +635,10 @@ template {
 
 .nav-web {
   background-color: transparent;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  z-index: 998;
 }
 .nav-web ul li a:after {
   background: #77120D;
@@ -605,11 +664,25 @@ template {
 }
 
 #landing-page {
-  background: url(../img/rocket_launch.jpg);
+  background-image: url(../img/rocket_launch.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 95vh;
+  height: 100vh;
+}
+
+.gray-layer {
+  background: rgba(75, 75, 75, 0.4);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#header {
+  padding-top: 40vh;
+  text-align: center;
+  color: #fefefe;
 }
 
 .btn {
@@ -759,11 +832,20 @@ template {
 
 #form-inputs {
   transition: max-height 1s ease-out;
-  max-height: 450px;
+  max-height: 1000px;
   height: auto;
 }
 #form-inputs.collapsed {
   max-height: 0;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+  margin: auto auto 30px auto;
 }
 
 /* ------ Form components ------ */

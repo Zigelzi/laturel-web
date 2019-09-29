@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const navHamburger = document.getElementById('nav-hamburger-container')
     const contactForm = document.getElementById('contact-form');
     const envelope = document.getElementById('envelope');
     const formInputs = document.getElementById('form-inputs');
@@ -63,5 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
         sendForm('/web', 'contact-form')
     })
 
+    navHamburger.addEventListener('click', () => {
+        const navMenu = document.getElementById('nav-menu');
+        navHamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    })
 
 })

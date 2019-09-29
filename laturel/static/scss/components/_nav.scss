@@ -2,12 +2,84 @@
 // Navigation and it's components
 // ===================
 
+#nav-menu {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top:0;
+    left:100%;
+    transition: 0.2s ease-in-out;
+    padding-top: 30%;
+    background-color: rgba(75, 75, 75, 0.9);
+
+    &.active {
+        left: 0;
+    }
+}
+
+#nav-hamburger-container {
+    position: absolute;
+    top:0;
+    right: 5%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 999; // Keep the icon always on top
+
+    &.active #nav-hamburger {
+        // Active class for hiding the center bar    
+        background-color: rgba(0, 0, 0, 0);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+    }
+
+    &.active #nav-hamburger::before {
+        // Active class for transforming the hamburger top line to cross
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    &.active #nav-hamburger::after {
+        // Active class for transforming the hamburger bottom line to cross
+        top: 0;
+        transform: rotate(135deg);
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    }
+}
+
+#nav-hamburger {
+    background-color: white;
+    height: 4px;
+    width: 50px;
+    position: absolute;
+    top:50%;
+    right: 5%;
+    transition: 0.5s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 4px;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: 0.5s;
+    }
+
+    &::before {
+        top: -14px
+    }
+
+    &::after {
+        top: 14px;
+    }
+}
+
 .navbar {
     
     padding-top: 0.5em; /* 8px */
     padding-bottom: 0.5em;
-    text-align: center;
-    box-shadow: 0px 1px 2px rgba(20, 20, 20, 0.2);
 
     ul {
         vertical-align: top;
@@ -62,6 +134,10 @@
 
 .nav-web {
     background-color: transparent;
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    z-index: 998;
 
     ul li a:after {
         background: $accent-red;

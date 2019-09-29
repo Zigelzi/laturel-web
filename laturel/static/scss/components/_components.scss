@@ -5,11 +5,25 @@
 // ------ Landing page component ------
 
 #landing-page {
-    background: url(../img/rocket_launch.jpg);
+    background-image: url(../img/rocket_launch.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    height: 95vh;
+    height: 100vh;
+}
+
+.gray-layer {
+    background: rgba(75,75,75,0.4);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#header {
+    padding-top: 40vh;
+    text-align: center;
+    color:#fefefe;
 }
 
 // ------ Buttons and icons ------ 
@@ -171,12 +185,21 @@
 
 #form-inputs {
     transition: max-height 1s ease-out;
-    max-height: 450px;
+    max-height: 1000px;
     height: auto;   
 
     &.collapsed {
         max-height: 0;
     }
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+    margin: auto auto 30px auto;
 }
 
 /* ------ Form components ------ */

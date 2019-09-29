@@ -18,13 +18,19 @@
 	<body>
 		<div class="main-container" id="top">
 			<nav id="nav" class="navbar nav-web">
-					<!-- <a class="nav-img" href="{{ url_for('web_index') }}"><img id="logo" src="{{ url_for('static', filename='img/laturel_logo_small.svg') }}"></a> -->
-				<ul class="">
-                    <li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="#">Palvelut</a></li>
-					<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#">Laturel</a></li>
-					<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#">Yhteystiedot</a></li>
-				</ul>
+				<div id="nav-hamburger-container">
+					<div id="nav-hamburger"></div>
+				</div>
+				<div id="nav-menu">
+						<!-- <a class="nav-img" href="{{ url_for('web_index') }}"><img id="logo" src="{{ url_for('static', filename='img/laturel_logo_small.svg') }}"></a> -->
+					<ul class="">
+						<li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="#">Palvelut</a></li>
+						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#">Laturel</a></li>
+						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#">Yhteystiedot</a></li>
+					</ul>
+				</div>
 			</nav>
+			
 			{% block content %}
 			{% endblock %}
 		</div>
