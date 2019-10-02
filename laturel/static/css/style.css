@@ -409,16 +409,18 @@ template {
 /* Flex content boxes */
 .f-content {
   display: flex;
-  padding: 25px 5%;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   min-height: 250px;
   position: relative;
+  width: 100%;
 }
 .f-content h1, .f-content h2, .f-content h3, .f-content h4 {
   margin-bottom: 0.3em;
 }
 .f-content p {
-  margin: 0.5em 0;
+  margin: 0.5em auto 2em;
+  max-width: 63%;
 }
 .f-content .btn {
   margin-top: auto;
@@ -430,7 +432,10 @@ template {
 }
 
 .flex-column {
+  display: flex;
   flex-direction: column;
+  flex-basis: 100%;
+  padding: 25px 5%;
 }
 
 .h-icon-aligned {
@@ -441,9 +446,22 @@ template {
   display: inline-block;
 }
 
+.subheading {
+  margin: 1.5em auto;
+}
+
 /* ------ Text styling and positioning ------ */
 .tagline {
   color: #9fa5a5;
+}
+
+.xl-heading {
+  font-size: 5.96rem;
+  margin: 0.1em 0;
+}
+
+.xl-p {
+  font-size: 1.653rem;
 }
 
 .subtext {
@@ -514,6 +532,10 @@ template {
 
   .col:last-child {
     margin-right: 0;
+  }
+
+  .flex-column {
+    flex: 1;
   }
 
   .bg-diagonal::after {
@@ -680,9 +702,17 @@ template {
 }
 
 #header {
-  padding-top: 40vh;
+  padding-top: 26vh;
   text-align: center;
   color: #fefefe;
+}
+
+.photo-container {
+  padding: 0;
+}
+
+.photo {
+  width: 100%;
 }
 
 .btn {
@@ -771,6 +801,7 @@ template {
 .svg-icon {
   display: inline-block;
   height: 50px;
+  margin-bottom: -15px;
 }
 
 .svg-rocket {

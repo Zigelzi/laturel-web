@@ -21,9 +21,18 @@
 }
 
 #header {
-    padding-top: 40vh;
+    padding-top: 26vh;
     text-align: center;
     color:#fefefe;
+}
+
+// ------ Images ------ 
+.photo-container {
+    padding: 0;
+}
+
+.photo {
+    width: 100%;
 }
 
 // ------ Buttons and icons ------ 
@@ -119,6 +128,7 @@
 .svg-icon {
     display: inline-block;
     height: 50px;
+    margin-bottom: -15px; // Centering the icon to headers.
 }
 
 .svg-rocket {

@@ -6,99 +6,109 @@
 <div id="landing-page">
     <div class="gray-layer">
         <div id="header">
-            <h1>Laturel Web</h1>
-            <p>Verkkosivut. Helposti.</p>
+            <h1 class="xl-heading">Laturel Web</h1>
+            <p class="xl-p">Verkkosivut. Helposti.</p>
         </div>
         <div class="arrow-down"></div>
     </div>
 </div>
 <div class="f-content text-center bg-grey">
-    <div class="flex-centered">
-        <div id="web-services" class="h-icon-aligned">
-            <svg class="svg-icon svg-rocket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path 
-                class="svg-rocket-flames"
-                d="M256 421.6c-18.1 0-33.2-6.8-42.9-10.9-5.4-2.3-11.3 1.8-10.9 7.6l3.5 51c.2 3.1 3.8 4.7 6.3 2.8l14.5-11c1.8-1.4 4.5-.9 5.7 1l20.5 32.1c1.5 2.4 5.1 2.4 6.6 0l20.5-32.1c1.2-1.9 3.9-2.4 5.7-1l14.5 11c2.5 1.9 6.1.3 6.3-2.8l3.5-51c.4-5.8-5.5-10-10.9-7.6-9.8 4.1-24.8 10.9-42.9 10.9z"/>
-                <path
-                class="svg-rocket-body"
-                d="M397.7 293.1l-48-49.1c0-158-93.2-228-93.2-228s-94.1 70-94.1 228l-48 49.1c-1.8 1.8-2.6 4.5-2.2 7.1L130.6 412c.9 5.7 7.1 8.5 11.8 5.4l67.1-45.4s20.7 20 47.1 20c26.4 0 46.1-20 46.1-20l67.1 45.4c4.6 3.1 10.8.3 11.8-5.4l18.5-111.9c.2-2.6-.6-5.2-2.4-7zM256.5 192c-17 0-30.7-14.3-30.7-32s13.8-32 30.7-32c17 0 30.7 14.3 30.7 32s-13.7 32-30.7 32z"/>
-            </svg>
-            <h2 class="content-header">Palvelut</h2>
+    <div class="flex-column">
+        <div class="flex-centered">
+            <div id="web-services" class="h-icon-aligned">
+                <svg class="svg-icon svg-rocket" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path 
+                    class="svg-rocket-flames"
+                    d="M256 421.6c-18.1 0-33.2-6.8-42.9-10.9-5.4-2.3-11.3 1.8-10.9 7.6l3.5 51c.2 3.1 3.8 4.7 6.3 2.8l14.5-11c1.8-1.4 4.5-.9 5.7 1l20.5 32.1c1.5 2.4 5.1 2.4 6.6 0l20.5-32.1c1.2-1.9 3.9-2.4 5.7-1l14.5 11c2.5 1.9 6.1.3 6.3-2.8l3.5-51c.4-5.8-5.5-10-10.9-7.6-9.8 4.1-24.8 10.9-42.9 10.9z"/>
+                    <path
+                    class="svg-rocket-body"
+                    d="M397.7 293.1l-48-49.1c0-158-93.2-228-93.2-228s-94.1 70-94.1 228l-48 49.1c-1.8 1.8-2.6 4.5-2.2 7.1L130.6 412c.9 5.7 7.1 8.5 11.8 5.4l67.1-45.4s20.7 20 47.1 20c26.4 0 46.1-20 46.1-20l67.1 45.4c4.6 3.1 10.8.3 11.8-5.4l18.5-111.9c.2-2.6-.6-5.2-2.4-7zM256.5 192c-17 0-30.7-14.3-30.7-32s13.8-32 30.7-32c17 0 30.7 14.3 30.7 32s-13.7 32-30.7 32z"/>
+                </svg>
+                <h1 class="content-header">Palvelut</h1>
+            </div>
         </div>
-    </div>
-    <div>
-        <h3 class="content-header">Pienen yrityksen sivut</h3>
-        <p>Suunnittelemme ja toteutamme yritykselle tai yhdistykselle laadukkaat verkkosivut. Verkkosivut tehdään aina asiakkaan tarpeiden mukaisesti.</p>
-        <a href="#" class="btn btn-center">Lue lisää</a>
+        <div>
+            <h3 class="subheading">Pienen yrityksen sivut</h3>
+            <p>Suunnittelen ja toteutan yritykselle tai yhdistykselle laadukkaat verkkosivut. Verkkosivut tehdään aina asiakkaan tarpeiden mukaisesti.</p>
+            <a href="#" class="btn btn-center">Lue lisää</a>
+        </div>
     </div>
 </div>
 <div class="f-content text-center">
-    <h2>Ota yhteyttä</h2>
-    <form id="contact-form" action="" method="POST">
-        <div class="overflow-hidden envelope-container">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
-                <path id="envelope" class="svg-envelope" d="M 5.3908531,3.4300693 250,179.31399 494.60916,3.4300693 m -489.2183069,0 489.2183069,0 0,293.1398707 -489.2183069,0 z"/>
-            </svg>
-        </div>
-        <div class="">
-            <div id="form-inputs">
-                {{ form.hidden_tag() }}
-                <div>
-                    <label for="name" class="web-input">
-                        {{ form.name(placeholder="\xa0") }}
-                        <span class="input-label">Nimi</span>
-                        <span class="input-border"></span>
-                    </label>
-                </div>
-                <div>
-                    <label for="email" class="web-input">
-                        {{ form.email(placeholder="\xa0") }}
-                        <span class="input-label">Sähköposti</span>
-                        <span class="input-border"></span>
-                    </label>
-                </div>
-                <div>
-                    <label for="phone" class="web-input">
-                        {{ form.phone(placeholder="\xa0") }}
-                        <span class="input-label">Puhelinnumero</span>
-                        <span class="input-border"></span>
-                    </label>
-                </div>
-                <div>
-                    <label for="description" class="web-input">
-                        {{ form.description(placeholder="\xa0") }}
-                        <span class="input-label">Lisätiedot</span>
-                        <span class="input-border"></span>
-                    </label>
-                    
-                </div>
-                <div>
-                    {{ form.preferred_contact.label }}
-                    {% for subfield in form.preferred_contact %}
-                    <div>
-                        {{ subfield.label }}
-                        {{ subfield }}
-                    </div>
-                    {% endfor %}
-                </div>
-                <div>
-                    {{ form.submit(class="btn form-submit") }}
-                </div>
+    <div class="flex-column">
+        <h2>Ota yhteyttä</h2>
+        <form id="contact-form" action="" method="POST">
+            <div class="overflow-hidden envelope-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+                    <path id="envelope" class="svg-envelope" d="M 5.3908531,3.4300693 250,179.31399 494.60916,3.4300693 m -489.2183069,0 489.2183069,0 0,293.1398707 -489.2183069,0 z"/>
+                </svg>
             </div>
-            
-        </div>
-    </form>
+            <div class="">
+                <div id="form-inputs">
+                    {{ form.hidden_tag() }}
+                    <div>
+                        <label for="name" class="web-input">
+                            {{ form.name(placeholder="\xa0") }}
+                            <span class="input-label">Nimi</span>
+                            <span class="input-border"></span>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="email" class="web-input">
+                            {{ form.email(placeholder="\xa0") }}
+                            <span class="input-label">Sähköposti</span>
+                            <span class="input-border"></span>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="phone" class="web-input">
+                            {{ form.phone(placeholder="\xa0") }}
+                            <span class="input-label">Puhelinnumero</span>
+                            <span class="input-border"></span>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="description" class="web-input">
+                            {{ form.description(placeholder="\xa0") }}
+                            <span class="input-label">Lisätiedot</span>
+                            <span class="input-border"></span>
+                        </label>
+                        
+                    </div>
+                    <div>
+                        {{ form.preferred_contact.label }}
+                        {% for subfield in form.preferred_contact %}
+                        <div>
+                            {{ subfield.label }}
+                            {{ subfield }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form.submit(class="btn form-submit") }}
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+    </div>
 </div>	
-<div class="f-content text-centered bg-grey">
-    <div class="flex-centered h-icon-aligned">
-        <img src="{{url_for('static', filename='img/phone.svg')}}" alt="phone icon" class="svg-icon">
-        <h2 class="content-header">Yhteystiedot</h2>
-        <div>
-            <img src="#" alt="picture of Miika Savela">
-            <p>Miika Savela</p>
-            <p></p>
+<div class="f-content bg-grey">
+    <div class="flex-column photo-container">
+        <img class="photo" src="{{ url_for('static', filename='img/MiikaSavela.jpg') }}" alt="Picture of Miika Savela">
+    </div>
+    <div class="flex-column">
+        <div class="text-center">
+            <div class="h-icon-aligned">
+                <img src="{{url_for('static', filename='img/phone.svg')}}" alt="phone icon" class="svg-icon">
+                <h1 class="content-header">Yhteystiedot</h1>
+            </div>
+            <div>
+                <p>Miika Savela</p>
+                <p>+358 (0)50 3489 584</p>
+                <a href="mailto:miika.a.savela@gmail.com">miika.a.savela@gmail.com</a>
+            </div>
         </div>
-        
     </div>
 </div>
 

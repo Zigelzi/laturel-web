@@ -39,6 +39,10 @@
         margin-right: 0;
     }
 
+    .flex-column {
+        flex: 1;
+    }
+
     .bg-diagonal::after {
         content: initial;
     }
