@@ -12,7 +12,7 @@
         <div class="arrow-down"></div>
     </div>
 </div>
-<div class="f-content text-center bg-grey">
+<div class="f-content text-center bg-grey top-shadow">
     <div class="flex-column">
         <div class="flex-centered">
             <div id="web-services" class="h-icon-aligned">
@@ -34,66 +34,67 @@
         </div>
     </div>
 </div>
-<div class="f-content text-center">
+<div class="f-content top-shadow">
     <div class="flex-column">
-        <h2>Ota yhteyttä</h2>
-        <form id="contact-form" action="" method="POST">
-            <div class="overflow-hidden envelope-container">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
-                    <path id="envelope" class="svg-envelope" d="M 5.3908531,3.4300693 250,179.31399 494.60916,3.4300693 m -489.2183069,0 489.2183069,0 0,293.1398707 -489.2183069,0 z"/>
-                </svg>
-            </div>
-            <div class="">
-                <div id="form-inputs">
-                    {{ form.hidden_tag() }}
-                    <div>
-                        <label for="name" class="web-input">
-                            {{ form.name(placeholder="\xa0") }}
-                            <span class="input-label">Nimi</span>
-                            <span class="input-border"></span>
-                        </label>
-                    </div>
-                    <div>
-                        <label for="email" class="web-input">
-                            {{ form.email(placeholder="\xa0") }}
-                            <span class="input-label">Sähköposti</span>
-                            <span class="input-border"></span>
-                        </label>
-                    </div>
-                    <div>
-                        <label for="phone" class="web-input">
-                            {{ form.phone(placeholder="\xa0") }}
-                            <span class="input-label">Puhelinnumero</span>
-                            <span class="input-border"></span>
-                        </label>
-                    </div>
-                    <div>
-                        <label for="description" class="web-input">
-                            {{ form.description(placeholder="\xa0") }}
-                            <span class="input-label">Lisätiedot</span>
-                            <span class="input-border"></span>
-                        </label>
-                        
-                    </div>
-                    <div>
-                        {{ form.preferred_contact.label }}
-                        {% for subfield in form.preferred_contact %}
+        <div class="web-form-container">
+            <h2>Ota yhteyttä</h2>
+            <form id="contact-form" action="" method="POST">
+                <div class="overflow-hidden envelope-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+                        <path id="envelope" class="svg-envelope" d="M 5.3908531,3.4300693 250,179.31399 494.60916,3.4300693 m -489.2183069,0 489.2183069,0 0,293.1398707 -489.2183069,0 z"/>
+                    </svg>
+                </div>
+                <div class="">
+                    <div id="form-inputs">
+                        {{ form.hidden_tag() }}
                         <div>
-                            {{ subfield.label }}
-                            {{ subfield }}
+                            <label for="name" class="web-input">
+                                {{ form.name(placeholder="\xa0") }}
+                                <span class="input-label">Nimi</span>
+                                <span class="input-border"></span>
+                            </label>
                         </div>
-                        {% endfor %}
-                    </div>
-                    <div>
-                        {{ form.submit(class="btn form-submit") }}
+                        <div>
+                            <label for="email" class="web-input">
+                                {{ form.email(placeholder="\xa0") }}
+                                <span class="input-label">Sähköposti</span>
+                                <span class="input-border"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="phone" class="web-input">
+                                {{ form.phone(placeholder="\xa0") }}
+                                <span class="input-label">Puhelinnumero</span>
+                                <span class="input-border"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="description" class="web-input">
+                                {{ form.description(placeholder="\xa0") }}
+                                <span class="input-label">Lisätiedot</span>
+                                <span class="input-border"></span>
+                            </label>
+                            
+                        </div>
+                        <div>
+                            {{ form.preferred_contact.label(class="web-input") }}
+                            {% for subfield in form.preferred_contact %}
+                            <div class="slider-checkbox">
+                                {{ subfield }}
+                                {{ subfield.label(class="label") }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            {{ form.submit(class="btn form-submit") }}
+                        </div>
                     </div>
                 </div>
-                
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>	
-<div class="f-content bg-grey">
+<div class="f-content bg-grey top-shadow">
     <div class="flex-column photo-container">
         <img class="photo" src="{{ url_for('static', filename='img/MiikaSavela.jpg') }}" alt="Picture of Miika Savela">
     </div>

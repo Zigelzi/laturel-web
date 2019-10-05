@@ -5,7 +5,7 @@
 // ------ Landing page component ------
 
 #landing-page {
-    background-image: url(../img/rocket_launch.jpg);
+    background-image: url(../img/web-design-background.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -21,9 +21,9 @@
 }
 
 #header {
-    padding-top: 26vh;
+    padding-top: 71vh;
     text-align: center;
-    color:#fefefe;
+    color:$light-white;
 }
 
 // ------ Images ------ 
@@ -109,22 +109,6 @@
     }
 }
 
-.svg-logo-outer {
-    fill: transparent;
-    animation: fill-logo-outer .8s 2s;
-    animation-fill-mode: forwards;
-}
-
-.svg-logo-inner {
-    fill: transparent;
-    stroke: #1e752a;
-    stroke-width: 2;
-    stroke-dasharray: 1300;
-    stroke-dashoffset: 1300;
-    animation: dash-offset 2s linear forwards, fill-logo-inner .8s 2s;
-    animation-fill-mode: forwards;
-}
-
 .svg-icon {
     display: inline-block;
     height: 50px;
@@ -148,7 +132,7 @@
 }
 
 .svg-rocket-body {
-    fill: #3b443c;
+    fill: $gray-700;
 }
 
 .svg-rocket-flames {
@@ -167,19 +151,20 @@
     position: absolute;
     left: 50%; // Center the SVG envelope on top of the form elements
     transform: translateX(-50%); // Center the SVG envelope on top of the form elements
+    width: 90%;
+    max-width: 500px;
 
     svg {
-        height: 190px;
+        width: 100%;
     }
 }
 
 .svg-envelope {
     fill: transparent;
-    stroke: black;
+    stroke: $primary-blue-800;
     stroke-width: 2;
     stroke-dasharray: 1600;
     stroke-dashoffset: 1600;
-    
 }
 
 .send-envelope {
@@ -215,7 +200,7 @@
 /* ------ Form components ------ */
 
 .form-box {
-    background-color: #fefefe;
+    background-color: $light-white;
     border-radius: 5px 8px;
     box-shadow: 0 2px 6px 0 rgba(197, 194, 194, 0.2);
     margin-bottom: 15px;
@@ -235,7 +220,6 @@
     ul {
         list-style: none;
     }
-    
 }
 
 .input-group {
@@ -263,7 +247,7 @@
 
     &:focus {
         box-shadow: inset 0 0 3px $main-orange;
-        border: 1px rgba(244,145,4, 0.3) solid;
+        border: 1px $highlight-orange solid;
         border-right: 0;
     }
 }
@@ -277,11 +261,17 @@
     }
 }
 
+.web-form-container {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 500px;
+}
+
 .web-input {
     display: inline-block;
     position: relative;
     width: 100%;
-    max-width: 280px;
+    max-width: 500px;
     margin-top: 25px; // Make space for the label to move upwards
 
     .input-label {
@@ -298,7 +288,7 @@
         left: 0;
         height: 2px;
         width: 100%;
-        background: #0077FF;
+        background: $primary-blue-500;
         transform: scaleX(0);
         transform-origin: 0 0;
         transition: all .15s ease;
@@ -316,19 +306,19 @@
         width: 100%;
         border: 0;
         padding: 8px 0;
-        border-bottom: 2px solid #c8ccd4;
+        border-bottom: 2px solid $gray-200;
         background: none;
         border-radius: 0;
         background:none;
-        color: #223254;
+        color: $primary-blue-500;
         transition: all .12s ease;
         &:hover {
-            background: rgba(#223254, .03);
+            background: rgba($primary-blue-800, .03);
         }
 
         &:not(:placeholder-shown) {
             + span {
-                color: #5A667F;
+                color: $primary-blue-500;
                 transform: translateY(-30px) scale(.75);
             }
         }
@@ -337,12 +327,78 @@
             background: none;
             outline: none;
             + span {
-                color: #0077FF;
+                color: $primary-blue-500;
                 transform: translateY(-30px) scale(.75);
                 + .input-border {
                     transform: scaleX(1);
                 }
             }    
+        }
+    }
+}
+
+// Changing the checkbox style to slider using the ::before and ::after pseudo-elements
+// in .label class inserted to <label>
+
+// <div> parent element for the checkbox
+.slider-checkbox {
+    position: relative;
+    margin: 5px 0;
+    
+
+    // Hide the original checkbox and adjust the absolute positioning
+    input {
+        position: absolute;
+        margin: 0;
+        margin-top: 1px;
+        cursor: pointer;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 22px;
+
+        // When the hidden checkbox is checked change the .label::before element to $accent-blue
+        // color
+        &:checked + .label {
+            &:before {
+                content: "";
+                background-color: $primary-blue-600;
+            }
+            // Moving the box element to right side to show "checked" status
+            &:after {
+                left: 2px;
+            }
+        }
+    }
+
+    .label {
+        position: relative;
+        padding-left: 46px;
+        margin-left: 0;
+        width: 87%;
+        
+        &:before,
+        &:after {
+            position: absolute;
+            transition: background-color 0.3s, left 0.3s;
+        }
+        &:before {
+            content: "";
+            background-color: $gray-400;
+            left: 0;
+            top: 0;
+            height: 22px;
+            width: 40px;
+
+        }
+        &:after {
+            content: "";
+            background: $light-white;
+            left: 20px;
+            top: 2px;
+            height: 18px;
+            width: 18px;
         }
     }
 }

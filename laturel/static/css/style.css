@@ -7,8 +7,8 @@
 body {
   height: 100%;
   font-family: "Karla", sans-serif;
-  color: #515052;
-  background-color: #fafafa;
+  color: #455154;
+  background-color: #FCFDFD;
 }
 
 footer {
@@ -399,7 +399,7 @@ template {
 }
 
 .bg-grey {
-  background: #dee8df;
+  background: #E3E7E8;
 }
 
 .overflow-hidden {
@@ -452,12 +452,13 @@ template {
 
 /* ------ Text styling and positioning ------ */
 .tagline {
-  color: #9fa5a5;
+  color: #ABB7BA;
 }
 
 .xl-heading {
-  font-size: 5.96rem;
+  font-size: 3.815rem;
   margin: 0.1em 0;
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
 }
 
 .xl-p {
@@ -466,14 +467,14 @@ template {
 
 .subtext {
   font-size: 0.8em;
-  color: #9fa5a5;
+  color: #ABB7BA;
 }
 .subtext a {
-  color: #9fa5a5;
+  color: #8F9EA3;
 }
 
 .text-muted {
-  color: #9fa5a5;
+  color: #8F9EA3;
 }
 
 .text-center {
@@ -497,7 +498,11 @@ template {
 }
 
 .accent-red {
-  color: #af261e;
+  color: #991D00;
+}
+
+.top-shadow {
+  box-shadow: inset 0 9px 13px -6px rgba(50, 50, 50, 0.2);
 }
 
 @media (min-width: 768px) {
@@ -580,7 +585,7 @@ template {
 }
 
 #nav-hamburger {
-  background-color: white;
+  background-color: #FCFDFD;
   height: 4px;
   width: 50px;
   position: absolute;
@@ -594,7 +599,7 @@ template {
   position: absolute;
   width: 50px;
   height: 4px;
-  background-color: white;
+  background-color: #FCFDFD;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: 0.5s;
 }
@@ -652,7 +657,7 @@ template {
 }
 .navbar a:hover,
 .navbar img:hover {
-  color: #fffffa;
+  color: #FCFDFD;
 }
 
 .nav-web {
@@ -674,7 +679,7 @@ template {
 }
 
 .active-nav a {
-  color: #5a5e5e;
+  color: #5C6B70;
 }
 
 .nav-img {
@@ -686,7 +691,7 @@ template {
 }
 
 #landing-page {
-  background-image: url(../img/rocket_launch.jpg);
+  background-image: url(../img/web-design-background.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -702,9 +707,9 @@ template {
 }
 
 #header {
-  padding-top: 26vh;
+  padding-top: 71vh;
   text-align: center;
-  color: #fefefe;
+  color: #FCFDFD;
 }
 
 .photo-container {
@@ -782,22 +787,6 @@ template {
   animation-play-state: paused, running;
 }
 
-.svg-logo-outer {
-  fill: transparent;
-  animation: fill-logo-outer 0.8s 2s;
-  animation-fill-mode: forwards;
-}
-
-.svg-logo-inner {
-  fill: transparent;
-  stroke: #1e752a;
-  stroke-width: 2;
-  stroke-dasharray: 1300;
-  stroke-dashoffset: 1300;
-  animation: dash-offset 2s linear forwards, fill-logo-inner 0.8s 2s;
-  animation-fill-mode: forwards;
-}
-
 .svg-icon {
   display: inline-block;
   height: 50px;
@@ -818,7 +807,7 @@ template {
 }
 
 .svg-rocket-body {
-  fill: #3b443c;
+  fill: #455154;
 }
 
 .svg-rocket-flames {
@@ -837,14 +826,16 @@ template {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  width: 90%;
+  max-width: 500px;
 }
 .envelope-container svg {
-  height: 190px;
+  width: 100%;
 }
 
 .svg-envelope {
   fill: transparent;
-  stroke: black;
+  stroke: #0A425C;
   stroke-width: 2;
   stroke-dasharray: 1600;
   stroke-dashoffset: 1600;
@@ -881,7 +872,7 @@ template {
 
 /* ------ Form components ------ */
 .form-box {
-  background-color: #fefefe;
+  background-color: #FCFDFD;
   border-radius: 5px 8px;
   box-shadow: 0 2px 6px 0 rgba(197, 194, 194, 0.2);
   margin-bottom: 15px;
@@ -937,11 +928,17 @@ template {
   margin: 0;
 }
 
+.web-form-container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 500px;
+}
+
 .web-input {
   display: inline-block;
   position: relative;
   width: 100%;
-  max-width: 280px;
+  max-width: 500px;
   margin-top: 25px;
 }
 .web-input .input-label {
@@ -957,7 +954,7 @@ template {
   left: 0;
   height: 2px;
   width: 100%;
-  background: #0077FF;
+  background: #1AA6E5;
   transform: scaleX(0);
   transform-origin: 0 0;
   transition: all 0.15s ease;
@@ -973,20 +970,20 @@ template {
   width: 100%;
   border: 0;
   padding: 8px 0;
-  border-bottom: 2px solid #c8ccd4;
+  border-bottom: 2px solid #C7CFD1;
   background: none;
   border-radius: 0;
   background: none;
-  color: #223254;
+  color: #1AA6E5;
   transition: all 0.12s ease;
 }
 .web-input input:hover,
 .web-input textarea:hover {
-  background: rgba(34, 50, 84, 0.03);
+  background: rgba(10, 66, 92, 0.03);
 }
 .web-input input:not(:placeholder-shown) + span,
 .web-input textarea:not(:placeholder-shown) + span {
-  color: #5A667F;
+  color: #1AA6E5;
   transform: translateY(-30px) scale(0.75);
 }
 .web-input input:focus,
@@ -996,12 +993,61 @@ template {
 }
 .web-input input:focus + span,
 .web-input textarea:focus + span {
-  color: #0077FF;
+  color: #1AA6E5;
   transform: translateY(-30px) scale(0.75);
 }
 .web-input input:focus + span + .input-border,
 .web-input textarea:focus + span + .input-border {
   transform: scaleX(1);
+}
+
+.slider-checkbox {
+  position: relative;
+  margin: 5px 0;
+}
+.slider-checkbox input {
+  position: absolute;
+  margin: 0;
+  margin-top: 1px;
+  cursor: pointer;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 22px;
+}
+.slider-checkbox input:checked + .label:before {
+  content: "";
+  background-color: #1484B8;
+}
+.slider-checkbox input:checked + .label:after {
+  left: 2px;
+}
+.slider-checkbox .label {
+  position: relative;
+  padding-left: 46px;
+  margin-left: 0;
+  width: 87%;
+}
+.slider-checkbox .label:before, .slider-checkbox .label:after {
+  position: absolute;
+  transition: background-color 0.3s, left 0.3s;
+}
+.slider-checkbox .label:before {
+  content: "";
+  background-color: #8F9EA3;
+  left: 0;
+  top: 0;
+  height: 22px;
+  width: 40px;
+}
+.slider-checkbox .label:after {
+  content: "";
+  background: #FCFDFD;
+  left: 20px;
+  top: 2px;
+  height: 18px;
+  width: 18px;
 }
 
 @keyframes fill-logo-inner {
