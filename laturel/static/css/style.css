@@ -516,8 +516,26 @@ template {
     padding: 15.8px 15px;
   }
 
+  .nav-web li {
+    padding: 16px !important;
+  }
+  .nav-web a {
+    font-size: 1rem !important;
+  }
+
   .nav-img {
     margin-right: 25px;
+  }
+
+  #nav-hamburger-container {
+    display: none;
+  }
+
+  #nav > #nav-menu {
+    left: 0;
+    height: initial;
+    padding-top: 0;
+    text-align: center;
   }
 
   .flex-form-container {
@@ -553,7 +571,7 @@ template {
   position: absolute;
   top: 0;
   left: 100%;
-  transition: 0.2s ease-in-out;
+  transition: left 0.2s ease-in-out;
   padding-top: 30%;
   background-color: rgba(75, 75, 75, 0.9);
 }
@@ -667,8 +685,14 @@ template {
   height: 60px;
   z-index: 998;
 }
+.nav-web li {
+  padding: 28px;
+}
 .nav-web ul li a:after {
   background: #77120D;
+}
+.nav-web a {
+  font-size: 1.5rem;
 }
 
 .nav-mobility {
@@ -688,6 +712,15 @@ template {
 }
 .nav-img img {
   height: 50px;
+}
+
+#web-services-section,
+#contact-form-section,
+#contact-information-section {
+  display: block;
+  position: relative;
+  top: -50px;
+  visibility: hidden;
 }
 
 #landing-page {

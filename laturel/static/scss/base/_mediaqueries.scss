@@ -15,9 +15,31 @@
     .navbar li {
         padding: 15.8px 15px;
     }
+
+    .nav-web {
+        li {
+            padding: 16px !important;
+
+        }
+
+        a {
+            font-size: 1rem !important;
+        }
+    }
     
     .nav-img {
         margin-right: 25px;
+    }
+
+    #nav-hamburger-container {
+        display: none;
+    }
+
+    #nav > #nav-menu {
+        left: 0;
+        height: initial;
+        padding-top: 0;
+        text-align: center;
     }
 
     .flex-form-container {
