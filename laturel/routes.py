@@ -1,6 +1,7 @@
 from flask import render_template, jsonify, make_response, request
 from flask_mail import Message
 from datetime import datetime
+import sys
 
 from laturel import app, mail
 from laturel.forms import CostForm, CarSelectorForm, ContactForm
@@ -63,7 +64,7 @@ def web_index():
                       sender=app.config['MAIL_DEFAULT_SENDER'])
 
         app.logger.error(f'contact_msg sender: {contact_msg.sender}')
-        print(f'contact_msg sender: {contact_msg.sender}')
+        print(f'contact_msg sender: {contact_msg.sender}', file=sys.stdout)
         contact_msg.body = f"""Uusi yhteydenottopyyntö
                               Nimi: {form.name.data}
                               Sähköposti: {form.email.data}
