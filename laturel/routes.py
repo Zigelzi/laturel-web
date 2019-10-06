@@ -58,7 +58,8 @@ def web_index():
 
         # Parse the form element submitted by user and send the email.
         contact_msg = Message(subject='[Web] Uusi yhteydenottopyyntö',
-                      recipients=[recepient])
+                      recipients=[recepient],
+                      sender=app.config['MAIL_DEFAULT_SENDER'])
         contact_msg.body = f"""Uusi yhteydenottopyyntö
                               Nimi: {form.name.data}
                               Sähköposti: {form.email.data}
