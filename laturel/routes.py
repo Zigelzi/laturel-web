@@ -55,11 +55,14 @@ def web_index():
     if request.method == 'POST':
         recepient = 'miika.a.savela@gmail.com' # Recepient where the contact form is sent to.
         reply_recepient = form.email.data # Where the confirmation email is sent
-
+        # Testing logging
+        app.logger.error(f'App default sender:{app.config["MAIL_DEFAULT_SENDER"]}')
         # Parse the form element submitted by user and send the email.
         contact_msg = Message(subject='[Web] Uusi yhteydenottopyyntö',
                       recipients=[recepient],
                       sender=app.config['MAIL_DEFAULT_SENDER'])
+
+        app.logger.error(f'contact_msg sender: {contact_msg.sender}')
         contact_msg.body = f"""Uusi yhteydenottopyyntö
                               Nimi: {form.name.data}
                               Sähköposti: {form.email.data}
