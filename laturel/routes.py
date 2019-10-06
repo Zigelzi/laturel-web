@@ -59,6 +59,7 @@ def web_index():
         # Testing logging
         app.logger.error(f'App default sender:{app.config["MAIL_DEFAULT_SENDER"]}')
         print(f'App default sender:{app.config["MAIL_DEFAULT_SENDER"]}', file=sys.stdout)
+        print(f'App config: {app.config}', file=sys.stdout)
         # Parse the form element submitted by user and send the email.
         contact_msg = Message(subject='[Web] Uusi yhteydenottopyyntö',
                       recipients=[recepient],
