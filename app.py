@@ -4,7 +4,7 @@ from laturel import app
 if __name__ != "__main__":
     gunicorn_logger = logging.getLogger('gunicorn.error')
     app.logger.handlers = gunicorn_logger.handlers
-    app.logger.setLeverl(gunicorn_logger.level)
+    app.logger.setLevel(gunicorn_logger.level)
 
 if __name__ == '__main__':
     app.run(debug=True)
