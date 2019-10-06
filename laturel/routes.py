@@ -58,6 +58,7 @@ def web_index():
         reply_recepient = form.email.data # Where the confirmation email is sent
         # Testing logging
         app.logger.error(f'App default sender:{app.config["MAIL_DEFAULT_SENDER"]}')
+        print(f'App default sender:{app.config["MAIL_DEFAULT_SENDER"]}', file=sys.stdout)
         # Parse the form element submitted by user and send the email.
         contact_msg = Message(subject='[Web] Uusi yhteydenottopyyntö',
                       recipients=[recepient],
