@@ -31,9 +31,6 @@
     padding: 0;
 }
 
-.photo {
-    width: 100%;
-}
 
 // ------ Buttons and icons ------ 
 
@@ -44,6 +41,7 @@
     font-size: 1.3em;
     text-decoration: none;
     text-transform: uppercase;
+    text-align: center;
     border-radius: 1em;
     padding: 0.7em 2em;
     max-width: 250px;
@@ -195,6 +193,64 @@
     border-right: 10px solid transparent;
     border-top: 10px solid white;
     margin: auto auto 30px auto;
+}
+
+.accordion-item {
+    cursor: pointer;
+    transition: all .4s ease;
+    border-bottom: 2px solid $gray-200;
+    position: relative;
+
+    .input-border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background: $primary-blue-500;
+        transform: scaleX(0);
+        transform-origin: 0 0;
+        transition: all .15s ease;
+    }
+    
+    &.active .input-border {
+        transform: scaleX(1);
+    }
+    
+    h3 {
+        margin: 0;
+        padding: 10px 0;
+        font-weight: 400;
+    }
+
+    & h3::after {
+        content: "\2228";
+        float: right;
+        margin-right: 25px;
+        font-size: 20px;
+    }
+
+    &.active h3::after {
+        content: "\2227";
+    }
+
+    &.active + .accordion-border {
+        transform: scaleX(1);
+    }
+}
+
+.accordion-panel {
+    padding: 10px;
+    background: $gray-200;
+    max-height: 0;
+    overflow: hidden;
+    transition: all .4s ease-in-out;
+    opacity: 0;
+
+    &.show {
+        opacity: 1;
+        max-height: 1000px;
+    }
 }
 
 /* ------ Form components ------ */

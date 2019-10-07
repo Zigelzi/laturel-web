@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   padding: 0;
   margin: 0;
@@ -407,22 +408,25 @@ template {
 }
 
 /* Flex content boxes */
-.f-content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.container {
   min-height: 250px;
   position: relative;
   width: 100%;
+  padding: 0 20px;
 }
-.f-content h1, .f-content h2, .f-content h3, .f-content h4 {
-  margin-bottom: 0.3em;
+.container h1, .container h2, .container h3, .container h4 {
+  margin: 0 auto 0.6em auto;
+  max-width: 750px;
 }
-.f-content p {
+.container p {
   margin: 0.5em auto 2em;
-  max-width: 63%;
+  max-width: 750px;
 }
-.f-content .btn {
+.container .btn-left {
+  max-width: 750px;
+  margin: 0 auto;
+}
+.container .btn {
   margin-top: auto;
 }
 
@@ -431,11 +435,13 @@ template {
   justify-content: center;
 }
 
-.flex-column {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  padding: 25px 5%;
+.column {
+  padding: 20px 0;
+}
+.column .photo {
+  padding: 0;
+  width: calc(100% + 40px);
+  margin-left: -20px;
 }
 
 .h-icon-aligned {
@@ -444,6 +450,7 @@ template {
 
 .content-header {
   display: inline-block;
+  margin: 1.4em 0 !important;
 }
 
 .subheading {
@@ -544,25 +551,20 @@ template {
     justify-content: center;
   }
 
-  .col {
-    width: 32%;
-    margin-right: 20px;
-  }
-
   .input-group {
     max-width: 335px;
   }
 
-  .col:last-child {
-    margin-right: 0;
+  .flex-row {
+    display: flex;
+    max-width: 750px;
+    margin: 0 auto;
+    flex-wrap: wrap;
   }
-
-  .flex-column {
+  .flex-row .flex-column {
     flex: 1;
-  }
-
-  .bg-diagonal::after {
-    content: initial;
+    padding: 20px;
+    min-width: 300px;
   }
 }
 #nav-menu {
@@ -749,10 +751,6 @@ template {
   padding: 0;
 }
 
-.photo {
-  width: 100%;
-}
-
 .btn {
   display: block;
   color: #f9f3eb;
@@ -760,6 +758,7 @@ template {
   font-size: 1.3em;
   text-decoration: none;
   text-transform: uppercase;
+  text-align: center;
   border-radius: 1em;
   padding: 0.7em 2em;
   max-width: 250px;
@@ -901,6 +900,57 @@ template {
   border-right: 10px solid transparent;
   border-top: 10px solid white;
   margin: auto auto 30px auto;
+}
+
+.accordion-item {
+  cursor: pointer;
+  transition: all 0.4s ease;
+  border-bottom: 2px solid #C7CFD1;
+  position: relative;
+}
+.accordion-item .input-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #1AA6E5;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: all 0.15s ease;
+}
+.accordion-item.active .input-border {
+  transform: scaleX(1);
+}
+.accordion-item h3 {
+  margin: 0;
+  padding: 10px 0;
+  font-weight: 400;
+}
+.accordion-item h3::after {
+  content: "∨";
+  float: right;
+  margin-right: 25px;
+  font-size: 20px;
+}
+.accordion-item.active h3::after {
+  content: "∧";
+}
+.accordion-item.active + .accordion-border {
+  transform: scaleX(1);
+}
+
+.accordion-panel {
+  padding: 10px;
+  background: #C7CFD1;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+}
+.accordion-panel.show {
+  opacity: 1;
+  max-height: 1000px;
 }
 
 /* ------ Form components ------ */

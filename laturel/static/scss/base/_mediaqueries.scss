@@ -47,25 +47,21 @@
         flex-wrap: wrap;
         justify-content: center;
     }
-    
-    .col {
-        width: 32%;
-        margin-right: 20px;
-    }
 
     .input-group {
         max-width: 335px;
     }
 
-    .col:last-child {
-        margin-right: 0;
-    }
-
-    .flex-column {
-        flex: 1;
-    }
-
-    .bg-diagonal::after {
-        content: initial;
+    .flex-row {
+        display:flex;
+        max-width: 750px;
+        margin: 0 auto;   
+        flex-wrap: wrap;
+     
+        .flex-column {
+            flex: 1;
+            padding: 20px;
+            min-width: 300px;
+        }
     }
 }

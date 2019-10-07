@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     const envelope = document.getElementById('envelope');
     const formInputs = document.getElementById('form-inputs');
+    const accordionItems = document.getElementsByClassName('accordion-item');
+    const accordionPanels = document.getElementsByClassName('accordion-panel');
 
     /** Send the data to given endpoint URL and redirect the user if it is wanted.
      * 
@@ -47,6 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
         sendData(url, jsonObject, jsonObject.csrf_token, false);
     }
 
+    /**
+     * 
+     * @param {HTMLCollection} elements Collection of elements being toggled
+     * @param {string} className String of class name that is being toggled.
+     * @param {string} methodName Name of method which is being used.
+     */
+    function setClass(elements, className, methodName) {
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].classList[methodName](className);
+        }
+    }
+
     contactForm.addEventListener('submit', e => {
         e.preventDefault()
         
@@ -68,6 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const navMenu = document.getElementById('nav-menu');
         navHamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
-    })
+    });
+
+    for (var i = 0; i < accordionItems.length; i++) {
+        accordionItems[i].onclick = function() {
+                this.classList.toggle("active");
+                this.nextElementSibling.classList.toggle("show");
+        }
+    }
+
+    
+
 
 })
