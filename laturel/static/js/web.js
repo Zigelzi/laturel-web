@@ -91,6 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    window.addEventListener('scroll', () => {
+        const servicesSection = document.getElementById('web-services-section');
+        if (servicesSection.offsetTop < window.scrollY) {
+            navHamburger.style.background = "rgba(75, 75, 75, 0.2)"
+        } else {
+            navHamburger.style.background = "rgba(75, 75, 75, 0.0)"
+        }
+    })
     
 
 
