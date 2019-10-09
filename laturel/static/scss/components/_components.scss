@@ -58,6 +58,15 @@
         transform: scale(1.01);
         cursor: pointer;
     }
+
+    &:visited {
+        color: $light-orange
+    }
+
+    &::after {
+        height: 0;
+        width: 0;
+    }
 }
 
 .btn-margin {
@@ -111,6 +120,7 @@
     display: inline-block;
     height: 50px;
     margin-bottom: -15px; // Centering the icon to headers.
+    fill: $gray-700;
 }
 
 .svg-rocket {
@@ -219,13 +229,16 @@
     
     h3 {
         margin: 0;
-        padding: 10px 0;
+        padding: 20px 0;
         font-weight: 400;
+        display: inline-block;
+        margin-left: 20px;
     }
 
     & h3::after {
         content: "\2228";
-        float: right;
+        position: absolute;
+        right: 0;
         margin-right: 25px;
         font-size: 20px;
     }
@@ -236,6 +249,28 @@
 
     &.active + .accordion-border {
         transform: scaleX(1);
+    }
+
+    .svg-icon {
+        transition: all .3s ease-in;
+        stroke: $gray-700;
+        stroke-width: 10px;
+    }
+
+    &.active #icon-lightning {
+        fill: #FDD023;
+    }
+
+    &.active #icon-thumb {
+        fill: $primary-blue-600;
+    }
+
+    &.active #icon-person {
+        fill: $accent-green-700;
+    }
+
+    &.active #icon-heart {
+        fill:$accent-red-500;
     }
 }
 

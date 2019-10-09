@@ -64,4 +64,12 @@
             min-width: 300px;
         }
     }
+
+    .container {
+        display: flex;
+
+        .column {
+            flex: 1;
+        }
+    }
 }

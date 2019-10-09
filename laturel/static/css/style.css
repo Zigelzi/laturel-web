@@ -25,6 +25,31 @@ p {
   line-height: 1.5;
 }
 
+a {
+  color: #2E3638;
+  text-decoration: none;
+  position: relative;
+}
+a:hover::after {
+  transform: scaleY(0);
+}
+
+a:visited {
+  color: #455154;
+}
+
+a::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #FFC533;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: transform 0.15s ease;
+  transform-origin: bottom;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -450,7 +475,7 @@ template {
 
 .content-header {
   display: inline-block;
-  margin: 1.4em 0 !important;
+  margin-bottom: 1.4em !important;
 }
 
 .subheading {
@@ -565,6 +590,13 @@ template {
     flex: 1;
     padding: 20px;
     min-width: 300px;
+  }
+
+  .container {
+    display: flex;
+  }
+  .container .column {
+    flex: 1;
   }
 }
 #nav-menu {
@@ -773,6 +805,13 @@ template {
   transform: scale(1.01);
   cursor: pointer;
 }
+.btn:visited {
+  color: #f9f3eb;
+}
+.btn::after {
+  height: 0;
+  width: 0;
+}
 
 .btn-margin {
   margin: 20px 0;
@@ -823,6 +862,7 @@ template {
   display: inline-block;
   height: 50px;
   margin-bottom: -15px;
+  fill: #455154;
 }
 
 .svg-rocket {
@@ -924,12 +964,15 @@ template {
 }
 .accordion-item h3 {
   margin: 0;
-  padding: 10px 0;
+  padding: 20px 0;
   font-weight: 400;
+  display: inline-block;
+  margin-left: 20px;
 }
 .accordion-item h3::after {
   content: "∨";
-  float: right;
+  position: absolute;
+  right: 0;
   margin-right: 25px;
   font-size: 20px;
 }
@@ -938,6 +981,23 @@ template {
 }
 .accordion-item.active + .accordion-border {
   transform: scaleX(1);
+}
+.accordion-item .svg-icon {
+  transition: all 0.3s ease-in;
+  stroke: #455154;
+  stroke-width: 10px;
+}
+.accordion-item.active #icon-lightning {
+  fill: #FDD023;
+}
+.accordion-item.active #icon-thumb {
+  fill: #1484B8;
+}
+.accordion-item.active #icon-person {
+  fill: #0A8F3C;
+}
+.accordion-item.active #icon-heart {
+  fill: #FF3F12;
 }
 
 .accordion-panel {
