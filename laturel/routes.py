@@ -56,16 +56,10 @@ def web_index():
     if request.method == 'POST':
         recepient = 'miika.a.savela@gmail.com' # Recepient where the contact form is sent to.
         reply_recepient = form.email.data # Where the confirmation email is sent
-        # Testing logging
-        app.logger.error(f'App default sender:{app.config["MAIL_DEFAULT_SENDER"]}')
-        print(f'App default sender:{app.config["MAIL_DEFAULT_SENDER"]}', file=sys.stdout)
-        print(f'App config: {app.config}', file=sys.stdout)
         # Parse the form element submitted by user and send the email.
         contact_msg = Message(subject='[Web] Uusi yhteydenottopyyntö',
                       recipients=[recepient],
                       sender=app.config['MAIL_DEFAULT_SENDER'])
-
-        app.logger.error(f'contact_msg sender: {contact_msg.sender}')
         print(f'contact_msg sender: {contact_msg.sender}', file=sys.stdout)
         contact_msg.body = f"""Uusi yhteydenottopyyntö
                               Nimi: {form.name.data}
@@ -124,3 +118,15 @@ def web_index():
         mail.send(contact_msg)
         mail.send(reply_msg)
     return render_template('web/web_index.html', form=form)
+
+@app.route('/web/e/contact_card')
+def web_contact_card():
+    return render_template('web/example_contactcard.html')
+
+@app.route('/web/e/small_page')
+def web_small_page():
+    return render_template('web/example_small_page.html')
+
+@app.route('/web/e/medium_page')
+def web_medium_page():
+    return render_template('web/example_medium_page.html')

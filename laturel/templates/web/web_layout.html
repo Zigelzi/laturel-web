@@ -24,9 +24,9 @@
 				<div id="nav-menu">
 						<!-- <a class="nav-img" href="{{ url_for('web_index') }}"><img id="logo" src="{{ url_for('static', filename='img/laturel_logo_small.svg') }}"></a> -->
 					<ul class="">
-						<li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="#web-services-section">Palvelut</a></li>
-						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#contact-form-section">Yhteydenotto</a></li>
-						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="#contact-information-section">Yhteystiedot</a></li>
+						<li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('web_index') }}#web-services-section">Palvelut</a></li>
+						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('web_index') }}#contact-form-section">Yhteydenotto</a></li>
+						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('web_index') }}#contact-information-section">Yhteystiedot</a></li>
 					</ul>
 				</div>
 			</nav>
