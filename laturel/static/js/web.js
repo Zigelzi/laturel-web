@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formInputs = document.getElementById('form-inputs');
     const accordionItems = document.getElementsByClassName('accordion-item');
     const accordionPanels = document.getElementsByClassName('accordion-panel');
+    const navItems = document.getElementById('nav-list').children;
 
     /** Send the data to given endpoint URL and redirect the user if it is wanted.
      * 
@@ -61,28 +62,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    contactForm.addEventListener('submit', e => {
-        e.preventDefault()
-        
-        contactForm.addEventListener('animationend', (e) => {
-            // Collapse the form height when the send-envelope animation ends
-            if (e.animationName === 'send-envelope') {
-                formInputs.style.maxHeight = 0;
-            }
+    try {
+        contactForm.addEventListener('submit', e => {
+            e.preventDefault()
+            
+            contactForm.addEventListener('animationend', (e) => {
+                // Collapse the form height when the send-envelope animation ends
+                if (e.animationName === 'send-envelope') {
+                    formInputs.style.maxHeight = 0;
+                }
+            });
+            // Start drawing the envelope and fade the form inputs away
+            envelope.classList.add('send-envelope');
+            formInputs.classList.add('hide-form');
+    
+            // Parse the <form id="contact-form"> element and send it to backend to be submitted
+            sendForm('/web', 'contact-form')
         });
-        // Start drawing the envelope and fade the form inputs away
-        envelope.classList.add('send-envelope');
-        formInputs.classList.add('hide-form');
-
-        // Parse the <form id="contact-form"> element and send it to backend to be submitted
-        sendForm('/web', 'contact-form')
-    })
-
-    navHamburger.addEventListener('click', () => {
+    } catch (error) {
+        console.log(error);
+        if (error instanceof ReferenceError) {
+            console.log(error);
+        }
+    }
+    
+    function toggleNav() {
+        // Open and close the mobile navigation
         const navMenu = document.getElementById('nav-menu');
         navHamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+    }
+
+    navHamburger.addEventListener('click', () => {
+        toggleNav()
     });
+
+    for (let i = 0; i < navItems.length; i++) {
+        // Loop though all the <li> items in nav and attach toggling the nav on click on <a> (children[0]) element.
+        navItems[i].children[0].addEventListener('click', () => {
+            toggleNav()
+        });
+    }
 
     for (var i = 0; i < accordionItems.length; i++) {
         accordionItems[i].onclick = function() {
@@ -98,8 +118,5 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             navHamburger.style.background = "rgba(75, 75, 75, 0.0)"
         }
-    })
-    
-
-
+    });
 })
