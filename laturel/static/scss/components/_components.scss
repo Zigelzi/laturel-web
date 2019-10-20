@@ -9,6 +9,7 @@
     background-size: cover;
     background-position: center center;
     height: 100vh;
+    position:relative;
 }
 
 .laturel-image {
@@ -24,7 +25,7 @@
 }
 
 #header {
-    padding-top: 71vh;
+    padding-top: 53vh;
     text-align: center;
     color:$light-white;
 }
@@ -204,7 +205,10 @@
     display: block;
     height: 75px;
     width: 75px;
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     cursor: pointer;
 
     &::after {
@@ -223,6 +227,10 @@
         left: 50%;
         transform: translateX(-50%);
         
+    }
+
+    .arrow-black {
+        border-top: 10px solid $gray-800;
     }
 
 }

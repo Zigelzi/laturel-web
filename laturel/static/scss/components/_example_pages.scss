@@ -2,3 +2,18 @@
     padding-top: 20vh;
     text-align: center;
 }
+
+.svg-photo {
+    height: 80px;
+    background-color: $gray-400;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 0px $gray-700;
+    margin-bottom: 20px;
+}
+
+.contact-information {
+    svg, a,
+    h4, p {
+        margin: 0 auto 1rem auto !important;
+    }
+}

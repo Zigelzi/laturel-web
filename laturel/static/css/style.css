@@ -495,6 +495,7 @@ template {
 
 .xl-p {
   font-size: 1.653rem;
+  padding: 0 5%;
 }
 
 .subtext {
@@ -597,6 +598,10 @@ template {
   }
   .container .column {
     flex: 1;
+  }
+
+  .nav-section {
+    top: -50px;
   }
 }
 #nav-menu {
@@ -751,12 +756,9 @@ template {
   height: 50px;
 }
 
-#web-services-section,
-#contact-form-section,
-#contact-information-section {
+.nav-section {
   display: block;
   position: relative;
-  top: -50px;
   visibility: hidden;
 }
 
@@ -765,6 +767,7 @@ template {
   background-size: cover;
   background-position: center center;
   height: 100vh;
+  position: relative;
 }
 
 .laturel-image {
@@ -780,7 +783,7 @@ template {
 }
 
 #header {
-  padding-top: 71vh;
+  padding-top: 53vh;
   text-align: center;
   color: #FCFDFD;
 }
@@ -944,7 +947,10 @@ template {
   display: block;
   height: 75px;
   width: 75px;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   cursor: pointer;
 }
 .arrow-down-container::after {
@@ -960,6 +966,9 @@ template {
   top: 50%;
   left: 50%;
   transform: translateX(-50%);
+}
+.arrow-down-container .arrow-black {
+  border-top: 10px solid #2E3638;
 }
 
 .accordion-item {
@@ -1281,6 +1290,19 @@ template {
 .e-heading {
   padding-top: 20vh;
   text-align: center;
+}
+
+.svg-photo {
+  height: 80px;
+  background-color: #8F9EA3;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px 0px #455154;
+  margin-bottom: 20px;
+}
+
+.contact-information svg, .contact-information a,
+.contact-information h4, .contact-information p {
+  margin: 0 auto 1rem auto !important;
 }
 
 .e-top {
