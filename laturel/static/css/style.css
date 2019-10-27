@@ -739,6 +739,7 @@ template {
 
 .nav-mobility {
   background-color: #f49104;
+  text-align: center;
 }
 .nav-mobility ul li a:after {
   background: #0E5A9E;
@@ -754,6 +755,9 @@ template {
 }
 .nav-img img {
   height: 50px;
+}
+.nav-img::after {
+  content: none;
 }
 
 .nav-section {
@@ -856,6 +860,9 @@ template {
 }
 .top-button img {
   height: 50px;
+}
+.top-button a::after {
+  content: none;
 }
 
 .svg-logo {
@@ -1335,6 +1342,12 @@ template {
 
 .operational-result {
   margin: 15px 0;
+}
+
+.col {
+  flex: 1;
+  margin-right: 25px;
+  max-width: 400px;
 }
 
 /*# sourceMappingURL=style.css.map */

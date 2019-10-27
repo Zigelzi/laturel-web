@@ -109,6 +109,10 @@
     img {
         height: 50px;
     }
+
+    a::after {
+        content: none;
+    }
 }
 
 .svg-logo {

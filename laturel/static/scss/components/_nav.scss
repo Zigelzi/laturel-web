@@ -157,6 +157,7 @@
 
 .nav-mobility {
     background-color: $main-orange;
+    text-align: center;
 
     ul li a:after {
         background: $accent-blue;
@@ -175,6 +176,10 @@
 
     img {
         height: 50px;
+    }
+
+    &::after {
+        content: none;
     }
 }
 
