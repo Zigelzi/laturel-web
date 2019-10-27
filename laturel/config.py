@@ -13,3 +13,4 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get(f'mail_password')
     MAIL_DEFAULT_SENDER = os.environ.get(f'mail_username')
     SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'
+    SERVER_NAME = 'laturel.fi:5000'

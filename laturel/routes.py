@@ -50,7 +50,7 @@ def data():
     return res
 
 
-@app.route('/web', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'], subdomain='web')
 def web_index():
     form = ContactForm()
     if request.method == 'POST':
@@ -119,14 +119,14 @@ def web_index():
         mail.send(reply_msg)
     return render_template('web/web_index.html', form=form)
 
-@app.route('/web/e/contact_card')
+@app.route('/e/contact_card', subdomain='web')
 def web_contact_card():
     return render_template('web/example_contactcard.html')
 
-@app.route('/web/e/small_page')
+@app.route('/e/small_page', subdomain='web')
 def web_small_page():
     return render_template('web/example_small_page.html')
 
-@app.route('/web/e/medium_page')
+@app.route('/e/medium_page', subdomain='web')
 def web_medium_page():
     return render_template('web/example_medium_page.html')
