@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formInputs.classList.add('hide-form');
     
             // Parse the <form id="contact-form"> element and send it to backend to be submitted
-            sendForm('/web', 'contact-form')
+            sendForm('/', 'contact-form')
         });
     } catch (error) {
         console.log(error);
