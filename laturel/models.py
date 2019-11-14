@@ -23,12 +23,12 @@ class Cars(db.Model):
             f" maker='{self.maker}'," \
             f" model='{self.model}'," \
             f" body_type='{self.body_type}'," \
-            f" price='{self.price}'," \
-            f" battery='{self.battery}'," \
-            f" driverange='{self.driverange}'," \
-            f" consumption='{self.consumption}'," \
-            f" weight='{self.weight}'," \
-            f"fullmodel={self.fullmodel}," \
+            f" price={self.price}," \
+            f" battery={self.battery}," \
+            f" driverange={self.driverange}," \
+            f" consumption={self.consumption}," \
+            f" weight={self.weight}," \
+            f"fullmodel='{self.fullmodel}'," \
             f"co2={self.co2})>"
 
 

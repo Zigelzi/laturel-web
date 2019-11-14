@@ -12,4 +12,8 @@ class Config(object):
     MAIL_USERNAME = os.environ.get(f'mail_username')
     MAIL_PASSWORD = os.environ.get(f'mail_password')
     MAIL_DEFAULT_SENDER = os.environ.get(f'mail_username')
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'
+    
+    # Using SQLite DB for now
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///db/' + os.getenv('DB_NAME', 'app.db')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False 
+    STATIC_FOLDER = f'{os.getenv("APP_FOLDER")}/static'
