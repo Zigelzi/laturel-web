@@ -10,7 +10,7 @@ class Config(object):
     MAIL_SERVER = "smtp.googlemail.com"
     MAIL_PORT = 587
     MAIL_USE_TLS=1
-    SERVER_NAME = 'laturel.test:3000'
+    SERVER_NAME = 'laturel.test'
     MAIL_USERNAME = os.getenv(f'MAIL_USERNAME')
     MAIL_PASSWORD = os.getenv(f'MAIL_PASSWORD')
     MAIL_DEFAULT_SENDER = os.getenv(f'MAIL_USERNAME')
