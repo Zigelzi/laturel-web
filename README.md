@@ -13,7 +13,10 @@ Website which purpose is to offer transparent and neutral information about diff
 ## WIP
 This webapp is cosntantly under development and I'm adding features as it goes. Improvement suggestions and feedback is greatly appreciated!
 
-### Planned features
-- [x] Car selector to car cost calculator - Making it easy to pre-select certain models to comparison.
-- [ ] Charger calculator (WIP) - Calculating which kind of charger you would need to home and/or to office.
-- [ ] EV suggestion - Based on uploaded driving profile (Google Location history?) suggest fitting EV.
+# Setup
+
+* Set up the MAIL_USERNAME, MAIL_PASSWORD and SECRET_KEY environment variables
+* Build the container with docker-compose build
+* Run the container with docker-compose up -d and navigate to localhost:5000 for development
+* Run the container in production mode with docker-compose -f docker-compose.prod.yml up -d --build and navigate route traffic from your domain to the webapp
+

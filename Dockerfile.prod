@@ -1,0 +1,60 @@
+###########
+# BUILDER #
+###########
+
+# Pull official base image
+FROM python:3.8.0-alpine as BUILDER
+
+# Set working directory
+WORKDIR /usr/src/app
+
+# Set Environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Install dependencies
+RUN pip install --upgrade pip
+COPY . /usr/src/app/
+RUN apk add --no-cache --update python3-dev  gcc build-base
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+
+###########
+# FINAL   #
+###########
+
+# Pull official image
+FROM python:3.8.0-alpine
+
+# Create directory for the app user
+RUN mkdir -p /home/app
+
+# Create the app user
+RUN addgroup -S app_group && adduser -S app_user -G app_group
+
+# Create appropriate directories
+ENV HOME=/home/app
+ENV APP_HOME=/home/app/laturel
+RUN mkdir ${APP_HOME}
+WORKDIR ${APP_HOME}
+
+# Install dependencies
+RUN apk update && apk add libpq
+COPY --from=builder /usr/src/app/wheels /wheels
+COPY --from=builder /usr/src/app/requirements.txt .
+RUN pip install --upgrade pip
+RUN pip install --no-cache /wheels/*
+
+# Copy entrypoint.sh
+COPY ./entrypoint.sh ${APP_HOME}
+
+# Copy project
+COPY . ${APP_HOME}
+
+# Chown (CHange OWNer) all files to the app user
+RUN chown -R app_user:app_group ${APP_HOME}
+
+# Change user to the app_user
+USER app_user
+
+# Run entrypoint.sh
+ENTRYPOINT [ "/home/app/laturel/entrypoint.sh" ]

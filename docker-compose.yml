@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  laturel:
+    build: ./
+    command: python manage.py run -h 0.0.0.0
+    volumes:
+      # Bind mount the project directory for development purposes
+      - ./:/usr/src/app/
+      # Bind mount the DB so changes are persisted on the host machine.
+      - ./laturel/db/:/usr/src/app/laturel/db/
+    ports:
+      - 5000:5000
+    env_file: 
+      - ./.env.dev
