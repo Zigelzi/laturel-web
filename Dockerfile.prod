@@ -33,7 +33,7 @@ RUN addgroup -S app_group && adduser -S app_user -G app_group
 
 # Create appropriate directories
 ENV HOME=/home/app
-ENV APP_HOME=/home/app/laturel
+ENV APP_HOME=/home/app/laturel-web
 RUN mkdir ${APP_HOME}
 WORKDIR ${APP_HOME}
 
@@ -57,4 +57,4 @@ RUN chown -R app_user:app_group ${APP_HOME}
 USER app_user
 
 # Run entrypoint.sh
-ENTRYPOINT [ "/home/app/laturel/entrypoint.sh" ]
+ENTRYPOINT [ "/home/app/laturel-web/entrypoint.sh" ]
