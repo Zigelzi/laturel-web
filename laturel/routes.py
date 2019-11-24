@@ -130,3 +130,8 @@ def web_small_page():
 @app.route('/e/medium_page', subdomain='web')
 def web_medium_page():
     return render_template('web/example_medium_page.html')
+
+@app.route('/', subdomain='vantasia')
+def vantasia_index():
+    form = ContactForm()
+    return render_template('vantasia/vantasia_index.html', form=form)

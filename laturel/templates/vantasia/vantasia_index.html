@@ -1,0 +1,119 @@
+{% extends "vantasia/vantasia_layout.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block content%}
+<div id="landing-page" class="laturel-image">
+    <div class="gray-layer">
+        <div id="header">
+            <h1 class="xl-heading">Vantasia</h1>
+            <p class="xl-p">Kuoron slogan tai arvolupaus</p>
+        </div>
+        <a href="#section-1" class="arrow-down-container"><div class="arrow-down"></div></a>
+    </div>
+</div>
+<div id="section-1" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
+<div class="container bg-grey top-shadow">
+    <div class="column">
+        <div class="flex-centered">
+            <h1 class="content-header">Palvelut</h1>
+        </div>
+        <div>
+            <h2>Kuorolaulantaa kaikille</h2>
+            <p>Lyhyt esittely kuorosta mitä se tekee ja mitkä ovat sen palvelut</p>
+        </div>
+    </div>
+</div>
+<div class="why-laturel"><!--Empty div to link the navigation and offset the navigation height --></div>
+<div class="container bg-grey">
+    <div class="column">
+        <div>
+            <h2 class="">Vantasian esityksiä</h2>
+            <p>Tähän lista Vantasian esityksistä ja mahdollisesti upotettuja videoita keikista</p>
+        </div>
+        <div>
+            <h3>Joulujuhla - Vantaa - 20.12.2019</h3>
+            <p>Esitys Vantaan Pyhän Laurin kirkossa pidetystä jouluesityksestä</p>
+            <p>Upotettu video</p>
+        </div>
+</div>
+</div>
+<div id="contact-form-section" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
+<div class="container top-shadow">
+    <div class="column">
+        <div class="web-form-container">
+            <h2 class="text-center">Ota yhteyttä</h2>
+            <form id="contact-form" action="" method="POST">
+                <div class="overflow-hidden envelope-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+                        <path id="envelope" class="svg-envelope" d="M 5.3908531,3.4300693 250,179.31399 494.60916,3.4300693 m -489.2183069,0 489.2183069,0 0,293.1398707 -489.2183069,0 z"/>
+                    </svg>
+                </div>
+                <div class="">
+                    <div id="form-inputs">
+                        {{ form.hidden_tag() }}
+                        <div>
+                            <label for="name" class="web-input">
+                                {{ form.name(placeholder="\xa0") }}
+                                <span class="input-label">Nimi</span>
+                                <span class="input-border"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="email" class="web-input">
+                                {{ form.email(placeholder="\xa0") }}
+                                <span class="input-label">Sähköposti</span>
+                                <span class="input-border"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="phone" class="web-input">
+                                {{ form.phone(placeholder="\xa0") }}
+                                <span class="input-label">Puhelinnumero</span>
+                                <span class="input-border"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="description" class="web-input">
+                                {{ form.description(placeholder="\xa0") }}
+                                <span class="input-label">Lisätiedot</span>
+                                <span class="input-border"></span>
+                            </label>
+                            
+                        </div>
+                        <div>
+                            {{ form.preferred_contact.label(class="web-input") }}
+                            {% for subfield in form.preferred_contact %}
+                            <div class="slider-checkbox">
+                                {{ subfield }}
+                                {{ subfield.label(class="label") }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            {{ form.submit(class="btn form-submit") }}
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>	
+<div id="contact-information-section" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
+<div  class="container bg-grey top-shadow">
+    <div class="column">
+        <div class="text-center">
+            <div class="h-icon-aligned">
+                <img src="{{url_for('static', filename='img/phone.svg')}}" alt="phone icon" class="svg-icon">
+                <h1 class="content-header">Yhteystiedot</h1>
+            </div>
+            <div>
+                <p>Vesa Savela</p>
+                <p>+358 (0)50 1234 123</p>
+                <a href="mailto:#">vesa.savela@kolumbus.fi</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

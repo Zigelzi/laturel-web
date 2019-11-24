@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i|Oswald:400,700" rel="stylesheet">
+		{% if config['ENV'] == 'production' %}  
+		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+		<link rel="icon" type="image/png" href="/static/img/laturel_favicon.png">
+		<script src="/static/js/vantasia.js"></script>
+		{% else %}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+		<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/laturel_favicon.png') }}">
+		<script src="{{ url_for('static', filename='js/vantasia.js') }}"></script>
+		{% endif %}
+		<meta property="og:image" content="{/static/img/laturel_logo_l.png">
+		<meta property="og:image:type" content="image/png">
+		<meta property="og:image:width" content="349">
+		<meta property="og:image:height" content="308">
+		 <meta property="og:description" content="Vantaan mieskuoro Vantasia" />
+		<title>Laturel - {% block title %} {% endblock %} </title>	
+
+	</head>
+	<body>
+		<div class="main-container" id="top">
+			<nav id="nav" class="navbar nav-web">
+				<div id="nav-hamburger-container">
+					<div id="nav-hamburger"></div>
+				</div>
+				<div id="nav-menu">
+					<ul id="nav-list">
+						<li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('vantasia_index') }}#section-1">Alaotsikko 1</a></li>
+						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('vantasia_index') }}#section-2">Alaotsikko 2</a></li>
+						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('vantasia_index') }}#section-3">Alaotsikko 3</a></li>
+					</ul>
+				</div>
+			</nav>
+			
+			{% block content %}
+			{% endblock %}
+		</div>
+		<footer>
+            
+		</footer>
+	</body>	
+
+	
+
+</html>
