@@ -45,7 +45,12 @@
 }
 
 .vantasia-contact-info {
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+.vantasia-contact-info .vantasia-contact-person {
+  flex-grow: 1;
+  padding: 10px;
 }
 
 .vantasia-left-align {

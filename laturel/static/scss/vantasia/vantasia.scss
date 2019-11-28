@@ -53,8 +53,15 @@
 }
 
 .vantasia-contact-info {
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+
+    .vantasia-contact-person {
+        flex-grow: 1;
+        padding: 10px;
+    }
 }
+
 .vantasia-left-align {
     display: inline-block;
     text-align: left;
