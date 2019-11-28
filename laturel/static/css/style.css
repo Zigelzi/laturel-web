@@ -1350,4 +1350,8 @@ template {
   max-width: 400px;
 }
 
+.vantasia-image {
+  background-image: url(../img/Stock_Kuoro.jpg);
+}
+
 /*# sourceMappingURL=style.css.map */
