@@ -1350,8 +1350,33 @@ template {
   max-width: 400px;
 }
 
-.vantasia-image {
-  background-image: url(../img/Stock_Kuoro.jpg);
+.vantasia-hero-image {
+  object-fit: cover;
+}
+
+.vantasia-logo {
+  margin: 0 auto;
+  max-height: 135px;
+}
+
+.vantasia-black-bg {
+  background-color: black;
+}
+
+.vantasia-hero-top {
+  height: 40vh;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.vantasia-hero-top p {
+  color: #fff;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.vantasia-hero-bottom {
+  height: 60vh;
 }
 
 /*# sourceMappingURL=style.css.map */
