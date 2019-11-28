@@ -27,11 +27,12 @@
 				<div id="nav-hamburger-container">
 					<div id="nav-hamburger"></div>
 				</div>
-				<div id="nav-menu">
+				<div id="nav-menu" class="vantasia-nav-menu">
 					<ul id="nav-list">
-						<li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('vantasia_index') }}#section-1">Alaotsikko 1</a></li>
-						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('vantasia_index') }}#section-2">Alaotsikko 2</a></li>
-						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('vantasia_index') }}#section-3">Alaotsikko 3</a></li>
+						<li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('vantasia_index') }}#vantasia">Vantasia</a></li>
+						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('vantasia_index') }}#vantasian-esityksia">Vantasian esityksiä</a></li>
+						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('vantasia_index') }}#ota-yhteytta">Ota yhteyttä</a></li>
+						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('vantasia_index') }}#yhteystiedot">Yhteystiedot</a></li>
 					</ul>
 				</div>
 			</nav>

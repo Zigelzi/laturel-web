@@ -19,9 +19,9 @@
         <img class="vantasia-hero-image" src="{{ url_for('static', filename='img/Stock_Kuoro.jpg') }}" alt="Vantasia logo">
         {% endif %}
     </div>
-    <a href="#section-1" class="arrow-down-container"><div class="arrow-down"></div></a>
+    <a href="#vantasia" class="arrow-down-container"><div class="arrow-down"></div></a>
 </div>
-<div id="section-1" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
+<div id="vantasia" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
 <div class="container bg-grey top-shadow">
     <div class="column">
         <div class="flex-centered">
@@ -29,54 +29,55 @@
         </div>
         <div>
             <p>Vantasian esittely tulee tähän. Mitä kuoro tekee, missä se toimii ja kenelle se on tarkoitettu</p>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida euismod egestas. In hac habitasse platea dictumst. Curabitur augue nunc, condimentum sit amet lacinia quis, eleifend quis dolor. Sed bibendum mauris sed gravida viverra. Phasellus semper rutrum mauris, porttitor sodales ex dictum vel. Pellentesque elit ante, accumsan et fermentum non, semper nec ex. Ut fringilla neque nec sapien imperdiet, in pulvinar mi consectetur. Nulla vestibulum enim ut scelerisque sollicitudin. Donec pretium dolor odio, ut tristique neque sollicitudin ac. Sed tempus ex ut dolor posuere, ut congue ante tristique. Nunc non mi nec tellus fermentum imperdiet id nec ex. Quisque maximus molestie venenatis. Mauris non tincidunt nunc, vel eleifend erat. Nam placerat metus elit, non elementum diam tempor at. Vivamus convallis, metus at tempor condimentum, ligula lacus scelerisque tortor, id maximus urna nulla a mi.</p>
         </div>
     </div>
 </div>
-<div class="why-laturel"><!--Empty div to link the navigation and offset the navigation height --></div>
+<div id="vantasian-esityksia" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
 <div class="container bg-grey">
-    <div class="column">            
+    <div class="column vantasia-media-column">            
         <div>
             <h2 class="">Vantasian esityksiä</h2>
             <p>Tähän lista Vantasian esityksistä ja mahdollisesti upotettuja videoita keikista</p>
             <h3>Joulujuhla - Vantaa - 9.12.2019</h3>
             <p>Esitys Vantaan Pyhän Laurin kirkossa pidetystä jouluesityksestä</p>
-            <div class="vantasia-media-container">
-                {% if config['ENV'] == 'production' %}  
-                <img class="vantasia-media-icon" src="/static/img/video.svg" alt="Video icon">
-                {% else %}
-                <img class="vantasia-media-icon" src="{{ url_for('static', filename='img/video.svg') }}" alt="Video icon">
-                {% endif %}
+            <div class="vantasia-video-wrapper">
+                <div class="vantasia-media-container vantasia-video-container">
+                    <iframe src="https://www.youtube.com/embed/FArPfl6g7_Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
             <p>Upotettu video</p>
         </div>
         <div>
             <h2>Kuvia esityksistä</h2>
             <p>Tähän kuvia Vantasiasta, esityksistä, jäsenistä yms.</p>
-            <div class="vantasia-media-container vantasia-media-fullwidth">
-                {% if config['ENV'] == 'production' %}  
-                <img class="vantasia-media-icon" src="/static/img/image.svg" alt="Image icon">
-                {% else %}
-                <img class="vantasia-media-icon" src="{{ url_for('static', filename='img/image.svg') }}" alt="Image icon">
-                {% endif %}
-            </div>
-            <div class="vantasia-media-container vantasia-media-fullwidth">
-                {% if config['ENV'] == 'production' %}  
-                <img class="vantasia-media-icon" src="/static/img/image.svg" alt="Image icon">
-                {% else %}
-                <img class="vantasia-media-icon" src="{{ url_for('static', filename='img/image.svg') }}" alt="Image icon">
-                {% endif %}
-            </div>
-            <div class="vantasia-media-container vantasia-media-fullwidth">
-                {% if config['ENV'] == 'production' %}  
-                <img class="vantasia-media-icon" src="/static/img/image.svg" alt="Image icon">
-                {% else %}
-                <img class="vantasia-media-icon" src="{{ url_for('static', filename='img/image.svg') }}" alt="Image icon">
-                {% endif %}
+            <div class="vantasia-image-gallery">
+                <div class="vantasia-media-container">
+                    {% if config['ENV'] == 'production' %}  
+                    <img class="vantasia-media-icon" src="/static/img/stock_viulu.jpg" alt="Image icon">
+                    {% else %}
+                    <img class="vantasia-media-icon" src="{{ url_for('static', filename='img/stock_viulu.jpg') }}" alt="Image icon">
+                    {% endif %}
+                </div>
+                <div class="vantasia-media-container">
+                    {% if config['ENV'] == 'production' %}  
+                    <img class="vantasia-media-icon" src="/static/img/stock_nuotit.jpg" alt="Image icon">
+                    {% else %}
+                    <img class="vantasia-media-icon" src="{{ url_for('static', filename='img/stock_nuotit.jpg') }}" alt="Image icon">
+                    {% endif %}
+                </div>
+                <div class="vantasia-media-container">
+                    {% if config['ENV'] == 'production' %}  
+                    <img class="vantasia-media-icon" src="/static/img/stock_direstraits.jpg" alt="Image icon">
+                    {% else %}
+                    <img class="vantasia-media-icon" src="{{ url_for('static', filename='img/stock_direstraits.jpg') }}" alt="Image icon">
+                    {% endif %}
+                </div>
             </div>
         </div>
 </div>
 </div>
-<div id="contact-form-section" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
+<div id="ota-yhteytta" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
 <div class="container top-shadow">
     <div class="column">
         <div class="web-form-container">
@@ -137,7 +138,7 @@
         </div>
     </div>
 </div>	
-<div id="contact-information-section" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
+<div id="yhteystiedot" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
 <div  class="container bg-grey top-shadow">
     <div class="column">
         <div class="text-center">

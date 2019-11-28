@@ -4,6 +4,8 @@
 
 .vantasia-hero-image {
     object-fit: cover;
+    object-position: top;
+    max-height: 100%;
 }
 
 .vantasia-logo {
@@ -25,31 +27,70 @@
     p {
         color: #fff;
         text-align: center;
-        padding-top: 15px;
+        padding: 15px;
     }
 }
 
 .vantasia-hero-bottom {
     height: 60vh;
+
 }
 
 .vantasia-media-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 2px solid black;
     background-color: #dedede;
+}
 
-    .vantasia-media-icon {
-        max-width: 250px;
-        margin: 0 auto;
+.vantasia-video-wrapper {
+    // Container for iframes with 16:9 aspect ratio and with 750 max width
+    max-width: 750px;
+    margin: 0 auto;
+}
 
+.vantasia-media-column {
+    padding-bottom: 0;
+}
+
+.vantasia-image-gallery {
+    display:flex;
+    flex-flow: wrap;
+    margin: 0 -20px; // Offset the padding of container (20px) for full screen images
+
+    .vantasia-media-container:first-child {
+        flex: 100%;
+        max-width: 100%;
+
+        img {
+            vertical-align: middle;
+            width: 100%;
+        }
+    }
+
+    .vantasia-media-container:not(:first-child) {
+        flex: 1;
+        min-width: 500px;
+
+        img {
+            vertical-align: middle;
+            width: 100%;
+        }
     }
 }
 
-.vantasia-media-fullwidth {
-    // Offset the .container 20px padding to achieve full width image
-    margin: 0 -20px;
+.vantasia-video-container {
+    //max-width: 750px;
+    //max-height: 500px;
+    position: relative;
+    padding-bottom: 56.25%;
+    margin: 0 auto;
+    max-width: 100%;
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .vantasia-contact-info {
@@ -84,4 +125,10 @@
         margin: 0;
         text-align: left;
     }
+}
+
+#nav-menu {
+    // Override for nav menu
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
 }

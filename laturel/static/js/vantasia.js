@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const navHamburger = document.getElementById('nav-hamburger-container')
+    const navHamburger = document.getElementById('nav-hamburger-container');
+    const vantasiaSection = document.getElementById('vantasia');
+    const navMenu = document.getElementById('nav-menu');
     const contactForm = document.getElementById('contact-form');
     const envelope = document.getElementById('envelope');
     const formInputs = document.getElementById('form-inputs');
@@ -87,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function toggleNav() {
         // Open and close the mobile navigation
-        const navMenu = document.getElementById('nav-menu');
         navHamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
     }
@@ -111,11 +112,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', () => {
-        const servicesSection = document.getElementById('section-1');
-        if (servicesSection.offsetTop < window.scrollY) {
+        if (vantasiaSection.offsetTop < window.scrollY) {
             navHamburger.style.background = "rgba(75, 75, 75, 0.2)"
         } else {
             navHamburger.style.background = "rgba(75, 75, 75, 0.0)"
         }
     });
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 5) {
+            navMenu.style.background = "rgba(75, 75, 75, 0.9)"
+        } else {
+            navMenu.style.background = "rgba(75, 75, 75, 0.0)"
+        }
+    })
 })
