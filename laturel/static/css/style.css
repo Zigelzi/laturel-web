@@ -1403,6 +1403,7 @@ template {
 .vantasia-image-gallery .vantasia-media-container:first-child {
   flex: 100%;
   max-width: 100%;
+  max-height: 850px;
 }
 .vantasia-image-gallery .vantasia-media-container:first-child img {
   vertical-align: middle;
@@ -1434,10 +1435,13 @@ template {
 .vantasia-contact-info {
   display: flex;
   flex-wrap: wrap;
+  max-width: 750px;
+  margin: 0 auto;
 }
 .vantasia-contact-info .vantasia-contact-person {
   flex-grow: 1;
-  padding: 10px;
+  padding: 25px;
+  text-align: left;
 }
 
 .vantasia-left-align {
