@@ -1359,8 +1359,9 @@ template {
   max-height: 135px;
 }
 
-.vantasia-black-bg {
+.vantasia-hero-container {
   background-color: black;
+  position: relative;
 }
 
 .vantasia-hero-top {
@@ -1377,6 +1378,50 @@ template {
 
 .vantasia-hero-bottom {
   height: 60vh;
+}
+
+.vantasia-media-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid black;
+  background-color: #dedede;
+}
+.vantasia-media-container .vantasia-media-icon {
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.vantasia-media-fullwidth {
+  margin: 0 -20px;
+}
+
+.vantasia-contact-info {
+  text-align: center;
+}
+
+.vantasia-left-align {
+  display: inline-block;
+  text-align: left;
+}
+
+.vantasia-contact-image,
+.vantasia-contact-text {
+  display: inline-block;
+}
+
+.vantasia-person-icon {
+  width: 65px;
+  border: 1px solid black;
+  background-color: #dedede;
+}
+
+.vantasia-contact-text {
+  margin-left: 20px;
+}
+.vantasia-contact-text p {
+  margin: 0;
+  text-align: left;
 }
 
 /*# sourceMappingURL=style.css.map */

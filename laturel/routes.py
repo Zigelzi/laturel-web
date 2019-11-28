@@ -58,9 +58,8 @@ def web_index():
         reply_recepient = form.email.data # Where the confirmation email is sent
         # Parse the form element submitted by user and send the email.
         contact_msg = Message(subject='[Web] Uusi yhteydenottopyyntö',
-                      recipients=[recepient],
-                      sender=app.config['MAIL_DEFAULT_SENDER'])
-        print(f'contact_msg sender: {contact_msg.sender}', file=sys.stdout)
+                              recipients=[recepient],
+                              sender=app.config['MAIL_DEFAULT_SENDER'])
         contact_msg.body = f"""Uusi yhteydenottopyyntö
                               Nimi: {form.name.data}
                               Sähköposti: {form.email.data}
@@ -69,16 +68,16 @@ def web_index():
                               Lisätietoja: {form.description.data}
                            """
         contact_msg.html = f"""<h1>Uusi yhteydenottopyyntö</h1>
-                      <p><strong>Nimi</strong></p>
-                      <p>{form.name.data}</p>
-                      <p><strong>Sähköposti</strong></p>
-                      <p>{form.email.data}</p>
-                      <p><strong>Puhelinnumero</strong></p>
-                      <p>{form.phone.data}</p>
-                      <p><strong>Toivottu yhteydenottotapa</strong></p>
-                      <p>{form.preferred_contact.data}</p>
-                      <p><strong>Lisätietoja</strong></p>
-                      <p>{form.description.data}</p>"""
+                               <p><strong>Nimi</strong></p>
+                               <p>{form.name.data}</p>
+                               <p><strong>Sähköposti</strong></p>
+                               <p>{form.email.data}</p>
+                               <p><strong>Puhelinnumero</strong></p>
+                               <p>{form.phone.data}</p>
+                               <p><strong>Toivottu yhteydenottotapa</strong></p>
+                               <p>{form.preferred_contact.data}</p>
+                               <p><strong>Lisätietoja</strong></p>
+                               <p>{form.description.data}</p>"""
 
         reply_msg = Message(subject='[Laturel] Yhteydenottopyyntö',
                             recipients=[reply_recepient])
