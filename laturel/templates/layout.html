@@ -17,7 +17,16 @@
 		 <meta property="og:description" content="Calculate car ownership costs and compare different propulsion types (EV/ICE)" />
 		<title>Laturel - {% block title %} {% endblock %} </title>
 		{% block carscript %}{% endblock %}
-			
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153653570-1"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-153653570-1');
+		</script>
+
 	</head>
 	<body>
 		<div class="main-container" id="top">
