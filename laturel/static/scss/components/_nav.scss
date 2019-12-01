@@ -2,7 +2,7 @@
 // Navigation and it's components
 // ===================
 
-#nav-menu {
+.nav-menu {
     height: 100vh;
     width: 100%;
     position: absolute;
@@ -10,7 +10,7 @@
     left:100%;
     transition: left 0.2s ease-in-out;
     padding-top: 30%;
-    background-color: rgba(75, 75, 75, 0.9);
+    background-color: $nav-transparent-bg;
 
     &.active {
         left: 0;
@@ -25,11 +25,13 @@
     height: 50px;
     cursor: pointer;
     z-index: 999; // Keep the icon always on top
+    // Hide the bg initially, show when scrolling over the hero image (JavaScript)
     background: rgba(75,75,75,0.0);
     margin-top: 10px;
 
     &.active #nav-hamburger {
-        // Active class for hiding the center bar    
+        // Active class for hiding the center bar   
+        // Hide the bg and box-shadow when active 
         background-color: rgba(0, 0, 0, 0);
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
     }
@@ -44,7 +46,7 @@
         // Active class for transforming the hamburger bottom line to cross
         top: 0;
         transform: rotate(135deg);
-        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 -2px 5px $nav-hamburger-boxshadow;
     }
 }
 
@@ -56,7 +58,7 @@
     top:50%;
     right: 5%;
     transition: 0.5s;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px $nav-hamburger-boxshadow;
     transform: translateY(-2px);
 
     &::before,
@@ -66,7 +68,7 @@
         width: 50px;
         height: 4px;
         background-color: $light-white;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 5px $nav-hamburger-boxshadow;
         transition: 0.5s;
     }
 

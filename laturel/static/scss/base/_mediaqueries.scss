@@ -4,7 +4,7 @@
 
 // ------ Medium screens ------ 
 
- @media (min-width: 768px) {
+ @media (min-width: $bp-m) {
 
     .navbar ul,
     .navbar li,
@@ -35,7 +35,7 @@
         display: none;
     }
 
-    #nav > #nav-menu {
+    #nav > .nav-menu {
         left: 0;
         height: initial;
         padding-top: 0;

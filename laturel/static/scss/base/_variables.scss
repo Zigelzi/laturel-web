@@ -14,6 +14,8 @@ $accent-green: #1e752a;
 $accent-red: #77120D;
 
 $nav-green: #0a5c15;
+$nav-transparent-bg: rgba(75, 75, 75, 0.9);
+$nav-hamburger-boxshadow: rgba(0, 0, 0, 0.2);
 $light-orange: #f9f3eb;
 $light-blue: #0a7ce7;
 
@@ -72,3 +74,12 @@ $gray-400: #8F9EA3;
 $gray-300: #ABB7BA;
 $gray-200: #C7CFD1;
 $gray-100: #E3E7E8;
+
+// Media Query Screen sizes
+
+// These are just arbitrary sizes
+$bp-xl: 1000px;
+$bp-l: 860px;
+
+// Actual used sizes
+$bp-m: 768px;

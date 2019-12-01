@@ -564,7 +564,7 @@ template {
     display: none;
   }
 
-  #nav > #nav-menu {
+  #nav > .nav-menu {
     left: 0;
     height: initial;
     padding-top: 0;
@@ -604,7 +604,7 @@ template {
     top: -50px;
   }
 }
-#nav-menu {
+.nav-menu {
   height: 100vh;
   width: 100%;
   position: absolute;
@@ -614,7 +614,7 @@ template {
   padding-top: 30%;
   background-color: rgba(75, 75, 75, 0.9);
 }
-#nav-menu.active {
+.nav-menu.active {
   left: 0;
 }
 
@@ -1356,9 +1356,14 @@ template {
   max-height: 100%;
 }
 
-.vantasia-logo {
+.vantasia-logo-container {
   margin: 0 auto;
+}
+
+.vantasia-logo {
   max-height: 135px;
+  max-width: 348px;
+  width: 100%;
 }
 
 .vantasia-hero-container {
@@ -1411,7 +1416,8 @@ template {
 }
 .vantasia-image-gallery .vantasia-media-container:not(:first-child) {
   flex: 1;
-  min-width: 500px;
+  max-width: 100%;
+  flex-basis: 500px;
 }
 .vantasia-image-gallery .vantasia-media-container:not(:first-child) img {
   vertical-align: middle;
@@ -1468,9 +1474,14 @@ template {
   text-align: left;
 }
 
-#nav-menu {
-  background-color: transparent;
+.vantasia-nav-menu {
   transition: all 0.2s ease-in-out;
+}
+
+@media all and (min-width: 768px) {
+  .vantasia-nav-menu {
+    background-color: transparent;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

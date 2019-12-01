@@ -5,11 +5,13 @@
 {% block content%}
 <div class="vantasia-hero-container">
     <div class="vantasia-hero-top">
-        {% if config['ENV'] == 'production' %}  
-        <img class="vantasia-logo" src="/static/img/Vantasia_Logo.png" alt="Vantasia logo">
-        {% else %}
-        <img class="vantasia-logo" src="{{ url_for('static', filename='img/Vantasia_Logo.png') }}" alt="Vantasia logo">
-        {% endif %}
+        <div class="vantasia-logo-container">
+            {% if config['ENV'] == 'production' %}  
+            <img class="vantasia-logo" src="/static/img/Vantasia_Logo.png" alt="Vantasia logo">
+            {% else %}
+            <img class="vantasia-logo" src="{{ url_for('static', filename='img/Vantasia_Logo.png') }}" alt="Vantasia logo">
+            {% endif %}
+        </div>
         <p>Mieskuorolaulua musiikin ystäville pääkaupunkiseudulla</p>
     </div>
     <div class="gray-layer vantasia-hero-bottom">
@@ -143,7 +145,11 @@
     <div class="column">
         <div class="text-center">
             <div class="h-icon-aligned">
+                {% if config['ENV'] == 'production' %}
+                <img src="/static/img/phone.svg" alt="phone icon" class="svg-icon">
+                {% else %}
                 <img src="{{url_for('static', filename='img/phone.svg')}}" alt="phone icon" class="svg-icon">
+                {% endif %}
                 <h1 class="content-header">Yhteystiedot</h1>
             </div>
             <div class="vantasia-contact-info">

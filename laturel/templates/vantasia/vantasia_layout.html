@@ -27,7 +27,7 @@
 				<div id="nav-hamburger-container">
 					<div id="nav-hamburger"></div>
 				</div>
-				<div id="nav-menu" class="vantasia-nav-menu">
+				<div id="nav-menu" class="vantasia-nav-menu nav-menu">
 					<ul id="nav-list">
 						<li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('vantasia_index') }}#vantasia">Vantasia</a></li>
 						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('vantasia_index') }}#vantasian-esityksia">Vantasian esityksiä</a></li>
@@ -36,7 +36,6 @@
 					</ul>
 				</div>
 			</nav>
-			
 			{% block content %}
 			{% endblock %}
 		</div>

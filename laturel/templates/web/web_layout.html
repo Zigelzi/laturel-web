@@ -7,9 +7,11 @@
 		{% if config['ENV'] == 'production' %}  
 		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
 		<link rel="icon" type="image/png" href="/static/img/laturel_favicon.png">
+		<script src="/static/js/web.js"></script>
 		{% else %}
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 		<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/laturel_favicon.png') }}">
+		<script src="{{ url_for('static', filename='js/web.js') }}"></script>
 		{% endif %}
 		<meta property="og:image" content="{/static/img/laturel_logo_l.png">
 		<meta property="og:image:type" content="image/png">
@@ -18,7 +20,7 @@
 		 <meta property="og:description" content="Laturel Web suunnittelee ja toteuttaa sinulle nykyaikaiset verkkosivut helposti ja laadukkaasti" />
 		<title>Laturel - {% block title %} {% endblock %} </title>	
 
-		<script src="/static/js/web.js"></script>
+		
 	</head>
 	<body>
 		<div class="main-container" id="top">
@@ -26,7 +28,7 @@
 				<div id="nav-hamburger-container">
 					<div id="nav-hamburger"></div>
 				</div>
-				<div id="nav-menu">
+				<div id="nav-menu" class="nav-menu">
 						<!-- <a class="nav-img" href="{{ url_for('web_index') }}"><img id="logo" src="{{ url_for('static', filename='img/laturel_logo_small.svg') }}"></a> -->
 					<ul id="nav-list">
 						<li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('web_index') }}#web-services-section">Palvelut</a></li>
