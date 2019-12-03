@@ -6,6 +6,9 @@
 
  @media (min-width: $bp-m) {
 
+    // ------------
+    // NAVIGATION 
+    // ------------
     .navbar ul,
     .navbar li,
     .navbar .nav-img {
@@ -42,8 +45,17 @@
         text-align: center;
     }
 
+    .nav-section {
+        top: -50px;
+    }
+
+    // ------------
+    // FORMS AND FORM INPUTS
+    // ------------
+
     .flex-form-container {
         display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
     }
@@ -65,15 +77,15 @@
         }
     }
 
+    // ------------
+    // GENERAL LAYOUT
+    // ------------
+    
     .container {
         display: flex;
 
         .column {
             flex: 1;
         }
-    }
-
-    .nav-section {
-        top: -50px;
     }
 }

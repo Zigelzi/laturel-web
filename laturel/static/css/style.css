@@ -571,8 +571,13 @@ template {
     text-align: center;
   }
 
+  .nav-section {
+    top: -50px;
+  }
+
   .flex-form-container {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -598,10 +603,6 @@ template {
   }
   .container .column {
     flex: 1;
-  }
-
-  .nav-section {
-    top: -50px;
   }
 }
 .nav-menu {
@@ -766,6 +767,10 @@ template {
   visibility: hidden;
 }
 
+.nav-offset {
+  padding-bottom: 60px;
+}
+
 #landing-page {
   background-repeat: no-repeat;
   background-size: cover;
@@ -806,7 +811,6 @@ template {
   text-align: center;
   border-radius: 1em;
   padding: 0.7em 2em;
-  max-width: 250px;
   background-color: #0E5A9E;
   align-self: center;
   box-shadow: 0 0 3px 1px rgba(50, 50, 50, 0.3);
@@ -1050,14 +1054,22 @@ template {
 }
 
 /* ------ Form components ------ */
+.flex-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .form-box {
   background-color: #FCFDFD;
   border-radius: 5px 8px;
   box-shadow: 0 2px 6px 0 rgba(197, 194, 194, 0.2);
-  margin-bottom: 15px;
+  margin: 0 auto 15px auto;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 30px;
+  width: 100%;
+  max-width: 400px;
 }
 .form-box label {
   font-weight: 300;
@@ -1068,6 +1080,10 @@ template {
 
 .result-box ul {
   list-style: none;
+}
+
+.result-padding {
+  padding: 0 20px;
 }
 
 .input-group {
@@ -1344,9 +1360,8 @@ template {
   margin: 15px 0;
 }
 
-.col {
+.cars-col {
   flex: 1;
-  margin-right: 25px;
   max-width: 400px;
 }
 
