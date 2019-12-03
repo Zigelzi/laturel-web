@@ -29,7 +29,7 @@ class CostForm(FlaskForm):
     ecar_eprice = FloatField('Sähkön hinta', default=0.14)
     ecar_weight = IntegerField('Auton kokonaispaino (arvio)', default=2100) # Car driving power tax.
     ecar_charger = RadioField('Onko sinulla kotilatausasema?',
-                           choices=[('Kyllä', 'Yes'), ('Ei', 'No')], default='Yes')
+                           choices=[('Yes', 'Kyllä'), ('No', 'Ei')], default='Yes')
     ecar_co2 = IntegerField('Vuosittainen ajoneuvovero', default=106)  # Vehicle tax in €/year
 
     gcar_price = FloatField('Auton ostohinta', default=32000)

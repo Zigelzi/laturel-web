@@ -6,14 +6,14 @@
 @import 'base/variables',
         'base/base',
         'base/normalize',
-        'base/layout',
-        'base/mediaqueries';
+        'base/layout';
 
 // Components, navigation and animations
 @import 'components/nav',
         'components/components',
         'components/animations',
-        'components/example_pages';
+        'components/example_pages',
+        'base/mediaqueries';
 
 // Laturel Mobility spesific stylings
 @import 'mobility/mobility';

@@ -538,73 +538,6 @@ template {
   box-shadow: inset 0 9px 13px -6px rgba(50, 50, 50, 0.2);
 }
 
-@media (min-width: 768px) {
-  .navbar ul,
-.navbar li,
-.navbar .nav-img {
-    display: inline-block;
-  }
-
-  .navbar li {
-    padding: 15.8px 15px;
-  }
-
-  .nav-web li {
-    padding: 16px !important;
-  }
-  .nav-web a {
-    font-size: 1rem !important;
-  }
-
-  .nav-img {
-    margin-right: 25px;
-  }
-
-  #nav-hamburger-container {
-    display: none;
-  }
-
-  #nav > .nav-menu {
-    left: 0;
-    height: initial;
-    padding-top: 0;
-    text-align: center;
-  }
-
-  .nav-section {
-    top: -50px;
-  }
-
-  .flex-form-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .input-group {
-    max-width: 335px;
-  }
-
-  .flex-row {
-    display: flex;
-    max-width: 750px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-  }
-  .flex-row .flex-column {
-    flex: 1;
-    padding: 20px;
-    min-width: 300px;
-  }
-
-  .container {
-    display: flex;
-  }
-  .container .column {
-    flex: 1;
-  }
-}
 .nav-menu {
   height: 100vh;
   width: 100%;
@@ -1064,7 +997,6 @@ template {
   background-color: #FCFDFD;
   border-radius: 5px 8px;
   box-shadow: 0 2px 6px 0 rgba(197, 194, 194, 0.2);
-  margin: 0 auto 15px auto;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 30px;
@@ -1328,6 +1260,78 @@ template {
   margin: 0 auto 1rem auto !important;
 }
 
+@media all and (min-width: 768px) {
+  .navbar ul,
+.navbar li,
+.navbar .nav-img {
+    display: inline-block;
+  }
+
+  .navbar li {
+    padding: 15.8px 15px;
+  }
+
+  .nav-web li {
+    padding: 16px !important;
+  }
+  .nav-web a {
+    font-size: 1rem !important;
+  }
+
+  .nav-img {
+    margin-right: 25px;
+  }
+
+  #nav-hamburger-container {
+    display: none;
+  }
+
+  #nav > .nav-menu {
+    left: 0;
+    height: initial;
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .nav-section {
+    top: -50px;
+  }
+
+  .flex-form-container {
+    flex-direction: row;
+    align-items: initial;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .form-box {
+    margin-right: 20px;
+    flex: 1;
+  }
+
+  .input-group {
+    max-width: 335px;
+  }
+
+  .flex-row {
+    display: flex;
+    max-width: 750px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  .flex-row .flex-column {
+    flex: 1;
+    padding: 20px;
+    min-width: 300px;
+  }
+
+  .container {
+    display: flex;
+  }
+  .container .column {
+    flex: 1;
+  }
+}
 .e-top {
   border-top: 3px solid #2a5499;
 }

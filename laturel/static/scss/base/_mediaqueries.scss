@@ -4,7 +4,7 @@
 
 // ------ Medium screens ------ 
 
- @media (min-width: $bp-m) {
+ @media all and (min-width: $bp-m) {
 
     // ------------
     // NAVIGATION 
@@ -54,10 +54,15 @@
     // ------------
 
     .flex-form-container {
-        display: flex;
         flex-direction: row;
+        align-items: initial;
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .form-box {
+        margin-right: 20px;
+        flex: 1;
     }
 
     .input-group {
