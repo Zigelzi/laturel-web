@@ -21,3 +21,8 @@ class DevConfig(Config):
     # Development config 
     DEBUG = True
     SERVER_NAME = f'laturel.test:{os.getenv("APP_PORT")}'
+
+class StageConfig(Config):
+    # Stage config to replicate production locally
+    DEBUG = False
+    SERVER_NAME = f'laturel.stage:{os.getenv("APP_PORT")}'
