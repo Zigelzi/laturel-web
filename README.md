@@ -20,3 +20,10 @@ This webapp is cosntantly under development and I'm adding features as it goes. 
 * Run the container with docker-compose up -d and navigate to localhost:5000 for development
 * Run the container in production mode with docker-compose -f docker-compose.prod.yml up -d --build and navigate route traffic from your domain to the webapp
 
+
+# TODO
+
+[ ] Combine emobility and web to main site with emobility and web products
+[ ] Refactor the templates folder to follow the combined route structure
+[ ] Separate customer sites as blueprints
+[ ] Prototype the website cost estimator

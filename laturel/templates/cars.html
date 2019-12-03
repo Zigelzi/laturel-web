@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "web_layout.html" %}
 
 {% block title %}Cars{% endblock %}
 {%block carscript %}<script type="text/javascript" src="{{ url_for('static', filename='js/cars.js') }} " defer></script> {% endblock %}
@@ -6,14 +6,14 @@
 
 {% block content%}
 	<div class="content-text">
-			<h3>Total cost of ownership</h3>
-			<p>Comparing different cars and their costs can be a bit of hassle nowdays. This calculator does the hard work for you.</p>
-			<p>You can compare models in Laturel database or input your own values to match another car or your preferences.</p>
-			<p class="subtext">Car weight is used to calculate the drive power tax when applicable. More details can be found from <a href="https://www.traficom.fi/en/transport/road/structure-and-quantity-vehicle-tax">Traficom</a> site. Operational costs use the <a href="https://www.traficom.fi/en/transport/road/structure-and-quantity-vehicle-tax">Finnish car taxation</a> as base.</p>
+			<h3>Ajoneuvon elinkaarikustannukset</h3>
+			<p>Eri käyttövoimien kustannusten vertailu voi olla hankalaa eri autovalmistajien ja mallien välillä. Tämän laskurin tarkoituksen on helpottaa vertailua antamalla sinulle täyden vallan valita haluamasi arvot eri muuttujille.</p>
+			<p>Voit vertailla Laturelin tietokannasta löytyviä automalleja tai syöttää omat arvosi eri kenttiin.</p>
+			<p class="subtext">Auton painoa käytetään ajoneuvoveron laskemiseen kun se on tarpeellista laskea. Lisätietoja ajoneuvoverosta <a href="https://www.traficom.fi/fi/liikenne/tieliikenne/ajoneuvoveron-rakenne-ja-maara">Traficomin sivuilta</a>.
 	</div>
 	<div class="content">
 	<form action="{{ url_for('cars') }}" method="post">
-		<h2 class="text-form-header">Car selection</h2>
+		<h2 class="text-form-header">Automallien valinta</h2>
 		<div class="flex-form-container">
 			<div class="form-box e-top col">
 					{{ car_form.ecar_model.label(class="form-control-label label-margin") }}					
@@ -44,7 +44,7 @@
 	
 		<!-- General information form -->
 		<div>
-			<h2 class="text-form-header"><img class="icon-medium" src="{{ url_for('static', filename='img/time.svg') }}" alt="">Ownership information</h2>	
+			<h2 class="text-form-header"><img class="icon-medium" src="{{ url_for('static', filename='img/time.svg') }}" alt="">Omistusajan tiedot</h2>	
 		</div>
 		<div class="flex-form-container">
 			<div class="form-box general-top col">
@@ -65,7 +65,7 @@
 		
 		
 		<div class="col-lg-12">
-			<h2 id="car-hide" class="text-form-header"><img class="icon-medium" src="{{ url_for('static', filename='img/ev_models.svg') }}" alt="">Car information</h2>	
+			<h2 id="car-hide" class="text-form-header"><img class="icon-medium" src="{{ url_for('static', filename='img/ev_models.svg') }}" alt="">Ajoneuvojen tiedot</h2>	
 		</div>
 
 		<div class="form-borders"></div>
@@ -76,7 +76,7 @@
 			<div class="col">
 				<div class="form-box e-top">
 					<div class="box-header">
-						<h3>Electric</h3>
+						<h3>Täyssähkö</h3>
 					</div>
 					<div id="ecar-full-model" class=" text-muted full-models">
 						<!-- EV full model information updated by JS -->
@@ -125,7 +125,7 @@
 			<div class="col">
 				<div class=" form-box g-top">
 					<div class="box-header">
-						<h3>Gasoline</h3>
+						<h3>Bensiini</h3>
 					</div>
 					<div id="gcar-full-model" class=" text-muted full-models">
 						<!-- Gasoline full model information updated by JS -->
@@ -206,7 +206,7 @@
 		<div class="form-borders"></div>
 
 		<div class="text-center">
-			<h2 id="operational-hide" class="text-form-header"><img class="icon-medium" src="{{ url_for('static', filename='img/steering_wheel.svg') }}" alt="">Operating costs</h2>
+			<h2 id="operational-hide" class="text-form-header"><img class="icon-medium" src="{{ url_for('static', filename='img/steering_wheel.svg') }}" alt="">Käyttökustannukset</h2>
 		</div>
 		<div class="form-borders"></div>
 		<!-- Row of operational costs -->
@@ -215,7 +215,7 @@
 			<div class="col">
 				<div class="form-box e-top">
 					<div class="box-header">
-						<h3>Electric</h3>
+						<h3>Täyssähkö</h3>
 					</div>
 					{{ form.ecar_depr.label(class="form-control-label label-margin") }}
 					<div class="input-group input-margins">
@@ -249,7 +249,7 @@
 			<div class="col">
 				<div class="form-box g-top">
 					<div class="box-header">
-						<h3>Gasoline</h3>
+						<h3>Bensiini</h3>
 					</div>
 					{{ form.gcar_depr.label(class="form-control-label label-margin") }}
 					<div class="input-group input-margins">
@@ -294,40 +294,40 @@
 
 	
 		<div class="col-lg-12">
-			<h2 class="text-form-header"><img class="icon-medium" src="{{ url_for('static', filename='img/cash.svg') }}" alt="">Results</h2>
+			<h2 class="text-form-header"><img class="icon-medium" src="{{ url_for('static', filename='img/cash.svg') }}" alt="">Vertailun tulokset</h2>
 		</div>
 		<div class="flex-form-container" id="results">
 		<!-- EV result card -->
 		<div class="col">
 			<div class="form-box result-box">
 				<div class="ecard">
-					<h3>Electric</h3>
+					<h3>Täyssähkö</h3>
 					<div id="ecard-full-model" class=" text-muted full-models">
 						<!-- EV full model information updated by JS -->
 					</div>
 				</div>
 				
 				<div class="subtext">
-					Costs and value after <span class="owntime"></span> years
+					Kustannukset ja jäännösarvo <span class="owntime"></span> vuoden jälkeen
 				</div>
 				<div class="operational-result">
-					<div class="text-muted">Driving this car costs</div>
+					<div class="text-muted">Tällä ajoneuvolla ajaminen maksaa</div>
 					<span id="ecar-oper-yearly"></span> €
-					<div class="text-muted">per year</div>
+					<div class="text-muted">vuodessa</div>
 				</div>
 				<div class="text-left">
 					<ul>
 						<li>
-							<span id="ecar-oper-total" class="text-bold"></span> € total operational costs
+							<span id="ecar-oper-total" class="text-bold"></span> € kokonaiskäyttökustannukset
 						</li>
 						<li>
-							<span id="ecar-costs-total" class="text-bold"></span> € total costs
+							<span id="ecar-costs-total" class="text-bold"></span> € kokonaiskustannukset
 						</li>
 						<li class="text-muted">
-							<span id="ecar-depr-total"></span> € depreciated value
+							<span id="ecar-depr-total"></span> € arvonalenema
 						</li>
 						<li class="text-muted">
-							<span id="ecar-resell-value"></span> € car resell value
+							<span id="ecar-resell-value"></span> € ajoneuvon jäännösarvo
 						</li>
 					</ul>
 				</div>
@@ -345,26 +345,26 @@
 					</div>
 				</div>
 				<div class="subtext">
-					Costs and value after <span class="owntime"></span> years
+					Kustannukset ja jäännösarvo <span class="owntime"></span> vuoden jälkeen
 				</div>
 				<div class="operational-result">
-					<div class="text-muted muted">Driving this car costs</div>
+					<div class="text-muted muted">Tällä ajoneuvolla ajaminen maksaa</div>
 					<span id="gcar-oper-yearly"></span> €
-					<div class="text-muted">per year</div>
+					<div class="text-muted">vuodessa</div>
 				</div>
 				<div class="text-left">
 					<ul>
 						<li>
-							<span id="gcar-oper-total" class="text-bold"></span> € total operational costs
+							<span id="gcar-oper-total" class="text-bold"></span> € kokonaiskäyttökustannukset
 						</li>
 						<li>
-								<span id="gcar-costs-total" class="text-bold"></span> € total costs
+								<span id="gcar-costs-total" class="text-bold"></span> € kokonaiskustannukset
 						</li>
 						<li class="text-muted">
-							<span id="gcar-depr-total"></span> € depreciated value
+							<span id="gcar-depr-total"></span> € arvonalenema
 						</li>
 						<li class="text-muted">
-							<span id="gcar-resell-value"></span> € car resell value
+							<span id="gcar-resell-value"></span> € ajoneuvon jäännösarvo
 						</li>
 					</ul>
 				</div>
@@ -382,26 +382,26 @@
 					</div>
 				</div>
 				<div class="subtext">
-					Costs and value after <span class="owntime"></span> years
+					Kustannukset ja jäännösarvo <span class="owntime"></span> vuoden jälkeen
 				</div>
 				<div class="operational-result">
-					<div class="text-muted">Driving this car costs</div>
+					<div class="text-muted">Tällä ajoneuvolla ajaminen maksaa</div>
 					<span id="dcar-oper-yearly"></span> €
-					<div class="text-muted">per year</div>
+					<div class="text-muted">vuodessa</div>
 				</div>
 				<div class="text-left">
 					<ul>
 						<li>
-							<span id="dcar-oper-total" class="text-bold"></span> € total operational costs
+							<span id="dcar-oper-total" class="text-bold"></span> € kokonaiskäyttökustannukset
 						</li>
 						<li>
-							<span id="dcar-costs-total" class="text-bold"></span> € total costs
+							<span id="dcar-costs-total" class="text-bold"></span> € kokonaiskustannukset
 						</li>
 						<li class="text-muted">
-							<span id="dcar-depr-total"></span> € depreciated value
+							<span id="dcar-depr-total"></span> € arvonalenema
 						</li>
 						<li class="text-muted">
-							<span id="dcar-resell-value"></span> € car resell value
+							<span id="dcar-resell-value"></span> € ajoneuvon jäännösarvo
 						</li>
 					</ul>
 				</div>
