@@ -115,10 +115,6 @@ def data():
     return res
 
 
-@app.route('/e/contact_card', subdomain='web')
+@app.route('/e/contact_card')
 def web_contact_card():
-    return render_template('web/example_contactcard.html')
-
-@app.route('/e/small_page', subdomain='web')
-def web_small_page():
-    return render_template('web/example_small_page.html')
+    return render_template('example_contactcard.html')
