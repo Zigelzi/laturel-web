@@ -9,7 +9,7 @@ from laturel.config import Config, DevConfig, StageConfig
 app = Flask(__name__)
 if os.getenv('FLASK_ENV') == 'development':
     app.config.from_object(DevConfig)
-if os.getenv('FLASK_ENV') == 'stage':
+elif os.getenv('FLASK_ENV') == 'stage':
     app.config.from_object(StageConfig)
 else:
     app.config.from_object(Config)

@@ -73,16 +73,14 @@ def index():
                           """
         mail.send(contact_msg)
         mail.send(reply_msg)
-    return render_template('web_index.html', form=form)
-
-
+    return render_template('main/index.html', form=form)
 
 @app.route('/cars', methods=['GET', 'POST'])
 def cars():
     form = CostForm()
     car_form = CarSelectorForm()
 
-    return render_template('cars.html',
+    return render_template('main/cars.html',
                            form=form,
                            car_form=car_form,
                            active='cars'
@@ -117,7 +115,7 @@ def data():
 
 @app.route('/e/contact_card')
 def web_contact_card():
-    return render_template('example_contactcard.html')
+    return render_template('main/example_contactcard.html')
 
 @app.route('/', subdomain='vantasia')
 def vantasia_index():
