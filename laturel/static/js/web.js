@@ -79,6 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Parse the <form id="contact-form"> element and send it to backend to be submitted
             sendForm('/', 'contact-form')
         });
+        window.addEventListener('scroll', () => {
+            const servicesSection = document.getElementById('web-services-section');
+            if (servicesSection.offsetTop < window.scrollY) {
+                navHamburger.style.background = "rgba(75, 75, 75, 0.2)"
+            } else {
+                navHamburger.style.background = "rgba(75, 75, 75, 0.0)"
+            }
+        });
     } catch (error) {
         console.log(error);
         if (error instanceof ReferenceError) {
@@ -110,13 +118,4 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.nextElementSibling.classList.toggle("show");
         }
     }
-
-    window.addEventListener('scroll', () => {
-        const servicesSection = document.getElementById('web-services-section');
-        if (servicesSection.offsetTop < window.scrollY) {
-            navHamburger.style.background = "rgba(75, 75, 75, 0.2)"
-        } else {
-            navHamburger.style.background = "rgba(75, 75, 75, 0.0)"
-        }
-    });
 })

@@ -13,6 +13,7 @@
 		<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/laturel_favicon.png') }}">
 		<script src="{{ url_for('static', filename='js/web.js') }}"></script>
 		{% endif %}
+		{% block carscript %}{% endblock %}
 		<meta property="og:image" content="{/static/img/laturel_logo_l.png">
 		<meta property="og:image:type" content="image/png">
 		<meta property="og:image:width" content="349">
