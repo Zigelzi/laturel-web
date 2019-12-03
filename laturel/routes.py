@@ -118,3 +118,8 @@ def data():
 @app.route('/e/contact_card')
 def web_contact_card():
     return render_template('example_contactcard.html')
+
+@app.route('/', subdomain='vantasia')
+def vantasia_index():
+    form = ContactForm()
+    return render_template('vantasia/vantasia_index.html', form=form)
