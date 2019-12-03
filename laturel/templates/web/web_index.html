@@ -182,7 +182,7 @@
 <div  class="container bg-grey top-shadow">
     <div class="column photo-container">
         {% if config['ENV'] == 'production' %}  
-        <img src="/static/img/MiikaSavela.jpg" alt="Picture of Miika Savela">
+        <img class="photo" src="/static/img/MiikaSavela.jpg" alt="Picture of Miika Savela">
         {% else %}
         <img class="photo" src="{{ url_for('static', filename='img/MiikaSavela.jpg') }}" alt="Picture of Miika Savela">
         {% endif %}
@@ -191,7 +191,7 @@
         <div class="text-center">
             <div class="h-icon-aligned">
                 {% if config['ENV'] == 'production' %}  
-                <img src="/static/img/phone.svg" alt="Phone icon">
+                <img alt="phone icon" class="svg-icon" src="/static/img/phone.svg" alt="Phone icon">
                 {% else %}
                 <img src="{{url_for('static', filename='img/phone.svg')}}" alt="phone icon" class="svg-icon">
                 {% endif %}
