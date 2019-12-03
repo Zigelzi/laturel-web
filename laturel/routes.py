@@ -7,51 +7,8 @@ from laturel import app, mail
 from laturel.forms import CostForm, CarSelectorForm, ContactForm
 from laturel.models import model_dict, co2_dict
 
-
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html', active='index')
-
-@app.route('/cars', methods=['GET', 'POST'])
-def cars():
-    form = CostForm()
-    car_form = CarSelectorForm()
-
-    return render_template('cars.html',
-                           form=form,
-                           car_form=car_form,
-                           active='cars'
-                           )
-
-@app.route('/db/data', methods=['GET', 'POST'])
-def data():
-    #  Take the JSON request and convert it to dict
-    req = request.get_json()
-
-    #  Set the id values to compare and switch to correct type for DB input in model_dict
-    ev = 'ecar_model'
-    gasoline = 'gcar_model'
-    diesel = 'dcar_model'
-
-    #  Replace the id value for type value to be able to do DB query correctly
-    if req['type'] == ev:
-        req['type'] = 'ev'
-    if req['type'] == gasoline:
-        req['type'] = 'gasoline'
-    if req['type'] == diesel:
-        req['type'] = 'diesel'
-
-    #  Query DB for car values and make dict of values
-    model = model_dict(req['type'], req['model'])
-    co2 = co2_dict(model['co2'])
-
-    #  Create JSON response from dict and respond it to application
-    res = make_response(jsonify(car_info=model, co2=co2), 200)
-    return res
-
-
-@app.route('/', methods=['GET', 'POST'], subdomain='web')
-def web_index():
     form = ContactForm()
     if request.method == 'POST':
         recepient = 'miika.a.savela@gmail.com' # Recepient where the contact form is sent to.
@@ -116,7 +73,47 @@ def web_index():
                           """
         mail.send(contact_msg)
         mail.send(reply_msg)
-    return render_template('web/web_index.html', form=form)
+    return render_template('web_index.html', form=form)
+
+
+
+@app.route('/cars', methods=['GET', 'POST'])
+def cars():
+    form = CostForm()
+    car_form = CarSelectorForm()
+
+    return render_template('cars.html',
+                           form=form,
+                           car_form=car_form,
+                           active='cars'
+                           )
+
+@app.route('/db/data', methods=['GET', 'POST'])
+def data():
+    #  Take the JSON request and convert it to dict
+    req = request.get_json()
+
+    #  Set the id values to compare and switch to correct type for DB input in model_dict
+    ev = 'ecar_model'
+    gasoline = 'gcar_model'
+    diesel = 'dcar_model'
+
+    #  Replace the id value for type value to be able to do DB query correctly
+    if req['type'] == ev:
+        req['type'] = 'ev'
+    if req['type'] == gasoline:
+        req['type'] = 'gasoline'
+    if req['type'] == diesel:
+        req['type'] = 'diesel'
+
+    #  Query DB for car values and make dict of values
+    model = model_dict(req['type'], req['model'])
+    co2 = co2_dict(model['co2'])
+
+    #  Create JSON response from dict and respond it to application
+    res = make_response(jsonify(car_info=model, co2=co2), 200)
+    return res
+
 
 @app.route('/e/contact_card', subdomain='web')
 def web_contact_card():
