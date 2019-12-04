@@ -15,7 +15,6 @@ class Config(object):
     # Using SQLite DB for now
     SQLALCHEMY_DATABASE_URI = 'sqlite:///db/' + os.getenv('DB_NAME', 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False 
-    STATIC_FOLDER = f'{os.getenv("APP_FOLDER")}/static'
 
 class DevConfig(Config):
     # Development config 

@@ -1,7 +1,7 @@
-{% extends "web_layout.html" %}
+{% extends "main/layout.html" %}
 
 {% block title %}Cars{% endblock %}
-{% block carscript %}<script type="text/javascript" src="{{ url_for('static', filename='js/cars.js') }} " defer></script> {% endblock %}
+{% block carscript %}<script type="text/javascript" src="static/js/cars.js" defer></script> {% endblock %}
 
 
 {% block content%}

@@ -13,6 +13,7 @@ elif os.getenv('FLASK_ENV') == 'stage':
     app.config.from_object(StageConfig)
 else:
     app.config.from_object(Config)
+
 db = SQLAlchemy(app)
 mail = Mail(app)
 

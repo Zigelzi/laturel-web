@@ -1,4 +1,4 @@
-from flask import render_template, jsonify, make_response, request
+from flask import render_template, jsonify, make_response, request, send_from_directory
 from flask_mail import Message
 from datetime import datetime
 import sys
@@ -6,6 +6,10 @@ import sys
 from laturel import app, mail
 from laturel.forms import CostForm, CarSelectorForm, ContactForm
 from laturel.models import model_dict, co2_dict
+
+@app.route('/static/<path:filename>')
+def staticfiles(filename):
+    return send_from_directory(app.config['STATIC_FOLDER'], filename)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
