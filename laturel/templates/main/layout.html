@@ -4,9 +4,15 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i|Oswald:400,700" rel="stylesheet">
+		{% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}
 		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
 		<link rel="icon" type="image/png" href="/static/img/laturel_favicon.png">
 		<script src="/static/js/web.js"></script>
+		{% else %}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+		<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/laturel_favicon.png') }}">
+		<script src="{{ url_for('static', filename='js/web.js') }}"></script>
+		{% endif %}
 		{% block carscript %}{% endblock %}
 		<meta property="og:image" content="{/static/img/laturel_logo_l.png">
 		<meta property="og:image:type" content="image/png">

@@ -11,6 +11,7 @@ from laturel.models import model_dict, co2_dict
 def staticfiles(filename):
     return send_from_directory(app.config['STATIC_FOLDER'], filename)
 
+@app.route('/', methods=['GET', 'POST'], subdomain='www')
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = ContactForm()
@@ -79,6 +80,7 @@ def index():
         mail.send(reply_msg)
     return render_template('main/index.html', form=form)
 
+@app.route('/cars', methods=['GET', 'POST'], subdomain='www')
 @app.route('/cars', methods=['GET', 'POST'])
 def cars():
     form = CostForm()
@@ -116,7 +118,7 @@ def data():
     res = make_response(jsonify(car_info=model, co2=co2), 200)
     return res
 
-
+@app.route('/e/contact_card', subdomain='www')
 @app.route('/e/contact_card')
 def web_contact_card():
     return render_template('main/example_contactcard.html')

@@ -6,7 +6,7 @@
 <div class="vantasia-hero-container">
     <div class="vantasia-hero-top">
         <div class="vantasia-logo-container">
-            {% if config['ENV'] == 'production' %}  
+            {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
             <img class="vantasia-logo" src="/static/img/Vantasia_Logo.png" alt="Vantasia logo">
             {% else %}
             <img class="vantasia-logo" src="{{ url_for('static', filename='img/Vantasia_Logo.png') }}" alt="Vantasia logo">
@@ -15,7 +15,7 @@
         <p>Mieskuorolaulua musiikin ystäville pääkaupunkiseudulla</p>
     </div>
     <div class="gray-layer vantasia-hero-bottom">
-        {% if config['ENV'] == 'production' %}  
+        {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
         <img class="vantasia-hero-image" src="/static/img/Stock_Kuoro.jpg" alt="Vantasia logo">
         {% else %}
         <img class="vantasia-hero-image" src="{{ url_for('static', filename='img/Stock_Kuoro.jpg') }}" alt="Vantasia logo">
@@ -55,21 +55,21 @@
             <p>Tähän kuvia Vantasiasta, esityksistä, jäsenistä yms.</p>
             <div class="vantasia-image-gallery">
                 <div class="vantasia-media-container">
-                    {% if config['ENV'] == 'production' %}  
+                    {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
                     <img class="vantasia-media-icon" src="/static/img/stock_viulu.jpg" alt="Image icon">
                     {% else %}
                     <img class="vantasia-media-icon" src="{{ url_for('static', filename='img/stock_viulu.jpg') }}" alt="Image icon">
                     {% endif %}
                 </div>
                 <div class="vantasia-media-container">
-                    {% if config['ENV'] == 'production' %}  
+                    {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
                     <img class="vantasia-media-icon" src="/static/img/stock_nuotit.jpg" alt="Image icon">
                     {% else %}
                     <img class="vantasia-media-icon" src="{{ url_for('static', filename='img/stock_nuotit.jpg') }}" alt="Image icon">
                     {% endif %}
                 </div>
                 <div class="vantasia-media-container">
-                    {% if config['ENV'] == 'production' %}  
+                    {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
                     <img class="vantasia-media-icon" src="/static/img/stock_direstraits.jpg" alt="Image icon">
                     {% else %}
                     <img class="vantasia-media-icon" src="{{ url_for('static', filename='img/stock_direstraits.jpg') }}" alt="Image icon">
@@ -145,7 +145,7 @@
     <div class="column">
         <div class="text-center">
             <div class="h-icon-aligned">
-                {% if config['ENV'] == 'production' %}
+                {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}
                 <img src="/static/img/phone.svg" alt="phone icon" class="svg-icon">
                 {% else %}
                 <img src="{{url_for('static', filename='img/phone.svg')}}" alt="phone icon" class="svg-icon">
@@ -156,7 +156,7 @@
                 <!-- <div class="vantasia-left-align"> -->
                 <div class="vantasia-contact-person">
                     <div class="vantasia-contact-image">
-                        {% if config['ENV'] == 'production' %}  
+                        {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
                         <img class="vantasia-person-icon" src="/static/img/person.svg" alt="Person icon">
                         {% else %}
                         <img class="vantasia-person-icon" src="{{ url_for('static', filename='img/person.svg') }}" alt="Person icon">
@@ -170,7 +170,7 @@
                 </div>
                 <div class="vantasia-contact-person">
                     <div class="vantasia-contact-image">
-                        {% if config['ENV'] == 'production' %}  
+                        {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
                         <img class="vantasia-person-icon" src="/static/img/person.svg" alt="Person icon">
                         {% else %}
                         <img class="vantasia-person-icon" src="{{ url_for('static', filename='img/person.svg') }}" alt="Person icon">
@@ -184,7 +184,7 @@
                 </div>
                 <div class="vantasia-contact-person">
                     <div class="vantasia-contact-image">
-                        {% if config['ENV'] == 'production' %}  
+                        {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
                         <img class="vantasia-person-icon" src="/static/img/person.svg" alt="Person icon">
                         {% else %}
                         <img class="vantasia-person-icon" src="{{ url_for('static', filename='img/person.svg') }}" alt="Person icon">
