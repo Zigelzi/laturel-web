@@ -1,4 +1,4 @@
-{% extends "web_layout.html" %}
+{% extends "main/layout.html" %}
 
 {% block title %} Käyntikorttisivut {% endblock %}
 
@@ -23,12 +23,21 @@
 <div class="container">
     <div class="column">
         <h1>Yhteystiedot</h1>
-        <div class="contact-information">
-            <svg class="svg-photo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 256c52.805 0 96-43.201 96-96s-43.195-96-96-96-96 43.201-96 96 43.195 96 96 96zm0 48c-63.598 0-192 32.402-192 96v48h384v-48c0-63.598-128.402-96-192-96z"/></svg>
-            <h4>Matti Meikäläinen</h4>
-            <p>+358 (0)50 1234 123</p>
-            <a href="mailto:#">matti.meikalainen@esimerkki.fi</a>
-        </div>
+        <div class="example-contact-info">
+            <div class="example-contact-person">
+                <div class="example-contact-image">
+                    {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
+                    <img class="example-person-icon" src="/static/img/person.svg" alt="Person icon">
+                    {% else %}
+                    <img class="example-person-icon" src="{{ url_for('static', filename='img/person.svg') }}" alt="Person icon">
+                    {% endif %}        
+                </div>
+                <div class="example-contact-text">
+                    <p>Erkki Esimerkki</p>
+                    <p>+358 (0)50 1234 123</p>
+                    <a href="mailto:#">e.esimerkki@laturel.fi</a>        
+                </div>
+            </div>
     </div>
 </div>
 {% endblock %}

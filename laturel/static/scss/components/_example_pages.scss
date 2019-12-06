@@ -11,9 +11,34 @@
     margin-bottom: 20px;
 }
 
-.contact-information {
-    svg, a,
-    h4, p {
-        margin: 0 auto 1rem auto !important;
+.example-contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 750px;
+    margin: 0 auto;
+
+    .example-contact-person {
+        flex-grow: 1;
+        padding: 25px;
+        text-align: left;
+    }
+}
+
+.example-contact-image,
+.example-contact-text {
+    display:inline-block;
+}
+
+.example-person-icon {
+    width: 65px;
+    border: 1px solid black;
+    background-color: #dedede;
+}
+
+.example-contact-text {
+    margin-left: 20px;
+    p {
+        margin: 0;
+        text-align: left;
     }
 }

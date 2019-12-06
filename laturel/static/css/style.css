@@ -1255,9 +1255,35 @@ template {
   margin-bottom: 20px;
 }
 
-.contact-information svg, .contact-information a,
-.contact-information h4, .contact-information p {
-  margin: 0 auto 1rem auto !important;
+.example-contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 750px;
+  margin: 0 auto;
+}
+.example-contact-info .example-contact-person {
+  flex-grow: 1;
+  padding: 25px;
+  text-align: left;
+}
+
+.example-contact-image,
+.example-contact-text {
+  display: inline-block;
+}
+
+.example-person-icon {
+  width: 65px;
+  border: 1px solid black;
+  background-color: #dedede;
+}
+
+.example-contact-text {
+  margin-left: 20px;
+}
+.example-contact-text p {
+  margin: 0;
+  text-align: left;
 }
 
 @media all and (min-width: 768px) {
@@ -1466,11 +1492,6 @@ template {
 .vantasia-contact-info .vantasia-contact-person {
   flex-grow: 1;
   padding: 25px;
-  text-align: left;
-}
-
-.vantasia-left-align {
-  display: inline-block;
   text-align: left;
 }
 
