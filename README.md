@@ -23,7 +23,9 @@ This webapp is cosntantly under development and I'm adding features as it goes. 
 
 # TODO
 
-[x] Combine emobility and web to main site with emobility and web products
-[x] Refactor the templates folder to follow the combined route structure
-[ ] Separate customer sites as blueprints
-[ ] Prototype the website cost estimator
+- [x] Combine emobility and web to main site with emobility and web products
+- [x] Refactor the templates folder to follow the combined route structure
+- [ ] Separate customer sites as blueprints
+- [ ] Prototype the website cost estimator
+- [ ] Add Laturel logo to nav to signify where customer is
+- [ ] Implement cookie consent
