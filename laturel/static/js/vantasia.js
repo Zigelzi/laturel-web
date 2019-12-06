@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', () => {
-        if (vantasiaSection.offsetTop < window.scrollY) {
+        if (vantasiaSection.offsetTop > window.scrollY) {
             navHamburger.style.background = "rgba(75, 75, 75, 0.2)"
         } else {
             navHamburger.style.background = "rgba(75, 75, 75, 0.0)"
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 5) {
             navMenu.style.background = "rgba(75, 75, 75, 0.9)"
-        } else {
+        } else if (window.innerWidth > 768 ) {
             navMenu.style.background = "rgba(75, 75, 75, 0.0)"
         }
     })
