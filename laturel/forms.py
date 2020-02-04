@@ -1,5 +1,7 @@
-from flask_wtf import FlaskForm
-from wtforms import IntegerField, SubmitField, SelectField, RadioField, FloatField, StringField, TextAreaField
+from flask_wtf import FlaskForm, RecaptchaField
+from wtforms import (IntegerField, SubmitField, SelectField, 
+                    RadioField, FloatField, StringField,
+                    TextAreaField)
 from wtforms.validators import DataRequired, Email
 
 from laturel.models import get_cars
@@ -61,4 +63,5 @@ class ContactForm(FlaskForm):
                                     choices=[('email', 'Sähköpostilla'),
                                              ('phone', 'Puhelimitse')],
                                     default='email')
+    recaptcha = RecaptchaField()
     submit = SubmitField('Lähetä')

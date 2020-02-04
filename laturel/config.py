@@ -11,6 +11,9 @@ class Config(object):
     MAIL_PASSWORD = os.getenv(f'MAIL_PASSWORD')
     MAIL_DEFAULT_SENDER = os.getenv(f'MAIL_USERNAME')
     STATIC_FOLDER = f'{os.getenv("APP_FOLDER")}/laturel/static'
+    # Recaptcha keys
+    RECAPTCHA_PUBLIC_KEY = os.getenv(f'RECAPTCHA_PUBLIC_KEY')
+    RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
     
     # Using SQLite DB for now
     SQLALCHEMY_DATABASE_URI = 'sqlite:///db/' + os.getenv('DB_NAME', 'app.db')
