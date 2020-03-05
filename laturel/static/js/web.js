@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const navMenu = document.getElementById('nav-menu');
         const navBarHeight = 50;
         const navBackgroundClass = 'nav-menu-blue'
+        
         if (scrollPosition > navBarHeight) {
             navMenu.classList.add(navBackgroundClass);
         } else {

@@ -10,7 +10,7 @@
     left:100%;
     transition: left 0.2s ease-in-out, background-color 0.15s ease;
     padding-top: 30%;
-    background-color: transparent;
+    background-color: $primary-blue-900;
 
     &.active {
         left: 0;
@@ -18,7 +18,7 @@
 }
 
 .nav-menu-blue {
-    background-color: $primary-blue-900;
+    background-color: $primary-blue-900 !important; // Override the media query bg-color
     border-bottom: 3px solid $primary-blue-400;
 }
 
