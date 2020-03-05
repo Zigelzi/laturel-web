@@ -99,6 +99,7 @@
 
 .content-header {
     display: inline-block;
+    padding-top: 25px;
     margin-bottom: 1.4em !important;
 }
 
@@ -157,8 +158,4 @@
 
 .accent-red {
     color: $accent-red-700;
-}
-
-.top-shadow {
-    box-shadow: inset 0 9px 13px -6px rgba(50, 50, 50, 0.2);
 }

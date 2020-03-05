@@ -400,6 +400,11 @@
     margin: 0 auto;
     width: 90%;
     max-width: 500px;
+    padding-bottom: 50px;
+
+    .g-recaptcha {
+        margin: 25px 0;
+    }
 }
 
 .web-input {
@@ -470,6 +475,12 @@
             }    
         }
     }
+}
+
+.contact-information {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 // Changing the checkbox style to slider using the ::before and ::after pseudo-elements

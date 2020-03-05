@@ -38,11 +38,11 @@
 				</div>
 				<div id="nav-menu" class="nav-menu">
 					<ul id="nav-list">
-						<li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('index') }}">Etusivu</a></li>
-						<li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('index') }}#web-services-section">Palvelut</a></li>
-						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('index') }}#contact-form-section">Yhteydenotto</a></li>
-						<li class="{% if active=='about'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('index') }}#contact-information-section">Yhteystiedot</a></li>
-						<li class="{% if active=='services'%}active-nav{% endif %}"><a class="nav-text" href="{{ url_for('cars') }}">Ajoneuvon käyttövoimalaskuri</a></li>
+						<li id="home-link" {% if active == 'index' %} class="active-nav" {% endif %}><a class="nav-text" href="{{ url_for('index') }}">Etusivu</a></li>
+						<li id="services-link" ><a class="nav-text" href="{{ url_for('index') }}#web-services-section">Palvelut</a></li>
+						<li id="contact-form-link"><a class="nav-text" href="{{ url_for('index') }}#contact-form-section">Yhteydenotto</a></li>
+						<li id="contact-information-link"><a class="nav-text" href="{{ url_for('index') }}#contact-information-section">Yhteystiedot</a></li>
+						<li id="cars-link" {% if active == 'cars' %} class="active-nav" {% endif %}><a class="nav-text" href="{{ url_for('cars') }}">Ajoneuvon käyttövoimalaskuri</a></li>
 					</ul>
 				</div>
 			</nav>

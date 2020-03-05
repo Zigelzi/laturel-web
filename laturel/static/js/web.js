@@ -50,48 +50,94 @@ document.addEventListener('DOMContentLoaded', () => {
         sendData(url, jsonObject, jsonObject.csrf_token, false);
     }
 
-    /**
-     * 
-     * @param {HTMLCollection} elements Collection of elements being toggled
-     * @param {string} className String of class name that is being toggled.
-     * @param {string} methodName Name of method which is being used.
-     */
-    function setClass(elements, className, methodName) {
-        for (var i = 0; i < elements.length; i++) {
-            elements[i].classList[methodName](className);
-        }
-    }
-
     try {
-        contactForm.addEventListener('submit', e => {
-            e.preventDefault()
-            
-            contactForm.addEventListener('animationend', (e) => {
-                // Collapse the form height when the send-envelope animation ends
-                if (e.animationName === 'send-envelope') {
-                    formInputs.style.maxHeight = 0;
-                }
-            });
-            // Start drawing the envelope and fade the form inputs away
-            envelope.classList.add('send-envelope');
-            formInputs.classList.add('hide-form');
-    
-            // Parse the <form id="contact-form"> element and send it to backend to be submitted
-            sendForm('/', 'contact-form')
-        });
         window.addEventListener('scroll', () => {
+
+            activateNavSection(window.scrollY);
+            adjustNavTransparency(window.scrollY);
+            
+        });
+        if (contactForm !== null) {
             const servicesSection = document.getElementById('web-services-section');
+
             if (servicesSection.offsetTop < window.scrollY) {
                 navHamburger.style.background = "rgba(75, 75, 75, 0.2)"
             } else {
                 navHamburger.style.background = "rgba(75, 75, 75, 0.0)"
             }
-        });
+            contactForm.addEventListener('submit', e => {
+                e.preventDefault()
+                
+                contactForm.addEventListener('animationend', (e) => {
+                    // Collapse the form height when the send-envelope animation ends
+                    if (e.animationName === 'send-envelope') {
+                        formInputs.style.maxHeight = 0;
+                    }
+                });
+                // Start drawing the envelope and fade the form inputs away
+                envelope.classList.add('send-envelope');
+                formInputs.classList.add('hide-form');
+        
+                // Parse the <form id="contact-form"> element and send it to backend to be submitted
+                sendForm('/', 'contact-form')
+            });
+        }
+        
+        
     } catch (error) {
         console.log(error);
         if (error instanceof ReferenceError) {
             console.log(error);
         }
+    }
+
+    function adjustNavTransparency(scrollPosition) {
+        const navMenu = document.getElementById('nav-menu');
+        const navBarHeight = 50;
+        const navBackgroundClass = 'nav-menu-blue'
+        if (scrollPosition > navBarHeight) {
+            navMenu.classList.add(navBackgroundClass);
+        } else {
+            navMenu.classList.remove(navBackgroundClass);
+        }
+    }
+    function activateNavSection(scrollPosition) {
+        // Activates the navigation element where user is currently based on scroll position
+        const topSectionPosition = 0;
+        const servicesSection = document.getElementById('web-services-section');
+        const contactFormSection = document.getElementById('contact-form-section');
+        const contactInformationSection = document.getElementById('contact-information-section');
+
+        if (servicesSection === null || contactFormSection === null) {
+            return;
+        }
+        if (topSectionPosition <= scrollPosition) {
+            highlightNavigation('home-link')
+        }
+
+        if (servicesSection.offsetTop <= scrollPosition) {
+            highlightNavigation('services-link')
+        }
+        if (contactFormSection.offsetTop <= scrollPosition) {
+            highlightNavigation('contact-form-link')
+        }
+        // If we're at the bottom of the page, highlight contact-information-section
+        if (window.innerHeight + scrollPosition >= document.body.offsetHeight) {
+            highlightNavigation('contact-information-link')
+        }
+    }
+
+    function highlightNavigation(activeElementId) {
+        // Remove the .active-nav from previous active navigation item and add it to new active element
+        const activeClassName = 'active-nav'
+        const navItemsArray = Array.from(document.getElementById('nav-list').children);
+        navItemsArray.forEach(element => {
+            if (element.className === activeClassName) {
+                element.classList.remove(activeClassName)
+            }
+        });
+        const activeLink = document.getElementById(activeElementId);
+        activeLink.classList.add(activeClassName);
     }
     
     function toggleNav() {

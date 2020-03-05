@@ -13,7 +13,7 @@
     </div>
 </div>
 <div id="web-services-section" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
-<div class="container bg-grey top-shadow">
+<div class="container bg-grey ">
     <div class="column">
         <div class="flex-centered">
             <div id="web-services" class="h-icon-aligned">
@@ -114,10 +114,10 @@
 </div>
 </div>
 <div id="contact-form-section" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
-<div class="container top-shadow">
+<div class="container ">
     <div class="column">
         <div class="web-form-container">
-            <h2 class="text-center">Ota yhteyttä</h2>
+            <h2 class="text-center content-header">Ota yhteyttä</h2>
             <form id="contact-form" action="" method="POST">
                 <div class="overflow-hidden envelope-container">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
@@ -178,7 +178,7 @@
     </div>
 </div>	
 <div id="contact-information-section" class="nav-section"><!--Empty div to link the navigation and offset the navigation height --></div>
-<div  class="container bg-grey top-shadow">
+<div  class="container bg-grey ">
     <div class="column photo-container">
         {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
         <img class="photo" src="/static/img/MiikaSavela.jpg" alt="Picture of Miika Savela">
@@ -186,7 +186,7 @@
         <img class="photo" src="{{ url_for('static', filename='img/MiikaSavela.jpg') }}" alt="Picture of Miika Savela">
         {% endif %}
     </div>
-    <div class="column">
+    <div class="column contact-information">
         <div class="text-center">
             <div class="h-icon-aligned">
                 {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
@@ -194,7 +194,7 @@
                 {% else %}
                 <img src="{{url_for('static', filename='img/phone.svg')}}" alt="phone icon" class="svg-icon">
                 {% endif %}
-                <h1 class="content-header">Yhteystiedot</h1>
+                <h1 class="">Yhteystiedot</h1>
             </div>
             <div>
                 <p>Miika Savela</p>

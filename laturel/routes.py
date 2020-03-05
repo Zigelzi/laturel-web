@@ -78,7 +78,7 @@ def index():
                           """
         mail.send(contact_msg)
         mail.send(reply_msg)
-    return render_template('main/index.html', form=form)
+    return render_template('main/index.html', form=form, active='index')
 
 @app.route('/cars', methods=['GET', 'POST'], subdomain='www')
 @app.route('/cars', methods=['GET', 'POST'])

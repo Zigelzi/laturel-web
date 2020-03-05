@@ -8,13 +8,18 @@
     position: absolute;
     top:0;
     left:100%;
-    transition: left 0.2s ease-in-out;
+    transition: left 0.2s ease-in-out, background-color 0.15s ease;
     padding-top: 30%;
-    background-color: $nav-transparent-bg;
+    background-color: transparent;
 
     &.active {
         left: 0;
     }
+}
+
+.nav-menu-blue {
+    background-color: $primary-blue-900;
+    border-bottom: 3px solid $primary-blue-400;
 }
 
 #nav-hamburger-container {
@@ -100,40 +105,21 @@
     a {
         text-decoration: none;
         color: $dark-white;
-        font-weight: 700;
         text-transform: uppercase;
         position: relative; /* Relative so the a:after absolute hover element can be positioned */
+        &::after {
+            content: none;
+        }
     }
 
     ul li a,
     ul li a:after,
-    ul li a:before,
-    img,
-    img:after,
-    img:before {
-        transition: all .5s;
+    ul li a:before {
+        transition: all .2s ease-out;
     }
 
-    /* Element for the :hover effect */
-    ul li a:after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        right: 0;
-        margin: auto;
-        width: 0%;
-        color: transparent;
-        height: 3px;
-    }
-
-    ul li a:hover:after {
-        width: 100%;
-    }
-
-    a:hover,
-    img:hover {
-    color: $light-white;
+    a:hover {
+    color: $accent-yellow-400;
     }
 }
 
@@ -157,31 +143,9 @@
     }
 }
 
-.nav-mobility {
-    background-color: $main-orange;
-    text-align: center;
-
-    ul li a:after {
-        background: $accent-blue;
-    }
-}
-
 .active-nav {  
     a {
-        color: $gray-600;
-    }
-}
-
-.nav-img {
-    display: block;
-    height: 50px;
-
-    img {
-        height: 50px;
-    }
-
-    &::after {
-        content: none;
+        color: $accent-yellow-400;
     }
 }
 
@@ -192,5 +156,6 @@
 }
 
 .nav-offset {
-    padding-bottom: 60px;
+    padding-bottom: 55px;
+    background-color: $primary-blue-900;
 }

@@ -475,6 +475,7 @@ template {
 
 .content-header {
   display: inline-block;
+  padding-top: 25px;
   margin-bottom: 1.4em !important;
 }
 
@@ -534,22 +535,23 @@ template {
   color: #991D00;
 }
 
-.top-shadow {
-  box-shadow: inset 0 9px 13px -6px rgba(50, 50, 50, 0.2);
-}
-
 .nav-menu {
   height: 100vh;
   width: 100%;
   position: absolute;
   top: 0;
   left: 100%;
-  transition: left 0.2s ease-in-out;
+  transition: left 0.2s ease-in-out, background-color 0.15s ease;
   padding-top: 30%;
-  background-color: rgba(75, 75, 75, 0.9);
+  background-color: transparent;
 }
 .nav-menu.active {
   left: 0;
+}
+
+.nav-menu-blue {
+  background-color: #05212E;
+  border-bottom: 3px solid #38BDFA;
 }
 
 #nav-hamburger-container {
@@ -608,7 +610,6 @@ template {
   padding-top: 0.5em;
   /* 8px */
   padding-bottom: 0.5em;
-  /* Element for the :hover effect */
 }
 .navbar ul {
   vertical-align: top;
@@ -622,36 +623,20 @@ template {
 .navbar a {
   text-decoration: none;
   color: #dee7e7;
-  font-weight: 700;
   text-transform: uppercase;
   position: relative;
   /* Relative so the a:after absolute hover element can be positioned */
 }
+.navbar a::after {
+  content: none;
+}
 .navbar ul li a,
 .navbar ul li a:after,
-.navbar ul li a:before,
-.navbar img,
-.navbar img:after,
-.navbar img:before {
-  transition: all 0.5s;
+.navbar ul li a:before {
+  transition: all 0.2s ease-out;
 }
-.navbar ul li a:after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 0%;
-  color: transparent;
-  height: 3px;
-}
-.navbar ul li a:hover:after {
-  width: 100%;
-}
-.navbar a:hover,
-.navbar img:hover {
-  color: #FCFDFD;
+.navbar a:hover {
+  color: #FFC533;
 }
 
 .nav-web {
@@ -671,27 +656,8 @@ template {
   font-size: 1.5rem;
 }
 
-.nav-mobility {
-  background-color: #f49104;
-  text-align: center;
-}
-.nav-mobility ul li a:after {
-  background: #0E5A9E;
-}
-
 .active-nav a {
-  color: #5C6B70;
-}
-
-.nav-img {
-  display: block;
-  height: 50px;
-}
-.nav-img img {
-  height: 50px;
-}
-.nav-img::after {
-  content: none;
+  color: #FFC533;
 }
 
 .nav-section {
@@ -701,7 +667,8 @@ template {
 }
 
 .nav-offset {
-  padding-bottom: 60px;
+  padding-bottom: 55px;
+  background-color: #05212E;
 }
 
 #landing-page {
@@ -1059,6 +1026,10 @@ template {
   margin: 0 auto;
   width: 90%;
   max-width: 500px;
+  padding-bottom: 50px;
+}
+.web-form-container .g-recaptcha {
+  margin: 25px 0;
 }
 
 .web-input {
@@ -1126,6 +1097,12 @@ template {
 .web-input input:focus + span + .input-border,
 .web-input textarea:focus + span + .input-border {
   transform: scaleX(1);
+}
+
+.contact-information {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slider-checkbox {
@@ -1297,11 +1274,11 @@ template {
     padding: 15.8px 15px;
   }
 
-  .nav-web li {
+  .navbar li {
     padding: 16px !important;
   }
-  .nav-web a {
-    font-size: 1rem !important;
+  .navbar a {
+    font-size: 18px;
   }
 
   .nav-img {
