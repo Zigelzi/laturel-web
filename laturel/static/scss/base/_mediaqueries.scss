@@ -50,6 +50,10 @@
         top: -50px;
     }
 
+    .nav-offset {
+        background-color: $primary-blue-900;
+    }
+
     // ------------
     // FORMS AND FORM INPUTS
     // ------------
@@ -93,5 +97,9 @@
         .column {
             flex: 1;
         }
+    }
+
+    .cookie-card {
+        margin-right: 20px;
     }
 }

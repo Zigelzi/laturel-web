@@ -17,6 +17,18 @@
     }
 }
 
+.nav-footer {
+    ul {
+        list-style: none;
+    }
+    a {
+        color: $dark-white;
+        &::after {
+            content:none;
+        }
+    }
+}
+
 .nav-menu-blue {
     background-color: $primary-blue-900 !important; // Override the media query bg-color
     border-bottom: 3px solid $primary-blue-400;
@@ -157,5 +169,4 @@
 
 .nav-offset {
     padding-bottom: 55px;
-    background-color: $primary-blue-900;
 }

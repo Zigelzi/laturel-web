@@ -3,6 +3,9 @@
 {% block title %}Tietosuoja{% endblock %}
 
 {% block content%}
+<div class="nav-offset">
+    <!-- Empty div to offset nav height in desktop versions -->
+</div>
 <div class="container">
     <div class="column">
         <div id="data-and-privacy">
@@ -101,53 +104,92 @@
                 <h2>Mitä evästeitä Laturel tallentaa ja miksi?</h2>
                 <p>Sivuilla käytetään vain istunnon toiminnan kannalta oleellisia evästeitä ja Google Analyticsin analytiikkatyökalun toimintaan liittyviä evästeitä. Suostumus evästeiden käyttöön saadaan selaimesi evästeasetuksista. Näin sinun ei tarvitse katsella ärsyttäviä “Käytämme evästeitä” -popuppia sivuillani. Mikäli et halua että tallennan muita kuin sivuston käyttämiseen liittyviä välttämättömiä evästeitä, löydät ohjeet evästeiden poistamiseen ja luvan perumiseen alla olevasta kohdasta “Miten pääsen evästeistä eroon?”</p>
                 <p>Käytän Google Analyticsia parantamaan käyttäjäkokemustasi. Seuraan Google Analyticsin kautta pääasiassa sivuston vierailijamääriä sekä mitä toimenpiteitä (events) käyttäjät tekevät sivuilla. Lisäksi seuraan millä laitteilla ja selaimilla sivustoa käytetään, mistä käyttäjät löytävät sivuni ja kauanko käyttäjät viettävät aikaa eri sivuilla.</p>
-                <div id="cookie-table">
-                    <p>Päivitetty viimeksi 7.3.2020</p>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Evästeen nimi</th>
-                                <th>Säilytysaika</th>
-                                <th>Mihin sitä käytetään?</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>SESS#</td>
-                                <td>Istunto</td>
-                                <td>Istunnon tietojen säilyttäminen istunnon keston ajan</td>
-                            </tr>
-                            <tr>
-                                <td>_ga</td>
-                                <td>2 vuotta</td>
-                                <td>Rekisteröi uniikin tunnisteen jolla kerätään anonymisoitua käyttäjädataa.
-
-                                    Tämän evästeen avulla pystyn parantamaan sivujeni toimintaa.</td>
-                            </tr>
-                            <tr>
-                                <td>_gat</td>
-                                <td>1 päivä</td>
-                                <td>Käytetään Google Analyticsiin lähetettävien pyyntöjen rajoittamiseen.
-
-                                    Tämä eväste estää etten spämmää Google Analyticisia liian monella pyynnöllä.
-                                    </td>
-                            </tr>
-                            <tr>
-                                <td>_gid</td>
-                                <td>1 päivä</td>
-                                <td>Rekisteröi uniikin tunnisteen jolla kerätään anonymisoitua käyttäjädataa.
-
-                                    Tämän evästeen avulla pystyn parantamaan sivujeni toimintaa.</td>
-                            </tr>
-                            <tr>
-                                <td>collect</td>
-                                <td>Istunto</td>
-                                <td>Käytetään lähettämään dataa Google Analyticsille käyttäjän laitteesta ja käytöksestä. 
-
-                                Mahdollistaa käyttäjien tunnistamisen eri laitteiden ja markkinointikanavien välillä.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div id="cookie-list">
+                    <h4>Selaimeesi tallennettavat evästeet</h4>
+                    <p>Päivitetty viimeksi: 7.3.2020</p>
+                    <div class="cookie-list">
+                        <div class="cookie-card">
+                            <div class="card-image">
+                                {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
+                                <img alt="Small Laturel logo" class="card-icon" src="/static/img/laturel_logo_small.svg">
+                                {% else %}
+                                <img src="{{url_for('static', filename='img/laturel_logo_small.svg')}}" alt="Small Laturel logo" class="card-icon">
+                                {% endif %}
+                            </div>
+                            <div class="card-content">
+                                <p class="cookie-label">SESS#</p>
+                                <p class="cookie-duration">Voimassa istunnon ajan</p>
+                                <p class="cookie-reason">Istunnon tietojen säilyttäminen istunnon keston ajan</p>
+                            </div>
+                        </div>
+                        <div class="cookie-card">
+                            <div class="card-image">
+                                {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
+                                <img alt="Small Google logo" class="card-icon" src="/static/img/google_logo.svg">
+                                {% else %}
+                                <img src="{{url_for('static', filename='img/google_logo.svg')}}" alt="Small Google logo" class="card-icon">
+                                {% endif %}
+                            </div>
+                            <div class="card-content">
+                                <p class="cookie-label">_ga</p>
+                                <p class="cookie-duration">Voimassa 2 vuotta</p>
+                                <div class="cookie-reason">
+                                    <p>Rekisteröi uniikin tunnisteen jolla kerätään anonymisoitua käyttäjädataa.</p>
+                                    <p>Tämän evästeen avulla pystyn parantamaan sivujeni toimintaa.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cookie-card">
+                            <div class="card-image">
+                                {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
+                                <img alt="Small Google logo" class="card-icon" src="/static/img/google_logo.svg">
+                                {% else %}
+                                <img src="{{url_for('static', filename='img/google_logo.svg')}}" alt="Small Google logo" class="card-icon">
+                                {% endif %}
+                            </div>
+                            <div class="card-content">
+                                <p class="cookie-label">_gat</p>
+                                <p class="cookie-duration">Voimassa 1 päivän</p>
+                                <div class="cookie-reason">
+                                    <p>Käytetään Google Analyticsiin lähetettävien pyyntöjen rajoittamiseen. Tämä eväste estää etten spämmää Google Analyticisia liian monella pyynnöllä. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cookie-card">
+                            <div class="card-image">
+                                {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
+                                <img alt="Small Google logo" class="card-icon" src="/static/img/google_logo.svg">
+                                {% else %}
+                                <img src="{{url_for('static', filename='img/google_logo.svg')}}" alt="Small Google logo" class="card-icon">
+                                {% endif %}
+                            </div>
+                            <div class="card-content">
+                                <p class="cookie-label">_gid</p>
+                                <p class="cookie-duration">Voimassa 1 päivän</p>
+                                <div class="cookie-reason">
+                                    <p>Rekisteröi uniikin tunnisteen jolla kerätään anonymisoitua käyttäjädataa.</p>
+                                    <p>Tämän evästeen avulla pystyn parantamaan sivujeni toimintaa.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cookie-card">
+                            <div class="card-image">
+                                {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}  
+                                <img alt="Small Laturel logo" class="card-icon" src="/static/img/google_logo.svg">
+                                {% else %}
+                                <img src="{{url_for('static', filename='img/google_logo.svg')}}" alt="Small Laturel logo" class="card-icon">
+                                {% endif %}
+                            </div>
+                            <div class="card-content">
+                                <p class="cookie-label">collect</p>
+                                <p class="cookie-duration">Voimassa istunnon ajan</p>
+                                <div class="cookie-reason">
+                                    <p>Käytetään lähettämään dataa Google Analyticsille käyttäjän laitteesta ja käytöksestä.</p>
+                                    <p>Mahdollistaa käyttäjien tunnistamisen eri laitteiden ja markkinointikanavien välillä.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="how-to-get-rid-off">
                     <h2>Miten pääsen evästeistä eroon?</h2>

@@ -130,6 +130,11 @@
     fill: $gray-700;
 }
 
+.card-icon {
+    display: block;
+    height: 50px;
+}
+
 .svg-rocket {
     overflow: hidden;
     animation: rocket-launch 1s 1s, rocket-wiggle 0.5s;
@@ -236,6 +241,58 @@
         border-top: 10px solid $gray-800;
     }
 
+}
+
+.cookie-notice {
+    color: $dark-white;
+    max-width: 30rem;
+    margin: 0 auto 10px auto;
+    text-align: left;
+}
+
+.cookie-list {
+    margin: 0 auto;
+    max-width: 750px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cookie-card {
+    width: 350px;
+    box-shadow: 0px 2px 4px rgba($gray-400, 0.8);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    transition: box-shadow .15s ease;
+
+    &:hover {
+        box-shadow: 0px 2px 8px rgba($gray-400, 1);
+    }
+    .card-content {
+        flex-grow: 1;
+        text-align: left;
+        padding-left: 25px;
+        p {
+            margin: 0;
+        }
+        .title {
+            font-weight: 600;
+        }
+
+        .cookie-label {
+            font-size: 22px;
+        }
+        .cookie-duration {
+            font-size: 14px;
+            color: $gray-600;
+        }
+        .cookie-reason {
+            p {
+                margin-bottom: 5px;
+            }
+        }
+    }
 }
 
 .accordion-item {
