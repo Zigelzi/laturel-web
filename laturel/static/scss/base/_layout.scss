@@ -63,9 +63,14 @@
         max-width: 750px;
     }
 
-    p {
-        margin: .5em auto 2em;
+    p, ul, table  {
+        margin: 0rem auto 1.5rem;
         max-width: 750px;
+    }
+
+    ul {
+        list-style-position: inside;
+        padding: 0 60px;
     }
 
     .btn-left {
@@ -74,6 +79,14 @@
     }
     .btn {
         margin-top: auto;
+    }
+
+    .bottom-margin-5 {
+        margin: 0 auto 5px auto;
+    }
+
+    .bottom-margin-10 {
+       margin: 0 auto 10px auto;
     }
 }
 

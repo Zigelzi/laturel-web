@@ -38,6 +38,40 @@ a {
     }
 }
 
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    th {
+        background-color: $gray-200;
+        text-align: left;
+    }
+    th, td {
+        padding: 10px;
+    }
+    thead {
+        th:nth-child(1){
+            width: 20%;
+        }
+        th:nth-child(2){
+            width: 20%;
+        }
+        th:nth-child(3){
+            width: 60%;
+        }
+    }
+    tbody {
+        tr:hover {
+            background-color: $gray-100;
+        }
+    }
+}
+
+ul, ol {
+    li {
+        margin-bottom: 5px;
+    }
+}
+
 a:visited {
     color: $gray-700;
 }

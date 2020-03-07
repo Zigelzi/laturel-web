@@ -123,6 +123,11 @@ def data():
 def web_contact_card():
     return render_template('main/example_contactcard.html')
 
+@app.route('/tietosuoja', subdomain='www')
+@app.route('/tietosuoja')
+def privacy_policy():
+    return render_template('main/privacy_policy.html')
+
 @app.route('/', subdomain='vantasia')
 def vantasia_index():
     form = ContactForm()
