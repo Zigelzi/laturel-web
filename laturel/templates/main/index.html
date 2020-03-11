@@ -1,5 +1,12 @@
 {% extends "main/layout.html" %}
 
+{% block javascript %} 
+    {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}
+        <script type="text/javascript" src="/static/js/web.js"></script>
+        {% else %}
+        <script type="text/javascript" src="{{ url_for('static', filename='js/web.js') }}"></script>
+    {% endif %}
+{% endblock %}
 {% block title %}Index{% endblock %}
 
 {% block content%}

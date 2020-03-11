@@ -1,8 +1,13 @@
 {% extends "main/layout.html" %}
 
 {% block title %}Cars{% endblock %}
-{% block carscript %}<script type="text/javascript" src="static/js/cars.js" defer></script> {% endblock %}
-
+{% block javascript %} 
+    {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}
+		<script type="text/javascript" src="static/js/cars.js" defer></script>
+        {% else %}
+        <script type="text/javascript" src="{{ url_for('static', filename='js/cars.js') }}"></script>
+    {% endif %}
+{% endblock %}
 
 {% block content%}
 	<div class="nav-offset">
