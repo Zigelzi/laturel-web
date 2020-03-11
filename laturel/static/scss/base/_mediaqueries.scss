@@ -94,6 +94,10 @@
     .container {
         display: flex;
 
+        ul {
+            padding: 0 60px;
+        }
+
         .column {
             flex: 1;
         }
