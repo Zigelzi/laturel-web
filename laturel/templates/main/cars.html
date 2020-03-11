@@ -5,7 +5,7 @@
     {% if (config['ENV'] == 'production') or config['ENV'] == 'stage' %}
 		<script type="text/javascript" src="static/js/cars.js" defer></script>
         {% else %}
-        <script type="text/javascript" src="{{ url_for('static', filename='js/cars.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/cars.js') }}" defer></script>
     {% endif %}
 {% endblock %}
 

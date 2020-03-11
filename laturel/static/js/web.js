@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     /** Toggles the accordionItem visibility with .active class
-     * @param {element} accordionItem Element with .accordion-item class
+     * @param {HTMLElement} accordionItem Element with .accordion-item class
      */
     function toggleAccordionItem(accordionItem) {
         

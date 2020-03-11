@@ -55,7 +55,7 @@ var dVars = {
 	name: 'dVars'
 }
 // General values
-const inputBoxes = document.querySelectorAll('input');
+
 const ownTime = document.getElementById('owntime');
 const driveKm = document.getElementById('drivekm');
 const ownTimeValue = document.querySelectorAll('.owntime')
@@ -75,18 +75,16 @@ var generalVars = {
 
 
 //  Takes car type as input and fetches the data from DB and then updates the information to the input fields.
-function change_data(carType) {
+function updateCarCardData(carType) {
 
-	var model = {
+	let model = {
 		type: carType.id,
 		model: carType.value
 	}
-	
-	// console.log(model) DEBUG
-	var loc = `${window.origin}/db/data`
+	const path = `${window.origin}/db/data`
 
 	// Post selected values to backend to query DB
-	fetch(loc, {
+	fetch(path, {
 		method: 'POST',
 		credentials: 'include',
 		body: JSON.stringify(model),
@@ -96,75 +94,85 @@ function change_data(carType) {
 		})
 	})
 	// Use the response from backend to create JSON object of values
-	.then(function(response) {
+	.then(response => {
 		if (response.status !== 200) {
-			console.log(`Response status not 200: ${response.status}`);
+			console.log(`Failed to fetch the data, got response code ${response.status}`);
 			return;
 		}
 
-		response.json().then(function(data){
-			// DEBUG console.logconsole.log(data)
-			// DEBUG console.log(data.car_info.price) 
-			// DEBUG console.log(carType.id) 
-
+		response.json()
+				.then(data => {
 			// Check which car type the response belongs to and update respecitve values accordingly
 			if (carType.id === 'ecar_model'){
-				ecarFullModel.textContent = data.car_info.fullmodel;
-				ecarPrice.value = data.car_info.price;
-				ecarWeight.value = data.car_info.weight;
-				ecarConsumption.value = data.car_info.consumption;
-				// ecarBattery.value = data.car_info.battery;
-				ecarCO2.value  = Math.floor((data.co2.tax * 365) / 100); // Calculating €/year from cnt/day
-				
+				setCarCardTextContents('ecar', data);
 			}
 			if (carType.id === 'gcar_model'){
-				gcarFullModel.textContent = data.car_info.fullmodel
-				gcarPrice.value = data.car_info.price;
-				gcarConsumption.value = data.car_info.consumption;
-				gcarCO2.value  = Math.floor((data.co2.tax * 365) / 100); // Calculating €/year from cnt/day
+				setCarCardTextContents('gcar', data);
 			}
 			if (carType.id === 'dcar_model'){
-				dcarFullModel.textContent = data.car_info.fullmodel;
-				dcarPrice.value = data.car_info.price;
-				dcarWeight.value = data.car_info.weight;
-				dcarConsumption.value = data.car_info.consumption;
-				dcarCO2.value  = Math.floor((data.co2.tax * 365) / 100); // Calculating €/year from cnt/day
+				setCarCardTextContents('dcar', data);
 			}
 		})
-	})
+	});
+}
+
+/**
+ * 
+ * @param {string} carType The prefix of which type of cars data will be set
+ * @param {json} responseData JSON object containing the data of the car received from backend
+ */
+function setCarCardTextContents(carType, responseData) {
+	const fullModel = document.getElementById(`${carType}-full-model`);
+	const price = document.getElementById(`${carType}_price`);
+	const consumption = document.getElementById(`${carType}_consumption`);
+	const co2 = document.getElementById(`${carType}_co2`);
+
+	fullModel.textContent = responseData.car_info.fullmodel;
+	price.value = responseData.car_info.price;
+	consumption.value = responseData.car_info.consumption;
+	co2.value  = Math.floor((responseData.co2.tax * 365) / 100); // Calculating €/year from cnt/day
+
+	if (carType === 'ecar' || carType === 'dcar') {
+		const weight = document.getElementById(`${carType}_weight`);
+		weight.value = responseData.car_info.weight;
+	}
+}
+
+/**
+ * 
+ * @param {HTMLElement} inputElement <input> element from the page
+ * @param {*} carType The prefix of which kind of car is being processed
+ * @param {*} carObject The car object of this car type
+ */
+function createCarKeyValuePair(inputElement, carType, carObject) {
+	const keyName = inputElement.id.replace(`${carType}_`, '');
+	if (isNaN(+inputElement.value)){
+		carObject[keyName] = inputElement.value
+	}
+	else{
+		carObject[keyName] = Number(inputElement.value)
+	}
+
 }
 
 // Get all vehicle values and append them to their respective objects
 function get_car_values(){
-	for (var i = 0; i < inputBoxes.length;i++){
-
+	const inputFields = document.querySelectorAll('input');
+	for (var i = 0; i < inputFields.length;i++){
+		
 		// Loop through all the input boxes and respective fields to their values.
 		// If value contains number then convert it from str -> int
-		if (inputBoxes[i].id.startsWith('ecar')){
-			if (isNaN(+inputBoxes[i].value)){
-				eVars[inputBoxes[i].id.replace('ecar_','')] = inputBoxes[i].value
-			}
-			else{
-				eVars[inputBoxes[i].id.replace('ecar_','')] = Number(inputBoxes[i].value)
-			}
+		if (inputFields[i].id.startsWith('ecar')){
+			createCarKeyValuePair(inputFields[i], 'ecar', eVars);
 		}
-		if (inputBoxes[i].id.startsWith('gcar')){
-			if (isNaN(+inputBoxes[i].value)){
-				gVars[inputBoxes[i].id.replace('gcar_','')] = inputBoxes[i].value
-			}
-			else{
-				gVars[inputBoxes[i].id.replace('gcar_','')] = Number(inputBoxes[i].value)
-			}
+		if (inputFields[i].id.startsWith('gcar')){
+			createCarKeyValuePair(inputFields[i], 'gcar', gVars);
 		}
-		if (inputBoxes[i].id.startsWith('dcar')){
-			if (isNaN(+inputBoxes[i].value)){
-				dVars[inputBoxes[i].id.replace('dcar_','')] = inputBoxes[i].value
-			}
-			else{
-				dVars[inputBoxes[i].id.replace('dcar_','')] = Number(inputBoxes[i].value)
-			}
+		if (inputFields[i].id.startsWith('dcar')){
+			createCarKeyValuePair(inputFields[i], 'dcar', dVars);
 		}
 	}
+
 	var eDeprOper;
 	var gDeprOper;
 	var dDeprOper;
@@ -183,14 +191,14 @@ function get_car_values(){
 	if (eVars.subsidy > 0 ){
 		eVars.price = eVars.price - eVars.subsidy
 	}
-	eDeprOper = depr_oper(eVars.price, eVars.depr, generalVars.owntime, eVars.yearly);
+	eDeprOper = calculateDeprecationAndOperationalCosts(eVars.price, eVars.depr, generalVars.owntime, eVars.yearly);
 	eVars = Object.assign(eVars, eDeprOper); // Add the deprecation and operational costs values to main object
 
 	// Take gasoline values and calculate the costs
 	gVars['carName'] = gcarModel.value;
 	gVars['fullModel'] = gcarFullModel.textContent
 	gVars['yearly'] = Math.floor(generalVars.driveKm * gVars.gprice * (gVars.consumption / 100) + gVars.co2);
-	gDeprOper = depr_oper(gVars.price, gVars.depr, generalVars.owntime, gVars.yearly);
+	gDeprOper = calculateDeprecationAndOperationalCosts(gVars.price, gVars.depr, generalVars.owntime, gVars.yearly);
 	gVars = Object.assign(gVars, gDeprOper); // Add the deprecation and operational costs values to main object
 
 	// Take diesel values and calculate costs
@@ -198,7 +206,7 @@ function get_car_values(){
 	dVars['fullModel'] = dcarFullModel.textContent
 	dVars['drivingpower'] = calc_drivingpower(dVars.weight, dVars);
 	dVars['yearly'] = Math.floor(generalVars.driveKm * dVars.dprice * (dVars.consumption / 100) + dVars.co2 + dVars.drivingpower);
-	dDeprOper = depr_oper(dVars.price, dVars.depr, generalVars.owntime, dVars.yearly);
+	dDeprOper = calculateDeprecationAndOperationalCosts(dVars.price, dVars.depr, generalVars.owntime, dVars.yearly);
 	dVars = Object.assign(dVars, dDeprOper); // Add the deprecation and operational costs values to main object
 
 	ownTimeValue.forEach(function(ownTimeValue){
@@ -266,23 +274,23 @@ function calc_drivingpower(n, obj){
 }
 
 // Helper | Calculate deprecation and operational expenses
-function depr_oper(purchase, rate, years, cost){
+function calculateDeprecationAndOperationalCosts(purchasePrice, deprecationRate, ownDuration, yearlyCost){
 	carValue = [];
 	deprValue = [];
 	deprYearly = [];
 	yearlyCost = [];
-	for (var i = 1; i < years+1; i++){
-		carValue.push(purchase * (1 - rate/100) ** i);
-		deprValue.push(Math.floor(purchase - carValue[i -1]))
+	for (var i = 1; i < ownDuration+1; i++){
+		carValue.push(purchasePrice * (1 - deprecationRate/100) ** i);
+		deprValue.push(Math.floor(purchasePrice - carValue[i -1]))
 		if (i === 1){
-			deprYearly.push(Math.floor(purchase - carValue[i - 1]))
+			deprYearly.push(Math.floor(purchasePrice - carValue[i - 1]))
 		}
 		else {
 			deprYearly.push(Math.floor(carValue[i - 2] - carValue[i - 1]))
 		}
 	}
-	for (var i = 1; i < years + 1; i++){
-		yearlyCost.push(Math.floor(cost * i))
+	for (var i = 1; i < ownDuration + 1; i++){
+		yearlyCost.push(Math.floor(yearlyCost * i))
 	}
 	return {
 		deprValue: deprValue,
@@ -293,13 +301,13 @@ function depr_oper(purchase, rate, years, cost){
 
 // Eventlisteners for updating the information
 
-document.addEventListener('DOMContentLoaded', () => {change_data(ecarModel);} );
-document.addEventListener('DOMContentLoaded', () => {change_data(gcarModel);} );
-document.addEventListener('DOMContentLoaded', () => {change_data(dcarModel);} );
+document.addEventListener('DOMContentLoaded', () => {updateCarCardData(ecarModel);} );
+document.addEventListener('DOMContentLoaded', () => {updateCarCardData(gcarModel);} );
+document.addEventListener('DOMContentLoaded', () => {updateCarCardData(dcarModel);} );
 document.addEventListener('DOMContentLoaded', update_values);
-ecarModel.addEventListener('change', () => {change_data(ecarModel);} );
-gcarModel.addEventListener('change', () => {change_data(gcarModel);} );
-dcarModel.addEventListener('change', () => {change_data(dcarModel);} );
+ecarModel.addEventListener('change', () => {updateCarCardData(ecarModel);} );
+gcarModel.addEventListener('change', () => {updateCarCardData(gcarModel);} );
+dcarModel.addEventListener('change', () => {updateCarCardData(dcarModel);} );
 submitBtn.addEventListener('click', update_values);
 carHide.addEventListener('click', () => {hide_panel(carInformation);} );
 operationalHide.addEventListener('click', () => {hide_panel(operationalInformation);} );
