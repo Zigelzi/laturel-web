@@ -1,81 +1,230 @@
-
 // TODO: Update the car full name value to result cards after clicking the submit button
 
-// Electric vehicle values
 const ecarModel = document.getElementById('ecar_model');
-const ecarFullModel = document.getElementById('ecar-full-model')
-const ecardFullModel = document.getElementById('ecard-full-model')
-const ecarPrice = document.getElementById('ecar_price');
-const ecarConsumption = document.getElementById('ecar_consumption');
-const ecarWeight = document.getElementById('ecar_weight');
-const ecarCO2 = document.getElementById('ecar_co2')
-const ecarBattery = document.getElementById('ecar-battery')
-const ecarOperYearly = document.getElementById('ecar-oper-yearly');
-const ecarOperTotal = document.getElementById('ecar-oper-total');
-const ecarDeprTotal = document.getElementById('ecar-depr-total');
-const ecarCostsTotal = document.getElementById('ecar-costs-total');
-const ecarResell = document.getElementById('ecar-resell-value');
-
-var eVars = {
-	name: 'eVars'
-}
-
-// Gasoline vehicle values
 const gcarModel = document.getElementById('gcar_model');
-const gcarFullModel = document.getElementById('gcar-full-model')
-const gcardFullModel = document.getElementById('gcard-full-model')
-const gcarPrice = document.getElementById('gcar_price');
-const gcarConsumption = document.getElementById('gcar_consumption');
-const gcarCO2 = document.getElementById('gcar_co2')
-const gcarOperYearly = document.getElementById('gcar-oper-yearly');
-const gcarOperTotal = document.getElementById('gcar-oper-total');
-const gcarDeprTotal = document.getElementById('gcar-depr-total');
-const gcarCostsTotal = document.getElementById('gcar-costs-total');
-const gcarResell = document.getElementById('gcar-resell-value');
-
-var gVars = {
-	name: 'gVars'
-}
-
-// Diesel vehicle values
 const dcarModel = document.getElementById('dcar_model');
-const dcarFullModel = document.getElementById('dcar-full-model')
-const dcardFullModel = document.getElementById('dcard-full-model')
-const dcarPrice = document.getElementById('dcar_price');
-const dcarConsumption = document.getElementById('dcar_consumption');
-const dcarWeight = document.getElementById('dcar_weight');
-const dcarCO2 = document.getElementById('dcar_co2');
-const dcarOperYearly = document.getElementById('dcar-oper-yearly');
-const dcarOperTotal = document.getElementById('dcar-oper-total');
-const dcarDeprTotal = document.getElementById('dcar-depr-total');
-const dcarCostsTotal = document.getElementById('dcar-costs-total');
-const dcarResell = document.getElementById('dcar-resell-value');
-
-var dVars = {
-	name: 'dVars'
-}
-// General values
 
 const ownTime = document.getElementById('owntime');
 const driveKm = document.getElementById('drivekm');
-const ownTimeValue = document.querySelectorAll('.owntime')
-const jsSubmit = document.getElementById('jsSubmit');
 const submitBtn = document.getElementById('submit')
-const carInformation = document.getElementById('car-info')
-const operationalInformation = document.getElementById('operational-info')
-const carHide = document.getElementById('car-hide')
 
-const operationalHide = document.getElementById('operational-hide')
-
-var generalVars = {
+let eVars = {
+	name: 'eVars'
+}
+let gVars = {
+	name: 'gVars'
+}
+let dVars = {
+	name: 'dVars'
+}
+let generalVars = {
 	name: 'generalVars',
-	owntime: Number(ownTime.value),
-	driveKm: Number(driveKm.value)
 }
 
+function update_values(){
+	get_car_values();
+	updateOwnTimeTextContents();
+	
+	updateCarResultCard('ecar', eVars);
+	updateCarResultCard('gcar', gVars);
+	updateCarResultCard('dcar', dVars);
+	
+}
+
+// Get all vehicle values and append them to their respective objects
+function get_car_values(){
+	readUserInputsForAllCarTypes()
+
+	// Refresh the general values
+	updateOwntime();
+	updateDriveAmount();
+
+	//Take EV values and calculate the costs
+	addModelInformationFor(eVars);
+	updateCostsToCarObject('ecar', eVars)
+	
+	// Take gasoline values and calculate the costs
+	addModelInformationFor(gVars);
+	updateCostsToCarObject('gcar', gVars)
+
+	// Take diesel values and calculate costs
+	addModelInformationFor(dVars);
+	updateCostsToCarObject('dcar', dVars)
+
+}
+
+function readUserInputsForAllCarTypes() {
+	const inputFields = document.querySelectorAll('input');
+	for (let i = 0; i < inputFields.length;i++){
+		
+		// Loop through all the input boxes and respective fields to their values.
+		// If value contains number then convert it from str -> int
+		if (inputFields[i].id.startsWith('ecar')){
+			createKeyValuePairFromInput(inputFields[i], 'ecar', eVars);
+		}
+		if (inputFields[i].id.startsWith('gcar')){
+			createKeyValuePairFromInput(inputFields[i], 'gcar', gVars);
+		}
+		if (inputFields[i].id.startsWith('dcar')){
+			createKeyValuePairFromInput(inputFields[i], 'dcar', dVars);
+		}
+	}
+}
+
+function updateOwnTimeTextContents() {
+	const ownTimeValue = document.querySelectorAll('.owntime');
+
+	ownTimeValue.forEach(function(ownTimeValue){
+		ownTimeValue.textContent = generalVars.ownTime;
+	})
+}
+
+function updateCarResultCard(carType, carObject) {
+	const operationalYearlyCost = document.getElementById(`${carType}-oper-yearly`)
+	const totalOperationalCost = document.getElementById(`${carType}-oper-total`);
+	const totalDeprecationCost = document.getElementById(`${carType}-depr-total`);
+	const totalCostOfOwnership = document.getElementById(`${carType}-costs-total`);
+	const carResellPrice = document.getElementById(`${carType}-resell-value`);
+	const resultCardCarFullModel = document.getElementById(`${carType}-resultcard-full-model`);
+
+	let lastYear = generalVars.ownTime - 1 // Requires -1 because zero indexed arrays
+
+	operationalYearlyCost.textContent = carObject.yearlyOperationalCost;
+	totalOperationalCost.textContent = carObject.totalOperationalCostPerYear[lastYear];
+	totalDeprecationCost.textContent = carObject.totalDeprecationCostPerYear[lastYear];
+	totalCostOfOwnership.textContent = (carObject.totalOperationalCostPerYear[lastYear] + carObject.totalDeprecationCostPerYear[lastYear]);
+	carResellPrice.textContent = (carObject.price - carObject.totalDeprecationCostPerYear[lastYear]);
+	resultCardCarFullModel.textContent = carObject.fullModel;
+}
+
+/**
+ * 
+ * @param {HTMLElement} inputElement <input> element from the page
+ * @param {*} carType The prefix of which kind of car is being processed
+ * @param {*} carObject The car object of this car type
+ */
+function createKeyValuePairFromInput(inputElement, carType, carObject) {
+	const keyName = inputElement.id.replace(`${carType}_`, '');
+	if (isNaN(+inputElement.value)){
+		carObject[keyName] = inputElement.value
+	}
+	else{
+		carObject[keyName] = Number(inputElement.value)
+	}
+
+}
+
+function updateOwntime() {
+	const ownTime = document.getElementById('owntime');
+	generalVars.ownTime = Number(ownTime.value)
+}
+
+function updateDriveAmount() {
+	const driveKm = document.getElementById('drivekm');
+	generalVars.driveKm = Number(driveKm.value)
+}
+
+function addModelInformationFor(carObject) {
+	let carType = '';
+
+	if (carObject.name === 'eVars') {
+		carType = 'ecar'
+	}
+	if (carObject.name === 'gVars') {
+		carType = 'gcar'
+	}
+	if (carObject.name === 'dVars') {
+		carType = 'dcar'
+	}
+
+	let carModel = document.getElementById(`${carType}_model`);
+	let fullCarModel = document.getElementById(`${carType}-full-model`);
+
+	carObject['model'] = carModel.value;
+	carObject['fullModel'] = fullCarModel.textContent;	
+}
+
+function updateCostsToCarObject(carType, carObject) {
+	if (carObject.name === 'eVars') {
+		carObject['chargerprice'] = 800;
+	}
+	if (carObject.name === 'eVars' || carObject.name === 'dVars') {
+		carObject['drivingpower'] = calculateCarDrivingTax(carObject.weight, carObject);
+	}
+	
+	carObject['yearlyOperationalCost'] = calculateYearlyOperationalCosts(carType);
+	carObject['totalDeprecationCostPerYear'] = calculateTotalDeprecationCostPerYear(generalVars.ownTime, carObject.price, carObject.depr);
+	carObject['totalOperationalCostPerYear'] = calculateTotalOperationalCostPerYear(generalVars.ownTime, carObject.yearlyOperationalCost);
+	carObject.price = calculateEcarSubsidisedPrice();
+}
+
+// Driving power tax is only applicable for electric vehicles and diesel passanger vehicles in Finland
+// See details from Traficom website: https://www.traficom.fi/en/transport/road/structure-and-quantity-vehicle-tax
+function calculateCarDrivingTax(carWeight, carObject){
+	let drivingpowerTax = 0;
+	let evTax = 0.015 //  Eurocents. Tax per every starting 100 kg:s of vehicles total mass
+	let dieselTax = 0.055 //  Eurocents. Tax per every starting 100 kg:s of vehicles total mass
+	const daysInYear = 365;
+
+	carWeight = Number(carWeight);
+	carWeight = Math.floor(carWeight/100); // Dividing by 100 because the law states for every 100 starting kilos.
+
+	if (carObject.name === 'eVars'){
+		drivingpowerTax = carWeight * evTax * daysInYear // Finnish driving power tax formula for EV:s
+	}
+	if (carObject.name === 'dVars'){
+		drivingpowerTax = carWeight * dieselTax * daysInYear // Finnish driving power tax formula for Diesels
+	}
+	drivingpowerTax = Math.floor(drivingpowerTax)
+
+	return drivingpowerTax;
+}
+
+function calculateYearlyOperationalCosts(carType){
+	let yearlyOperationalCost = 0;
+	if (carType === 'ecar'){
+		yearlyOperationalCost= Math.floor(generalVars.driveKm * eVars.eprice * (eVars.consumption / 100) + eVars.co2 + eVars.drivingpower);
+	}
+	if (carType === 'gcar') {
+		yearlyOperationalCost = Math.floor(generalVars.driveKm * gVars.gprice * (gVars.consumption / 100) + gVars.co2);
+	}
+	if (carType === 'dcar') {
+		yearlyOperationalCost = Math.floor(generalVars.driveKm * dVars.dprice * (dVars.consumption / 100) + dVars.co2 + dVars.drivingpower);
+	}
+	return yearlyOperationalCost;
+}
+
+function calculateEcarSubsidisedPrice() {
+	let subsidiedPrice = eVars.price;
+
+	if ( eVars.subsidy > 0 ){
+		subsidiedPrice = eVars.price - eVars.subsidy
+	}
+
+	return subsidiedPrice;
+}
+
+function calculateTotalDeprecationCostPerYear(ownTime, carPurchasePrice, deprecationRate) {
+	let carYearlyValues = []
+	let deprecationCostPerYear = []
+	for (let currentYear = 1; currentYear <= ownTime; currentYear++){
+		carYearlyValues.push(carPurchasePrice * (1 - deprecationRate/100) ** currentYear);
+		deprecationCostPerYear.push(Math.floor(carPurchasePrice - carYearlyValues[currentYear -1]))
+	}
+	return deprecationCostPerYear;
+}
+
+function calculateTotalOperationalCostPerYear(ownTime, oneYearOperationalCost) {
+	let operationalCostPerYear = []
+	for (let currentYear = 1; currentYear <= ownTime; currentYear++){
+		operationalCostPerYear.push(Math.floor(oneYearOperationalCost * currentYear))
+	}
+	return operationalCostPerYear;
+
+}
 
 //  Takes car type as input and fetches the data from DB and then updates the information to the input fields.
-function updateCarCardData(carType) {
+function retrieveCarDataAndUpdateCarCards(carType) {
 
 	let model = {
 		type: carType.id,
@@ -104,13 +253,13 @@ function updateCarCardData(carType) {
 				.then(data => {
 			// Check which car type the response belongs to and update respecitve values accordingly
 			if (carType.id === 'ecar_model'){
-				setCarCardTextContents('ecar', data);
+				setCarOperationalCostsCardInputContents('ecar', data);
 			}
 			if (carType.id === 'gcar_model'){
-				setCarCardTextContents('gcar', data);
+				setCarOperationalCostsCardInputContents('gcar', data);
 			}
 			if (carType.id === 'dcar_model'){
-				setCarCardTextContents('dcar', data);
+				setCarOperationalCostsCardInputContents('dcar', data);
 			}
 		})
 	});
@@ -121,7 +270,7 @@ function updateCarCardData(carType) {
  * @param {string} carType The prefix of which type of cars data will be set
  * @param {json} responseData JSON object containing the data of the car received from backend
  */
-function setCarCardTextContents(carType, responseData) {
+function setCarOperationalCostsCardInputContents(carType, responseData) {
 	const fullModel = document.getElementById(`${carType}-full-model`);
 	const price = document.getElementById(`${carType}_price`);
 	const consumption = document.getElementById(`${carType}_consumption`);
@@ -138,176 +287,15 @@ function setCarCardTextContents(carType, responseData) {
 	}
 }
 
-/**
- * 
- * @param {HTMLElement} inputElement <input> element from the page
- * @param {*} carType The prefix of which kind of car is being processed
- * @param {*} carObject The car object of this car type
- */
-function createCarKeyValuePair(inputElement, carType, carObject) {
-	const keyName = inputElement.id.replace(`${carType}_`, '');
-	if (isNaN(+inputElement.value)){
-		carObject[keyName] = inputElement.value
-	}
-	else{
-		carObject[keyName] = Number(inputElement.value)
-	}
-
-}
-
-// Get all vehicle values and append them to their respective objects
-function get_car_values(){
-	const inputFields = document.querySelectorAll('input');
-	for (var i = 0; i < inputFields.length;i++){
-		
-		// Loop through all the input boxes and respective fields to their values.
-		// If value contains number then convert it from str -> int
-		if (inputFields[i].id.startsWith('ecar')){
-			createCarKeyValuePair(inputFields[i], 'ecar', eVars);
-		}
-		if (inputFields[i].id.startsWith('gcar')){
-			createCarKeyValuePair(inputFields[i], 'gcar', gVars);
-		}
-		if (inputFields[i].id.startsWith('dcar')){
-			createCarKeyValuePair(inputFields[i], 'dcar', dVars);
-		}
-	}
-
-	var eDeprOper;
-	var gDeprOper;
-	var dDeprOper;
-
-	// Refresh the general values
-
-	generalVars.owntime = Number(ownTime.value),
-	generalVars.driveKm = Number(driveKm.value)
-
-	//Take EV values and calculate the costs
-	eVars['carName'] = ecarModel.value;
-	eVars['fullModel'] = ecarFullModel.textContent;
-	eVars['chargerprice'] = 800;
-	eVars['drivingpower'] = calc_drivingpower(eVars.weight, eVars);
-	eVars['yearly'] = Math.floor(generalVars.driveKm * eVars.eprice * (eVars.consumption / 100) + eVars.co2 + eVars.drivingpower);
-	if (eVars.subsidy > 0 ){
-		eVars.price = eVars.price - eVars.subsidy
-	}
-	eDeprOper = calculateDeprecationAndOperationalCosts(eVars.price, eVars.depr, generalVars.owntime, eVars.yearly);
-	eVars = Object.assign(eVars, eDeprOper); // Add the deprecation and operational costs values to main object
-
-	// Take gasoline values and calculate the costs
-	gVars['carName'] = gcarModel.value;
-	gVars['fullModel'] = gcarFullModel.textContent
-	gVars['yearly'] = Math.floor(generalVars.driveKm * gVars.gprice * (gVars.consumption / 100) + gVars.co2);
-	gDeprOper = calculateDeprecationAndOperationalCosts(gVars.price, gVars.depr, generalVars.owntime, gVars.yearly);
-	gVars = Object.assign(gVars, gDeprOper); // Add the deprecation and operational costs values to main object
-
-	// Take diesel values and calculate costs
-	dVars['carName'] = dcarModel.value
-	dVars['fullModel'] = dcarFullModel.textContent
-	dVars['drivingpower'] = calc_drivingpower(dVars.weight, dVars);
-	dVars['yearly'] = Math.floor(generalVars.driveKm * dVars.dprice * (dVars.consumption / 100) + dVars.co2 + dVars.drivingpower);
-	dDeprOper = calculateDeprecationAndOperationalCosts(dVars.price, dVars.depr, generalVars.owntime, dVars.yearly);
-	dVars = Object.assign(dVars, dDeprOper); // Add the deprecation and operational costs values to main object
-
-	ownTimeValue.forEach(function(ownTimeValue){
-		ownTimeValue.textContent = generalVars.owntime;
-	})
-}
-
-// Update and enter the values to result cards
-function update_values(){
-	get_car_values()
-	
-	var lastYear = generalVars.owntime - 1
-
-	ownTimeValue.forEach(function(ownTimeValue){
-		ownTimeValue.textContent = generalVars.owntime;
-	})
-	
-	ecarOperYearly.textContent = eVars.yearly;
-	ecarOperTotal.textContent = eVars.yearlyCost[lastYear];
-	ecarDeprTotal.textContent = eVars.deprValue[lastYear];
-	ecarCostsTotal.textContent = (eVars.yearlyCost[lastYear] + eVars.deprValue[lastYear]);
-	ecarResell.textContent = (eVars.price - eVars.deprValue[lastYear]);
-	ecardFullModel.textContent = ecarFullModel.textContent;
-
-	gcarOperYearly.textContent = gVars.yearly;
-	gcarOperTotal.textContent = gVars.yearlyCost[lastYear];
-	gcarDeprTotal.textContent = gVars.deprValue[lastYear];
-	gcarCostsTotal.textContent = (gVars.yearlyCost[lastYear] + gVars.deprValue[lastYear]);
-	gcarResell.textContent = (gVars.price - gVars.deprValue[lastYear]);
-	gcardFullModel.textContent = gcarFullModel.textContent;
-
-	dcarOperYearly.textContent = dVars.yearly;
-	dcarOperTotal.textContent = dVars.yearlyCost[lastYear];
-	dcarDeprTotal.textContent = dVars.deprValue[lastYear];
-	dcarCostsTotal.textContent = (dVars.yearlyCost[lastYear] + dVars.deprValue[lastYear]);
-	dcarResell.textContent = (dVars.price - dVars.deprValue[lastYear]);
-	dcardFullModel.textContent = dcarFullModel.textContent;
-	
-	
-
-}
-
-function hide_panel(inputElement){
-
-	if (window.getComputedStyle(inputElement).display  === 'none') {
-		inputElement.style.display = 'block';
-	}
-	else {
-		inputElement.style.display = 'none';
-	}
-}
-
-// Helper | Round to last hundred to calculate the driving power tax
-function calc_drivingpower(n, obj){
-	var drivingpowerTax = 0;
-	n = Number(n);
-	n = Math.floor(n/100);
-	if (obj.name === 'eVars'){
-		drivingpowerTax = n * 0.015 * 365 // Finnish driving power tax formula for EV:s
-	}
-	if (obj.name === 'dVars'){
-		drivingpowerTax = n * 0.055 * 365// Finnish driving power tax formula for Diesels
-	}
-	return Math.floor(drivingpowerTax);
-}
-
-// Helper | Calculate deprecation and operational expenses
-function calculateDeprecationAndOperationalCosts(purchasePrice, deprecationRate, ownDuration, yearlyCost){
-	carValue = [];
-	deprValue = [];
-	deprYearly = [];
-	yearlyCost = [];
-	for (var i = 1; i < ownDuration+1; i++){
-		carValue.push(purchasePrice * (1 - deprecationRate/100) ** i);
-		deprValue.push(Math.floor(purchasePrice - carValue[i -1]))
-		if (i === 1){
-			deprYearly.push(Math.floor(purchasePrice - carValue[i - 1]))
-		}
-		else {
-			deprYearly.push(Math.floor(carValue[i - 2] - carValue[i - 1]))
-		}
-	}
-	for (var i = 1; i < ownDuration + 1; i++){
-		yearlyCost.push(Math.floor(yearlyCost * i))
-	}
-	return {
-		deprValue: deprValue,
-		deprYearly: deprYearly,
-		yearlyCost:yearlyCost
-	}
-}
-
 // Eventlisteners for updating the information
 
-document.addEventListener('DOMContentLoaded', () => {updateCarCardData(ecarModel);} );
-document.addEventListener('DOMContentLoaded', () => {updateCarCardData(gcarModel);} );
-document.addEventListener('DOMContentLoaded', () => {updateCarCardData(dcarModel);} );
+document.addEventListener('DOMContentLoaded', () => {retrieveCarDataAndUpdateCarCards(ecarModel);} );
+document.addEventListener('DOMContentLoaded', () => {retrieveCarDataAndUpdateCarCards(gcarModel);} );
+document.addEventListener('DOMContentLoaded', () => {retrieveCarDataAndUpdateCarCards(dcarModel);} );
 document.addEventListener('DOMContentLoaded', update_values);
-ecarModel.addEventListener('change', () => {updateCarCardData(ecarModel);} );
-gcarModel.addEventListener('change', () => {updateCarCardData(gcarModel);} );
-dcarModel.addEventListener('change', () => {updateCarCardData(dcarModel);} );
+
+ecarModel.addEventListener('change', () => {retrieveCarDataAndUpdateCarCards(ecarModel);} );
+gcarModel.addEventListener('change', () => {retrieveCarDataAndUpdateCarCards(gcarModel);} );
+dcarModel.addEventListener('change', () => {retrieveCarDataAndUpdateCarCards(dcarModel);} );
+
 submitBtn.addEventListener('click', update_values);
-carHide.addEventListener('click', () => {hide_panel(carInformation);} );
-operationalHide.addEventListener('click', () => {hide_panel(operationalInformation);} );
