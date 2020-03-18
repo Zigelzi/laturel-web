@@ -30,6 +30,16 @@
     color:$light-white;
 }
 
+#slogan {
+    p {
+        margin: 0;
+        font-size: $text-16;
+    }
+    #slogan-small-text {
+    
+    }
+}
+
 // ------ Images ------ 
 .photo-container {
     padding: 0;
@@ -42,7 +52,7 @@
     display: block;
     color: $light-orange;
     border: none;
-    font-size: 1.3em;
+    font-size: $text-20;
     text-decoration: none;
     text-transform: uppercase;
     text-align: center;
@@ -281,10 +291,10 @@
         }
 
         .cookie-label {
-            font-size: 22px;
+            font-size: $text-24;
         }
         .cookie-duration {
-            font-size: 14px;
+            font-size: $text-14;
             color: $gray-600;
         }
         .cookie-reason {
@@ -330,7 +340,7 @@
         position: absolute;
         right: 0;
         margin-right: 25px;
-        font-size: 20px;
+        font-size: $text-20;
     }
 
     &.active h3::after {

@@ -23,11 +23,16 @@ footer {
   flex-wrap: wrap;
 }
 footer p {
-  font-size: 0.8em;
+  font-size: 12px;
 }
 
 p {
   line-height: 1.5;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+  font-family: "Oswald", sans-serif;
 }
 
 a {
@@ -37,30 +42,6 @@ a {
 }
 a:hover::after {
   transform: scaleY(0);
-}
-
-table {
-  table-layout: fixed;
-  border-collapse: collapse;
-}
-table th {
-  background-color: #C7CFD1;
-  text-align: left;
-}
-table th, table td {
-  padding: 10px;
-}
-table thead th:nth-child(1) {
-  width: 20%;
-}
-table thead th:nth-child(2) {
-  width: 20%;
-}
-table thead th:nth-child(3) {
-  width: 60%;
-}
-table tbody tr:hover {
-  background-color: #E3E7E8;
 }
 
 ul li, ol li {
@@ -111,7 +92,7 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 h1 {
-  font-size: 2em;
+  font-size: 30px;
   margin: 0.67em 0;
 }
 
@@ -534,7 +515,7 @@ template {
 }
 
 .xl-heading {
-  font-size: 3.815rem;
+  font-size: 60px;
   margin: 0.1em 0;
   text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
 }
@@ -544,12 +525,12 @@ template {
 }
 
 .xl-p {
-  font-size: 1.653rem;
+  font-size: 24px;
   padding: 0 5%;
 }
 
 .subtext {
-  font-size: 0.8em;
+  font-size: 12px;
   color: #ABB7BA;
 }
 .subtext a {
@@ -712,7 +693,7 @@ template {
   background: #77120D;
 }
 .nav-web a {
-  font-size: 1.5rem;
+  font-size: 24px;
 }
 
 .active-nav a {
@@ -755,6 +736,10 @@ template {
   color: #FCFDFD;
 }
 
+#slogan p {
+  margin: 0;
+  font-size: 16px;
+}
 .photo-container {
   padding: 0;
 }
@@ -763,7 +748,7 @@ template {
   display: block;
   color: #f9f3eb;
   border: none;
-  font-size: 1.3em;
+  font-size: 20px;
   text-decoration: none;
   text-transform: uppercase;
   text-align: center;
@@ -983,7 +968,7 @@ template {
   font-weight: 600;
 }
 .cookie-card .card-content .cookie-label {
-  font-size: 22px;
+  font-size: 24px;
 }
 .cookie-card .card-content .cookie-duration {
   font-size: 14px;
@@ -1497,7 +1482,7 @@ template {
 
 .cars-footer {
   margin: 25px 0;
-  font-size: 0.8em;
+  font-size: 12px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -130,7 +130,7 @@
 }
 
 .xl-heading {
-    font-size: 3.815rem;
+    font-size: $text-60;
     margin: 0.1em 0;
     text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
 }
@@ -140,12 +140,12 @@
 }
 
 .xl-p {
-    font-size: 1.653rem;
+    font-size: $text-24;
     padding: 0 5%;
 }
 
 .subtext {
-    font-size: 0.8em;
+    font-size: $text-12;
     color: $gray-300;
 
     a {

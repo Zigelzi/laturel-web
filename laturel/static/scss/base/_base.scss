@@ -25,12 +25,17 @@ footer {
     justify-content: space-around;
     flex-wrap: wrap;
     p {
-        font-size: 0.8em;
+        font-size: $text-12;
     }
 }
 
 p {
     line-height: 1.5;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    font-family: $heading-font;
 }
 
 a {
@@ -40,34 +45,6 @@ a {
 
     &:hover::after {
         transform: scaleY(0);
-    }
-}
-
-table {
-    table-layout: fixed;
-    border-collapse: collapse;
-    th {
-        background-color: $gray-200;
-        text-align: left;
-    }
-    th, td {
-        padding: 10px;
-    }
-    thead {
-        th:nth-child(1){
-            width: 20%;
-        }
-        th:nth-child(2){
-            width: 20%;
-        }
-        th:nth-child(3){
-            width: 60%;
-        }
-    }
-    tbody {
-        tr:hover {
-            background-color: $gray-100;
-        }
     }
 }
 
