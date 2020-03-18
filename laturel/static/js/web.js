@@ -99,9 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
         activeLink.classList.add(activeClassName);
     }
 
-
     window.addEventListener('scroll', () => {
-        activateNavSection(window.scrollY);         
+        activateNavSection(window.scrollY); 
     });
 
     contactForm.addEventListener('submit', e => {

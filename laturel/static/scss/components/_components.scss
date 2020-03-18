@@ -30,19 +30,33 @@
     color:$light-white;
 }
 
-#slogan {
-    p {
-        margin: 0;
-        font-size: $text-16;
-    }
-    #slogan-small-text {
-    
-    }
+#intro {
+    font-size: $text-20;
+}
+
+.text-emphasis {
+    color: $primary-blue-600;
+    font-weight: 700;
+}
+
+#services {
+    display: flex;
+    justify-content: center;
+}
+
+.service-item {
+    text-align: center;
 }
 
 // ------ Images ------ 
 .photo-container {
     padding: 0;
+}
+
+.photo-rounded {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
 
 

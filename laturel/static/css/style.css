@@ -736,12 +736,32 @@ template {
   color: #FCFDFD;
 }
 
-#slogan p {
-  margin: 0;
-  font-size: 16px;
+#intro {
+  font-size: 20px;
 }
+
+.text-emphasis {
+  color: #1484B8;
+  font-weight: 700;
+}
+
+#services {
+  display: flex;
+  justify-content: center;
+}
+
+.service-item {
+  text-align: center;
+}
+
 .photo-container {
   padding: 0;
+}
+
+.photo-rounded {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
 }
 
 .btn {
