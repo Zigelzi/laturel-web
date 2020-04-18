@@ -16,7 +16,7 @@ class Config(object):
     RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
     
     # Using SQLite DB for now
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///db/' + os.getenv('DB_NAME', 'app.db')
+    SQLALCHEMY_DATABASE_URI = os.getenv(f'LATUREL_WEB_DATABASE_URL', 'sqlite:///')
     SQLALCHEMY_TRACK_MODIFICATIONS = False 
 
 class DevConfig(Config):
